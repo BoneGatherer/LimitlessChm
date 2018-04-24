@@ -17,112 +17,170 @@ html,body {
 
 
 
-<meta http-equiv="X-UA-Compatible" content="IE=8">
+
 <style>
-html {
-	overflow-y:scroll;
-}
+html,div { margin: 0; padding: 0;}
 
 body {
-	background-image: url(template1/back.png);
-	background-repeat: repeat-x;
-	background-color: #FFFFFF;
 	padding: 0px;
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-bottom: 15px;
-	margin-right: 15px;
+	margin: 0px;
+	overflow: auto;
+	height: 100%;
 }
 
-#winchm_template_button {
-	position: fixed; 
-	float: right; 
-	right: 15px; 
-	top: 15px;
+#winchm_template_button{
+	float: right;
+	width: 93px;
+	top: 7px;
+	position: relative;
+	text-align: right;
+	right: 5px;
+	height: auto;
 }
 
-#winchm_template_navigation {
+#winchm_template_top{
 	padding: 0px;
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
+	margin: 0px;
+	border-bottom: 1px solid #9B9B9B;
+	background-color: #B1CEFE;
+}
 
-	font-size: 8pt;
+#winchm_template_navigation{
+	margin: 0px;
+	padding-top: 7px;
+	padding-left: 7px;
+	padding-bottom: 3px;
+	padding-right: 0px;
+	font-size: 8.5pt;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #4A4A4A;
-	text-align: left;
+	font-weight: normal;
+	color: #585858;
 }
 
-#winchm_template_title {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 22px;
-	font-weight: bold;
-	color: #005680;
-	text-align: left;
+#winchm_template_title{
+	margin: 0px;
+	padding-top: 4px;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	padding-right: 0px;
+	font-size: 18px; 
+	font-family: Verdana, Geneva, sans-serif;
+	color: #363636;
 }
 
 #winchm_template_content{
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
+	margin-top: 20px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
 	width: auto  !important;
 	width: 100%;
 }
 
-
-#winchm_template_footer {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	padding-top: 7px;
+#winchm_template_footer{
 	border-width: 1px;
-	border-color: #c0c0c0;
+	border-color: #B1CEFE;
 	border-top-style: solid;
-
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #575757;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
+	padding-top: 7px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 8.5pt;
+	color: #696969;
+	width: auto;
 	text-align: left;
 }
 
+
+#winchm_template_container{
+	margin: 0px;
+	padding: 0px;
+	position: static;
+	padding-bottom: 3px;
+	overflow: auto;
+	background-color: #FFFFFF;
+}
+
+
 @media print
 {
+#winchm_template_container{
+	position: static;	
+	margin: 0px;
+	padding: 5px;
+	
+	width: auto;
+	height: auto;
+	overflow: auto;
+}
 #winchm_template_button{
 visibility:hidden;
 }
 }
 
-#winchm_template_navigation a:link	{text-decoration: none;color: 004080}
-#winchm_template_navigation a:visited  {text-decoration: none; color: #004080}
-#winchm_template_navigation a:active {text-decoration: none; color: #004080}
-#winchm_template_navigation a:hover {text-decoration: none;color: #0000FF}
+#winchm_template_navigation A:link	{text-decoration: none; color:#004080}
+#winchm_template_navigation A:visited  {text-decoration: none; color: #004080}
+#winchm_template_navigation A:active {text-decoration: none; color: #004080 }
+#winchm_template_navigation A:hover {text-decoration: none;color: #0080FF}
 
-a:link	{text-decoration: underline; color:#0033cc}
-a:visited  {text-decoration: underline; color: #0033cc}
-a:active {text-decoration: underline; color: #0033cc }
-a:hover {text-decoration: underline;color: #ff0000;}
-
+A:link	{text-decoration: underline; color:#0033CC}
+A:visited  {text-decoration: underline; color: #0033CC}
+A:active {text-decoration: underline; color: #0033CC }
+A:hover {text-decoration: underline;color: #FF0000;}
 </style>
+<script type="text/javascript">
+function isMobile(){
+Agent = window.navigator.userAgent;
+if (Agent.indexOf("iPhone")>=1 || Agent.indexOf("iPad")>=1 || Agent.indexOf("iPod")>=1 || Agent.indexOf("Android")>=1){
+return true;
+}else{
+return false;	
+}
+
+}
+function d_onresize(){
+if (window.navigator.userAgent.indexOf("MSIE")>=1){
+document.getElementById('winchm_template_container').style.pixelWidth = document.body.offsetWidth - 3;
+document.getElementById('winchm_template_container').style.pixelHeight = document.body.offsetHeight - document.getElementById('winchm_template_top').offsetHeight - 4;
+}
+document.getElementById('winchm_template_container').style.top = document.getElementById('winchm_template_top').offsetHeight + 'px';
+}
+
+function d_onbeforeprint(){
+document.getElementById('winchm_template_container').style.width = 'auto';
+document.getElementById('winchm_template_container').style.height = 'auto';
+}
+
+function d_onafterprint(){
+d_onresize();
+}
+
+if(!isMobile()){
+
+window.onload = d_onresize;
+window.onresize = d_onresize;
+window.onbeforeprint = d_onbeforeprint;
+window.onafterprint = d_onafterprint;
+
+document.write("<style>\n");
+document.write("body {overflow: hidden;}\n");
+document.write("#winchm_template_container {position: absolute;overflow: auto;top : 0px;right: 0px;bottom: 0px;left: 0px;}\n");
+document.write("</style>\n");
+}
+
+</script>
 </head>
 
 <body><script language="JavaScript" type="text/JavaScript">
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(758);
+  parent.nav.tree.selectNode(895);
  }else{
   setTimeout("syn()",500);
 }
@@ -142,669 +200,749 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 }
 </script> 
 
-<div id="winchm_template_button"><A href="S级生物类战兽.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template1/btn_prev_n.gif" border="0"></a><A href="泛用载具改造－逃生舱系统.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template1/btn_next_n.gif" border="0"></a></div>
-<div id="winchm_template_navigation">Help &gt; 
+
+<div id="winchm_template_top">
+	<div id="winchm_template_button"><A href="S级生物类战兽.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="泛用载具改造－逃生舱系统.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
+	<div id="winchm_template_navigation">Help &gt; 
 <A href="资源部分.htm">资源部分</A> &gt; <A href="物品.htm">物品</A> &gt; <A href="载具.htm">载具</A> &gt; </div>
-<div id="winchm_template_title">无人机</div>
-<div id="winchm_template_content"><P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+	<div id="winchm_template_title">无人机</div>
+</div>
+<div id="winchm_template_container">
+	<div id="winchm_template_content"><P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">无人机是现代战争里被广泛使用的一种战斗机器，在科技侧的世界中，从超小型的无人机到大型的战斗机器，它有数不清的变种，可以做到难以计数的工作。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">无人机是现代战争里被广泛使用的一种战斗机器，在科技侧的世界中，从超小型的无人机到大型的战斗机器，它有数不清的变种，可以做到难以计数的工作。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
 lang=EN-US></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">操作规则<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">操作规则<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">移动无人机：对无人机的操作是通过网络下达的电子指令。每次命令无人机移动，都需要消耗你的移动动作，你可以一次移动多台无人机。不过你可以指定一个较远的或者长期的目标（“一直往前飞”或者“飞到地图上的某个坐标”，这中间将不再需要你每次都下达指令，无人机会自己试图避开各种障碍到达目标。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">移动无人机：对无人机的操作是通过网络下达的电子指令。每次命令无人机移动，都需要消耗你的移动动作，你可以一次移动多台无人机。不过你可以指定一个较远的或者长期的目标（“一直往前飞”或者“飞到地图上的某个坐标”，这中间将不再需要你每次都下达指令，无人机会自己试图避开各种障碍到达目标。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">攻击：遥控命令无人机攻击是一个标准动作，视为操作载具上的武器进行攻击，应用载具攻击规则；但使用智力代替敏捷进行攻击检定。即使你有类型为【电子脑】的设备或者其他的辅助意识，通常情况下，这些意识也不能让你同时操控多个无人机进行同时攻击，不过它们可以启动无人机的自动射击模式，并进行即时编程，改变目标和其他条件，使其自动攻击。特别的是，如果你有电子脑以及双枪系列专长，在以【分离式躯体】模式操作无人机时，可操作两台无人机一起开火，并承受相应的减值。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">攻击：遥控命令无人机攻击是一个标准动作，视为操作载具上的武器进行攻击，应用载具攻击规则；但使用智力代替敏捷进行攻击检定。即使你有类型为【电子脑】的设备或者其他的辅助意识，通常情况下，这些意识也不能让你同时操控多个无人机进行同时攻击，不过它们可以启动无人机的自动射击模式，并进行即时编程，改变目标和其他条件，使其自动攻击。特别的是，如果你有电子脑以及双枪系列专长，在以【分离式躯体】模式操作无人机时，可操作两台无人机一起开火，并承受相应的减值。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">控制：所有的无人机都具有网络功能，可以使用ＷｉＦｉ网络或者专有的无线数据链路进行工作。它们也有防火墙，可能被黑客控制。防火墙强度写的是通过黑客能力对其进行超驰控制时，所需要的电脑技能的长期判定，所需要的最终成功数。控制范围指的是在没有连入专用网络时，仅靠自身的无线电系统能够链接的距离。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">控制：所有的无人机都具有网络功能，可以使用ＷｉＦｉ网络或者专有的无线数据链路进行工作。它们也有防火墙，可能被黑客控制。防火墙强度写的是通过黑客能力对其进行超驰控制时，所需要的电脑技能的长期判定，所需要的最终成功数。控制范围指的是在没有连入专用网络时，仅靠自身的无线电系统能够链接的距离。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">载重：无人机可以拥有一定的载重，但当载重超过它总承载的１／２时，机动性下降一个等级，等于其载重时下降两个等级（最低到笨拙）<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">载重：无人机可以拥有一定的载重，但当载重超过它总承载的１／２时，机动性下降一个等级，等于其载重时下降两个等级（最低到笨拙）<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">超载：当无人机因为超载而损毁时，将会失去能量，如果还在飞行则会自动迫降地面。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">超载：当无人机因为超载而损毁时，将会失去能量，如果还在飞行则会自动迫降地面。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">关键字<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">关键字<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">自动射击模式：无人机可以通过你预先设定好的程序，或者即时的指令，向目标开火，此时它不占用你的动作，但也不获得你的攻击加值，仅使用其自身的攻击加值。它可以是人脸识别、声纹识别、预设特征或者固定目标；你也可以设定结束模式为目标失去行动能力或者做出投降动作等等。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">自动射击模式：无人机可以通过你预先设定好的程序，或者即时的指令，向目标开火，此时它不占用你的动作，但也不获得你的攻击加值，仅使用其自身的攻击加值。它可以是人脸识别、声纹识别、预设特征或者固定目标；你也可以设定结束模式为目标失去行动能力或者做出投降动作等等。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
 lang=EN-US></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
 lang=EN-US></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">无品级<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">无品级<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">－－－－－－<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">－－－－－－<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">小型旋翼无人机<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">小型旋翼无人机<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">价格：２００<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：２００<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">机动：３０米／轮，飞行，机动性良好<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">机动：３０米／轮，飞行，机动性良好<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">载重：１公斤<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">载重：１公斤<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">硬度：１<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">硬度：１<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">结构：２<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">结构：２<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">防御：２<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">防御：２<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">控制：控制范围１０００米，防火墙强度５<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">控制：控制范围１０００米，防火墙强度５<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">描述：长约２０公分的小型飞行器，装有双涡轮涵道风扇，外型上就像挂装了Ｖ型双旋翼的一把冲锋枪。飞行声音极轻，近乎无声。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：长约２０公分的小型飞行器，装有双涡轮涵道风扇，外型上就像挂装了Ｖ型双旋翼的一把冲锋枪。飞行声音极轻，近乎无声。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">效果：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">１、拥有一个高清晰的摄像头和麦克风，带有１０倍放大效果。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">１、拥有一个高清晰的摄像头和麦克风，带有１０倍放大效果。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">２、携带有一门轻便式无坐力消音狙击枪，５Ｌ，射程单位２００米，携带５发子弹。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">２、携带有一门轻便式无坐力消音狙击枪，５Ｌ，射程单位２００米，携带５发子弹。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">３、可支付５０分进行插件升级，使其拥有【分离式躯体】关键字。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">３、可支付５０分进行插件升级，使其拥有【分离式躯体】关键字。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">４、用一枚标准能量电池供电。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">４、用一枚标准能量电池供电。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
 lang=EN-US></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
 lang=EN-US></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Ｄ级<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">Ｄ级<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">磁悬浮无人战斗机<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">磁悬浮无人战斗机<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">价格：Ｄ＋５００<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：Ｄ＋５００<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">机动：６０米／轮，飞行，机动性完美，可以在水下和太空活动。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">机动：６０米／轮，飞行，机动性完美，可以在水下和太空活动。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">载重：１０公斤<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">载重：１０公斤<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">硬度：５<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">硬度：５<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">结构：７<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">结构：７<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">防御：５<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">防御：５<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">超载：１<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">超载：１<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">控制：控制范围５０００米，防火墙强度１０<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">控制：控制范围５０００米，防火墙强度１０<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">描述：拥有流畅的流体力学外表，近似黑色的三角形塑料装置，长约３０公分。没有任何外表可见的接口跟推进装置，使用常温超导体进行磁悬浮推进。其自动防御机制可以避开一些简单的攻击，而高分子聚合物外壳也能在一定距离上抵挡普通的小口径武器攻击。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：拥有流畅的流体力学外表，近似黑色的三角形塑料装置，长约３０公分。没有任何外表可见的接口跟推进装置，使用常温超导体进行磁悬浮推进。其自动防御机制可以避开一些简单的攻击，而高分子聚合物外壳也能在一定距离上抵挡普通的小口径武器攻击。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">效果：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">１、安装有１００倍放大倍率的摄像头和高清晰度麦克风，拥有红外和合成孔径雷达成像能力。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">１、安装有１００倍放大倍率的摄像头和高清晰度麦克风，拥有红外和合成孔径雷达成像能力。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">２、安装有未来武器模块，可更换武器装置。作为平台，可安装任何Ｂ级以下，体积不超过４的科技武器。购买时默认安装有一门高能粒子脉冲步枪，视为已经安装了未来火控装置。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">２、安装有未来武器模块，可更换武器装置。作为平台，可安装任何Ｂ级以下，体积不超过４的科技武器。购买时默认安装有一门高能粒子脉冲步枪，视为已经安装了未来火控装置。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">３、可支付５０分进行插件升级，使其拥有【分离式躯体】关键字。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">３、可支付５０分进行插件升级，使其拥有【分离式躯体】关键字。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">４、拥有【自动射击模式】，命中加值为１０。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">４、拥有【自动射击模式】，命中加值为１０。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">５、需要一枚大型能量电池供能，在控制范围内支持【无线供电】，对人机改造来说，视为耗能３的设备。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">５、需要一枚大型能量电池供能，在控制范围内支持【无线供电】，对人机改造来说，视为耗能３的设备。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">超载：高能粒子脉冲步枪的伤害提升４Ｌ。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">超载：高能粒子脉冲步枪的伤害提升４Ｌ。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
 lang=EN-US></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
 lang=EN-US></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">辅助装甲无人机<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">辅助装甲无人机<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">价格：Ｄ＋５００<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：Ｄ＋５００<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">机动：３０米／轮，履带式前进，只能在地面前进。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">机动：３０米／轮，履带式前进，只能在地面前进。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">载重：１００公斤<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">载重：１００公斤<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">硬度：１５<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">硬度：１５<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">结构：１７<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">结构：１７<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">防御：０<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">防御：０<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">控制：控制范围５０００米，防火墙强度１０<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">控制：控制范围５０００米，防火墙强度１０<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">描述：看起来像一台微缩型的坦克，长约１米，高６０公分，但上半部分的炮塔换成了坚固整体式装甲模块，能抵御大部分轻武器的打击，在战场上也能来去自如。能打开并露出里面的多功能机械手。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：看起来像一台微缩型的坦克，长约１米，高６０公分，但上半部分的炮塔换成了坚固整体式装甲模块，能抵御大部分轻武器的打击，在战场上也能来去自如。能打开并露出里面的多功能机械手。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">效果：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">１、安装有一个多功能针剂发射器，可以发射多种特殊弹药，包括所有体积不超过１的药水和针剂，射程５０米。这可以关联到【自动射击模式】上，命中加值为５<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">１、安装有一个多功能针剂发射器，可以发射多种特殊弹药，包括所有体积不超过１的药水和针剂，射程５０米。这可以关联到【自动射击模式】上，命中加值为５<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">２、安装有一个多功能榴弹发射器，可以发射包括榴弹、烟雾弹、闪光弹在内的投掷式弹药，备弹１０枚。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">２、安装有一个多功能榴弹发射器，可以发射包括榴弹、烟雾弹、闪光弹在内的投掷式弹药，备弹１０枚。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">３、可支付５０分进行插件升级，使其拥有【分离式躯体】关键字。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">３、可支付５０分进行插件升级，使其拥有【分离式躯体】关键字。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">重型隐形攻击无人机<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">重型隐形攻击无人机<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">价格：ＤＤ＋４０００<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：ＤＤ＋４０００<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">机动：３００米／轮，机动性普通，但可垂直起降<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">机动：３００米／轮，机动性普通，但可垂直起降<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">载重：１０００公斤<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">载重：１０００公斤<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">硬度：２<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">硬度：２<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">结构：１２<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">结构：１２<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">防御：０<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">防御：０<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">超载：１<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">超载：１<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">控制：控制范围１０公里，防火墙强度１０<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">控制：控制范围１０公里，防火墙强度１０<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">描述：跟战斗无人机不一样，这是专门用于对地火力支持的重型无人机。它并没有强大的机动性，笨拙的体型在缠斗中也只是标靶，但它却能给地面力量提供稳定而强大的火力支持。这种长约１０米的流线型机体在本质上只是美军同类设备的升级版，拥有先进的聚合物装甲和火力，并安装有磁悬浮推进设备，可以实现垂直起降。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：跟战斗无人机不一样，这是专门用于对地火力支持的重型无人机。它并没有强大的机动性，笨拙的体型在缠斗中也只是标靶，但它却能给地面力量提供稳定而强大的火力支持。这种长约１０米的流线型机体在本质上只是美军同类设备的升级版，拥有先进的聚合物装甲和火力，并安装有磁悬浮推进设备，可以实现垂直起降。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">效果：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">１、安装有一门轻型电磁机关炮，可以根据需求向指定地点扫射。扫射半径１０米，射程单位３００米，造成６Ｌ的伤害，破甲４，拥有【火力压制】特性，无限弹药。超载：伤害提升到８Ｌ，破甲提升到６。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">１、安装有一门轻型电磁机关炮，可以根据需求向指定地点扫射。扫射半径１０米，射程单位３００米，造成６Ｌ的伤害，破甲４，拥有【火力压制】特性，无限弹药。超载：伤害提升到８Ｌ，破甲提升到６。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">２、安装有一门多功能榴弹发射器，备弹４０发，可以投放标准榴弹或者烟雾弹／燃烧弹。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">２、安装有一门多功能榴弹发射器，备弹４０发，可以投放标准榴弹或者烟雾弹／燃烧弹。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">３、安装有一个导弹发射器，可以安装空对地导弹或者火箭巢，但购买时不提供。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">３、安装有一个导弹发射器，可以安装空对地导弹或者火箭巢，但购买时不提供。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">４、无人机本身带有高精度的１００倍摄像头和麦克风，可以进行光学侦测，但无自主攻击的ＡＩ，只能由地面定位并呼叫攻击。定位是一个标准动作，一次只能呼叫一种支持。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">４、无人机本身带有高精度的１００倍摄像头和麦克风，可以进行光学侦测，但无自主攻击的ＡＩ，只能由地面定位并呼叫攻击。定位是一个标准动作，一次只能呼叫一种支持。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">５、自身带有光学迷彩，可实现光学／红外／雷达波隐形。无支线的设备无法发现，在对抗Ｄ级和更高级的侦测设备或技能时，可被通过ＤＣ４的侦测判定发现。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">５、自身带有光学迷彩，可实现光学／红外／雷达波隐形。无支线的设备无法发现，在对抗Ｄ级和更高级的侦测设备或技能时，可被通过ＤＣ４的侦测判定发现。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Ｃ级<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">Ｃ级<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">
+<P style="MARGIN: 0pt; LINE-HEIGHT: 150%" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">POD无人机</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"></SPAN></P>
+<P style="MARGIN: 0pt; LINE-HEIGHT: 150%" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>价格：</FONT>C</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">+</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">2</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">000</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"></SPAN></P>
+<P style="MARGIN: 0pt; LINE-HEIGHT: 150%" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>机动：特殊</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"></SPAN></P>
+<P style="MARGIN: 0pt; LINE-HEIGHT: 150%" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>载重：无</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"></SPAN></P>
+<P style="MARGIN: 0pt; LINE-HEIGHT: 150%" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>硬度：</FONT>2</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"></SPAN></P>
+<P style="MARGIN: 0pt; LINE-HEIGHT: 150%" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>结构：</FONT>5</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"></SPAN></P>
+<P style="MARGIN: 0pt; LINE-HEIGHT: 150%" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>防御：</FONT>5</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"></SPAN></P>
+<P style="MARGIN: 0pt; LINE-HEIGHT: 150%" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>控制：控制范围</FONT>2米，防火墙强度5+使用者的电脑技能等级</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"></SPAN></P>
+<P style="MARGIN: 0pt; LINE-HEIGHT: 150%" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>描述：</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>「寄叶」部队</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>的辅助型无人机，方形的悬浮式无人机，会给予使用者各种意见，并且自带天然毒舌属性。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"></SPAN></P>
+<P style="MARGIN: 0pt; LINE-HEIGHT: 150%" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>效果：</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"></SPAN></P>
+<P style="MARGIN: 0pt; LINE-HEIGHT: 150%" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">1.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>这个无人机会跟在你的身旁</FONT>2米范围内</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>，围绕使用者浮飞。它们会自动跟随使用者前进。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"></SPAN></P>
+<P style="MARGIN: 0pt; LINE-HEIGHT: 150%" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">2. 
+POD无人机获得一把小型光束炮，武器伤害8L，破甲2，基础射程50米。你可以用一个迅捷动作命令POD开始蓄力，</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">POD除跟随以外的所有机能停止，蓄力</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>最多</FONT>5回合</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>，之后射出一道光束，</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>每蓄力</FONT>1回合，武器伤害和破甲+1，并且基础射程翻倍</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"></SPAN></P>
+<P style="MARGIN: 0pt; LINE-HEIGHT: 150%" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>你</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>也</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>可以在</FONT>POD上装载体积不超过2的</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>其他</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>枪械</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>，其拥有【自动射击模式】，命中加值为使用者的枪械与电脑技能等级之和</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"></SPAN></P>
+<P style="MARGIN: 0pt; LINE-HEIGHT: 150%" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">3.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>在你坠落时，可以让</FONT>POD帮助你减速下降，你获得机动性为笨拙的</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>飞行</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>速度，每轮</FONT>15米，只能向下飞行。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"></SPAN></P>
+<P style="MARGIN: 0pt; LINE-HEIGHT: 150%" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">4.POD无人机视为一个能耗10的设备，只能无线供电。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"></SPAN></P>
+<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><!--EndFragment--></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">反重力中型战斗无人机<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">反重力中型战斗无人机<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">价格：Ｃ＋３６００<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：Ｃ＋３６００<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">机动：１２０米／轮，飞行，机动性完美，可以在水下和太空活动。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">机动：１２０米／轮，飞行，机动性完美，可以在水下和太空活动。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">载重：５０公斤<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">载重：５０公斤<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">硬度：１０<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">硬度：１０<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">结构：１５<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">结构：１５<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">防御：１０<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">防御：１０<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">控制：控制范围２０公里（安装有量子超空间通讯器，通过支持该接口的设备进行通讯时，范围为１光秒），防火墙强度１５<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">控制：控制范围２０公里（安装有量子超空间通讯器，通过支持该接口的设备进行通讯时，范围为１光秒），防火墙强度１５<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">描述：采用反重力推进技术，长约１５０ＣＭ，看起来像一个扁平的梭形，深黑色，长约７米，高１<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：采用反重力推进技术，长约１５０ＣＭ，看起来像一个扁平的梭形，深黑色，长约７米，高１<SPAN 
 lang=EN-US>.</SPAN>５米，拥有卓越的机动性能以躲避各种攻击。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">１、拥有１００倍放大倍率的摄像头和高清晰度麦克风，拥有红外和合成孔径雷达成像能力，<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">１、拥有１００倍放大倍率的摄像头和高清晰度麦克风，拥有红外和合成孔径雷达成像能力，<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">２、安装有未来武器模块，可更换武器装置。作为平台，可安装任何Ｂ级以下，体积不超过４的科技武器。购买时默认安装有一门高能粒子束狙击步枪。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">２、安装有未来武器模块，可更换武器装置。作为平台，可安装任何Ｂ级以下，体积不超过４的科技武器。购买时默认安装有一门高能粒子束狙击步枪。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">３、视为已经安装了未来火控装置，并拥有【分离式躯体】关键字。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">３、视为已经安装了未来火控装置，并拥有【分离式躯体】关键字。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">４、拥有【自动射击模式】，命中加值为１５<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">４、拥有【自动射击模式】，命中加值为１５<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">５、需要一枚大型能量电池供能。在控制范围内支持【无线供电】，对人机改造来说，视为耗能１０的设备。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">５、需要一枚大型能量电池供能。在控制范围内支持【无线供电】，对人机改造来说，视为耗能１０的设备。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">重型隐形轰炸无人机<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">重型隐形轰炸无人机<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">价格：ＣＣ＋５０００<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：ＣＣ＋５０００<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">机动：３００米／轮的巡航速度（飞行，机动性笨拙），以及３０米／轮的战斗速度（飞行，机动性完美），可以在水下和太空活动。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">机动：３００米／轮的巡航速度（飞行，机动性笨拙），以及３０米／轮的战斗速度（飞行，机动性完美），可以在水下和太空活动。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">载重：２０００公斤<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">载重：２０００公斤<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">硬度：５<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">硬度：５<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">结构：１５<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">结构：１５<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">防御：５<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">防御：５<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">控制：控制范围２０公里（安装有量子超空间通讯器，通过支持该接口的设备进行通讯时，范围为１光秒），防火墙强度１５<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">控制：控制范围２０公里（安装有量子超空间通讯器，通过支持该接口的设备进行通讯时，范围为１光秒），防火墙强度１５<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">描述：采用反重力推进技术，安静而无声，专用于战场上空的火力支持。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：采用反重力推进技术，安静而无声，专用于战场上空的火力支持。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">效果：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">１、安装有一个多功能发射器，可以发射专用的智能可编程导弹，备弹１０发，第一次购买时自动补满，之后需要单独购买，每发５０分。呼叫导弹攻击是一个标准动作，它永远在呼叫者下一轮开始时到达。无需侦察判定就可以发现导弹的来袭，侦察技能判定达到３＋就可以判断导弹的准确落点。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">１、安装有一个多功能发射器，可以发射专用的智能可编程导弹，备弹１０发，第一次购买时自动补满，之后需要单独购买，每发５０分。呼叫导弹攻击是一个标准动作，它永远在呼叫者下一轮开始时到达。无需侦察判定就可以发现导弹的来袭，侦察技能判定达到３＋就可以判断导弹的准确落点。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">　弹药性能：形成范围攻击，伤害３０点，反射豁免减免。对物体和载具有破甲３０，带有【爆炸】关键字，爆炸范围２０米。可编程为钻地型（先钻地之后再攻击，可穿透１０米厚的混凝土），攻顶／近炸型（在快要接近时爆炸）。它只能攻击体积大于１０的载具或者物体。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">　弹药性能：形成范围攻击，伤害３０点，反射豁免减免。对物体和载具有破甲３０，带有【爆炸】关键字，爆炸范围２０米。可编程为钻地型（先钻地之后再攻击，可穿透１０米厚的混凝土），攻顶／近炸型（在快要接近时爆炸）。它只能攻击体积大于１０的载具或者物体。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">２、安装有一门标准的脉冲射弹枪（８Ｌ，４破甲，只有火力压制模式。射程单位２００米，无限弹药）<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">２、安装有一门标准的脉冲射弹枪（８Ｌ，４破甲，只有火力压制模式。射程单位２００米，无限弹药）<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">３、自身带有光学迷彩，可实现光学／红外／雷达波隐形。Ｃ级以下的侦测设备无法发现，在对抗Ｃ级和更高级的侦测设备或技能时，可被通过ＤＣ６的侦测判定发现。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">３、自身带有光学迷彩，可实现光学／红外／雷达波隐形。Ｃ级以下的侦测设备无法发现，在对抗Ｃ级和更高级的侦测设备或技能时，可被通过ＤＣ６的侦测判定发现。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">４、本身带有高精度的１００倍摄像头和麦克风，可以进行光学侦测，但没有自主攻击能力。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">４、本身带有高精度的１００倍摄像头和麦克风，可以进行光学侦测，但没有自主攻击能力。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">超威型防护无人机阵列<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">超威型防护无人机阵列<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">价格：Ｃ＋３６００<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：Ｃ＋３６００<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">机动：特殊<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">机动：特殊<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">载重：无<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">载重：无<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">硬度：１<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">硬度：１<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">结构：２<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">结构：２<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">防御：５<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">防御：５<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">控制：范围１０米。防火墙强度１５<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">控制：范围１０米。防火墙强度１５<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">描述：这是四枚极小的星体组成的悬浮阵列，单枚只有拇指大小，看起来像一个菱形的水晶吊坠，工作时会自动竖立起来。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：这是四枚极小的星体组成的悬浮阵列，单枚只有拇指大小，看起来像一个菱形的水晶吊坠，工作时会自动竖立起来。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">１、可选择启动或者关闭。启动只需一个迅捷动作下达指令，它们会自动悬浮在空中形成环状阵列，围绕使用者浮飞。它们会自动跟随使用者前进。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">１、可选择启动或者关闭。启动只需一个迅捷动作下达指令，它们会自动悬浮在空中形成环状阵列，围绕使用者浮飞。它们会自动跟随使用者前进。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">２、安装有Ｃ级的光学／红外／雷达隐形装置，在启动时会自动隐藏自己的存在。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">２、安装有Ｃ级的光学／红外／雷达隐形装置，在启动时会自动隐藏自己的存在。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">３、自动识别并击落向使用者攻击的Ｃ级以下、有敌意的投射性伤害弹药（例如火箭弹和手雷），这不占用使用者的动作。每一枚阵列能自动开火３次。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">３、自动识别并击落向使用者攻击的Ｃ级以下、有敌意的投射性伤害弹药（例如火箭弹和手雷），这不占用使用者的动作。每一枚阵列能自动开火３次。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">４、三枚可以一起形成共振干涉波阵列，形成四边形的防护。这可以随使用者意图启动，也可以在发现有威胁的攻击时自动启动。这提供＋８偏斜防护。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">４、三枚可以一起形成共振干涉波阵列，形成四边形的防护。这可以随使用者意图启动，也可以在发现有威胁的攻击时自动启动。这提供＋８偏斜防护。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">５、被打坏后可以自动修复，但需要一小时。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">５、被打坏后可以自动修复，但需要一小时。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">６、只能使用无线供电。对人机改造来说，视为耗能１０的设备。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">６、只能使用无线供电。对人机改造来说，视为耗能１０的设备。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Ｂ级<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">Ｂ级<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><SPAN 
-style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-font-kerning: 1.0pt; mso-bidi-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0pt; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA"><SPAN 
 lang=EN-US></SPAN></SPAN></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">“毁灭者”中型战斗无人机<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">“毁灭者”中型战斗无人机<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">价格：Ｂ＋７２００<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：Ｂ＋７２００<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">机动：５００米／轮的战斗速度（飞行，机动完美），或者２０倍音速的旅行速度（飞行，机动笨拙），可以在水下和太空活动。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">机动：５００米／轮的战斗速度（飞行，机动完美），或者２０倍音速的旅行速度（飞行，机动笨拙），可以在水下和太空活动。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">载重：１吨<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">载重：１吨<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">硬度：１５<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">硬度：１５<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">结构：２０<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">结构：２０<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">防御：１０基础＋１０（力场）＋５点防御附加<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">防御：１０基础＋１０（力场）＋５点防御附加<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">控制：控制范围１００公里（安装有量子超空间通讯器，通过支持该接口的设备进行通讯时，范围为１光秒），防火墙强度２０<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">控制：控制范围１００公里（安装有量子超空间通讯器，通过支持该接口的设备进行通讯时，范围为１光秒），防火墙强度２０<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">描述：将众多令人赞叹的技术融入纤薄轻巧的设计之中。它创造了技术上的可能，更缔造了技术为人所用的典范。它不仅是顺理成章的下一代，更是本该如此的新一代。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：将众多令人赞叹的技术融入纤薄轻巧的设计之中。它创造了技术上的可能，更缔造了技术为人所用的典范。它不仅是顺理成章的下一代，更是本该如此的新一代。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">１、安装了引力波雷达，配合其高性能的综合摄像跟踪系统，超前，空前。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">１、安装了引力波雷达，配合其高性能的综合摄像跟踪系统，超前，空前。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">２、安装有未来武器模块，可安装任何Ａ级以下，体积不超过５的科技武器。默认安装了一门标准版（未升级）的重粒子放射线武器，射程提升到１０００米。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">２、安装有未来武器模块，可安装任何Ａ级以下，体积不超过５的科技武器。默认安装了一门标准版（未升级）的重粒子放射线武器，射程提升到１０００米。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">３、视为已经安装了未来火控装置，并拥有【分离式躯体】关键字。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">３、视为已经安装了未来火控装置，并拥有【分离式躯体】关键字。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">４、拥有【自动射击模式】，命中加值为３０<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">４、拥有【自动射击模式】，命中加值为３０<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">５、需要十枚大型能量电池供能。在控制范围内支持【无线供电】，对人机改造来说，视为耗能１００的设备。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">５、需要十枚大型能量电池供能。在控制范围内支持【无线供电】，对人机改造来说，视为耗能１００的设备。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">６、安装有一个电磁护盾，提供１０点力场防御，以及５点防御上的附加成功。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">６、安装有一个电磁护盾，提供１０点力场防御，以及５点防御上的附加成功。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">头脑战舰 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">头脑战舰 
 夕张<SPAN lang=EN-US><BR></SPAN>价格：<SPAN lang=EN-US>Ｂ<SPAN 
 lang=EN-US>Ｂ</SPAN>＋７２００</SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"><SPAN 
 lang=EN-US><SPAN 
 lang=EN-US></SPAN></SPAN>机动性：<SPAN 
 lang=EN-US>７２０</SPAN>米<SPAN lang=EN-US>/</SPAN>轮，飞行，机动性完美<SPAN 
 lang=EN-US>+</SPAN>悬停能力，垂直起降，可以在大气或宇宙空间中航行。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">载重：１吨<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">载重：１吨<SPAN 
 lang=EN-US><BR></SPAN>硬度：<SPAN lang=EN-US>２０</SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"><SPAN 
 lang=EN-US><SPAN 
 lang=EN-US></SPAN></SPAN>结构：１８<SPAN 
 lang=EN-US><BR></SPAN>防御：２０<SPAN 
@@ -813,37 +951,37 @@ lang=EN-US>＋１０</SPAN>力场＋５点防御附加<SPAN
 lang=EN-US></SPAN><SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">控制：控制范围<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">控制：控制范围<SPAN 
 lang=EN-US>１００</SPAN>公里</SPAN><SPAN 
 style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">（安装有量子超空间通讯器，通过支持该接口的设备进行通讯时，范围为</SPAN><SPAN 
 lang=EN-US>１</SPAN><SPAN 
 style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">光秒），防火墙强度２２</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US><BR>1.</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">安装了防空系统：被飞行单位攻击时，基本防御额外提高１<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">安装了防空系统：被飞行单位攻击时，基本防御额外提高１<SPAN 
 lang=EN-US>０</SPAN>点。</SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>2.</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">视为已经安装了未来火控装置，并拥有【分离式躯体】关键字。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">视为已经安装了未来火控装置，并拥有【分离式躯体】关键字。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>3.</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">拥有【自动射击模式】，命中加值为３<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">拥有【自动射击模式】，命中加值为３<SPAN 
 lang=EN-US>５</SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>4.</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器视为１<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器视为１<SPAN 
 lang=EN-US>５L</SPAN>，破甲１<SPAN lang=EN-US>５</SPAN>，基本射程１５<SPAN 
 lang=EN-US>００</SPAN>米的<SPAN lang=EN-US>“</SPAN>津波<SPAN 
 lang=EN-US>”</SPAN>电磁炮<SPAN lang=EN-US><BR>5.</SPAN>智力操控，受到攻击时，有<SPAN 
@@ -852,327 +990,319 @@ lang=EN-US><BR>6.</SPAN>无人机强化：周围５００米内的无人机（�
 lang=EN-US><BR>7.</SPAN>需要十枚大型能量电池功能，在控制范围内支持【无线供电】，对人机改造来说，视为耗能１<SPAN 
 lang=EN-US>２０</SPAN>的设备。</SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">“狂暴者”个人战术卫星<SPAN 
-lang=EN-US><?xml:namespace prefix = o ns = 
-"urn:schemas-microsoft-com:office:office" /><o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">价格：ＢＢ＋７２００<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">机动：７２０米<SPAN 
-lang=EN-US>/</SPAN>轮，飞行，机动性完美<SPAN 
-lang=EN-US>+</SPAN>悬停能力，垂直起降，可以在大气或宇宙空间中航行，升空时三回合进入近地轨道。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">载重：１吨<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">硬度：１５<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">结构：２０<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">防御：１０基础＋１０（力场）＋５点防御附加<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">控制：控制范围<SPAN 
-lang=EN-US>1</SPAN>光秒，防火墙强度２０<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">描述：科斯特卡德部队狂暴者标配的战术卫星，搭载了大量黑科技。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">１、安装了引力波雷达，视为<SPAN 
-lang=EN-US>B</SPAN>级科技本质的侦测能力。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">２、安装有未来武器模块，可安装任何Ａ级以下，体积不超过５的科技武器。默认安装了一门蓄电式激光炮（只能单发且视为满蓄力）无限弹药。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">３、视为已经安装了未来火控装置，并拥有【分离式躯体】关键字。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">４、拥有【自动射击模式】，命中加值为３０<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">５、可自行吸收外界元素和太阳能供能，永久续航。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-font-kerning: 1.0pt; mso-bidi-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA">６、安装有一个电磁护盾，提供１０点力场防御，以及５点防御上的附加成功。</SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">电子星兽<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">电子星兽<SPAN 
 lang=EN-US><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Ａ８</SPAN>０８６<BR><SPAN lang=EN-US>Ｂ<SPAN 
-lang=EN-US>Ｂ</SPAN>＋７２００</SPAN></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">Ａ８</SPAN>０８６<BR><SPAN lang=EN-US>Ｂ<SPAN 
+lang=EN-US>Ｂ</SPAN>＋７２００</SPAN></SPAN></SPAN>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"><SPAN 
 lang=EN-US><SPAN lang=EN-US></SPAN></SPAN></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">机动：１<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">机动：１<SPAN 
 lang=EN-US>０８０</SPAN>米<SPAN lang=EN-US>/</SPAN>轮的战斗速度（飞行，机动性完美），可以在宇宙活动<SPAN 
 lang=EN-US><BR></SPAN>载重：５<SPAN lang=EN-US>００</SPAN>公斤<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">硬度：５</SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">硬度：５</SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">结构：１５<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">结构：１５<SPAN 
 lang=EN-US><BR></SPAN>防御：２<SPAN lang=EN-US>０</SPAN>基础防御<SPAN 
 lang=EN-US>＋</SPAN><SPAN lang=EN-US>５</SPAN>防御附加成功<SPAN 
 lang=EN-US><BR></SPAN>控制：控制范围２<SPAN lang=EN-US>０</SPAN>公里</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">（安装有量子超空间通讯器，通过支持该接口的设备进行通讯时，范围为１光秒），防火墙强度１５</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">（安装有量子超空间通讯器，通过支持该接口的设备进行通讯时，范围为１光秒），防火墙强度１５</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US><BR></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">描述：外观看起来像个大芯片，有着异常脆弱的身板和迷之强大的机动能力（对应原作中的高索敌数值），以及丧心病狂的自动模式射击加值，大概是它的计算能力引领了一个时代的缘故。它的原型是著名的８<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">描述：外观看起来像个大芯片，有着异常脆弱的身板和迷之强大的机动能力（对应原作中的高索敌数值），以及丧心病狂的自动模式射击加值，大概是它的计算能力引领了一个时代的缘故。它的原型是著名的８<SPAN 
 lang=EN-US>０８６</SPAN>微处理器。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>1</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">、</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">拥有１００倍放大倍率的摄像头和高清晰度麦克风，拥有红外和合成孔径雷达成像能力，</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">、</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">拥有１００倍放大倍率的摄像头和高清晰度麦克风，拥有红外和合成孔径雷达成像能力，</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>2</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">、视为已经安装了未来火控装置，并拥有【分离式躯体】关键字<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">、视为已经安装了未来火控装置，并拥有【分离式躯体】关键字<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>3</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">、拥有自动射击模式，命中加值为３<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">、拥有自动射击模式，命中加值为３<SPAN 
 lang=EN-US>０</SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>4</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">、需要一枚大型能量电池功能。在控制范围内支持【无限供电】，对人机改造来说，视为耗能１５的设备。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">、需要一枚大型能量电池功能。在控制范围内支持【无限供电】，对人机改造来说，视为耗能１５的设备。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>5</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">、安装一架伤害１２<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">、安装一架伤害１２<SPAN 
 lang=EN-US>L</SPAN>，破甲１５，基本射程１<SPAN 
 lang=EN-US>０００</SPAN>米的电磁炮，拥有【能量武器】特性，造成雷电伤害。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-font-kerning: 1.0pt; mso-bidi-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0pt; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA" 
 lang=EN-US>6</SPAN><SPAN 
-style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-font-kerning: 1.0pt; mso-bidi-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA">、部署模式，可以以自由动作命令它原地部署，部署需要一轮（这一轮内它无法做任何事情），部署后不可移动、失去防御附加成功，并获得【自动射击模式】，命中加值为４<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0pt; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA">、部署模式，可以以自由动作命令它原地部署，部署需要一轮（这一轮内它无法做任何事情），部署后不可移动、失去防御附加成功，并获得【自动射击模式】，命中加值为４<SPAN 
 lang=EN-US>０<SPAN 
 lang=EN-US>＋</SPAN></SPAN>之前已部署的回合数（最多１５），部署的情况下敏感范围为１<SPAN 
 lang=EN-US>０００</SPAN>米。<SPAN lang=EN-US><BR 
-style="mso-special-character: line-break"></SPAN></SPAN></P></SPAN><SPAN lang=EN-US></SPAN></SPAN>
+style="mso-special-character: line-break"></SPAN></SPAN></P></SPAN><SPAN lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Ａ级<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">Ａ级<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">“歼天者”重型战斗无人机<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">“歼天者”重型战斗无人机<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">价格：Ａ＋１４４００<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：Ａ＋１４４００<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">机动：１０００米／轮的战斗速度（飞行，机动完美），或者４０倍音速的旅行速度（飞行，机动笨拙），可以在水下和太空活动。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">机动：１０００米／轮的战斗速度（飞行，机动完美），或者４０倍音速的旅行速度（飞行，机动笨拙），可以在水下和太空活动。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">载重：１０吨<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">载重：１０吨<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">硬度：３０<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">硬度：３０<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">结构：３５<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">结构：３５<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">防御：１５基础＋２０（力场）＋１０点防御附加<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">防御：１５基础＋２０（力场）＋１０点防御附加<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">控制：安装有量子超空间通讯器，只能通过支持该接口的设备进行通讯。防火墙强度２５。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">控制：安装有量子超空间通讯器，只能通过支持该接口的设备进行通讯。防火墙强度２５。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">描述：是毁灭者无人机的升级版本，百尺竿头，更进一步。拥有“毁灭者”中型无人机的全部特性，但有以下不同：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：是毁灭者无人机的升级版本，百尺竿头，更进一步。拥有“毁灭者”中型无人机的全部特性，但有以下不同：<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">１、默认安装有重力子放射线武器的升级版，射程提升到２０公里。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">１、默认安装有重力子放射线武器的升级版，射程提升到２０公里。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">２、自动射击模式的命中加值提升为５０<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">２、自动射击模式的命中加值提升为５０<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">３、安装有永久性动力炉，无需供能。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">３、安装有永久性动力炉，无需供能。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">４、护盾的力场防御提升为２０点，防御上的附加成功提升为１０点。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">４、护盾的力场防御提升为２０点，防御上的附加成功提升为１０点。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">５、拥有自体空间跳跃能力。每个场景一次，可以用一个反射动作，传送一公里。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">５、拥有自体空间跳跃能力。每个场景一次，可以用一个反射动作，传送一公里。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Ｓ级<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">Ｓ级<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">“水滴”无人探测器<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">“水滴”无人探测器<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">价格：Ｓ＋２８８００<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：Ｓ＋２８８００<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">机动：特殊<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">机动：特殊<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">载重：无<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">载重：无<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">硬度：６４<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">硬度：６４<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">结构：８９<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">结构：８９<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">防御：５０<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">防御：５０<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">控制：安装有量子超空间通讯器，只能通过支持该接口的设备进行通讯。防火墙强度３０<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">控制：安装有量子超空间通讯器，只能通过支持该接口的设备进行通讯。防火墙强度３０<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">描述：头部浑圆，尾部很尖，表面是极其光滑的全反射镜面，外界的景色在它的表面映成一片流畅的光纹，使得这滴水银看上去纯洁而唯美。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：头部浑圆，尾部很尖，表面是极其光滑的全反射镜面，外界的景色在它的表面映成一片流畅的光纹，使得这滴水银看上去纯洁而唯美。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">１、平时处于静止的悬浮状态，速度可以在０－５０公里／轮之间瞬间切换。机动性完美。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">１、平时处于静止的悬浮状态，速度可以在０－５０公里／轮之间瞬间切换。机动性完美。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">２、由强作用力物质构成，拥有ＤＲ５０／魔法，３０／传奇，１０／－。可以完全反射Ｂ级以下的能量武器产生的能量射击，免疫其伤害。对其他攻击，视为拥有１５点全伤害吸收。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">２、由强作用力物质构成，拥有ＤＲ５０／魔法，３０／传奇，１０／－。可以完全反射Ｂ级以下的能量武器产生的能量射击，免疫其伤害。对其他攻击，视为拥有１５点全伤害吸收。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">３、拥有全屏带探测能力。可以探测１０００公里之内的所有信息，视为拥有ＤＰ＋３０的侦测能力。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">３、拥有全屏带探测能力。可以探测１０００公里之内的所有信息，视为拥有ＤＰ＋３０的侦测能力。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">４、自带全屏带干扰能力，在其１０公里范围内，可以直接屏蔽Ｓ级以下，基于电磁波的设备的探测能力，让它们无法获取可见光之外的信息。自身拥有重力波雷达。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">４、自带全屏带干扰能力，在其１０公里范围内，可以直接屏蔽Ｓ级以下，基于电磁波的设备的探测能力，让它们无法获取可见光之外的信息。自身拥有重力波雷达。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">５、由于其特殊的材质，无视５０点以下硬度，无力场防护的任何障碍物阻挡，可自由穿行地球的固体层，但速度降低为音速的１０倍。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">５、由于其特殊的材质，无视５０点以下硬度，无力场防护的任何障碍物阻挡，可自由穿行地球的固体层，但速度降低为音速的１０倍。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">６、可以使用物理撞击的方式造成伤害。视为一次拥有５０点高速，ＤＰ为３０＋１０附加的攻击。也可使用【分离式躯体】模式进行操作，此时视为一个伤害为１０Ｌ＋１０附加，无任何特性，拥有【传奇武器】特性的武器。可以在攻击之后再移动，只要总距离不超过移动速度。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">６、可以使用物理撞击的方式造成伤害。视为一次拥有５０点高速，ＤＰ为３０＋１０附加的攻击。也可使用【分离式躯体】模式进行操作，此时视为一个伤害为１０Ｌ＋１０附加，无任何特性，拥有【传奇武器】特性的武器。可以在攻击之后再移动，只要总距离不超过移动速度。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">７、无需供能，自带永久性能力炉。<SPAN 
-lang=EN-US></SPAN></SPAN></P></div> 
-<div id="winchm_template_footer">Copyright &copy; 2014. All rights reserved.</div>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">７、无需供能，自带永久性能力炉。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%" 
+lang=EN-US></SPAN></P>
+<P>&nbsp;</P>
+<P><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">“狂暴者”个人战术卫星<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">价格：Ｓ＋７２００<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">机动：７２０米<SPAN 
+lang=EN-US>/</SPAN>轮，飞行，机动性完美<SPAN 
+lang=EN-US>+</SPAN>悬停能力，垂直起降，可以在大气或宇宙空间中航行，升空时三回合进入近地轨道。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">载重：１吨<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">硬度：１５<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">结构：２０<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">防御：１０基础＋１０（力场）＋５点防御附加<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">控制：控制范围<SPAN 
+lang=EN-US>1</SPAN>光秒，防火墙强度２０<SPAN lang=EN-US></SPAN></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">描述：科斯特卡德部队狂暴者标配的战术卫星，搭载了大量黑科技。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">１、安装了引力波雷达，视为Ｓ级科技本质的侦测能力，范围为整个星球。</SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">２</SPAN></SPAN>、可自行吸收外界元素和太阳能供能，永久续航。<SPAN 
+lang=EN-US></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">３、拥有【分离式躯体】关键字。扫描结果可以直接反应在操控者的战术地图上。</SPAN></SPAN></P></SPAN></SPAN></div>	
+	<div id="winchm_template_footer">Copyright &copy; 2018. All rights 
+reserved. (To change the copyright info, just edit it in template.)</div>
+</div>
+
 </body>
 </html>

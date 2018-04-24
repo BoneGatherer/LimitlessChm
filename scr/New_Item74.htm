@@ -17,112 +17,170 @@ html,body {
 
 
 
-<meta http-equiv="X-UA-Compatible" content="IE=8">
+
 <style>
-html {
-	overflow-y:scroll;
-}
+html,div { margin: 0; padding: 0;}
 
 body {
-	background-image: url(template1/back.png);
-	background-repeat: repeat-x;
-	background-color: #FFFFFF;
 	padding: 0px;
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-bottom: 15px;
-	margin-right: 15px;
+	margin: 0px;
+	overflow: auto;
+	height: 100%;
 }
 
-#winchm_template_button {
-	position: fixed; 
-	float: right; 
-	right: 15px; 
-	top: 15px;
+#winchm_template_button{
+	float: right;
+	width: 93px;
+	top: 7px;
+	position: relative;
+	text-align: right;
+	right: 5px;
+	height: auto;
 }
 
-#winchm_template_navigation {
+#winchm_template_top{
 	padding: 0px;
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
+	margin: 0px;
+	border-bottom: 1px solid #9B9B9B;
+	background-color: #B1CEFE;
+}
 
-	font-size: 8pt;
+#winchm_template_navigation{
+	margin: 0px;
+	padding-top: 7px;
+	padding-left: 7px;
+	padding-bottom: 3px;
+	padding-right: 0px;
+	font-size: 8.5pt;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #4A4A4A;
-	text-align: left;
+	font-weight: normal;
+	color: #585858;
 }
 
-#winchm_template_title {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 22px;
-	font-weight: bold;
-	color: #005680;
-	text-align: left;
+#winchm_template_title{
+	margin: 0px;
+	padding-top: 4px;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	padding-right: 0px;
+	font-size: 18px; 
+	font-family: Verdana, Geneva, sans-serif;
+	color: #363636;
 }
 
 #winchm_template_content{
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
+	margin-top: 20px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
 	width: auto  !important;
 	width: 100%;
 }
 
-
-#winchm_template_footer {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	padding-top: 7px;
+#winchm_template_footer{
 	border-width: 1px;
-	border-color: #c0c0c0;
+	border-color: #B1CEFE;
 	border-top-style: solid;
-
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #575757;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
+	padding-top: 7px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 8.5pt;
+	color: #696969;
+	width: auto;
 	text-align: left;
 }
 
+
+#winchm_template_container{
+	margin: 0px;
+	padding: 0px;
+	position: static;
+	padding-bottom: 3px;
+	overflow: auto;
+	background-color: #FFFFFF;
+}
+
+
 @media print
 {
+#winchm_template_container{
+	position: static;	
+	margin: 0px;
+	padding: 5px;
+	
+	width: auto;
+	height: auto;
+	overflow: auto;
+}
 #winchm_template_button{
 visibility:hidden;
 }
 }
 
-#winchm_template_navigation a:link	{text-decoration: none;color: 004080}
-#winchm_template_navigation a:visited  {text-decoration: none; color: #004080}
-#winchm_template_navigation a:active {text-decoration: none; color: #004080}
-#winchm_template_navigation a:hover {text-decoration: none;color: #0000FF}
+#winchm_template_navigation A:link	{text-decoration: none; color:#004080}
+#winchm_template_navigation A:visited  {text-decoration: none; color: #004080}
+#winchm_template_navigation A:active {text-decoration: none; color: #004080 }
+#winchm_template_navigation A:hover {text-decoration: none;color: #0080FF}
 
-a:link	{text-decoration: underline; color:#0033cc}
-a:visited  {text-decoration: underline; color: #0033cc}
-a:active {text-decoration: underline; color: #0033cc }
-a:hover {text-decoration: underline;color: #ff0000;}
-
+A:link	{text-decoration: underline; color:#0033CC}
+A:visited  {text-decoration: underline; color: #0033CC}
+A:active {text-decoration: underline; color: #0033CC }
+A:hover {text-decoration: underline;color: #FF0000;}
 </style>
+<script type="text/javascript">
+function isMobile(){
+Agent = window.navigator.userAgent;
+if (Agent.indexOf("iPhone")>=1 || Agent.indexOf("iPad")>=1 || Agent.indexOf("iPod")>=1 || Agent.indexOf("Android")>=1){
+return true;
+}else{
+return false;	
+}
+
+}
+function d_onresize(){
+if (window.navigator.userAgent.indexOf("MSIE")>=1){
+document.getElementById('winchm_template_container').style.pixelWidth = document.body.offsetWidth - 3;
+document.getElementById('winchm_template_container').style.pixelHeight = document.body.offsetHeight - document.getElementById('winchm_template_top').offsetHeight - 4;
+}
+document.getElementById('winchm_template_container').style.top = document.getElementById('winchm_template_top').offsetHeight + 'px';
+}
+
+function d_onbeforeprint(){
+document.getElementById('winchm_template_container').style.width = 'auto';
+document.getElementById('winchm_template_container').style.height = 'auto';
+}
+
+function d_onafterprint(){
+d_onresize();
+}
+
+if(!isMobile()){
+
+window.onload = d_onresize;
+window.onresize = d_onresize;
+window.onbeforeprint = d_onbeforeprint;
+window.onafterprint = d_onafterprint;
+
+document.write("<style>\n");
+document.write("body {overflow: hidden;}\n");
+document.write("#winchm_template_container {position: absolute;overflow: auto;top : 0px;right: 0px;bottom: 0px;left: 0px;}\n");
+document.write("</style>\n");
+}
+
+</script>
 </head>
 
 <body><script language="JavaScript" type="text/JavaScript">
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(164);
+  parent.nav.tree.selectNode(94);
  }else{
   setTimeout("syn()",500);
 }
@@ -142,541 +200,637 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 }
 </script> 
 
-<div id="winchm_template_button"><A href="赛亚人.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template1/btn_prev_n.gif" border="0"></a><A href="New_Item75.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template1/btn_next_n.gif" border="0"></a></div>
-<div id="winchm_template_navigation">Help &gt; 
-<A href="资源部分.htm">资源部分</A> &gt; <A href="血统.htm">血统</A> &gt; <A href="$$unsavedpage6.htm">自带能量池血统</A> &gt; </div>
-<div id="winchm_template_title">螺旋族</div>
-<div id="winchm_template_content"><P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">血统：螺旋族<SPAN 
+
+<div id="winchm_template_top">
+	<div id="winchm_template_button"><A href="奇迹之人.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="New_Item139.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
+	<div id="winchm_template_navigation">Help &gt; 
+<A href="资源部分.htm">资源部分</A> &gt; <A href="血统.htm">血统</A> &gt; <A href="$$unsavedpage7.htm">人类</A> &gt; <A href="$$unsavedpage8.htm">特异本质</A> &gt; </div>
+	<div id="winchm_template_title">螺旋族</div>
+</div>
+<div id="winchm_template_container">
+	<div id="winchm_template_content">
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">本质：特异本质<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">这是一个，被战斗因果所支配的，将宇宙的命运钻开风洞的男人的故事——。<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">描述：这是一个，被战斗因果所支配的，将宇宙的命运钻开风洞的男人的故事——<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">螺旋力：螺旋力就是进化之力。不论拥有螺旋遗传因子的生命，还是带有螺旋构造的银河全部都通过上升的螺旋能量而无限增大，这就是宇宙的道理。<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">D</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">级<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">你的基础螺旋力值＝你的风度＋决心。你的每点决心和风度上的自动成功都带来额外螺旋力池上限<SPAN 
-lang=EN-US>+5</SPAN>。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">特殊：螺旋力不能和任何关键属性为智力或沉着的能量兼修。<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">属性：决心<SPAN 
+lang=EN-US>+2</SPAN>，沉着<SPAN lang=EN-US>+2</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">能量池：无<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">螺旋力可以作为气和斗气来推动需要能量的能力，但它不具备气和斗气的基本用法，在需要判定能量等级时，螺旋力的等级为你的血统等级。</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">螺旋力是一个西方通用能量池。<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">技能树：开启<SPAN 
+lang=EN-US>D</SPAN>级螺旋族技能树<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">特性：螺旋力（三特性）<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">人物的气势决定着螺旋力的强度，通过消耗<SPAN 
-lang=EN-US>1</SPAN>点意志你就能恢复<SPAN 
-lang=EN-US>1</SPAN>点螺旋力，不限制次数和数量。另外，如果你完全休息了<SPAN 
-lang=EN-US>8</SPAN>小时，螺旋力也会完全恢复。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US>D</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">级<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">特殊：由于没有能量池，你额外获得<SPAN 
+lang=EN-US>1</SPAN>个特性。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">描述：螺旋力就是进化之力。不论拥有螺旋遗传因子的生命，还是带有螺旋构造的银河全部都通过上升的螺旋能量而无限增大，这就是宇宙的道理。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">你走上了追求进化终极的道路。<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">螺旋力：你开启一个特殊的刻度，名为螺旋力。螺旋力在每部影片开始时自动清零，上限等同于你的决心值，你每有<SPAN 
+lang=EN-US>1</SPAN>点传奇决心，其上限便增加<SPAN lang=EN-US>5</SPAN>点。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">属性：力量<SPAN 
-lang=EN-US>+1</SPAN>，耐力<SPAN lang=EN-US>+1</SPAN>，决心<SPAN 
-lang=EN-US>+1</SPAN>，智力<SPAN lang=EN-US>+1</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">能量池：螺旋力<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">只要你在一个回合中没有作出任何逃避、退让、降格的行为（包括但不限于逃跑，躲在安全的地方操纵召唤物作战，使用幻术欺瞒对手等，隐身偷袭对手等，具体由<SPAN 
+lang=EN-US>ST</SPAN>裁定），你便可以在该回合结束时获得等同于你传奇决心两倍<SPAN 
+lang=EN-US>+</SPAN>本血统等级<SPAN 
+lang=EN-US>*2</SPAN>点螺旋力，你每次切换场景时最多只能保留不超过本血统等级三倍的螺旋力，多出的部分会自动清空。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">特性：好大的脸！，钻头是你的灵魂！<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">螺旋力有以下基础用法：<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">技能树：没有<SPAN 
-lang=EN-US>D</SPAN>级技能，额外增加一特性<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">好大的脸！：<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">每轮一次，当你进行任何决心相关检定时，你可以无需动作直接支付不超过本血统等级<SPAN 
+lang=EN-US>*1</SPAN>点螺旋力，使该次检定获得等额的附加成功。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">在战斗中找到的这张脸就是绝世无双的金字招牌。<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; mso-font-kerning: 0pt"><o:p><FONT face=Calibri>&nbsp;</FONT></o:p></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; mso-font-kerning: 0pt"><o:p><FONT face=Calibri></FONT></o:p></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">C</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">级<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-font-kerning: 1.0pt; mso-bidi-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA">你获得载具中的</SPAN><SPAN 
-style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-font-kerning: 1.0pt; mso-bidi-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA" 
-lang=EN-US>GANMEN</SPAN><SPAN 
-style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-font-kerning: 1.0pt; mso-bidi-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA">【螺岩】。</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">你在白刃技能上获得（异种武器：钻头）专业，并在与钻头有关的任何检定上获得等同于<SPAN 
-lang=EN-US>1+</SPAN>血统等级的<SPAN lang=EN-US>dp</SPAN>加值。<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">属性：决心<SPAN 
+lang=EN-US>+3</SPAN>，沉着<SPAN lang=EN-US>+3</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">技能树：开启<SPAN 
+lang=EN-US>C</SPAN>级螺旋族技能树<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">特性：靠气势来驾驶！（三正特性一负特性）<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US>C</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">级：<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">特殊：无<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">这是一个，尚未察觉自己命运的一个男人的故事——。<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">描述：这是一个，尚未察觉自己命运的一个男人的故事——<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">属性：风度<SPAN 
-lang=EN-US>+1</SPAN>，力量<SPAN lang=EN-US>+1</SPAN>，智力<SPAN 
-lang=EN-US>+2</SPAN>，耐力<SPAN lang=EN-US>+2</SPAN>，决心<SPAN 
-lang=EN-US>+2</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">特性：用你的钻头突破天际！你以为，我是谁！<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">靠气势来驾驶！：你在与驾驶机械类载具相关的所有检定上必须使用决心代替关键属性进行检定。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">技能树：无技能树，额外获得<SPAN 
-lang=EN-US>2</SPAN>点属性<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">用你的钻头突破天际！<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">但当你位于战斗场景中驾驶机械类载具时，你每轮行动结束时都会失去等同于该载具支线等级（<SPAN 
+lang=EN-US>D1C3B5A7S9</SPAN>）<SPAN 
+lang=EN-US>*1</SPAN>点螺旋力，并且你当前拥有的螺旋力低于你正驾驶的机械类载具支线等级时，你将无法驾驶该机械类载具。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">使用一个自由动作，你投入<SPAN 
-lang=EN-US>3</SPAN>螺旋力，你可以制造一个用作攻击的钻头作为武器，这个钻头视为<SPAN 
-lang=EN-US>3L</SPAN>、破甲<SPAN lang=EN-US>3</SPAN>的近战武器，持续时间<SPAN 
-lang=EN-US>3</SPAN>轮。你可以投入更多的螺旋力，你所投入的螺旋力上限为你的血统等级（<SPAN 
-lang=EN-US>D1-S5</SPAN>），你投入的每点螺旋力都能提升钻头的攻击<SPAN lang=EN-US>1L</SPAN>和<SPAN 
-lang=EN-US>1</SPAN>破甲，并多存在一轮时间，钻头的体积自动与你的体积相合适。<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">B</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">级<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">特殊的，你在操纵<SPAN 
-lang=EN-US>GANMEN</SPAN>的时候，制造钻头可以作为<SPAN 
-lang=EN-US>GANMEN</SPAN>的武器，体积自动与你的载具相适合。<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">属性：决心<SPAN 
+lang=EN-US>+4</SPAN>，沉着<SPAN lang=EN-US>+4</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">技能树：无<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">你以为，我是谁！<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">特性：男人需要的是气势！，用你的钻头突破天际！（三特性）<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">每场景一次，你可以花费一个整轮动作，以自己独特的姿态（比如拔刀，抖动斗篷，摘下墨镜）进入战斗（或者其他关键的，决定性的时刻），进行一次风度<SPAN 
-lang=EN-US>+</SPAN>表达检定，你接下来的所有行动都可以获得等同于成功数的加值，持续<SPAN 
-lang=EN-US>3</SPAN>轮，你在决心上的每个附加成功都可以延长一轮。<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">特殊：由于没有技能树，额外获得<SPAN 
+lang=EN-US>1</SPAN>个特性。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">描述：这是一个，与命运持续战斗的男人的故事——<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US>B</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">级：<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">男人需要的是气势！：你在驾驶战斗机器人时，该战斗机器人可以完美运用你本人所掌握的招式，当机师运用能量发动招式能力时，机体会感应相应状态进行模拟，将效果完全同步过去，同时在外形上发生一定的变化（例如，机师如果机体中用内力推动金钟罩，机体也会获得金钟罩效果，用气催动石破天惊拳，机体也同样能打出石破天惊拳，甚至机师在机体中变身，机体也会有相应改变）。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">这是一个，与命运持续战斗的男人的故事——。<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">用你的钻头突破天际！：当你驾驶战斗机器人时，你可以在每回合开始时选择额外失去等于该战斗机器人支线等级（<SPAN 
+lang=EN-US>D1C3B5A7S9</SPAN>）<SPAN lang=EN-US>-</SPAN>自身传奇决心<SPAN 
+lang=EN-US>*1</SPAN>点螺旋力（最多降至<SPAN 
+lang=EN-US>1</SPAN>点），使该战斗机器人的出力和机动恒定为你的决心值，持续一回合。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">属性：风度<SPAN 
-lang=EN-US>+2</SPAN>，力量<SPAN lang=EN-US>+1</SPAN>，敏捷<SPAN 
-lang=EN-US>+1</SPAN>，感知<SPAN lang=EN-US>+1</SPAN>，耐力<SPAN 
-lang=EN-US>+2</SPAN>，决心<SPAN lang=EN-US>+2</SPAN>，智力<SPAN 
-lang=EN-US>+2</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">特性：用你的钻头突破天际！，男人需要的是气势！（双特性）<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; mso-font-kerning: 0pt"><o:p><FONT face=Calibri>&nbsp;</FONT></o:p></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; mso-font-kerning: 0pt"><o:p><FONT face=Calibri></FONT></o:p></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">A</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">级</SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">属性：决心<SPAN 
+lang=EN-US>+6</SPAN>，沉着<SPAN lang=EN-US>+6</SPAN></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">技能树：无<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">技能树：无技能树，额外获得<SPAN 
-lang=EN-US>3</SPAN>点属性<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">用你的钻头突破天际！<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">特性：化不可能为可能！，给我把牙——咬紧！，亿万破天钻！（双特性）<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">现在，你在操纵你自己所制造的钻头的时候，可以把决心或风度的附加成功（取高）加到相关判定的最终结果上。同时你的钻头获得【魔法】【幽冥】特性。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">男人需要的是气势！<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">你在破解电子系统的时候，可以投入<SPAN 
-lang=EN-US>2</SPAN>螺旋力，以决心或者风度代替智力进行判定。你可以驾驶<SPAN 
-lang=EN-US>GANMEN</SPAN>对载具进行一次攻击判定，在造成伤害以后立刻进行破解。对方载具内若有人操纵，可以和你进行对抗。成功之后，你能通过<SPAN 
-lang=EN-US>GANMEN</SPAN>自如操作对方载具，但需要每轮额外花费<SPAN 
-lang=EN-US>2/</SPAN>对方载具每支线等级的螺旋力（<SPAN 
-lang=EN-US>D1-S5</SPAN>）。你可以通过这种方式操作任何其他载具。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US>A</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">级：<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">这是一个，即使遭到了命运背叛，仍然继续寻找自己前进道路的男人的故事——。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">属性：风度<SPAN 
-lang=EN-US>+3</SPAN>，力量<SPAN lang=EN-US>+2</SPAN>，敏捷<SPAN 
-lang=EN-US>+2</SPAN>，耐力<SPAN lang=EN-US>+2</SPAN>，决心<SPAN 
-lang=EN-US>+3</SPAN>，智力<SPAN lang=EN-US>+2</SPAN>，感知<SPAN 
-lang=EN-US>+2</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">特性：化不可能为可能！，给我把牙——咬紧！，螺旋豪速球（双特性）<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">技能树：无技能树，额外获得<SPAN 
-lang=EN-US>4</SPAN>点属性<SPAN lang=EN-US> </SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">化不可能为可能！<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">在一次检定中，消耗<SPAN 
-lang=EN-US>7</SPAN>点螺旋力，使人物决心值个数的骰子自动成功，但不获得加骰。该能力每场影片使用一次，你在风度上的每个附加成功可以多使用此能力一次。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">“但并不是零对吧。那么，对我来说就和<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">特殊：由于没有技能树，额外获得<SPAN 
+lang=EN-US>1</SPAN>个特性。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">描述：“但并不是零对吧。那么，对我来说就和<SPAN 
 lang=EN-US>100%</SPAN>是一样的。”<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">给我把牙——咬紧！<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">这是一个，即使遭到了命运背叛，仍然继续寻找自己前进道路的男人的故事——<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">当你迷茫的时候，我肯定会上来揍你的。所以你放心吧，你的身边还有我在。<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">化不可能为可能！：每部影片传奇决心<SPAN 
+lang=EN-US>*1</SPAN>次，当你进行任意一次检定时，你可以使其中等同于你决心值的骰子自动取<SPAN 
+lang=EN-US>10</SPAN>，但不会因此带来加骰。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">给我把牙——咬紧！：你花费标准动作进行一次近战肉搏攻击，该次攻击无论如何只能够造成物理冲击伤害，同时你进行一次风度<SPAN 
+lang=EN-US>+</SPAN>胁迫检定，之后你可以移除目标身上等同于该次检定成功数<SPAN 
+lang=EN-US>+</SPAN>你该次肉搏攻击伤害值两倍的情绪点数，若目标身上同时承受多项情绪点数，则具体移除哪几种情绪点数由你决定。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">你对目标揍一拳，进行一次近战徒手攻击检定并造成冲击伤害，同时进行一次风度<SPAN 
-lang=EN-US>+</SPAN>胁迫检定。这次攻击可以移走目标身上心智有关的不良状态，移走的点数等同于你这次检定的成功数<SPAN 
-lang=EN-US>+</SPAN>（你所造成的冲击伤害值的两倍）。如果目标没有与心智有关的不良状态，此技能无效。<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">亿万破天钻！：当你驾驶战斗机器人进行冲锋攻击时，冲锋攻击可以自由转向，无须沿直线移动，并且可以无视所有硬度低于你该次攻击破甲值的障碍物，同时你可以对冲锋路径上的所有敌人各进行一次攻击，并且每次攻击都能获得冲锋攻击带来的增强加值，每次攻击可获得的增强加值根据你攻击到敌人时的实际移动距离计算。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">螺旋豪速球<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; mso-font-kerning: 0pt"><o:p><FONT face=Calibri>&nbsp;</FONT></o:p></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; mso-font-kerning: 0pt"><o:p><FONT face=Calibri></FONT></o:p></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">S</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">级<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">当你使用自己制造的钻头时，你可以用一个标准动作，将<SPAN 
-lang=EN-US>GANMEN</SPAN>自身也变为一个球形，发动一次特殊的冲锋。该次冲锋对体积<SPAN 
-lang=EN-US>10</SPAN>以上的载具或生物的视为具有【贯穿】属性的攻击，在冲锋第一个目标后可以继续冲锋下一个目标，直至未造成伤害或者没有攻击<SPAN 
-lang=EN-US>DP</SPAN>。同时，被冲锋的目标需要做一次敏捷<SPAN lang=EN-US>+</SPAN>沉着的判定，对抗<SPAN 
-lang=EN-US>DC</SPAN>为你的风度值，若失败，则在这次攻击中被视为措手不及。<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">属性：决心<SPAN 
+lang=EN-US>+16</SPAN>，沉着<SPAN lang=EN-US>+8</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">技能树：无<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US>S</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">级：<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">特性：单属性上限突破，天元突破！（三特性）<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">这是一个，被战斗因果所支配的，将宇宙的命运钻开风洞的男人的故事——。<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">特殊：由于没有技能树，额外获得<SPAN 
+lang=EN-US>1</SPAN>个特性。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">描述：“给我记好了，我们的钻头将在这片宇宙中钻开风洞。已经倒下的人们的愿望，和后继迩来的人们的希望。将这两股思念交织成二重螺旋，凿出驰骋于明天的未来之路。这就是天元突破！这就是<SPAN 
+lang=EN-US>GurennLagann</SPAN>！我的钻头是连天都能突破的钻头！”<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">属性：风度<SPAN 
-lang=EN-US>+6</SPAN>，力量<SPAN lang=EN-US>+5</SPAN>，敏捷<SPAN 
-lang=EN-US>+3</SPAN>，耐力<SPAN lang=EN-US>+4</SPAN>，决心<SPAN 
-lang=EN-US>+6</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">特性：天元突破！（双特性），超进化！（双特性）<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">天元突破！：你操控机械类载具进行攻击时可将你的决心值计入攻击检定和伤害上限中，并且可以无视目标的硬度与免疫破甲能力。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">天元突破！<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">D</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">级螺旋力技能树：<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">现在，你可以投入更多的螺旋力到你的钻头上，而不再有血统等级限制。当你投入的螺旋力超过<SPAN 
-lang=EN-US>11</SPAN>，则每两点螺旋力才能达到之前每一点螺旋力的效果，同时获得【<SPAN 
-lang=EN-US>9</SPAN>加骰】特性；超过<SPAN 
-lang=EN-US>16</SPAN>，则每三点螺旋力才能打到之前每一点螺旋力的效果，同时获得【<SPAN 
-lang=EN-US>8</SPAN>加骰】特性，以此类推。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">”给我记好了，我们的钻头将在这片宇宙中钻开风洞。已经倒下的人们的愿望，和后继迩来的人们的希望。将这两股思念交织成二重螺旋，凿出驰骋于明天的未来之路。这就是天元突破！这就是<SPAN 
-lang=EN-US>GurennLagann</SPAN>！我的钻头是开创天际的钻头！”<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">好大的脸！<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">超进化！<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">价格：<SPAN 
+lang=EN-US>D+500</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">动作：被动<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">你可以用螺旋力来强化自己的身体，提升你的生理属性。使用一个自由动作，你提升一点生理属性，消耗相当于这项属性的当前属性值<SPAN 
-lang=EN-US>X1</SPAN>的螺旋力。你可以消耗更多螺旋力提升更多属性，也可以同时提升其他生理属性。持续你的决心附加成功数<SPAN 
-lang=EN-US>/</SPAN>轮<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">“我们比<SPAN 
-lang=EN-US>1</SPAN>分钟前的我们还要进步，虽然很微小，但每转一圈就会前进一寸。这就是钻头啊！”<SPAN 
-lang=EN-US></SPAN></SPAN></P></div> 
-<div id="winchm_template_footer">Copyright &copy; 2014. All rights reserved.</div>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">描述：在战斗中找到的这张脸就是绝世无双的金字招牌。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">效果：当你驾驶战斗机器人时，该机体的面部表情会与你当前的表情同步呈现，这使你能够在驾驶战斗机器人时可以照常进行互动系技能相关检定并且在互动系技能相关检定中获得等同于该机体支线等级（<SPAN 
+lang=EN-US>D1C2B3A4S5</SPAN>，双支线视作单支线计算）的附加成功。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; mso-font-kerning: 0pt"><o:p><FONT face=Calibri>&nbsp;</FONT></o:p></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; mso-font-kerning: 0pt"><o:p><FONT face=Calibri></FONT></o:p></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">你以为，我是谁！<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">价格：<SPAN 
+lang=EN-US>D+500</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">动作：见下<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">能耗：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">射程：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">目标：自身<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">范围：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">持续：一个场景<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">描述：你，闪亮登场。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">效果：每场景一次，当开始投掷先攻时，你可以透支你第一轮的移动动作，之后摆出一个属于你的独特姿势（比如抖动斗篷，摘下墨镜等，具体由你自己决定，但这一行为本身不可以带来任何实际效果。），之后你在所有检定上获得等同于本血统等级的表现加值，持续一个场景。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; mso-font-kerning: 0pt"><o:p><FONT face=Calibri>&nbsp;</FONT></o:p></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; mso-font-kerning: 0pt"><o:p><FONT face=Calibri></FONT></o:p></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">钻头是你的灵魂！<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">价格：<SPAN 
+lang=EN-US>D+500</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">动作：迅捷动作<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">能耗：<SPAN 
+lang=EN-US>1</SPAN>点螺旋力<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">射程：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">目标：你正在驾驶的战斗机器人<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">范围：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">持续：一个场景<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">描述：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">效果：本招式可以且仅能在你驾驶战斗机器人时施展。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">你选定目标其中一条四肢或头部，之后根据你的选择，目标的手、脚或额头会长出一个钻头，钻头视为近战白刃武器，但免疫武器击落，持续一个场景，其具体属性如下：<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">钻头<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">分类：异种武器（钻头）<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">体积：等同于你的传奇决心<SPAN 
+lang=EN-US>*2</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">描述：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">武器基本属性：武器伤害等同于你的传奇决心<SPAN 
+lang=EN-US>*2L+2L</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">武器特殊属性：【贯穿】<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">这是钻头：该武器获得等同于你传奇决心的破甲与破魔。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">螺旋认证：当驾驶者没有螺旋族血统时，本钻头会立刻消失。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; mso-font-kerning: 0pt"><o:p><FONT face=Calibri>&nbsp;</FONT></o:p></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; mso-font-kerning: 0pt"><o:p><FONT face=Calibri></FONT></o:p></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">突破天际！<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">价格：<SPAN 
+lang=EN-US>D+500</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">动作：自由动作<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">能耗：<SPAN 
+lang=EN-US>1</SPAN>点螺旋力<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">射程：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">目标：你当前驾驶的机械类载具<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">范围：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">持续：立即<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">描述：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">效果：本招式可以且仅能在你驾驶机械类载具时施展。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">每轮一次，当你驾驶机械类载具进行近战攻击时，可以花费自由动作支付<SPAN 
+lang=EN-US>1</SPAN>点螺旋力，使该次攻击增加等同于你传奇决心<SPAN 
+lang=EN-US>*2</SPAN>点【破甲】，并获得【贯穿】特性，若该次攻击已具备【贯穿】特性，则改为获得<SPAN 
+lang=EN-US>4DP</SPAN>招式加值。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">增幅：在施展本招式时，你可以额外支付不超过本血统等级<SPAN 
+lang=EN-US>*2</SPAN>点螺旋力，每额外支付<SPAN lang=EN-US>1</SPAN>点螺旋力，你该次攻击便可忽略目标<SPAN 
+lang=EN-US>1</SPAN>点硬度。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">螺旋增强<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">价格：<SPAN 
+lang=EN-US>D+500</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">动作：自由动作<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">能耗：见下<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">射程：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">目标：见下<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">范围：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">持续：立即<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">描述：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">效果：每轮一次，当你操控机械类载具进行近战攻击时，可以花费自由动作支付不超过本血统等级<SPAN 
+lang=EN-US>*1</SPAN>点螺旋力，每支付<SPAN lang=EN-US>1</SPAN>点螺旋力便可使该次攻击的武器伤害提升<SPAN 
+lang=EN-US>2L</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; mso-font-kerning: 0pt"><o:p><FONT face=Calibri>&nbsp;</FONT></o:p></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; mso-font-kerning: 0pt"><o:p><FONT face=Calibri></FONT></o:p></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">C</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">级螺旋族技能树：<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">螺旋充能<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">价格：<SPAN 
+lang=EN-US>C+1000</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">动作：迅捷动作<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">能耗：<SPAN 
+lang=EN-US>10</SPAN>点螺旋力<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">射程：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">目标：你当前驾驶的机械类载具<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">范围：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">持续：立即<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">描述：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">效果：你可以支付<SPAN 
+lang=EN-US>10</SPAN>点螺旋力为你当前驾驶的机械类载具提供等同于一枚标准能量电池的电量，若该载具本身可容纳的电量有上限，则多出的部分会自动消失。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; mso-font-kerning: 0pt"><o:p><FONT face=Calibri>&nbsp;</FONT></o:p></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; mso-font-kerning: 0pt"><o:p><FONT face=Calibri></FONT></o:p></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">钻头的每次旋转，都会让我前进一步！<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">价格：<SPAN 
+lang=EN-US>C+1000</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">动作：被动<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">效果：你主动打开基因锁所需要的<SPAN 
+lang=EN-US>XP</SPAN>减半，同时当你驾驶机械类载具进行近战攻击之前或之后，你可以花费迅捷动作移动不超过你决心值的距离，并且该次攻击获得【<SPAN 
+lang=EN-US>9</SPAN>加骰】。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; mso-font-kerning: 0pt"><o:p><FONT face=Calibri>&nbsp;</FONT></o:p></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; mso-font-kerning: 0pt"><o:p><FONT face=Calibri></FONT></o:p></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">螺旋维修<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">价格：<SPAN 
+lang=EN-US>C+1000</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">动作：移动动作<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">能耗：见下<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">射程：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">目标：你当前驾驶的机械类载具<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">范围：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">持续：立即<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">描述：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">效果：每轮一次，你可以花费移动动作支付不超过本血统等级<SPAN 
+lang=EN-US>*1</SPAN>点螺旋力，每支付<SPAN lang=EN-US>1</SPAN>点螺旋力便可为你当前正在驾驶的机械类载具恢复<SPAN 
+lang=EN-US>5</SPAN>点结构值。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">增幅：你每有<SPAN 
+lang=EN-US>1</SPAN>点传奇决心，便可以在施展本能力时额外支付<SPAN 
+lang=EN-US>1</SPAN>点螺旋力，这不会记入该次可支付的螺旋力上限。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; mso-font-kerning: 0pt"><o:p><FONT face=Calibri>&nbsp;</FONT></o:p></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 10pt; mso-font-kerning: 0pt"><o:p><FONT face=Calibri></FONT></o:p></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">螺旋强化<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">价格：<SPAN 
+lang=EN-US>C+1000</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">动作：迅捷动作<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">能耗：<SPAN 
+lang=EN-US>3</SPAN>点螺旋力<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">射程：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">目标：自身<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">范围：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">持续：一个场景<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">描述：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">效果：你可以花费迅捷动作支付<SPAN 
+lang=EN-US>3</SPAN>点螺旋力，之后在效果持续期间你可以在生理系属性上皆获得<SPAN 
+lang=EN-US>2</SPAN>点内在加值。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">增幅：你每有<SPAN 
+lang=EN-US>1</SPAN>个传奇决心，便可以在施展本能力时额外支付<SPAN 
+lang=EN-US>3</SPAN>点螺旋力，之后效果持续期间你可以在生理系属性上再获得<SPAN 
+lang=EN-US>1</SPAN>点内在加值。<SPAN 
+lang=EN-US></SPAN></SPAN></P></div>	
+	<div id="winchm_template_footer">Copyright &copy; 2018. All rights 
+reserved. (To change the copyright info, just edit it in template.)</div>
+</div>
+
 </body>
 </html>

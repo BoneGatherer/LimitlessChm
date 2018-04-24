@@ -17,112 +17,170 @@ html,body {
 
 
 
-<meta http-equiv="X-UA-Compatible" content="IE=8">
+
 <style>
-html {
-	overflow-y:scroll;
-}
+html,div { margin: 0; padding: 0;}
 
 body {
-	background-image: url(template1/back.png);
-	background-repeat: repeat-x;
-	background-color: #FFFFFF;
 	padding: 0px;
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-bottom: 15px;
-	margin-right: 15px;
+	margin: 0px;
+	overflow: auto;
+	height: 100%;
 }
 
-#winchm_template_button {
-	position: fixed; 
-	float: right; 
-	right: 15px; 
-	top: 15px;
+#winchm_template_button{
+	float: right;
+	width: 93px;
+	top: 7px;
+	position: relative;
+	text-align: right;
+	right: 5px;
+	height: auto;
 }
 
-#winchm_template_navigation {
+#winchm_template_top{
 	padding: 0px;
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
+	margin: 0px;
+	border-bottom: 1px solid #9B9B9B;
+	background-color: #B1CEFE;
+}
 
-	font-size: 8pt;
+#winchm_template_navigation{
+	margin: 0px;
+	padding-top: 7px;
+	padding-left: 7px;
+	padding-bottom: 3px;
+	padding-right: 0px;
+	font-size: 8.5pt;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #4A4A4A;
-	text-align: left;
+	font-weight: normal;
+	color: #585858;
 }
 
-#winchm_template_title {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 22px;
-	font-weight: bold;
-	color: #005680;
-	text-align: left;
+#winchm_template_title{
+	margin: 0px;
+	padding-top: 4px;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	padding-right: 0px;
+	font-size: 18px; 
+	font-family: Verdana, Geneva, sans-serif;
+	color: #363636;
 }
 
 #winchm_template_content{
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
+	margin-top: 20px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
 	width: auto  !important;
 	width: 100%;
 }
 
-
-#winchm_template_footer {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	padding-top: 7px;
+#winchm_template_footer{
 	border-width: 1px;
-	border-color: #c0c0c0;
+	border-color: #B1CEFE;
 	border-top-style: solid;
-
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #575757;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
+	padding-top: 7px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 8.5pt;
+	color: #696969;
+	width: auto;
 	text-align: left;
 }
 
+
+#winchm_template_container{
+	margin: 0px;
+	padding: 0px;
+	position: static;
+	padding-bottom: 3px;
+	overflow: auto;
+	background-color: #FFFFFF;
+}
+
+
 @media print
 {
+#winchm_template_container{
+	position: static;	
+	margin: 0px;
+	padding: 5px;
+	
+	width: auto;
+	height: auto;
+	overflow: auto;
+}
 #winchm_template_button{
 visibility:hidden;
 }
 }
 
-#winchm_template_navigation a:link	{text-decoration: none;color: 004080}
-#winchm_template_navigation a:visited  {text-decoration: none; color: #004080}
-#winchm_template_navigation a:active {text-decoration: none; color: #004080}
-#winchm_template_navigation a:hover {text-decoration: none;color: #0000FF}
+#winchm_template_navigation A:link	{text-decoration: none; color:#004080}
+#winchm_template_navigation A:visited  {text-decoration: none; color: #004080}
+#winchm_template_navigation A:active {text-decoration: none; color: #004080 }
+#winchm_template_navigation A:hover {text-decoration: none;color: #0080FF}
 
-a:link	{text-decoration: underline; color:#0033cc}
-a:visited  {text-decoration: underline; color: #0033cc}
-a:active {text-decoration: underline; color: #0033cc }
-a:hover {text-decoration: underline;color: #ff0000;}
-
+A:link	{text-decoration: underline; color:#0033CC}
+A:visited  {text-decoration: underline; color: #0033CC}
+A:active {text-decoration: underline; color: #0033CC }
+A:hover {text-decoration: underline;color: #FF0000;}
 </style>
+<script type="text/javascript">
+function isMobile(){
+Agent = window.navigator.userAgent;
+if (Agent.indexOf("iPhone")>=1 || Agent.indexOf("iPad")>=1 || Agent.indexOf("iPod")>=1 || Agent.indexOf("Android")>=1){
+return true;
+}else{
+return false;	
+}
+
+}
+function d_onresize(){
+if (window.navigator.userAgent.indexOf("MSIE")>=1){
+document.getElementById('winchm_template_container').style.pixelWidth = document.body.offsetWidth - 3;
+document.getElementById('winchm_template_container').style.pixelHeight = document.body.offsetHeight - document.getElementById('winchm_template_top').offsetHeight - 4;
+}
+document.getElementById('winchm_template_container').style.top = document.getElementById('winchm_template_top').offsetHeight + 'px';
+}
+
+function d_onbeforeprint(){
+document.getElementById('winchm_template_container').style.width = 'auto';
+document.getElementById('winchm_template_container').style.height = 'auto';
+}
+
+function d_onafterprint(){
+d_onresize();
+}
+
+if(!isMobile()){
+
+window.onload = d_onresize;
+window.onresize = d_onresize;
+window.onbeforeprint = d_onbeforeprint;
+window.onafterprint = d_onafterprint;
+
+document.write("<style>\n");
+document.write("body {overflow: hidden;}\n");
+document.write("#winchm_template_container {position: absolute;overflow: auto;top : 0px;right: 0px;bottom: 0px;left: 0px;}\n");
+document.write("</style>\n");
+}
+
+</script>
 </head>
 
 <body><script language="JavaScript" type="text/JavaScript">
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(834);
+  parent.nav.tree.selectNode(972);
  }else{
   setTimeout("syn()",500);
 }
@@ -142,877 +200,1364 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 }
 </script> 
 
-<div id="winchm_template_button"><A href="无支线武器1.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template1/btn_prev_n.gif" border="0"></a><A href="D级武器1.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template1/btn_next_n.gif" border="0"></a></div>
-<div id="winchm_template_navigation">Help &gt; 
-<A href="资源部分.htm">资源部分</A> &gt; <A href="物品.htm">物品</A> &gt; <A href="$$unsavedpage53.htm">特异本质</A> &gt; </div>
-<div id="winchm_template_title">无支线辅助物品</div>
-<div id="winchm_template_content"><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">
+
+<div id="winchm_template_top">
+	<div id="winchm_template_button"><A href="无支线武器1.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="D级武器1.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
+	<div id="winchm_template_navigation">Help &gt; 
+<A href="资源部分.htm">资源部分</A> &gt; <A href="物品.htm">物品</A> &gt; <A href="$$unsavedpage88.htm">特异本质</A> &gt; </div>
+	<div id="winchm_template_title">无支线辅助物品</div>
+</div>
+<div id="winchm_template_container">
+	<div id="winchm_template_content"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
-lang=EN-US>===========================================================================================================</SPAN></P><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
+lang=EN-US>===========================================================================================================</SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">神奇的海螺<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">本质：特异本质<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">价格：<SPAN 
+lang=EN-US>1</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">分类：道具（玩具）<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">体积：<SPAN 
+lang=EN-US>1</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">描述：这是神奇的海螺，无论别人对它说什么，它都会随机录好以甜美的声音回答问题。是的，这只是个主神空间出品的减压玩具。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">使用：使用时，对它询问一个问题然后<SPAN 
+lang=EN-US>.rd20</SPAN>。每次使用后，人物进行一次<SPAN 
+lang=EN-US>D10</SPAN>监督你跟，若结果为单数，那么减少<SPAN 
+lang=EN-US>1</SPAN>点沮丧点数，如果结果为双数，那么增加<SPAN 
+lang=EN-US>1</SPAN>点沮丧点数，这会让沮丧进入毁灭性后果。人物每天以此法最多可以降低决心的附加成功数<SPAN 
+lang=EN-US>*1</SPAN>点沮丧点数。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">1.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">是的，没错。 <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">2.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">额 。 <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">3.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">想叹息都没法叹息，已经什么都不想说了。 
+<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">4.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">这是在开玩笑吧！ <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">5.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">这个问题马上就会有答案了。 <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">6.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">我跟你想到一块去了。 <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">7.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">抱歉。 <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">8.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">我的心累了。 <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">9.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">这一开始就是个错误。 <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">10.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">永远都不要期望我说什么，要靠你自己努力。 
+<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">11.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">要像我一样学会释怀。 <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">12.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">崭新道路所蕴含的无限可能性 <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">13.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">你想问的就是这些吗？ <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">14.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">我相信你有自己的解决办法的。 <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">15.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">我确定，无论我下次想说出什么，它一定会更棒。 
+<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">16.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">哎呀，出了什么事？刚刚我没听到。 
+<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">17.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">你为什么会这么想。 <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">18.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">呵呵、你会相当失望的。 <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">19.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">给你一个剧透吧，你现在还在活着而不是在看过场<SPAN 
+lang=EN-US>CG</SPAN>的原因是，主神想想看你无能为力，低声下气的每个瞬间。 <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">20.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">我会嘲笑你那苦难的人生的每分每秒的，无论是你拼命求生，还是安静离去，跟我一点关系都没有。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
+lang=EN-US><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
+lang=EN-US>===========================================================================================================</SPAN></SPAN></SPAN></P><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">特殊信用卡<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">特殊信用卡<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">本质：特异本质<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">本质：特异本质<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">价格：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
 lang=EN-US>1</SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">分类：道具<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">分类：道具<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">描述：</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">获得一张信用卡，可以在高于<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">描述：</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">获得一张信用卡，可以在高于<SPAN 
 lang=EN-US>20</SPAN>世纪的类地文明提款机提款。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">充值：玩家可以在主神空间进行充值。每分可以换取进入该世界时当地平民小康生活一周所需的款项（例如张先生在主神空间充值<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">充值：玩家可以在主神空间进行充值。每分可以换取进入该世界时当地平民小康生活一周所需的款项（例如张先生在主神空间充值<SPAN 
 lang=EN-US>10</SPAN>分，当他先来到北京时，发现卡里有<SPAN 
 lang=EN-US>10000</SPAN>元人民币。当他先来到美国时，发现卡里有<SPAN lang=EN-US>8000</SPAN>美元）。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
+lang=EN-US>===========================================================================================================</SPAN></P><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
+lang=EN-US>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>狐狸围脖</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>本质：特异本质</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>价格：</FONT>10</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>分类：道具</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>描述：白色狐狸一样的围脖，人物佩戴的时候会和活狐狸一样盘在人物脖子边上，但是只要摘下来就和普通围脖一样了。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>抗寒：人物在对抗寒冷或者冻结点数的时候获得</FONT>3DP器械加值。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">“写的什么鬼资源”：拥有者在自创技能时需要额外花费1XP</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
 lang=EN-US>===========================================================================================================</SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">无限衣箱 <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">本质：特异本质<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">价格：<SPAN 
+lang=EN-US>10</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">分类：装置（箱子）<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">体积：<SPAN 
+lang=EN-US>2</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">认主衣箱：这个看起来只有<SPAN 
+lang=EN-US>2</SPAN>体积的普通提箱，购买时会绑定身份，不会为主人外的单位服务，请不要犹豫地去给它增添你的个人风格上去。拥有这个提箱，你每去到一个地方，里面都会有两套符合你身材的，适合当地年代、风俗、时尚的服装。 
+<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">不过虽然如此说，但是事实上并不会出现原古食人族部落的衣服，也不会出现不知多少年后的超未来服装之类的，这个服装大概只是在公元后到<SPAN 
+lang=EN-US>2050</SPAN>年之间的主流服装而已。 </SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
+lang=EN-US><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
+lang=EN-US>===========================================================================================================</SPAN></SPAN></SPAN></P><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
+lang=EN-US>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">武学秘籍袋<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>暗金色的开锁套装</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>本质：特异本质</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>价格：</FONT>20</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>分类：道具（工具）</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>描述：一组瑞士军刀一样的开锁工具，暗金色的。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>锁匠暗金：使用者在盗窃（开锁）的相关检定上获得</FONT>4DP器械加值。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
+lang=EN-US>===========================================================================================================</SPAN><!--EndFragment--></SPAN></P><!--EndFragment--></SPAN>
+<P 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">武学秘籍袋<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">本质：特异本质<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">本质：特异本质<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">价格：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
 lang=EN-US>20</SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">分类：袋子（空间储存装置）<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">分类：袋子（空间储存装置）<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">描述：这是一个平淡无奇的小袋子。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">描述：这是一个平淡无奇的小袋子。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">无限秘籍：本袋子每<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">无限秘籍：本袋子每<SPAN 
 lang=EN-US>24</SPAN>小时可以从中掏出一本武学秘籍，这本武学秘籍并没有任何的作用，但是如果任何人照着上面的武学内容修习，则会感觉自己确实学到东西、正在进步。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">你可以在掏出的时候决定想要的外观，通常是册子、卷轴等类型，上面的名字、封面等都由你决定。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">你可以在掏出的时候决定想要的外观，通常是册子、卷轴等类型，上面的名字、封面等都由你决定。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">如果具有相关专业的人，例如：你掏出一本拳法则需要专业<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">如果具有相关专业的人，例如：你掏出一本拳法则需要专业<SPAN 
 lang=EN-US>(</SPAN>拳<SPAN lang=EN-US>)</SPAN>。可以通过一个<SPAN 
 lang=EN-US>DC</SPAN>为<SPAN lang=EN-US>6</SPAN>的【智力<SPAN 
 lang=EN-US>+</SPAN>相关技能<SPAN lang=EN-US>(</SPAN>肉搏、白刃等<SPAN 
 lang=EN-US>)</SPAN>】检定，如果通过，则会立刻发现这是一本虚假的秘籍。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">同时，如果你每天照着上面的内容修习一小时之后，则会将此<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">同时，如果你每天照着上面的内容修习一小时之后，则会将此<SPAN 
 lang=EN-US>DC</SPAN>降低<SPAN lang=EN-US>1</SPAN>，直到<SPAN 
 lang=EN-US>0</SPAN>时，你会发现这是一本毫无作用的秘籍。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
+lang=EN-US>=========================================================================================================== 
+</SPAN></P><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
+lang=EN-US>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>老司机的驾照</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>本质：特异本质</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>价格：</FONT>20</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>分类：道具</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>描述：这个本子的外形不定型，但是不管怎么看，这都会让观看者认为这是一本正常的驾照。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">“放心，我是老司机”：驾驶任何非生物载具的时候都可以掏出这本小本子，所有看见这本小本子的单位都会认为你是一名驾驶技术堪比驾龄40年以上，没有出过一次事的老司机中的老司机，并且由衷的对你表示敬佩。同时你再驾驶非生物类载具的相关检定获得1DP器械加值。</SPAN><!--EndFragment--> 
+</SPAN></P><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
+lang=EN-US>
+<P 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
+lang=EN-US>=========================================================================================================== 
+</SPAN></P> 
+</SPAN>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">仿制人皮 <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">本质：特异本质<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">价格：<SPAN 
+lang=EN-US>50</SPAN></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">分类：法器<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%" lang=EN-US><SPAN 
+style="mso-spacerun: yes">&nbsp;</SPAN></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">体积：<SPAN 
+lang=EN-US>1</SPAN></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">描述：可重复使用的仿制人皮。未经使用的仿制人皮看起来像是一件愚蠢的乳胶紧身衣，但即使是肢体异于常人或体积相差过大者亦可进入。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">预制：购买此物品时需指定体积大小<SPAN 
+lang=EN-US>(4-6</SPAN>可选<SPAN lang=EN-US>)</SPAN>、性别<SPAN 
+lang=EN-US>(</SPAN>男女可选<SPAN lang=EN-US>)</SPAN>、年龄<SPAN 
+lang=EN-US>(</SPAN>儿童、青年、中年、老年<SPAN 
+lang=EN-US>)</SPAN>，一经指定无法修改，你无法指定一个特殊相貌。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">只有体积<SPAN 
+lang=EN-US>10</SPAN>以下的生物才可穿戴，穿脱皆为一个整轮动作。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">伪装：穿戴期间，你的体积被强制修改为指定值，但是这这并不会为你带来数值、状态上的变化。你被视为凡人而非超自然生物，并可隐藏能量池，这是一个<SPAN 
+lang=EN-US>D</SPAN>级魔幻本质反侦查效果，这并不会为你带来数值、状态上的变化。并且你在任何使用能量池进行消耗的能力中的相关判定获得<SPAN 
+lang=EN-US>3DP</SPAN>的器械减值，你可以一个移动脱下人皮，如果在穿着状态中受到<SPAN 
+lang=EN-US>1L</SPAN>挥砍<SPAN lang=EN-US>/</SPAN>刺击伤害，则人皮破损。</SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
 lang=EN-US>=========================================================================================================== 
 </SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
+class=MsoNormal>
+<P 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal>跳蚤式睡袋<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">本质：特异本质<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">本质：特异本质<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">价格：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
 lang=EN-US>50</SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">分类：装置<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">分类：装置<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">体积：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">体积：<SPAN 
 lang=EN-US>2</SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">睡袋：这是一个可供体积一名体积<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">睡袋：这是一个可供体积一名体积<SPAN 
 lang=EN-US>4</SPAN>到<SPAN 
 lang=EN-US>6</SPAN>之前的生物提供睡眠环境的睡袋，即便在脏乱不堪或者环境恶劣的地区也可以提供优质的睡眠，使用本睡袋进行睡觉视为获得良好休息。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">悬挂：睡袋上有一个强力挂钩和一根结实的绳子，将睡袋悬挂在任何高度足够可以悬挂的平面上，就可以睡得如同在家里一样舒适。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">悬挂：睡袋上有一个强力挂钩和一根结实的绳子，将睡袋悬挂在任何高度足够可以悬挂的平面上，就可以睡得如同在家里一样舒适。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">充气：假如睡袋不幸落入水中，则睡袋会自动充气，充当救生衣。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">充气：假如睡袋不幸落入水中，则睡袋会自动充气，充当救生衣。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
-lang=EN-US>===========================================================================================================</SPAN></P><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
+lang=EN-US>===========================================================================================================</SPAN></P>
+<P></P><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体"><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体"></P><P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">生命纸<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"></P><P style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">生命纸<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
 >本质：特异本质
 <SPAN 
 lang=EN-US          
 ></SPAN> 
-</SPAN></P><P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" class=MsoNormal>
+</SPAN></P><P style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" class=MsoNormal>
 <SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">价格：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
 lang=EN-US             >50</SPAN></SPAN></P><P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" class=MsoNormal>
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" class=MsoNormal>
 <SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">分类：道具<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">分类：道具<SPAN 
 lang=EN-US             ></SPAN></SPAN></P><P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" class=MsoNormal>
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" class=MsoNormal>
 <SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">描述：这只是一张纸。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">描述：这只是一张纸。<SPAN 
 lang=EN-US             ></SPAN></SPAN></P><P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" class=MsoNormal>
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" class=MsoNormal>
 <SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">绑定：购买后本物品与一个目标进行绑定，绑定后这张纸将代表着这个人的生命力，当他变小时就代表这个人的生命力变小了，也就是处在生命危险中，如果脱离危险了，那么生命纸也会恢复原状。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">绑定：购买后本物品与一个目标进行绑定，绑定后这张纸将代表着这个人的生命力，当他变小时就代表这个人的生命力变小了，也就是处在生命危险中，如果脱离危险了，那么生命纸也会恢复原状。<SPAN 
 lang=EN-US             ></SPAN></SPAN></P><P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" class=MsoNormal>
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" class=MsoNormal>
 <SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">同时生命纸会指向绑定者的方向，可以通过生命值来找到绑定者，这不会被任何能力阻碍，只要他们处于同一位面下。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">同时生命纸会指向绑定者的方向，可以通过生命值来找到绑定者，这不会被任何能力阻碍，只要他们处于同一位面下。<SPAN 
 lang=EN-US             ></SPAN></SPAN></P><P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">真假莫辨：生命纸将额外带有绑定者的一些信息，若你拥有绑定后的生命纸则你可以如同绑定者一般指挥绑定者非智能化的军队（如绑定者召唤出来的），<SPAN 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">真假莫辨：生命纸将额外带有绑定者的一些信息，若你拥有绑定后的生命纸则你可以如同绑定者一般指挥绑定者非智能化的军队（如绑定者召唤出来的），<SPAN 
 lang=EN-US>AI</SPAN>等单位会认为你就是绑定者，并且你可以使用已经于绑定者【认主】的物品，其视为你就是绑定者。但是，假的不会成真，当绑定者与你处于同一场景时，失去“真假莫辨”带来的所有好处。
 <SPAN 
 lang=EN-US          
 ></SPAN></SPAN></P><P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" class   =MsoNormal><SPAN 
-lang=EN-US style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">===========================================================================================================</SPAN></P><P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" class   =MsoNormal><SPAN 
-lang=EN-US style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体"></SPAN></SPAN>闲人勿近告示牌<SPAN 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" class   =MsoNormal><SPAN 
+lang=EN-US style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">===========================================================================================================</SPAN></P><P 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" class   =MsoNormal><SPAN 
+lang=EN-US style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"></SPAN></SPAN>闲人勿近告示牌<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">本质：特异本质<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">本质：特异本质<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">价格：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
 lang=EN-US>100</SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">分类：道具 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">分类：道具 
 <SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">描述：这是一块写有<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">描述：这是一块写有<SPAN 
 lang=EN-US>"</SPAN>闲人勿近<SPAN lang=EN-US>"</SPAN>的立牌。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">闲人勿进：插下本立牌后方圆<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">闲人勿进：插下本立牌后方圆<SPAN 
 lang=EN-US>1</SPAN>公里内的闲杂人等，都会在<SPAN lang=EN-US>5</SPAN>分钟内离开这个地方，直到你拔起立牌。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">说明<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">说明<SPAN 
 lang=EN-US>:</SPAN>闲杂人等，通常指一般民众<SPAN 
 lang=EN-US>...</SPAN>但有些生物的目标是守护金库（保安）、保护某人安全（保镖），维护治安（警察）等，以及轮回小队，都不算在闲杂人等的范围内。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
 lang=EN-US>===========================================================================================================</SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal></SPAN>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
 lang=EN-US></SPAN></P>净水器<SPAN lang=EN-US></SPAN></SPAN>
 <P></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">本质：特异本质<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">本质：特异本质<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">价格：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
 lang=EN-US>100</SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">分类：道具<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">分类：道具<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">描述：外形为一个付有水龙头的壶。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">描述：外形为一个付有水龙头的壶。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">自动过滤：可以将各种液体放入本壶之中，然后从水龙头中流出干净的水或者饮料。本物品可以过滤任何自然本质的毒素以及污染，超自然本质的最多过滤<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">自动过滤：可以将各种液体放入本壶之中，然后从水龙头中流出干净的水或者饮料。本物品可以过滤任何自然本质的毒素以及污染，超自然本质的最多过滤<SPAN 
 lang=EN-US>D</SPAN>级。每轮可以过滤一升液体。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
 lang=EN-US>===========================================================================================================</SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">万用水龙头<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">万用水龙头<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">本质：特异本质<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">本质：特异本质<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">价格：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
 lang=EN-US>100</SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">分类：道具<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">分类：道具<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">描述：一个水龙头。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">描述：一个水龙头。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">水流：本物品可以安在任何垂直的表面，装好后，拧开水龙头即可出自来水，本水流每分钟可流出<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">水流：本物品可以安在任何垂直的表面，装好后，拧开水龙头即可出自来水，本水流每分钟可流出<SPAN 
 lang=EN-US>1</SPAN>升的水。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">注：水龙头的水没有上限，但是<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">注：水龙头的水没有上限，但是<SPAN 
 lang=EN-US>ST</SPAN>可以以任何理由设立上限。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
 lang=EN-US>===========================================================================================================</SPAN></P><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">无限箭袋<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">无限箭袋<SPAN 
 lang=EN-US><BR></SPAN>本质：特异本质<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">价格：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
 lang=EN-US>100</SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">分类：道具（空间储存装置）<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">分类：道具（空间储存装置）<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">描述：外表看来只是一筒放满<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">描述：外表看来只是一筒放满<SPAN 
 lang=EN-US>20</SPAN>支普通箭的箭袋。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">无尽：当持有者需要使用箭矢时，可以从这里面抽出一根箭矢，没有上限，但是抽出的箭矢只能持续一回合。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">无尽：当持有者需要使用箭矢时，可以从这里面抽出一根箭矢，没有上限，但是抽出的箭矢只能持续一回合。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
 lang=EN-US>===========================================================================================================</SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">空白变形胶囊<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">空白变形胶囊<SPAN 
 lang=EN-US>A</SPAN>型<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">本质：特异本质<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">本质：特异本质<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">价格：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
 lang=EN-US>200</SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">分类：装置（空间储存装置）<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">分类：装置（空间储存装置）<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">空间储存：可以与体积不超过<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">空间储存：可以与体积不超过<SPAN 
 lang=EN-US>10</SPAN>的物品已经绑定，绑定后该物品可以变成胶囊进行携带，将物品变成胶囊和将胶囊变成物品皆需要一个移动动作。一个胶囊只能与一个物品进行绑定（该物品必须有具体的数量且单位为<SPAN 
 lang=EN-US>1</SPAN>，一堆子弹或者一口井这种是无法储存的，同样，液体也无法储存），若胶囊或者物品被摧毁，则对应的物品或者胶囊也跟着摧毁。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
 lang=EN-US></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"></SPAN>&nbsp;</P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">空白变形胶囊<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">空白变形胶囊<SPAN 
 lang=EN-US>B</SPAN>型<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">本质：特异本质<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">本质：特异本质<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">价格：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
 lang=EN-US>500</SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">分类：装置（空间储存装置）<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">分类：装置（空间储存装置）<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">空间储存：可以与体积不超过5<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">空间储存：可以与体积不超过5<SPAN 
 lang=EN-US>0</SPAN>的物品已经绑定，绑定后该物品可以变成胶囊进行携带，将物品变成胶囊和将胶囊变成物品皆需要一个移动动作。一个胶囊只能与一个物品进行绑定（该物品必须有具体的数量且单位为<SPAN 
 lang=EN-US>1</SPAN>，一堆子弹或者一口井这种是无法储存的，同样，液体也无法储存），若胶囊或者物品被摧毁，则对应的物品或者胶囊也跟着摧毁。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
 lang=EN-US></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"></SPAN>&nbsp;</P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">空白变形胶囊<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">空白变形胶囊<SPAN 
 lang=EN-US>C</SPAN>型<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">本质：特异本质<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">本质：特异本质<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">价格：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
 lang=EN-US>D+500</SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">分类：装置（空间储存装置）<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">分类：装置（空间储存装置）<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">空间储存：可以与体积不超过<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">空间储存：可以与体积不超过<SPAN 
 lang=EN-US>300</SPAN>的物品已经绑定，绑定后该物品可以变成胶囊进行携带，将物品变成胶囊和将胶囊变成物品皆需要一个移动动作。一个胶囊只能与一个物品进行绑定（该物品必须有具体的数量且单位为<SPAN 
 lang=EN-US>1</SPAN>，如一台高达，一辆汽车。对于一堆子弹或者一口井这种是无法储存的，同样，液体也无法储存），若胶囊或者物品被摧毁，则对应的物品或者胶囊也跟着摧毁。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
 lang=EN-US>=========================================================================================================== 
 </SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">微缩型<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">微缩型<SPAN 
 lang=EN-US>3D</SPAN>打印机<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">本质：特异本质<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">本质：特异本质<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">价格：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
 lang=EN-US>200</SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">分类：装置<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">分类：装置<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">描述： 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">描述： 
 未来科技世界尖端产物，居家旅行必备良伴，您值得拥有！<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">悬浮装置：打印机主体为棒球大小，特殊材质不会被金属探测机侦测，质地极轻，且内置反重力技术，可漂浮于空中，打印过程主体将展开并以最小立方暂时包围打印物。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">悬浮装置：打印机主体为棒球大小，特殊材质不会被金属探测机侦测，质地极轻，且内置反重力技术，可漂浮于空中，打印过程主体将展开并以最小立方暂时包围打印物。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">快速打印：主体包含一个透视分析镜头，用于扫描物体并进行复制打印，你只能控制主体扫描距离你三公尺内的物体，可在三分钟内物理上完美打印出最大两立方公尺的物体，打印出的物品只是无任何效果的工艺品。每次打印使用一包主神的万用材料包。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">快速打印：主体包含一个透视分析镜头，用于扫描物体并进行复制打印，你只能控制主体扫描距离你三公尺内的物体，可在三分钟内物理上完美打印出最大两立方公尺的物体，打印出的物品只是无任何效果的工艺品。每次打印使用一包主神的万用材料包。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
 lang=EN-US></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
 lang=EN-US></SPAN>&nbsp;</P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">主神的万用材料包<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">主神的万用材料包<SPAN 
 lang=EN-US> 1 </SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">这是用于微缩型<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">这是用于微缩型<SPAN 
 lang=EN-US>3D</SPAN>打印机的材料包，包装精巧完美密封的一包粉，没有人知道为什么他能违反能量定律制造出比自己更大、更多的东西。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
 lang=EN-US>=========================================================================================================== 
+</SPAN></P><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
+lang=EN-US>
+<P style="MARGIN: 0pt; LINE-HEIGHT: 150%" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>亚楠猎人帽</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P style="MARGIN: 0pt; LINE-HEIGHT: 150%" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>本质：特异本质</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P style="MARGIN: 0pt; LINE-HEIGHT: 150%" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>分类：帽子</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P style="MARGIN: 0pt; LINE-HEIGHT: 150%" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>价格：</FONT>500</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P style="MARGIN: 0pt; LINE-HEIGHT: 150%" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>描述：工厂制作的亚楠猎人服，可有效的帮助猎人抵抗怪兽的攻击，且足够轻便，让猎人更好的辗转腾挪，附带口罩的皮质三角帽。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P style="MARGIN: 0pt; LINE-HEIGHT: 150%" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>防毒：可让你免疫</FONT>D级及以下所有因气体产生的不良效果，在针对C级及以上的气体效果时也可以增加2dp器械加值。</SPAN><!--EndFragment--> 
 </SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
+lang=EN-US><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
+lang=EN-US>=========================================================================================================== 
+</SPAN> 
+</SPAN></P>
+<P 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal>竹蜻蜓<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">本质：特异本质<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">本质：特异本质<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">价格：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
 lang=EN-US>500</SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">分类：装置<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">分类：装置<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">体积：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">体积：<SPAN 
 lang=EN-US>1</SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">描述：这是一个像竹蜻蜓的小装置。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">描述：这是一个像竹蜻蜓的小装置。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">飞行：以一个移动动作将其放在头上，以一个标准动作启动，可以让一个体积<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">飞行：以一个移动动作将其放在头上，以一个标准动作启动，可以让一个体积<SPAN 
 lang=EN-US>6</SPAN>以下的目标<SPAN lang=EN-US>5</SPAN>米<SPAN 
 lang=EN-US>/</SPAN>秒的速度飞行，机动性完美。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">耗能：每块标准能量电池可以工作<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">耗能：每块标准能量电池可以工作<SPAN 
 lang=EN-US>4</SPAN>小时，更换电池是一个整轮动作。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
 lang=EN-US>===========================================================================================================</SPAN></P><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
 lang=EN-US><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">魔术编程制式电脑<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">魔术编程制式电脑<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">本质：特异本质<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">本质：特异本质<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">价格：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
 lang=EN-US>500</SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">分类：装置（电脑）<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">分类：装置（电脑）<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">体积：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">体积：<SPAN 
 lang=EN-US>1</SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">通用功能：由于拥有摄像头和耳机等外部设备，本电脑也可以拍摄照片，拍照是三个整轮动作，没有储存上限。也可以录像，录像需要每轮以整轮动作进行录像，最多录像<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">通用功能：由于拥有摄像头和耳机等外部设备，本电脑也可以拍摄照片，拍照是三个整轮动作，没有储存上限。也可以录像，录像需要每轮以整轮动作进行录像，最多录像<SPAN 
 lang=EN-US>500</SPAN>小时内容。也可以录音，录像需要每轮以整轮动作进行录音，没有储存上限。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">魔术编程：现代魔法使用魔术编程制式电脑进行编程，可以编程任何法术，同时施展该法术时的施法检定获得<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">魔术编程：现代魔法使用魔术编程制式电脑进行编程，可以编程任何法术，同时施展该法术时的施法检定获得<SPAN 
 lang=EN-US>3DP</SPAN>器械加值。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">能耗：每块标准能量电池可使用<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">能耗：每块标准能量电池可使用<SPAN 
 lang=EN-US>4</SPAN>小时，更换一枚电池需要<SPAN lang=EN-US>5</SPAN>分钟。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
 lang=EN-US>=========================================================================================================== 
 </SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal>袖珍万能加工厂<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">本质：特异本质<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">本质：特异本质<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">价格：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
 lang=EN-US>500</SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">分类：装置<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">分类：装置<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">描述：“铁树的果实做成面包，蕨类植物做成色拉，鱼和贝做成生鱼片、生贝片和炸鱼，作成罐头以后就可以方便保存了。”<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">描述：“铁树的果实做成面包，蕨类植物做成色拉，鱼和贝做成生鱼片、生贝片和炸鱼，作成罐头以后就可以方便保存了。”<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">料理工厂：这是一个占地面积大约<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">料理工厂：这是一个占地面积大约<SPAN 
 lang=EN-US>25</SPAN>平方米的小型加工厂，可以流水线作业自动加工烹饪并且罐装保存食物，由袖珍万能加工厂制造出的食物保质期为一年，并且体积为<SPAN 
 lang=EN-US>1</SPAN>的罐头，一个罐头可以保证一个人一天的食物。这个加工厂并不提供便携功能，想要随身携带请自备空间储存设备。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
 lang=EN-US>===========================================================================================================</SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
+class=MsoNormal>
+<P 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">壁纸房间<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">男式长靴<SPAN 
+lang=EN-US>/</SPAN>女士皮靴<SPAN lang=EN-US></SPAN></SPAN>
+<P 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">本质：特异本质<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">本质：特异本质<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">价格：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
 lang=EN-US>500</SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">分类：装置（空间储存装置）<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">分类：鞋<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">描述：这是一张大概<SPAN 
-lang=EN-US>6</SPAN>平方米左右的大张海报，海报上是一个简陋的房门。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">壁纸房间：必须将壁纸贴在垂直的平面上才可以打开壁纸上的门，打开后里面是一个大约<SPAN 
-lang=EN-US>300</SPAN>立方米的压缩空间。无论是生物还是物品都可以储存其中。房间外的人和房间内的人都可以打开这扇门。你也可以将壁纸房间像普通海报一样卷起带走，但是留在壁纸中的人依然会受到房间外世界的重力效果的影响。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">壁纸房间还有很多其他版本：<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">壁纸狗窝，海报面积缩小为一半，海报图案变成简陋的狗窝。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">壁纸咖啡店，海报图案变成咖啡店的大门，壁纸咖啡店内提供<SPAN 
-lang=EN-US>20</SPAN>世纪地球上的各种饮料和甜点，但是购买价格会因此而提高<SPAN 
-lang=EN-US>500</SPAN>分，并且壁纸咖啡店内的食物和饮料不能带出房间。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">壁纸玩具店，海报图案变成玩具店的大门，壁纸玩具店内提供<SPAN 
-lang=EN-US>20</SPAN>世纪地球上的所有玩具，但是购买价格会因此而提高<SPAN 
-lang=EN-US>500</SPAN>分，并且壁纸玩具店内的玩具不能带出房间。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
-lang=EN-US>===========================================================================================================</SPAN></P><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">男式长靴<SPAN 
-lang=EN-US>/</SPAN>女士皮靴<SPAN lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">本质：特异本质<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">价格：<SPAN 
-lang=EN-US>500</SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">分类：鞋<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">加速：基本移动速度增加<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">加速：基本移动速度增加<SPAN 
 lang=EN-US>5</SPAN>米，同时防御上增加<SPAN lang=EN-US>1</SPAN>点闪避防御。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
 lang=EN-US>=========================================================================================================== 
 </SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">储物手套<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">储物手套<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">本质：特异本质<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">本质：特异本质<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">价格：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
 lang=EN-US>500</SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">分类：手套<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">分类：手套<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">描述：本来只是皮手套，只要说出指令，戴手套那只手所握的物品便立刻消失。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">描述：本来只是皮手套，只要说出指令，戴手套那只手所握的物品便立刻消失。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">储物：储存的物品重量不能超过<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">储物：储存的物品重量不能超过<SPAN 
 lang=EN-US>5</SPAN>公斤，且必须能单手握住。若要取回物品，只要戴手套那只手一弹指，物品就再度出现。一只手套同一时间只能储存一件物品（这意味着你可以一手存储一件物品）。储存或取回物品属于即时动作。储存时，物品会停在手中，并缩小到完全看不见。“储物手套”可储放武器、物品，甚至点燃的火把（因为储存时，物品状态是停滞的）。如果此效果被压抑或解除，物品会立刻出现。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
 lang=EN-US>=========================================================================================================== 
+</SPAN></P><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
+lang=EN-US>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">豪华野餐布 <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">本质：特异本质<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">价格：<SPAN 
+lang=EN-US>500</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">分类：装置（布）<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">体积：<SPAN 
+lang=EN-US>1</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">描述：这是一张特别华丽的巴洛克风格的野餐布，绘制满了各种具有不知名贵族宫廷的纹饰，充满了逼格。 
+<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">豪华野餐：只要把这张野餐布铺在一个平面上，然后将手掌放在上面，就可以随意点单出任何普通现实世界能做到的任何食物，每天能制造的最大分量大概是十个人一整天的伙食，之后就只能等待第二天再制造了。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">虚有其表：但是，那些食物只是外形很华丽很逼真，全部的食物吃到嘴里，都只会有普通的平淡无奇的白面包味道，喝下的饮料也只会用白开水的味道。但是吃饱还是没问题的。如果想要他具有真实的味道，你需要至少<SPAN 
+lang=EN-US>3</SPAN>级的手艺：厨艺。 <SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">为了防止轮回队友用无限烟草与<SPAN 
+lang=EN-US>NPC</SPAN>装逼，<SPAN lang=EN-US>ST</SPAN>有权随时禁止<SPAN 
+lang=EN-US>PC</SPAN>使用本物品。<SPAN lang=EN-US></SPAN></SPAN></P><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
+lang=EN-US>=========================================================================================================== 
+</SPAN>
+<P 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
+class=MsoNormal>万用通行证<SPAN 
+lang=EN-US></SPAN> 
 </SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
-class=MsoNormal>万用通行证<SPAN 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">本质：特异本质<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">本质：特异本质<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">价格：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
 lang=EN-US>1000</SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">分类：道具<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">分类：道具<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">通行无阻：自购买之日起有一年的期限（主神空间内的时间不算），此间你可以凭此证进入任何需要证件票据等才能进入的场所。这并不能保证你进入时和进入后的各种情况不被监视和记录。此证件对于其它类型的（即票据证件之外的）进入限制无效，比如男性不能凭此证进入女澡堂。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">通行无阻：自购买之日起有一年的期限（主神空间内的时间不算），此间你可以凭此证进入任何需要证件票据等才能进入的场所。这并不能保证你进入时和进入后的各种情况不被监视和记录。此证件对于其它类型的（即票据证件之外的）进入限制无效，比如男性不能凭此证进入女澡堂。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
 lang=EN-US>===========================================================================================================</SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">主神牌皮箱<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">主神牌皮箱<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">本质：特异本质<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">本质：特异本质<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">价格：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
 lang=EN-US>1000</SPAN>分<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">分类：箱子（携带需要占用一只手）<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">分类：箱子（携带需要占用一只手）<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">体积：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">体积：<SPAN 
 lang=EN-US>2</SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">描述：这是一个白色的不知名材料制成的小箱子。外形如同一般的手提箱。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">描述：这是一个白色的不知名材料制成的小箱子。外形如同一般的手提箱。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">储物空间：打开后，里面是类似黑色泡沫塑料制成的固定用衬里。最多可以存放<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">储物空间：打开后，里面是类似黑色泡沫塑料制成的固定用衬里。最多可以存放<SPAN 
 lang=EN-US>3900</SPAN>立方厘米的物体，皮箱中无法以任何理由装任何活物。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">无敌皮箱：皮箱的视为拥有<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">无敌皮箱：皮箱的视为拥有<SPAN 
 lang=EN-US>20</SPAN>点硬度，<SPAN lang=EN-US>HP20</SPAN>的<SPAN 
 lang=EN-US>S</SPAN>级物品，每回合生命值和硬度自动回满，免疫破甲，和任何击破物品效果。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">免疫探测：针对探测皮箱里面所装物品的效果，皮箱免疫<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">免疫探测：针对探测皮箱里面所装物品的效果，皮箱免疫<SPAN 
 lang=EN-US>S</SPAN>级以下的侦测效果。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">外形图案：皮箱表面是白色的光滑材料。但是如果将其贴住其他材质的表面半分钟后，皮箱表面会变成所贴近材质的样子。如果材质上有图案，则会完全复制。但仅仅是复制图案而已，并不改变其本身功能和本质。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">外形图案：皮箱表面是白色的光滑材料。但是如果将其贴住其他材质的表面半分钟后，皮箱表面会变成所贴近材质的样子。如果材质上有图案，则会完全复制。但仅仅是复制图案而已，并不改变其本身功能和本质。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
 class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体">专用皮箱：皮箱无法进入任何异空间的储存之内，包括不限于手表插件，法术效果等。皮箱可以储存剧情物品。若在返回主神空间时未携带皮箱，则皮箱将遗落在恐怖片世界。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">专用皮箱：皮箱无法进入任何异空间的储存之内，包括不限于手表插件，法术效果等。皮箱可以储存剧情物品。若在返回主神空间时未携带皮箱，则皮箱将遗落在恐怖片世界。<SPAN 
 lang=EN-US></SPAN></SPAN></P><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体" 
-lang=EN-US>===========================================================================================================</SPAN>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
+lang=EN-US>===========================================================================================================</SPAN> 
+
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">程序与软剑奇物组 
+<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">描述：在或曾可能有的一种未来中，社会秩序遭受破坏，世界走向一条充满阶级分化，不断加大的贫富差距鸿沟，人口爆炸的路。人类生活每一个细节都受计算机网络控制的黑暗地带。庞大的跨国公司取代政府成为权力的中心。 
+<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">而在世界级网络“矩阵”被“崩坏”病毒侵袭崩溃后，某种深层次的代码悄然对所有存在着矩阵的人类开放了——虚拟和现实的界限己经模糊混淆，人类可以通过电脑来获得某种权限，而后施展出传说中的魔法，仙术，异能等等，这些权限原先的名字己不可知，普遍被公众称呼为“现实魔法”；更有极少数新生儿天生就拥有着电脑般的大脑以及一部分权限，施展“现代魔法”在他们看来是与生具来的能力。他们与使用电脑的黑客的关系在人们看来更像是现代的“术士”与“巫师”的关系。 
+<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">程序是能够在电脑上运行的文件，程序运行时，它能够提升电脑的能力或提供更多的效用，这里轮回者们在那个世界收集到的程序由于失去“矩阵”的支持而失效，主神将之改造后，使其能在于任何一个世界都能生效，而它的本质也就原本的科技本质转换为了特异本质。 
+<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体"></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">前提：运载程序需要有一台电脑，或者是拥有类似于观察者效应综合症、逆生命树程序体：机壳、超链者、信息员等将自身转变为电脑的能力。<SPAN 
+lang=EN-US><SPAN style="mso-spacerun: yes">&nbsp; 
+</SPAN></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体"></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">“衡光<SPAN 
+lang=EN-US>.</SPAN>石中链”<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">本质：特异本质<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">价格：<SPAN 
+lang=EN-US>500 </SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">分类：道具<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">基础功能：内置多个传送即时语音和文字的电话和广播模式，音乐播放器，触控显示屏，高清数字摄影程序，图片<SPAN 
+lang=EN-US>/</SPAN>文字<SPAN lang=EN-US>/</SPAN>射频识别标签扫描程序，<SPAN 
+lang=EN-US>GPS</SPAN>导航系统，芯片播放器，读卡程序，语音拨号，文字转语音和语音转文字技术等功能。 <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">拟感模块：若这个程序运行在电脑上，还会赠送一个电极贴片<SPAN 
+lang=EN-US>/</SPAN>数据插口以保这个功能正常使用，若使用者自身就是电脑，则无须这么麻烦。 <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">它的作用是：提供虚拟感知体验，把电脑数据转换成神经信号，让使用者直接体验虚拟感知程序和增强现实。 
+<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">但是它也可以反过来，将使用者自身的感受数据（感官上和情感上的）转换为电子数据，而后提供给别人。这种数据是可以经过处理（<SPAN 
+lang=EN-US>PS</SPAN>或者美图）的。 <SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">现实增强模块：你可以将你记录的数据，视频，图片等等投影在周围五米与他人一起观看。 
+<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体"></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">数据软件<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">本质：特异本质<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">价格：<SPAN 
+lang=EN-US>D+500 </SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">分类：道具<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">数据模块：包含着多种信息文件，从水力压裂法到中国古代的《周易》等应有尽有，只要它是<SPAN 
+lang=EN-US>2075</SPAN>年的地球前出现的知识，并且没有失传。 <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">知识模块：如果需要过一个知识判定的话，视为有<SPAN 
+lang=EN-US>2</SPAN>点器械加值。 <SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">语言模块：你被视为拥有西班牙语，德语，意大利语，拉科塔语，英语，日语，汉语，法语，俄语<SPAN 
+lang=EN-US>4</SPAN>级，并且由于这个软件出处世界观的特殊性，你还拥有着精灵语，兽人语，巨魔语，矮人语<SPAN 
+lang=EN-US>4</SPAN>级。 <SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体"></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">学习技能软件<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">本质：特异本质<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">价格：<SPAN 
+lang=EN-US>C+1000</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">分类：道具<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">描述：机器学习（<SPAN 
+lang=EN-US>Machine 
+Learning</SPAN>）是一门专门研究计算机怎样模拟或实现人类的学习行为，以获取新的知识或技能，重新组织已有的知识结构使之不断改善自身的性能的学科。机器能否像人类一样能具有学习能力呢？<SPAN 
+lang=EN-US>1959</SPAN>年美国的塞缪尔<SPAN 
+lang=EN-US>(Samuel)</SPAN>设计了一个下棋程序，这个程序具有学习能力，它可以在不断的对弈中改善自己的棋艺。<SPAN 
+lang=EN-US>4</SPAN>年后，这个程序战胜了设计者本人。又过了<SPAN 
+lang=EN-US>3</SPAN>年，这个程序战胜了美国一个保持<SPAN 
+lang=EN-US>8</SPAN>年之久的常胜不败的冠军。这个程序向人们展示了机器学习的能力。 <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">机器学习：装载这个软件后，你选定一个技能，获得一个录制好的知识库，包括数字化的知识和肌肉记忆。如果你不是观察者这类自身就是电脑的存在，那么还会赠送一个电极贴片<SPAN 
+lang=EN-US>/</SPAN>数据插口给你使用上面的知识和肌肉记忆，缺点是离开了你的电脑，或者失去了这台电脑后，这上面的知识也会跟着失去。 <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">之后经过<SPAN 
+lang=EN-US>1</SPAN>天的时间，你的这个技能等级提高到<SPAN lang=EN-US>1</SPAN>级；再经过<SPAN 
+lang=EN-US>2</SPAN>天的时间，提高到<SPAN lang=EN-US>2</SPAN>级；再经过<SPAN 
+lang=EN-US>3</SPAN>天的时间提高到<SPAN 
+lang=EN-US>3</SPAN>级……以此类推，直到它与你的电脑等级相同为止。（在判定上，视为用电脑等级完全替代这个技能） <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体">缺陷：应用了技能软件的检定不能以任何形式获得爆意志带来的益处，并且神秘学不能被替代。 
+<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: both; mso-layout-grid-align: auto" 
-class=MsoNormal></SPAN></P></div> 
-<div id="winchm_template_footer">Copyright &copy; 2014. All rights reserved.</div>
+style="LAYOUT-GRID-MODE: both; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-layout-grid-align: auto" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast" 
+lang=EN-US>==========================================================================================================</SPAN></P></SPAN></SPAN></div>	
+	<div id="winchm_template_footer">Copyright &copy; 2018. All rights 
+reserved. (To change the copyright info, just edit it in template.)</div>
+</div>
+
 </body>
 </html>

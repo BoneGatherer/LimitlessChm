@@ -17,112 +17,170 @@ html,body {
 
 
 
-<meta http-equiv="X-UA-Compatible" content="IE=8">
+
 <style>
-html {
-	overflow-y:scroll;
-}
+html,div { margin: 0; padding: 0;}
 
 body {
-	background-image: url(template1/back.png);
-	background-repeat: repeat-x;
-	background-color: #FFFFFF;
 	padding: 0px;
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-bottom: 15px;
-	margin-right: 15px;
+	margin: 0px;
+	overflow: auto;
+	height: 100%;
 }
 
-#winchm_template_button {
-	position: fixed; 
-	float: right; 
-	right: 15px; 
-	top: 15px;
+#winchm_template_button{
+	float: right;
+	width: 93px;
+	top: 7px;
+	position: relative;
+	text-align: right;
+	right: 5px;
+	height: auto;
 }
 
-#winchm_template_navigation {
+#winchm_template_top{
 	padding: 0px;
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
+	margin: 0px;
+	border-bottom: 1px solid #9B9B9B;
+	background-color: #B1CEFE;
+}
 
-	font-size: 8pt;
+#winchm_template_navigation{
+	margin: 0px;
+	padding-top: 7px;
+	padding-left: 7px;
+	padding-bottom: 3px;
+	padding-right: 0px;
+	font-size: 8.5pt;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #4A4A4A;
-	text-align: left;
+	font-weight: normal;
+	color: #585858;
 }
 
-#winchm_template_title {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 22px;
-	font-weight: bold;
-	color: #005680;
-	text-align: left;
+#winchm_template_title{
+	margin: 0px;
+	padding-top: 4px;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	padding-right: 0px;
+	font-size: 18px; 
+	font-family: Verdana, Geneva, sans-serif;
+	color: #363636;
 }
 
 #winchm_template_content{
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
+	margin-top: 20px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
 	width: auto  !important;
 	width: 100%;
 }
 
-
-#winchm_template_footer {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	padding-top: 7px;
+#winchm_template_footer{
 	border-width: 1px;
-	border-color: #c0c0c0;
+	border-color: #B1CEFE;
 	border-top-style: solid;
-
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #575757;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
+	padding-top: 7px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 8.5pt;
+	color: #696969;
+	width: auto;
 	text-align: left;
 }
 
+
+#winchm_template_container{
+	margin: 0px;
+	padding: 0px;
+	position: static;
+	padding-bottom: 3px;
+	overflow: auto;
+	background-color: #FFFFFF;
+}
+
+
 @media print
 {
+#winchm_template_container{
+	position: static;	
+	margin: 0px;
+	padding: 5px;
+	
+	width: auto;
+	height: auto;
+	overflow: auto;
+}
 #winchm_template_button{
 visibility:hidden;
 }
 }
 
-#winchm_template_navigation a:link	{text-decoration: none;color: 004080}
-#winchm_template_navigation a:visited  {text-decoration: none; color: #004080}
-#winchm_template_navigation a:active {text-decoration: none; color: #004080}
-#winchm_template_navigation a:hover {text-decoration: none;color: #0000FF}
+#winchm_template_navigation A:link	{text-decoration: none; color:#004080}
+#winchm_template_navigation A:visited  {text-decoration: none; color: #004080}
+#winchm_template_navigation A:active {text-decoration: none; color: #004080 }
+#winchm_template_navigation A:hover {text-decoration: none;color: #0080FF}
 
-a:link	{text-decoration: underline; color:#0033cc}
-a:visited  {text-decoration: underline; color: #0033cc}
-a:active {text-decoration: underline; color: #0033cc }
-a:hover {text-decoration: underline;color: #ff0000;}
-
+A:link	{text-decoration: underline; color:#0033CC}
+A:visited  {text-decoration: underline; color: #0033CC}
+A:active {text-decoration: underline; color: #0033CC }
+A:hover {text-decoration: underline;color: #FF0000;}
 </style>
+<script type="text/javascript">
+function isMobile(){
+Agent = window.navigator.userAgent;
+if (Agent.indexOf("iPhone")>=1 || Agent.indexOf("iPad")>=1 || Agent.indexOf("iPod")>=1 || Agent.indexOf("Android")>=1){
+return true;
+}else{
+return false;	
+}
+
+}
+function d_onresize(){
+if (window.navigator.userAgent.indexOf("MSIE")>=1){
+document.getElementById('winchm_template_container').style.pixelWidth = document.body.offsetWidth - 3;
+document.getElementById('winchm_template_container').style.pixelHeight = document.body.offsetHeight - document.getElementById('winchm_template_top').offsetHeight - 4;
+}
+document.getElementById('winchm_template_container').style.top = document.getElementById('winchm_template_top').offsetHeight + 'px';
+}
+
+function d_onbeforeprint(){
+document.getElementById('winchm_template_container').style.width = 'auto';
+document.getElementById('winchm_template_container').style.height = 'auto';
+}
+
+function d_onafterprint(){
+d_onresize();
+}
+
+if(!isMobile()){
+
+window.onload = d_onresize;
+window.onresize = d_onresize;
+window.onbeforeprint = d_onbeforeprint;
+window.onafterprint = d_onafterprint;
+
+document.write("<style>\n");
+document.write("body {overflow: hidden;}\n");
+document.write("#winchm_template_container {position: absolute;overflow: auto;top : 0px;right: 0px;bottom: 0px;left: 0px;}\n");
+document.write("</style>\n");
+}
+
+</script>
 </head>
 
 <body><script language="JavaScript" type="text/JavaScript">
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(111);
+  parent.nav.tree.selectNode(196);
  }else{
   setTimeout("syn()",500);
 }
@@ -142,117 +200,232 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 }
 </script> 
 
-<div id="winchm_template_button"><A href="New_Item90.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template1/btn_prev_n.gif" border="0"></a><A href="New_Item87.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template1/btn_next_n.gif" border="0"></a></div>
-<div id="winchm_template_navigation">Help &gt; 
-<A href="资源部分.htm">资源部分</A> &gt; <A href="血统.htm">血统</A> &gt; <A href="$$unsavedpage4.htm">一次性血统</A> &gt; </div>
-<div id="winchm_template_title">古代安其尔人血统</div>
-<div id="winchm_template_content"><P 
-style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>Anchielic</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: Arial; mso-font-kerning: 0pt">）生存于宇宙的彼岸、幻想的星群之中。他们外形与地球人相若，因此短时间的观察很难将他们与地球人区分开来。但他们是恍若地球人的完美版一样的个体高优秀度生物。安其尔人使用的语言与中文极端相似，因此可以用中文与其交流。</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US><?xml:namespace prefix = o ns = 
-"urn:schemas-microsoft-com:office:office" /><o:p></o:p></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: Arial; mso-font-kerning: 0pt">你必须具备灵感体质才可以购买本血统。<SPAN 
-lang=EN-US><BR><BR></SPAN>属性：敏捷＋<SPAN lang=EN-US>4</SPAN>，耐力＋<SPAN 
-lang=EN-US>4</SPAN>，感知＋</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>6</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: Arial; mso-font-kerning: 0pt">，坚毅＋</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>5</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: Arial; mso-font-kerning: 0pt">，沉着＋<SPAN 
-lang=EN-US>5<BR></SPAN>能量池：灵力<SPAN 
-lang=EN-US><BR></SPAN>特性：完美基因（双特性），灵力之躯，四型灵力掌控<SPAN 
-lang=EN-US><BR></SPAN>技能树：安其尔人专有技能<SPAN 
-lang=EN-US><BR><BR></SPAN>完美基因：安其尔人的遗传信息高度完美，他们的骨骼和肌肉形态更加合理和理想化，因此安其尔人看上去比地球人俊美（但通常更加不性感）。一个安其尔人在</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>15</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: Arial; mso-font-kerning: 0pt">岁时进入青少年，具有与同龄地球人相若的身体和神经系统程度，并在之后的近三百年内慢慢成熟，在三百岁时成年。他们的平均寿命是<SPAN 
+
+<div id="winchm_template_top">
+	<div id="winchm_template_button"><A href="New_Item90.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="New_Item87.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
+	<div id="winchm_template_navigation">Help &gt; 
+<A href="资源部分.htm">资源部分</A> &gt; <A href="血统.htm">血统</A> &gt; <A href="$$unsavedpage25.htm">一次性血统</A> &gt; </div>
+	<div id="winchm_template_title">古代安其尔人血统</div>
+</div>
+<div id="winchm_template_container">
+	<div id="winchm_template_content">
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">本质：魔幻本质<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
+lang=EN-US>B+3600</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">属性：耐力<SPAN 
+lang=EN-US>+4</SPAN>，感知<SPAN lang=EN-US>+4</SPAN>，决心<SPAN 
+lang=EN-US>+4</SPAN>，沉着<SPAN lang=EN-US>+4</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">技能树：开启安其尔人专有技能树<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">特性：完美基因，灵力之躯（双特性）<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">特殊：一次性血统，额外获得<SPAN 
+lang=EN-US>8</SPAN>点属性。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">描述：安其尔人（<SPAN 
+lang=EN-US>Anchielic</SPAN>）生存于宇宙的彼岸、幻想的星群之中。他们外形与地球人相若，因此短时间的观察很难将他们与地球人区分开来。但他们是恍若地球人的完美版一样的个体高优秀度生物。安其尔人使用的语言与中文极端相似，因此可以用中文与其交流。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">完美基因：安其尔人的遗传信息高度完美，他们的骨骼和肌肉形态更加合理和理想化，因此安其尔人看上去比地球人俊美（但通常更加不性感）。一个安其尔人在<SPAN 
+lang=EN-US>15</SPAN>岁时进入青少年，具有与同龄地球人相若的身体和神经系统程度，并在之后的近三百年内慢慢成熟，在三百岁时成年。他们的平均寿命是<SPAN 
 lang=EN-US>35000</SPAN>岁，在成年后不会成长和衰老。<SPAN 
-lang=EN-US><BR><BR></SPAN>购买此变化的人物，其年龄成为</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>289</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: Arial; mso-font-kerning: 0pt">＋他的实际年龄，他免疫衰老效果，除非此效果使他衰老四万岁（从而导至他寿尽而终）。并且他在对抗毒素、酒精、药物、死亡、疾病、寒冷上获得＋<SPAN 
-lang=EN-US>3</SPAN>种族加值，并且在敏捷和耐力上共额外提升</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>2</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: Arial; mso-font-kerning: 0pt">属性（已计入）。<SPAN 
-lang=EN-US><BR><BR></SPAN>灵力之躯：安其尔人是天生的灵力使用者，他们的身体与灵力高度协调。每个安其尔人的灵力有其固有色，这是他们识别对方的一种方法。你可以在购买时决定你的固有色。<SPAN 
-lang=EN-US><BR><BR></SPAN>只要不是处于饥渴状状下，安其尔人每小时睡眠或冥想可以恢复其耐力值的灵感疲劳，他每天最多以此法回复耐力值数的两倍。安其尔人以这种方法贮存摄入的热量，因此他们不会发胖，也不会患高血脂或其后续疾病。<SPAN 
-lang=EN-US><BR><BR></SPAN>四型灵力掌控：安其尔人可以转化灵力的属性，使其带来特别的能力。将灵力转化为一种属性属于移动动作，视为使用了一个灵力技能，</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>DC</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: Arial; mso-font-kerning: 0pt">为<SPAN 
-lang=EN-US>4</SPAN>。它会持续到你再次转化或取消属性为止。四型灵力的特别效果会在灵力池未被灵感疲劳填满时持续生效。<SPAN 
-lang=EN-US><BR><BR></SPAN>风：风即灵动。转化此型时，指定一种你自身拥有的移动能力，你在该移动能力上获得</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>1</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: Arial; mso-font-kerning: 0pt">米<SPAN 
-lang=EN-US>/</SPAN>沉着的加值，这加值不影响其他移动方式或能力。你获得＋<SPAN 
-lang=EN-US>2</SPAN>闪避防御和＋<SPAN lang=EN-US>1DP</SPAN>到远程攻击。<SPAN 
-lang=EN-US><BR><BR></SPAN>水：水即滋养。转化此型时，你获得</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>1</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: Arial; mso-font-kerning: 0pt">点灵感疲劳，并获得快速医疗<SPAN 
-lang=EN-US>1</SPAN>。每持续<SPAN lang=EN-US>10</SPAN>分钟，再获得<SPAN 
-lang=EN-US>1</SPAN>点灵感疲劳。<SPAN 
-lang=EN-US><BR><BR></SPAN>火：火即力量。转化为此型时，你的所有近战攻击获得＋</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>3DP</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: Arial; mso-font-kerning: 0pt">的种族加值。你的徒手攻击造成严重伤害。<SPAN 
-lang=EN-US><BR><BR></SPAN>地：地即坚实。转化为此型时，你的防御获是＋</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>3</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: Arial; mso-font-kerning: 0pt">天生。你可以将一天的饥渴转化为<SPAN 
-lang=EN-US>2</SPAN>点灵感疲劳。<SPAN lang=EN-US><BR><BR><SPAN 
-style="mso-spacerun: yes">&nbsp;</SPAN><BR></SPAN>专有技能：<SPAN 
-lang=EN-US><BR><BR></SPAN>完全四型灵力掌控<SPAN lang=EN-US> CC</SPAN>＋<SPAN 
-lang=EN-US>3000<BR><BR></SPAN>启动它们视为将基本四型掌控进行增幅，它们的启动</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>DC</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: Arial; mso-font-kerning: 0pt">提升到</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>6</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: Arial; mso-font-kerning: 0pt">。<SPAN 
-lang=EN-US><BR><BR></SPAN>风：当你处于风型灵力模式下时，你的基础速度＋</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>1</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: Arial; mso-font-kerning: 0pt">米<SPAN 
-lang=EN-US>/</SPAN>沉着值，所有相关数值受此影响。你获得＋<SPAN lang=EN-US>4</SPAN>闪避防御和＋<SPAN 
-lang=EN-US>3DP</SPAN>到远程攻击，并且远程攻击上限获得沉着值一半的加值。这取代了基本的风型灵力效果。<SPAN 
-lang=EN-US><BR><BR></SPAN>水：当你处于水型灵力模式下时，你可以用一个标准动作，将最多相当于你坚毅值的冲击伤害，或其一半的严重伤害，或其四分之一的恶性伤害，转化为相应数量的灵感疲劳，这会使得被转化的伤害减缓一级（冲击伤害被治愈）。<SPAN 
-lang=EN-US><BR><BR></SPAN>火：当你处于火型灵力模式下时，你的近战攻击附加沉着值的自动成功。这些自动成功不计入伤害上限。你的近战攻击加值提升到＋</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>5DP</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: Arial; mso-font-kerning: 0pt">。<SPAN 
-lang=EN-US><BR><BR></SPAN>地：当你处于地型灵力模式下时，你获得</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>3/</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: Arial; mso-font-kerning: 0pt">－的伤害减免。<SPAN 
-lang=EN-US><BR><BR><SPAN 
-style="mso-spacerun: yes">&nbsp;</SPAN><BR></SPAN>羽翼：</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>B</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: Arial; mso-font-kerning: 0pt">＋<SPAN 
-lang=EN-US>4000<BR><BR></SPAN>安其尔人可以用灵力来构成巨大的羽翼，但这是一种困难且耗能巨大的能力。一般来说，只有职业天使或具有天使实力者能够学习。因此，具有羽翼的安其尔人在安其尔社会中普遍受到敬重。<SPAN 
-lang=EN-US><BR><BR></SPAN>这视为一个灵力技能，</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>DC</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: Arial; mso-font-kerning: 0pt">为<SPAN 
-lang=EN-US>8</SPAN>。以一个迅捷动作，你可以展开一对巨大的羽翼。职业天使的羽翼通常为纯白色，其他人的羽翼为其灵力固有色。羽翼是灵体，因此不会干扰你的衣物，并且它被攻击不会对你的本体有伤害，你可以用一个自由动作令它重生。你获得了陆行速度<SPAN 
-lang=EN-US>10</SPAN>倍的飞行速度，机动性完美。你的每成功数可以维持羽翼</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>5</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: Arial; mso-font-kerning: 0pt">轮，之后每维持羽翼<SPAN 
-lang=EN-US>5</SPAN>轮，会积累<SPAN lang=EN-US>1</SPAN>点灵感疲劳。</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US><o:p></o:p></SPAN></P></div> 
-<div id="winchm_template_footer">Copyright &copy; 2014. All rights reserved.</div>
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">购买此变化的人物，其年龄成为<SPAN 
+lang=EN-US>289+</SPAN>实际年龄，免疫衰老效果。并且免疫毒素以及疾病，这视为<SPAN 
+lang=EN-US>C</SPAN>级的免疫效果。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">灵力之躯：安其尔人是天生的灵力使用者，他们的身体与灵力高度协调，你获得灵力能量池。每个安其尔人的灵力有其固有色，这是他们识别对方的一种方法。你可以在购买时决定你的固有色。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">安其尔人每小时睡眠可以恢复其耐力值的灵感疲劳，他每天最多以此法回复耐力值数的两倍。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">安其尔人可以积累灵感疲劳来维持自己的食物和水。每<SPAN 
+lang=EN-US>12</SPAN>小时积累<SPAN lang=EN-US>3</SPAN>点灵感疲劳。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">安其尔人专有技能树：<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">四型灵力掌控：安其尔人可以转化灵力的属性，使其带来特别的能力。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">风<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
+lang=EN-US>C+1000</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">使用时间：移动<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">意志<SPAN 
+lang=EN-US>DC</SPAN>：<SPAN lang=EN-US>6</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">持续：每持续<SPAN 
+lang=EN-US>1</SPAN>回合，自动获得<SPAN lang=EN-US>1</SPAN>点灵感疲劳。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">这是一个身法，你的基础移动速度获得<SPAN 
+lang=EN-US>1</SPAN>米<SPAN lang=EN-US>/</SPAN>沉着值的提升。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">并且你获得<SPAN 
+lang=EN-US>2</SPAN>点闪避防御，你的远程攻击检定获得<SPAN lang=EN-US>2DP</SPAN>增强加值。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">增幅：每提高<SPAN 
+lang=EN-US>DC1</SPAN>，则闪避防御提升<SPAN lang=EN-US>2</SPAN>点，远程攻击检定再额外获得<SPAN 
+lang=EN-US>2DP</SPAN>增强加值。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">水<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
+lang=EN-US>C+1000</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">使用时间：自由<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">意志<SPAN 
+lang=EN-US>DC</SPAN>：<SPAN lang=EN-US>6</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">持续：启动后每持续<SPAN 
+lang=EN-US>1</SPAN>分钟，自动获得<SPAN lang=EN-US>1</SPAN>点灵感疲劳。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">你获得<SPAN 
+lang=EN-US>1</SPAN>点快速医疗。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">并且在持续时间内，你可以以一个标准动作，使自身回复相当于传奇决心<SPAN 
+lang=EN-US>+</SPAN>传奇沉着的伤害，并获得等额的灵感疲劳。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">增幅：每提高<SPAN 
+lang=EN-US>DC3</SPAN>，则快速医疗增加<SPAN lang=EN-US>1</SPAN>点。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">火<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
+lang=EN-US>C+1000</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">使用时间：自由<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">意志<SPAN 
+lang=EN-US>DC</SPAN>：<SPAN lang=EN-US>6</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">持续：每持续<SPAN 
+lang=EN-US>1</SPAN>回合，自动获得<SPAN lang=EN-US>1</SPAN>点灵感疲劳。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">你的徒手攻击可以造成严重伤害。并且你的所有近战攻击获得<SPAN 
+lang=EN-US>6DP</SPAN>增强加值。同时你的攻击若成功命中，则额外造成等于你传奇决心与传奇沉着之和的严重物理伤害。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">增幅：每提高<SPAN 
+lang=EN-US>DC1</SPAN>，则近战攻击再额外获得<SPAN lang=EN-US>3DP</SPAN>增强加值。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">地<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
+lang=EN-US>C+1000</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">使用时间：自由<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">意志<SPAN 
+lang=EN-US>DC</SPAN>：<SPAN lang=EN-US>6</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">持续：每持续<SPAN 
+lang=EN-US>1</SPAN>回合，自动获得<SPAN lang=EN-US>1</SPAN>点灵感疲劳。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">你获得<SPAN 
+lang=EN-US>6</SPAN>点天生防御，并且获得<SPAN lang=EN-US>2/-</SPAN>的伤害减免。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">增幅：每提高<SPAN 
+lang=EN-US>DC1</SPAN>，则天生防御再额外获得<SPAN lang=EN-US>2</SPAN>点加值。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">羽翼<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
+lang=EN-US>B+2000</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">使用时间：迅捷<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">意志<SPAN 
+lang=EN-US>DC</SPAN>：<SPAN lang=EN-US>6</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">持续：每持续<SPAN 
+lang=EN-US>5</SPAN>回合，自动获得<SPAN lang=EN-US>1</SPAN>点灵感疲劳。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">描述：安其尔人可以用灵力来构成巨大的羽翼，但这是一种困难且耗能巨大的能力。一般来说，只有职业天使或具有天使实力者能够学习。因此，具有羽翼的安其尔人在安其尔社会中普遍受到敬重。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">你展开一对巨大的羽翼。羽翼的颜色为其灵力固有色。你获得了基础移动速度<SPAN 
+lang=EN-US>3</SPAN>倍的飞行速度，机动性完美。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">增幅：每提高<SPAN 
+lang=EN-US>DC3</SPAN>，则飞行速度再提升基础移动速度一倍。<SPAN 
+lang=EN-US></SPAN></SPAN></P></div>	
+	<div id="winchm_template_footer">Copyright &copy; 2018. All rights 
+reserved. (To change the copyright info, just edit it in template.)</div>
+</div>
+
 </body>
 </html>

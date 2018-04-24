@@ -17,112 +17,170 @@ html,body {
 
 
 
-<meta http-equiv="X-UA-Compatible" content="IE=8">
+
 <style>
-html {
-	overflow-y:scroll;
-}
+html,div { margin: 0; padding: 0;}
 
 body {
-	background-image: url(template1/back.png);
-	background-repeat: repeat-x;
-	background-color: #FFFFFF;
 	padding: 0px;
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-bottom: 15px;
-	margin-right: 15px;
+	margin: 0px;
+	overflow: auto;
+	height: 100%;
 }
 
-#winchm_template_button {
-	position: fixed; 
-	float: right; 
-	right: 15px; 
-	top: 15px;
+#winchm_template_button{
+	float: right;
+	width: 93px;
+	top: 7px;
+	position: relative;
+	text-align: right;
+	right: 5px;
+	height: auto;
 }
 
-#winchm_template_navigation {
+#winchm_template_top{
 	padding: 0px;
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
+	margin: 0px;
+	border-bottom: 1px solid #9B9B9B;
+	background-color: #B1CEFE;
+}
 
-	font-size: 8pt;
+#winchm_template_navigation{
+	margin: 0px;
+	padding-top: 7px;
+	padding-left: 7px;
+	padding-bottom: 3px;
+	padding-right: 0px;
+	font-size: 8.5pt;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #4A4A4A;
-	text-align: left;
+	font-weight: normal;
+	color: #585858;
 }
 
-#winchm_template_title {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 22px;
-	font-weight: bold;
-	color: #005680;
-	text-align: left;
+#winchm_template_title{
+	margin: 0px;
+	padding-top: 4px;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	padding-right: 0px;
+	font-size: 18px; 
+	font-family: Verdana, Geneva, sans-serif;
+	color: #363636;
 }
 
 #winchm_template_content{
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
+	margin-top: 20px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
 	width: auto  !important;
 	width: 100%;
 }
 
-
-#winchm_template_footer {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	padding-top: 7px;
+#winchm_template_footer{
 	border-width: 1px;
-	border-color: #c0c0c0;
+	border-color: #B1CEFE;
 	border-top-style: solid;
-
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #575757;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
+	padding-top: 7px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 8.5pt;
+	color: #696969;
+	width: auto;
 	text-align: left;
 }
 
+
+#winchm_template_container{
+	margin: 0px;
+	padding: 0px;
+	position: static;
+	padding-bottom: 3px;
+	overflow: auto;
+	background-color: #FFFFFF;
+}
+
+
 @media print
 {
+#winchm_template_container{
+	position: static;	
+	margin: 0px;
+	padding: 5px;
+	
+	width: auto;
+	height: auto;
+	overflow: auto;
+}
 #winchm_template_button{
 visibility:hidden;
 }
 }
 
-#winchm_template_navigation a:link	{text-decoration: none;color: 004080}
-#winchm_template_navigation a:visited  {text-decoration: none; color: #004080}
-#winchm_template_navigation a:active {text-decoration: none; color: #004080}
-#winchm_template_navigation a:hover {text-decoration: none;color: #0000FF}
+#winchm_template_navigation A:link	{text-decoration: none; color:#004080}
+#winchm_template_navigation A:visited  {text-decoration: none; color: #004080}
+#winchm_template_navigation A:active {text-decoration: none; color: #004080 }
+#winchm_template_navigation A:hover {text-decoration: none;color: #0080FF}
 
-a:link	{text-decoration: underline; color:#0033cc}
-a:visited  {text-decoration: underline; color: #0033cc}
-a:active {text-decoration: underline; color: #0033cc }
-a:hover {text-decoration: underline;color: #ff0000;}
-
+A:link	{text-decoration: underline; color:#0033CC}
+A:visited  {text-decoration: underline; color: #0033CC}
+A:active {text-decoration: underline; color: #0033CC }
+A:hover {text-decoration: underline;color: #FF0000;}
 </style>
+<script type="text/javascript">
+function isMobile(){
+Agent = window.navigator.userAgent;
+if (Agent.indexOf("iPhone")>=1 || Agent.indexOf("iPad")>=1 || Agent.indexOf("iPod")>=1 || Agent.indexOf("Android")>=1){
+return true;
+}else{
+return false;	
+}
+
+}
+function d_onresize(){
+if (window.navigator.userAgent.indexOf("MSIE")>=1){
+document.getElementById('winchm_template_container').style.pixelWidth = document.body.offsetWidth - 3;
+document.getElementById('winchm_template_container').style.pixelHeight = document.body.offsetHeight - document.getElementById('winchm_template_top').offsetHeight - 4;
+}
+document.getElementById('winchm_template_container').style.top = document.getElementById('winchm_template_top').offsetHeight + 'px';
+}
+
+function d_onbeforeprint(){
+document.getElementById('winchm_template_container').style.width = 'auto';
+document.getElementById('winchm_template_container').style.height = 'auto';
+}
+
+function d_onafterprint(){
+d_onresize();
+}
+
+if(!isMobile()){
+
+window.onload = d_onresize;
+window.onresize = d_onresize;
+window.onbeforeprint = d_onbeforeprint;
+window.onafterprint = d_onafterprint;
+
+document.write("<style>\n");
+document.write("body {overflow: hidden;}\n");
+document.write("#winchm_template_container {position: absolute;overflow: auto;top : 0px;right: 0px;bottom: 0px;left: 0px;}\n");
+document.write("</style>\n");
+}
+
+</script>
 </head>
 
 <body><script language="JavaScript" type="text/JavaScript">
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(155);
+  parent.nav.tree.selectNode(108);
  }else{
   setTimeout("syn()",500);
 }
@@ -142,997 +200,1667 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 }
 </script> 
 
-<div id="winchm_template_button"><A href="迦楼罗.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template1/btn_prev_n.gif" border="0"></a><A href="New_Item101.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template1/btn_next_n.gif" border="0"></a></div>
-<div id="winchm_template_navigation">Help &gt; 
-<A href="资源部分.htm">资源部分</A> &gt; <A href="血统.htm">血统</A> &gt; <A href="$$unsavedpage6.htm">自带能量池血统</A> &gt; </div>
-<div id="winchm_template_title">统一言语师</div>
-<div id="winchm_template_content">
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">言语混乱前的时代称为「神代」，即人类对神的存在开始有所认识的时代。<SPAN 
+
+<div id="winchm_template_top">
+	<div id="winchm_template_button"><A href="New_Item119.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="诡异无比的妖怪.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
+	<div id="winchm_template_navigation">Help &gt; 
+<A href="资源部分.htm">资源部分</A> &gt; <A href="血统.htm">血统</A> &gt; <A href="$$unsavedpage7.htm">人类</A> &gt; <A href="$$unsavedpage10.htm">魔幻本质</A> &gt; </div>
+	<div id="winchm_template_title">统一言语师</div>
+</div>
+<div id="winchm_template_container">
+	<div id="winchm_template_content">
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本质：魔幻本质</SPAN><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; COLOR: red; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">言语混乱前的时代称为「神代」，即人类对神的存在开始有所认识的时代。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">而神变乱言语前举世共通的语言被称做「统一言语」。能够使用该语言的人则为<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">而神变乱言语前举世共通的语言被称做「统一言语」。能够使用该语言的人则为<SPAN 
 lang=EN-US>[</SPAN>统一语言师<SPAN lang=EN-US>](Master of Babel)</SPAN>。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">统一言语不单是人类共通的语言，更是万物共通的意义说明，因此不单可以让人与人之间对话，更能让人与世界对话、用以决定意义。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">统一言语不单是人类共通的语言，更是万物共通的意义说明，因此不单可以让人与人之间对话，更能让人与世界对话、用以决定意义。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">使用这种语言可与万物对话，但因为只有发话方会使用该语言，因此无语言能力的存在无法回应，而一般人类也只能以所会的语言回答。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">使用这种语言可与万物对话，但因为只有发话方会使用该语言，因此无语言能力的存在无法回应，而一般人类也只能以所会的语言回答。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">由于该语言可向「世界」对话，因此以存在论的阶级制度来看，没有人能否定用该言语所说出的话，因为这等于否定自己存在于世界上。该现象被称为「言语绝对」，以该语言说出的话会变成真实，而且只要是存在于世界上之物皆能操控。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">由于该语言可向「世界」对话，因此以存在论的阶级制度来看，没有人能否定用该言语所说出的话，因为这等于否定自己存在于世界上。该现象被称为「言语绝对」，以该语言说出的话会变成真实，而且只要是存在于世界上之物皆能操控。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>D</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">级：<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">D</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">级：<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">属性：感知<SPAN 
-lang=EN-US>+1</SPAN>，操控<SPAN lang=EN-US>+2</SPAN>，沉着<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">属性：感知<SPAN 
+lang=EN-US>+2</SPAN>，操控<SPAN lang=EN-US>+1</SPAN>，沉着<SPAN 
 lang=EN-US>+1</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">能量：根源之力（独有）<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">能量池：根源之力<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">特性：言语支配，窥探根源<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">技能树：开启<SPAN 
+lang=EN-US>D</SPAN>级统一语言技能树<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">特性：言语支配，窥探根源<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">技能树：统一语言<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">特殊：无<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">言语支配：<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">言语支配：拥有使用统一语言的潜力，随口说出的话便带有使人信服的力量，你的互动系检定获得<SPAN 
+lang=EN-US>3DP</SPAN>内在加值。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">窥探根源：逐渐开始接触到世界的本源，对万事万物的理解变得比以前更加透彻，对于人为制造的假像也更容易将之识破，人物的防御获得相当于传奇操控的内在加值。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">拥有使用统一语言的潜力，随口说出的话便带有使人信服的力量，在进行社交系判定时获得<SPAN 
-lang=EN-US>+3DP</SPAN>洞察加值。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">窥探根源：<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">C</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">级：<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">逐渐开始接触到世界的本源，对万事万物的理解变得比以前更加透彻，对于人为制造的假像也更容易将之识破，对抗任何影响心智、精神或心灵的效果时，判定获得<SPAN 
-lang=EN-US>+3DP</SPAN>洞察加值。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">根源之力：<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">使用统一语言的代价，代表统一语言师支配构成世界的本源之力的能力。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">根源之力的基本数值为感知<SPAN 
-lang=EN-US>+</SPAN>操控，统一语言师的每个血统等级能额外带来<SPAN lang=EN-US>5</SPAN>点上限。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">根源之力无法自动恢复，通过一个小时的冥想可以恢复最大值的一半，冥想可以在同一天内多次进行，但每次恢复的根源之力会逐步递减（第一次为<SPAN 
-lang=EN-US>1/2</SPAN>，第二次为<SPAN lang=EN-US>1/3</SPAN>，第三次为<SPAN 
-lang=EN-US>1/4</SPAN>。以此类推）。每天通过冥想恢复的根源之力不可超过自身最大值的两倍。另外，每当人物回复意志力时，回复双倍的根源之力。</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">根源之力是一个西方通用能量池。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>C</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">级：<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">属性：感知<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">属性：感知<SPAN 
 lang=EN-US>+3</SPAN>，操控<SPAN lang=EN-US>+2</SPAN>，沉着<SPAN 
 lang=EN-US>+1</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">特性：言语支配，窥探根源<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">技能树：开启<SPAN 
+lang=EN-US>C</SPAN>级统一语言技能树<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">特性：言语支配，窥探根源<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">窥探根源：<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">特殊：无<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">逐渐开始接触到世界的本源，对万事万物的理解也得到了一定程度的提升。人物在防御上获得<SPAN 
-lang=EN-US>+1</SPAN>洞察加值，并且可以免疫<SPAN 
-lang=EN-US>D</SPAN>级的幻像来源效果影响。在对抗任何影响心智、精神或心灵的效果时，再获得<SPAN 
-lang=EN-US>+2DP</SPAN>洞察加值。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">言语支配：<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">窥探根源：逐渐开始接触到世界的本源，对万事万物的理解也得到了一定程度的提升。你免疫<SPAN 
+lang=EN-US>C</SPAN>级的影响心灵的效果。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">言语支配：即使互相间言语不通，但蕴涵力量的话语却足以传达想要表达的信息。人物可以与任何生物交流。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">即使互相间言语不通，但蕴涵力量的话语却足以传达想要表达的信息。人物的操控<SPAN 
-lang=EN-US>+1</SPAN>，进行社交判定时再获得<SPAN lang=EN-US>+2DP</SPAN>洞察加值。支付<SPAN 
-lang=EN-US>1</SPAN>点根源之力并选择一种语言，人物可以透彻的理解它并用自己的语言去模拟它的效果，即使该语言不依赖声音（如哑语）或使用的音波频率非人物所能达到（如爪族语）的，这是一种超自然的效果，持续一个场景。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">B</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">级：<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>B</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">级：<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">属性：智力<SPAN 
+lang=EN-US>+1</SPAN>，感知<SPAN lang=EN-US>+3</SPAN>，操控<SPAN 
+lang=EN-US>+2</SPAN>，沉着<SPAN lang=EN-US>+2</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">技能树：开启<SPAN 
+lang=EN-US>B</SPAN>级统一语言技能树<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">特性：言语支配，窥探根源，洞察感知<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">属性：智力<SPAN 
-lang=EN-US>+1</SPAN>，感知<SPAN lang=EN-US>+2</SPAN>，操控<SPAN 
-lang=EN-US>+2</SPAN>，沉着<SPAN lang=EN-US>+2</SPAN>，决心<SPAN 
-lang=EN-US>+1</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">特性：言语支配，窥探根源，洞察感知<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">特殊：无<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">言语支配：<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">言语支配：随着对统一语言的存在意义的把握，话语中蕴涵的感染力更强。无需动作，人物在施展以力量，敏捷，智力，风度作为主属性的检定时，消耗<SPAN 
+lang=EN-US>5</SPAN>点根源之力，可以以操控代替，并且代替相应的上限以及对应的衍生属性（如代替智力，则智力<SPAN 
+lang=EN-US>*20</SPAN>米变为操控<SPAN lang=EN-US>*10</SPAN>米）。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">随着对统一语言的存在意义的把握，话语中蕴涵的感染力更强，即使对方是没有智慧的野兽也能够以语言施加影响。人物的操控再<SPAN 
-lang=EN-US>+1</SPAN>，并且在社交类判定上再获得<SPAN lang=EN-US>+1</SPAN>附加成功。支付<SPAN 
-lang=EN-US>2</SPAN>点根源之力，在接下来的一个场景内人物可以对任意自然生物及非自然生物对话，并进行相应的社交判定。如果你取得<SPAN 
-lang=EN-US>5</SPAN>个或以上成功数，你可以说服对方进行某些它本身无法进行的活动，比如让挡路的荆棘让开。虽然能进行对话，但无法很好的表达出相应的意愿，因此进行此类社交判定时，要受<SPAN 
-lang=EN-US>-5DP</SPAN>减值，且无法应用除技能和血统外的所有附加成功。。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">窥探根源：逐渐开始接触到世界的本源，对万事万物的理解变得比以前更加透彻。人物现在免疫<SPAN 
+lang=EN-US>B</SPAN>级的影响心灵和幻术效果。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">洞察感知：对于统一语言的掌握使统一语言师仅以肉眼就能看穿对方的内心活动，因此他无论何时都能以最大限度抢得先机，对于无法避免的攻击也能够更好地防备。统一语言师免疫<SPAN 
+lang=EN-US>B</SPAN>级的措手不及。<SPAN lang=EN-US> </SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">A</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">级：<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">窥探根源：<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">属性：智力<SPAN 
+lang=EN-US>+2</SPAN>，感知<SPAN lang=EN-US>+4</SPAN>，操控<SPAN 
+lang=EN-US>+3</SPAN>，沉着<SPAN lang=EN-US>+3</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">技能树：无<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">逐渐开始接触到世界的本源，对万事万物的理解变得比以前更加透彻。人物在防御上再获得<SPAN 
-lang=EN-US>+2</SPAN>洞察加值，并且免受<SPAN 
-lang=EN-US>C</SPAN>级以下的幻像来源效果影响。在对抗任何影响心智、精神或心灵的效果时，再获得<SPAN 
-lang=EN-US>+3DP</SPAN>洞察加值。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">洞察感知：<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">特性：言语支配，窥探根源，洞察感知（双特性）<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">对于统一语言的掌握使统一语言师仅以肉眼就能看穿对方的内心活动，因此他无论何时都能以最大限度抢得先机，对于无法避免的攻击也能够更好地防备。统一语言师不会措手不及，并且在先攻上获得等于其感知值的洞察加值。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>A</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">级：<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">属性：智力<SPAN 
-lang=EN-US>+1</SPAN>，感知<SPAN lang=EN-US>+4</SPAN>，风度<SPAN 
-lang=EN-US>+1</SPAN>，操控<SPAN lang=EN-US>+3</SPAN>，沉着<SPAN 
-lang=EN-US>+2</SPAN>，决心<SPAN lang=EN-US>+1</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">特性：言语支配，窥探根源，言语绝对，洞察感知<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">言语支配：<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">语言的影响力继续增强，哪怕是死物亦能通过语言予以影响。人物的操控<SPAN 
-lang=EN-US>+2</SPAN>，并且在社交类判定上再获得一个附加成功。支付<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">特殊：由于没有技能树，额外获得<SPAN 
+lang=EN-US>1</SPAN>个特性<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">言语支配：语言的影响力继续增强，哪怕是死物亦能通过语言予以影响。你支付<SPAN 
 lang=EN-US>3</SPAN>点根源之力，在接下来的一个场景中人物可以和任意没有生命和智能的物体，例如一块石头对话。这种沟通十分困难，在判定上受<SPAN 
-lang=EN-US>-7DP</SPAN>的减值，且无法应用除技能和血统外的所有附加成功。如果你取得<SPAN 
-lang=EN-US>5</SPAN>个或以上成功数，你也可以说服对方进行某些它本身无法做到的活动，比如让樱花在冬天绽放。若该物体以某种形式变化着，你可以部分地影响这种变化的幅度或频率，比如令燃烧着的柴堆烧得更旺。你的每个成功数可以影响变化的幅度的十分之一，频率或速度的百分之五，上限均为原效果的百分之一百。<SPAN 
+lang=EN-US>10DP</SPAN>的无名减值。如果你取得<SPAN 
+lang=EN-US>5</SPAN>个或以上成功数，你也可以说服对方进行某些它本身无法做到的活动，比如让樱花在冬天绽放，尸体说话等。若该物体以某种形式变化着，你可以部分地影响这种变化的幅度或频率，比如令燃烧着的柴堆烧得更旺。你的每个成功数可以影响变化的幅度的十分之一，频率或速度的百分之五，上限均为原效果的百分之一百，本能力由ST最终解释，若放弃本特性，则改为获得2点感知和2点操控。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">窥探根源：<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">窥探根源：对世界本源的了解已经到了生物所能达到的极限。人物免疫任何带有“语言”成分的能力。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">继续接近世界的本源，已经几乎把握住了世界的本质。人物在防御上再获得一个附加成功，并且免受<SPAN 
-lang=EN-US>B</SPAN>级以下的幻像来源效果影响。在对抗任何影响心智、精神或心灵的效果时，再获得<SPAN 
-lang=EN-US>+3DP</SPAN>洞察加值，如果这个能力是基于“语言”的，那么完全免疫。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">洞察感知：感觉越加敏锐，人物不在以敏捷和感知决定基础防御，而是以感知作为基本防御值。并且在先攻上获得等于其传奇感知的提升。同时人物永远不会失去基础防御，哪怕处于昏迷，无助也不会，但是这并不影响人物进入某些失去基础防御的状态（如措手不及）。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">言语绝对：<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">根源之力：<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">以统一语言说出的话即是绝对的真实，凡存在于世上之物皆能操控。人物可以在使用任何需要用语言发动或维持的能力时，支付<SPAN 
-lang=EN-US>3</SPAN>点根源之力，以『统一语言』取代该能力的语言要素。此时，若此能力需要进行判定，则有人物操控值个数的骰子自动成功，但不获得加骰；若此能力造成定值效果，则提升等于操控上附加成功数的数值<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">根源之力是一个西方通用能量池。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">洞察感知：<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">使用统一语言的代价，代表统一语言师支配构成世界的本源之力的能力。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">感觉越加敏锐，无论何时均能使用感知作为基本防御值。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">根源之力的大小为感知<SPAN 
+lang=EN-US>+</SPAN>操控，统一语言师的每个血统等级能额外带来<SPAN lang=EN-US>5</SPAN>点上限。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>S</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">级：<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">根源之力的基础用法：你在使用任何语言类能力时，消耗<SPAN 
+lang=EN-US>1</SPAN>点根源之力，该检定获得<SPAN lang=EN-US>3DP</SPAN>无名加值。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">属性：感知<SPAN 
-lang=EN-US>+6</SPAN>，风度<SPAN lang=EN-US>+2</SPAN>，操控<SPAN 
-lang=EN-US>+4</SPAN>，沉着<SPAN lang=EN-US>+4,</SPAN>决心<SPAN 
-lang=EN-US>+3</SPAN>，智力<SPAN lang=EN-US>+5</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">特性：言语绝对，洞察感知，言语支配，窥探根源<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">根源之力的恢复：根源之力无法自动恢复，通过一个小时的冥想可以恢复最大值的一半，冥想可以在同一天内多次进行，但每次恢复的根源之力会逐步递减（第一次为<SPAN 
+lang=EN-US>1/2</SPAN>，第二次为<SPAN lang=EN-US>1/3</SPAN>，第三次为<SPAN lang=EN-US>1/4</SPAN>。以此类推）。每天通过冥想恢复的根源之力不可超过自身最大值的两倍。另外，每当人物回复意志力时，回复双倍的根源之力。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">言语支配：<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">统一语言<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">言语混乱前的时代称为「神代」，即人类对神的存在开始有所认识的时代。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">而神变乱言语前举世共通的语言被称做「统一言语」。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">统一言语不单是人类共通的语言，更是万物共通的意义说明，因此不单可以让人与人之间对话，更能让人与世界对话、用以决定意义。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">彻底的支配，接近催眠的效果，能够无条件地让对方执行自己所下达的任何指令。人物的操控再<SPAN 
-lang=EN-US>+2</SPAN>，并且在社交类判定上再获得二个附加成功。支付<SPAN 
-lang=EN-US>5</SPAN>点根源之力，在接下来的一个场景中，人物可以与抽象的概念对话并交涉，例如“视力”、“光”、“血统”等，这种交流极为困难，要受<SPAN 
-lang=EN-US>-10DP</SPAN>的减值，且不会获得任何性质的附加成功。你可以与一个模版、一种能力、一个运作中的效果对话，从世界的本源上影响它的存在，从而对它产生影响。你可以将成功数自由分配到目标某一项能力的数值上，将它的强度或持续时间增加或减少每成功数百分之五，或将某项属性增加或减少每成功数百分之五，你的影响上限是其百分之一百。若此效果影响到了某个超自然存在，他可以用意志对抗，以成功数一对一抵消。这个效果的持续时间等于你分配之后剩余的成功数。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本技能数下的所有技能皆有“语言”成分。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">D</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">级统一语言技能树：<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">精灵之语<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN lang=EN-US>D+500</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">消耗：<SPAN lang=EN-US>1</SPAN>点根源之力<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">洞察感知：<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：标准动作<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">射程：视线内<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标：一个目标<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：无<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持续：立即<SPAN lang=EN-US> 
+</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：你操控语言的力量对其进行打击。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：你对目标进行操控<SPAN lang=EN-US>+</SPAN>交涉（说服）的远程攻击检定，本次攻击无需效果线，伤害上限为你的操控<SPAN lang=EN-US>+</SPAN>说服，造成相当于你成功数的伤害，你可以选择造成纯能量严重伤害或者物理严重伤害。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">可以从根源侧感知世间的一切，无论如何，人物永远不会失去基础防御值，即使被定身、昏迷或者石化。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">强化<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN lang=EN-US>D+500</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">消耗：<SPAN lang=EN-US>1</SPAN>点根源之力<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">窥探根源：<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：标准动作<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">射程：视线内<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标：一个目标或物品<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：无<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持续：感知值<SPAN lang=EN-US>/</SPAN>分钟<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">对世界本源的了解已经到了生物所能达到的极限。人物在防御上再获得二个附加成功，并且免受<SPAN 
-lang=EN-US>A</SPAN>级以下的幻像来源效果和影响心灵能力影响。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：使用统一语言，消耗根源之力，增加物体的强度或生物的身体素质，让柔弱的少女能够一拳击碎壮汉的下巴，微薄的纸张能够轻易切开数公分厚的钢板。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">言语绝对：<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：你进行一个感知<SPAN lang=EN-US>+</SPAN>操控检定，你的成功数必须大于目标的体积才可以成功施展本能力。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">施展后，目标的硬度增加相当于你血统等级<SPAN lang=EN-US>/</SPAN>点。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">若为武器，则其破甲提升相当于你传奇感知与传奇操控之和<SPAN lang=EN-US>/</SPAN>点。若为非武器，则其可以视为武器伤害为<SPAN lang=EN-US>0</SPAN>的临时武器。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">若为盔甲或者普通衣物，则其盔甲防御提升相当于你传奇感知与传奇操控之和<SPAN lang=EN-US>/</SPAN>点。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">若为盾牌，则其盾牌防御相当于你传奇感知与传奇操控之和<SPAN lang=EN-US>/</SPAN>点。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">若目标为生物，则选择其一项生理属性，该属性的相关检定获得相当于你传奇感知与传奇操控之和的<SPAN 
+lang=EN-US>DP</SPAN>增强加值。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">你可以反复对同一个目标使用此能力，但是在同一项上的效果不叠加，取较高的。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">增幅：每有<SPAN lang=EN-US>1</SPAN>级血统等级，则可以额外消耗<SPAN lang=EN-US>2</SPAN>点根源之力，每额外消耗<SPAN lang=EN-US>1</SPAN>点，则其效果额外提升<SPAN lang=EN-US>1</SPAN>点。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">弱化<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN lang=EN-US>D+500</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">消耗：<SPAN lang=EN-US>1</SPAN>点根源之力<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">完全掌握了统一语言的本质，能够通过语言直接干涉到世界的运行，由于这涉及到了世界的根源，因此不使用统一语言的话就无法做到。人物可以在进行任何行动时，使用<SPAN 
-lang=EN-US>5</SPAN>点根源之力发动言语绝对的能力，此时会为这个行动附加上『语言』要素。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：标准动作<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">射程：敏感范围内<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标：一个目标或物品<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：无<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持续：感知值<SPAN lang=EN-US>/</SPAN>轮<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">统一语言<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：使用统一语言，消耗根源之力，降低物体的强度或生物的身体素质，让强壮的拳击手可以轻易被人推倒，铝合金的大门会被随意地拧成麻花。使用的对象被限定在一个。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：你进行一个感知<SPAN lang=EN-US>+</SPAN>操控检定，你的成功数必须大于目标的体积才可以成功施展本能力。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">施展后，目标的硬度降低相当于你血统等级<SPAN lang=EN-US>/</SPAN>点。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">若为武器，则其武器伤害降低相当于你传奇感知与传奇操控取高<SPAN lang=EN-US>/</SPAN>点，若降低为<SPAN lang=EN-US>0</SPAN>，则其只能造成冲击伤害。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">若为盔甲或者普通衣物，则其盔甲防御降低相当于你传奇感知与传奇操控之和<SPAN lang=EN-US>/</SPAN>点，若因此到<SPAN lang=EN-US>0</SPAN>，则其视为如同被破甲击破为<SPAN lang=EN-US>0</SPAN>。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">若为盾牌，则其盾牌降低相当于你传奇感知与传奇操控之和<SPAN lang=EN-US>/</SPAN>点，若因此到<SPAN lang=EN-US>0</SPAN>，则其视为如同被破甲击破为<SPAN lang=EN-US>0</SPAN>。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">若目标为生物，则你可以选择以下<SPAN lang=EN-US>4</SPAN>个效果其中之一：<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">降低目标相当于你传奇感知与传奇操控之和<SPAN lang=EN-US>/</SPAN>点的天生防御，若降低为<SPAN lang=EN-US>0</SPAN>，则肉体失去【防弹】【防能量武器】特性。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">降低目标相当于你传奇感知与传奇操控取低的伤害减免或者伤害吸收。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">降低目标相当于你传奇感知与传奇操控之和的天生武器的武器伤害，若降低为<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">选择其一项生理属性，该属性的相关检定承受相当于你传奇感知与传奇操控之和的无名减值。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">你可以反复对同一个目标使用此能力，但是在同一项上的效果不叠加，取较高的。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">虚无的衣冠<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN lang=EN-US>D+500</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">能耗：<SPAN lang=EN-US>1</SPAN>点根源之力</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：自由动作<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">射程：无<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标：自身<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：无</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持续：一个场景</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：你对语言表达的艺术应用自如，你的口气和姿态将你的显赫身世传达给别人。</SPAN><SPAN 
 lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">言语混乱前的时代称为「神代」，即人类对神的存在开始有所认识的时代。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：你在与人交涉时，你可以启动此能力，并选择一个试图伪装的身份。你不需要真的假装自己拥有此身份。若你选择的身份对你的意图有帮助，则你接下来的的交涉，说服，胁迫，掩饰相关检定获得相当于你该技能等级的<SPAN 
+lang=EN-US>DP</SPAN>表现加值。（如你在军营选择军官身份，在医院选择主治医师的身份。）<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">需要的注意是，这个身份并不会让你通过某些审查（如虹膜扫描等），也无法伪装成一个独有的身份（如医院院长）。</SPAN><SPAN 
 lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">而神变乱言语前举世共通的语言被称做「统一言语」。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">特殊：你无法在战斗中使用能力，若战斗开始，此能力失效。</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"; LINE-HEIGHT: 150%; mso-font-kerning: 0pt'></SPAN><SPAN lang=EN-US></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US></SPAN>&nbsp;</P><SPAN lang=EN-US><o:p><FONT size=3 face="Times New Roman"></FONT></O:P></SPAN>
+<P></P>
+<P></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">柔语清音</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN lang=EN-US>D+500</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">能耗：<SPAN lang=EN-US>1</SPAN>点根源之力</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：标准动作</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">射程：敏感范围<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标：一个目标<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：无</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持续：立即</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：你的宽慰缓和了别人的创伤。</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：选择目标所受的一项轻度不良状态，你进行操控检定，每有<SPAN lang=EN-US>1</SPAN>点成功，则消除目标身上的<SPAN lang=EN-US>1</SPAN>点不良状态。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: Arial; mso-font-kerning: 0pt; mso-ascii-font-family: Arial; mso-hansi-font-family: Arial">注意：只能对轻度不良状态下的不良点数有效，若点数累计到严重或者毁灭，则本能力无法生效。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"; LINE-HEIGHT: 150%; mso-font-kerning: 0pt'>&nbsp;</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">“教练，我想打篮球<SPAN lang=EN-US>OTL</SPAN>……”</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN lang=EN-US>D+500</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">能耗：<SPAN lang=EN-US>1</SPAN>点根源之力<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">统一言语不单是人类共通的语言，更是万物共通的意义说明，因此不单可以让人与人之间对话，更能让人与世界对话、用以决定意义。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：整轮动作</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">射程：<SPAN lang=EN-US>5</SPAN>米<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">一名统一语言师可以学习下列统一语言。此外，他也可以像学习统一语言一样学习任何需要用语言发动或维持的能力，例如文字具现化或者诺恩之歌。这视为你的血统等级为对应技艺的等级，比如你B级血统，可以学习B级图书管理员技能，但是无法学习A级的。</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">该能力若消耗为意志，则改为消耗根源之力。若该能力需要其独有的能量池，如法术等，则无法学习。</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">强化：<SPAN 
-lang=EN-US>D+500</SPAN>分<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">使用统一语言，消耗根源之力，增加物体的强度或生物的身体素质，让柔弱的少女能够一拳击碎壮汉的下巴，微薄的纸张能够轻易切开数公分厚的钢板。强化的目标与你之间的距离不能超过<SPAN 
-lang=EN-US>10</SPAN>米×你的血统等级。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">当目标是非生物时，你可以以根源之力加强物体的强度。消耗<SPAN 
-lang=EN-US>1</SPAN>点根源之力，以一个标准动作，投感知<SPAN lang=EN-US>+</SPAN>操控，每<SPAN 
-lang=EN-US>2</SPAN>个成功可以让目标大小不超过每成功数<SPAN lang=EN-US>1</SPAN>立方米的单一固体硬度增加<SPAN 
-lang=EN-US>1</SPAN>，最多<SPAN lang=EN-US>+6</SPAN>。用于增强武器，可以提升武器的破甲或伤害，每<SPAN 
-lang=EN-US>3</SPAN>个成功可以提升<SPAN lang=EN-US>1</SPAN>点，最多<SPAN 
-lang=EN-US>5</SPAN>点。用于增强铠甲，可以增加铠甲的防护，每<SPAN lang=EN-US>3</SPAN>个成功可以提升<SPAN 
-lang=EN-US>1</SPAN>点盔甲加值，但也会减低<SPAN lang=EN-US>1</SPAN>点基础防御，最多<SPAN 
-lang=EN-US>5</SPAN>点。用于强化盾牌，每<SPAN lang=EN-US>4</SPAN>个成功可以令盾牌在格挡时提升<SPAN 
-lang=EN-US>1</SPAN>点加值，最多<SPAN 
-lang=EN-US>4</SPAN>个。此外，被影响的盔甲和盾牌都可以抵消等同于“强化”所提供加值一半的破甲。并非武器的物品可以视为基础伤害为<SPAN 
-lang=EN-US>0</SPAN>，并非铠甲的衣物被视为基础防御为<SPAN 
-lang=EN-US>0</SPAN>，它们此时可以被当作武器或铠甲来使用，创造出来的武器具有“<SPAN 
-lang=EN-US>9</SPAN>加骰”特质，而盔甲具有“防弹”特性。此效果持续时间为每感知值<SPAN 
-lang=EN-US>1</SPAN>分钟。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">当目标是生物时，你可以以根源之力强化其肉体。消耗<SPAN 
-lang=EN-US>1</SPAN>点根源之力，以一个标准动作，选定生物的某一项身体属性，与此属性相关的判定全部额外获得<SPAN 
-lang=EN-US>1</SPAN>个自动成功的增强加值。你可以消耗<SPAN lang=EN-US>2</SPAN>点进行增幅，以再获得<SPAN 
-lang=EN-US>1</SPAN>个自动成功骰，以此法消耗的根源之力点数不能超过你的血统等级。你可以任意分配将这些成功骰分配在受影响者的身体属性上。此效果持续时间为每感知值<SPAN 
-lang=EN-US>1</SPAN>分钟。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">或者，你也可以缩短持续时间以提升更强的效果。消耗<SPAN 
-lang=EN-US>1</SPAN>点根源之力，以一个标准动作，选定目标的某一项身体属性，投感知<SPAN 
-lang=EN-US>+</SPAN>操控，每<SPAN lang=EN-US>1</SPAN>个成功都可以提升该属性<SPAN 
-lang=EN-US>1</SPAN>点，最多<SPAN lang=EN-US>10</SPAN>点。此效果只能持续<SPAN 
-lang=EN-US>1</SPAN>轮。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">弱化：<SPAN 
-lang=EN-US>D</SPAN>级<SPAN lang=EN-US>+500</SPAN>分<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标：一个智慧生物</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：无<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持续：一场恐怖片</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：你<SPAN lang=EN-US>OTZ</SPAN>在对方面前，泪流满面。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：你进行操控<SPAN lang=EN-US>+</SPAN>交涉（说服）检定，目标意志豁免，若你成功，则其将会收你为徒，并且选择其所拥有的一项比你当前技能等级高的技能，该技能你增加<SPAN 
+lang=EN-US>1</SPAN>点，并且获得该技能下其所拥有的一项你所没有的专业。</SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">使技能每提升1级，则需要花费当前技能等级*2小时的时间锻炼，中间可以休息。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本技能无法对轮回小队队员使用。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">C</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">级统一语言技能树：<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">仁者之怒<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN lang=EN-US>C+1000</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">消耗：<SPAN lang=EN-US>1</SPAN>点根源之力<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">使用统一语言，消耗根源之力，降低物体的强度或生物的身体素质，让强壮的拳击手可以轻易被人推倒，铝合金的大门会被随意地拧成麻花。使用的对象被限定在一个。强化的目标与你之间的距离不能超过<SPAN 
-lang=EN-US>10</SPAN>米×你的血统等级。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">当目标是非生物时，你可以以根源之力削弱物体的强度。消耗<SPAN 
-lang=EN-US>1</SPAN>点根源之力，以一个标准动作，投感知<SPAN lang=EN-US>+</SPAN>操控，每<SPAN 
-lang=EN-US>2</SPAN>个成功数可以让指定的、大小不超过每成功数<SPAN 
-lang=EN-US>1</SPAN>立方米的单一固体硬度减少<SPAN lang=EN-US>1</SPAN>，最多<SPAN 
-lang=EN-US>-6</SPAN>。用于削弱武器，可以削弱近战武器或远程武器弹药的伤害，每<SPAN 
-lang=EN-US>3</SPAN>个成功可以减低<SPAN lang=EN-US>1</SPAN>点，最多<SPAN 
-lang=EN-US>5</SPAN>点。用于削弱铠甲，可以减少铠甲的防护，每<SPAN lang=EN-US>3</SPAN>个成功可以减少<SPAN 
-lang=EN-US>1</SPAN>点盔甲加值，最多<SPAN lang=EN-US>5</SPAN>点。若是武器的伤害被减少到<SPAN 
-lang=EN-US>0</SPAN>，则它失去加骰降低一级；若是盔甲的防御被减少到<SPAN 
-lang=EN-US>0</SPAN>，则失去其带来的能量抗力、<SPAN 
-lang=EN-US>DR</SPAN>以及对抗范围攻击的加值。此效果持续时间为每感知值<SPAN lang=EN-US>1</SPAN>分钟。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：反射动作<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">射程：敏感范围内<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标：一个目标<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：无<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持续：立即<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：使用统一言语与一个攻击者对话，以严厉的斥责抹消他的攻击行为。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：当一个目标使用攻击检定时，你对其进行一个操控<SPAN lang=EN-US>+</SPAN>交涉（说服）检定，你每有<SPAN lang=EN-US>1</SPAN>点成功数，则目标的本次攻击检定失去<SPAN lang=EN-US>1DP</SPAN>。这是一个影响心灵的效果。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">强化掌控<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN lang=EN-US>C+1000</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">消耗：<SPAN lang=EN-US>3</SPAN>点根源之力<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">目标是生物时，你可以以根源之力使其肉体萎缩。消耗<SPAN 
-lang=EN-US>1</SPAN>点根源之力，以一个标准动作，投感知<SPAN 
-lang=EN-US>+</SPAN>操控，你可以将成功数用作以下用途：<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：标准动作<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">射程：视线内<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标：一个目标或物品<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：无<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持续：感知值<SPAN lang=EN-US>/</SPAN>分钟<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">·减低对方的天生防御<SPAN 
-lang=EN-US>1</SPAN>点，消耗<SPAN lang=EN-US>1</SPAN>个成功<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：你进行一个感知<SPAN lang=EN-US>+</SPAN>操控检定，记录成功数，总和不得超过你的感知<SPAN lang=EN-US>+</SPAN>操控，消耗成功数使其获得不同的效果：<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">武器：消耗<SPAN lang=EN-US>2N+1</SPAN>点（<SPAN lang=EN-US>N</SPAN>等于消耗的次数），其武器伤害提升<SPAN lang=EN-US>1</SPAN>点（第一次提升<SPAN lang=EN-US>1</SPAN>点花费<SPAN lang=EN-US>1</SPAN>点，第二次提升花费<SPAN lang=EN-US>3</SPAN>点，以此类推）。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">消耗<SPAN lang=EN-US>3</SPAN>点，获得【魔法】特性，只能选择一次，最高<SPAN lang=EN-US>8</SPAN>加骰。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">消耗<SPAN lang=EN-US>5</SPAN>点，加骰提升<SPAN 
+lang=EN-US>1</SPAN>级，只能选择一次。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">盔甲<SPAN lang=EN-US>/</SPAN>盾牌：消耗<SPAN 
+lang=EN-US>N+1</SPAN>点（<SPAN lang=EN-US>N</SPAN>等于消耗的次数），其盔甲防御<SPAN lang=EN-US>/</SPAN>盾牌防御提升<SPAN lang=EN-US>1</SPAN>点（第一次提升<SPAN lang=EN-US>1</SPAN>点花费<SPAN lang=EN-US>1</SPAN>点，第二次提升花费<SPAN lang=EN-US>2</SPAN>点，以此类推）。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">消耗<SPAN lang=EN-US>N+1</SPAN>点（<SPAN 
+lang=EN-US>N</SPAN>等于消耗的次数），其抵破甲提升<SPAN lang=EN-US>1</SPAN>点（第一次提升<SPAN lang=EN-US>1</SPAN>点花费<SPAN lang=EN-US>1</SPAN>点，第二次提升花费<SPAN lang=EN-US>2</SPAN>点，以此类推）。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">消耗<SPAN lang=EN-US>3</SPAN>点，获得【防弹】特性。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">消耗<SPAN lang=EN-US>6</SPAN>点，获得【防能量武器】特性。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">生物：其选择一项生理属性，消耗<SPAN lang=EN-US>2+2N</SPAN>点，该属性的相关检定获得<SPAN lang=EN-US>1</SPAN>点附加成功。（第一次提升<SPAN lang=EN-US>1</SPAN>点花费<SPAN lang=EN-US>2</SPAN>点，第二次提升花费<SPAN lang=EN-US>4</SPAN>点，以此类推，选择新属性时，重新累计）<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">你可以反复对同一个目标使用此能力，但是在同一项上的效果不叠加，取较高的。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">增幅：每血统等级可以额外花费<SPAN lang=EN-US>1</SPAN>点根源之力，使成功数的上限增加<SPAN lang=EN-US>5</SPAN>点。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">弱化掌控<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN lang=EN-US>C+1000</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">消耗：<SPAN lang=EN-US>3</SPAN>点根源之力<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">·减低对方的<SPAN 
-lang=EN-US>DR1</SPAN>点，消耗<SPAN lang=EN-US>3</SPAN>个成功<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：标准动作<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">射程：敏感范围<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标：一个目标或物品<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：无<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持续：感知值<SPAN lang=EN-US>/</SPAN>轮<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：你进行一个感知<SPAN lang=EN-US>+</SPAN>操控检定，记录成功数，总和不得超过你的感知<SPAN lang=EN-US>+</SPAN>操控，消耗成功数使其获得不同的效果：<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">武器：消耗<SPAN lang=EN-US>2N+1</SPAN>点（<SPAN lang=EN-US>N</SPAN>等于消耗的次数），其武器伤害降低<SPAN lang=EN-US>1</SPAN>点（第一次降低<SPAN lang=EN-US>1</SPAN>点花费<SPAN lang=EN-US>1</SPAN>点，第二次降低花费<SPAN lang=EN-US>3</SPAN>点，以此类推）。若降低至<SPAN lang=EN-US>0</SPAN>，则只能造成冲击伤害。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">消耗<SPAN lang=EN-US>5</SPAN>点，加骰降低<SPAN 
+lang=EN-US>1</SPAN>级，只能选择一次，最低<SPAN lang=EN-US>10</SPAN>加骰。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">盔甲<SPAN lang=EN-US>/</SPAN>盾牌：消耗<SPAN 
+lang=EN-US>N+1</SPAN>点（<SPAN lang=EN-US>N</SPAN>等于消耗的次数），其盔甲防御<SPAN lang=EN-US>/</SPAN>盾牌防御降低<SPAN lang=EN-US>1</SPAN>点（第一次降低<SPAN lang=EN-US>1</SPAN>点花费<SPAN lang=EN-US>1</SPAN>点，第二次降低花费<SPAN lang=EN-US>2</SPAN>点，以此类推）。若因此到<SPAN lang=EN-US>0</SPAN>，则其视为如同被破甲击破为<SPAN lang=EN-US>0</SPAN>。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">消耗<SPAN lang=EN-US>3</SPAN>点，其失去【防弹】特性。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">消耗<SPAN lang=EN-US>6</SPAN>点，其失去【防能量武器】特性。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">生物：其选择一项生理属性，消耗<SPAN lang=EN-US>2+2N</SPAN>点，该属性的相关检定的检定结果失去<SPAN lang=EN-US>1</SPAN>点成功。（第一次提升<SPAN lang=EN-US>1</SPAN>点花费<SPAN lang=EN-US>2</SPAN>点，第二次提升花费<SPAN lang=EN-US>4</SPAN>点，以此类推，选择新属性时，重新累计）<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">消耗<SPAN lang=EN-US>1+N</SPAN>点，该生物的基础防御失去<SPAN lang=EN-US>1</SPAN>点。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">消耗<SPAN lang=EN-US>1+N</SPAN>点，该生物的基础移动速度降低<SPAN lang=EN-US>5</SPAN>米。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">你可以反复对同一个目标使用此能力，但是在同一项上的效果不叠加，取较高的。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">增幅：每血统等级可以额外花费<SPAN lang=EN-US>1</SPAN>点根源之力，使成功数的上限增加<SPAN lang=EN-US>5</SPAN>点。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"; LINE-HEIGHT: 150%; mso-font-kerning: 0pt'></SPAN><SPAN lang=EN-US></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"; LINE-HEIGHT: 150%; mso-font-kerning: 0pt'></SPAN><SPAN lang=EN-US></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">暗夜里开放的花</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN lang=EN-US>C+1000</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">能耗：<SPAN lang=EN-US>3</SPAN>点根源之力</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：自由动作<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">射程：无</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标：特殊</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：无<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持续：<SPAN lang=EN-US>1</SPAN>小时<SPAN 
+lang=EN-US>*</SPAN>成功数，或直到消散。</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：当你施展一个魔幻来源的特殊能力时，可以将此言灵加入该能力中，这会为该能力添加“语言”成份。你进行操控检定，每成功数可以将此言灵的效果维持<SPAN 
+lang=EN-US>1</SPAN>小时。该特殊能力的施展时间不得超过<SPAN lang=EN-US>1</SPAN>轮。</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">你施展的能力并不生效。在本技能持续时间内，你可以用一个反射动作使该能力立即生效。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">特殊：你同一时间只能选择一个能力。但是你可以多次购买本能力，每次购买可以额外习得一个新能力。</SPAN><SPAN 
 lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">·减少对方的某一项身体属性<SPAN 
-lang=EN-US>1</SPAN>点，消耗<SPAN lang=EN-US>2</SPAN>个成功<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"; LINE-HEIGHT: 150%; mso-font-kerning: 0pt'></SPAN><SPAN lang=EN-US></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"; LINE-HEIGHT: 150%; mso-font-kerning: 0pt'></SPAN><SPAN lang=EN-US></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">至高演说</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN lang=EN-US>C+1000</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">能耗：<SPAN lang=EN-US>3</SPAN>点根源之力</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：标准动作<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">射程：以自己为中心</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标：范围内所有听到你语言的智慧生物。 <SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：<SPAN lang=EN-US>20</SPAN>米<SPAN 
+lang=EN-US>*</SPAN>操控值为半径</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：你选择以下两种方式之一来使用此能力：</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">狂乱：你进行操控<SPAN lang=EN-US>+</SPAN>表达<SPAN lang=EN-US>-</SPAN>演讲检定，每有<SPAN lang=EN-US>1</SPAN>点成功数，则你可以选择对目标造成<SPAN lang=EN-US>1</SPAN>点亢奋点数，或者<SPAN lang=EN-US>1</SPAN>点沮丧点数，或者<SPAN lang=EN-US>1</SPAN>点恐惧点数。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标每受到<SPAN lang=EN-US>1</SPAN>点亢奋点数，则其攻击检定获得<SPAN lang=EN-US>1DP</SPAN>士气加值。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标每受到<SPAN lang=EN-US>1</SPAN>点沮丧点数，则其意志检定获得<SPAN lang=EN-US>1DP</SPAN>士气加值。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标每受到<SPAN lang=EN-US>1</SPAN>点恐惧点数，则其防御获得<SPAN lang=EN-US>1DP</SPAN>士气加值。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">低迷：你进行操控<SPAN lang=EN-US>+</SPAN>表达<SPAN lang=EN-US>-</SPAN>演讲检定，每有<SPAN lang=EN-US>2</SPAN>点成功数，则你可以选择对目标造成<SPAN lang=EN-US>1</SPAN>点亢奋点数，或者<SPAN lang=EN-US>1</SPAN>点沮丧点数，或者<SPAN lang=EN-US>1</SPAN>点恐惧点数，但是不获得狂乱的士气加值。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: Arial; mso-font-kerning: 0pt; mso-ascii-font-family: Arial; mso-hansi-font-family: Arial">施展本能力时，</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">你可以每操控值选择一个生物不受影响，或你只选择至多每操控值一个生物受影响。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本技能最大有效的成功数上限为你的操控<SPAN lang=EN-US>+</SPAN>表达<SPAN lang=EN-US>-</SPAN>演讲等级。</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"; LINE-HEIGHT: 150%; mso-font-kerning: 0pt'></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"; LINE-HEIGHT: 150%; mso-font-kerning: 0pt'></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US><o:p><FONT size=3 face="Times New Roman"></FONT></O:P></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持钥者的假面</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN lang=EN-US>C+1000</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">能耗：<SPAN lang=EN-US>3</SPAN>点根源之力<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：见下</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">射程：见下</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标：一项需要钥匙<SPAN lang=EN-US>/</SPAN>权限<SPAN lang=EN-US>/</SPAN>密码才能开启或启动的东西<SPAN lang=EN-US>/</SPAN>功能<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：见下<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持续：立即</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：“我是查尔斯，查尔斯·南希。”</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：你可以用此能力打开锁、发动汽车、破解电脑密码、盗用管理员权限等。你必须位于一般情况下可以进行此动作的距离内。比如，要开锁，你必须能接触到锁，要入侵一个网站的数据库，你就必须有一台能联接该网站的电脑。</SPAN><SPAN 
 lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">·减少对方的天生武器伤害或破甲<SPAN 
-lang=EN-US>1</SPAN>点，消耗<SPAN lang=EN-US>1</SPAN>个成功<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">你需要知道是谁理应持有钥匙、知道密码并且有权使用它们，然后你反复宣称自己拥有这一身份。用操控<SPAN 
+lang=EN-US>+</SPAN>掩饰代替正常的盗窃<SPAN lang=EN-US>/</SPAN>电脑等检定，若为延长检定则周期不变，并且每周期需要消耗一次能耗，同时难度不变。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">你可以自由分配你的成功数在这几项上，但在任何一项上最多使其减少<SPAN 
-lang=EN-US>5</SPAN>点，且你无法将其中任何一项减低到<SPAN lang=EN-US>0</SPAN>以下，也无法将属性减少到<SPAN 
-lang=EN-US>1</SPAN>以下。你每多使用<SPAN lang=EN-US>1</SPAN>点根源之力，就可以再增加<SPAN 
-lang=EN-US>1</SPAN>个成功数，最多多使用等同于你血统等级的根源之力。你可以反复对同一个目标使用此能力，但是在同一项上的效果不叠加，取较高的。此效果持续时间为<SPAN 
-lang=EN-US>1</SPAN>分钟<SPAN lang=EN-US>/</SPAN>成功数，对方若是成功的以耐力<SPAN 
-lang=EN-US>+</SPAN>决心对抗你的成功数，则改为持续<SPAN lang=EN-US>1</SPAN>轮。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">并且要使用此能力启动某个物品或功能，你必须在使用该物品或功能的技能上至少有<SPAN lang=EN-US>1</SPAN>级。例如，要发动汽车，你必须有驾驶<SPAN lang=EN-US>1</SPAN>，要入侵电脑，则必须有电脑<SPAN lang=EN-US>1</SPAN>。</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">战·你·娘·亲。</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN lang=EN-US>C+1000</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">能耗：<SPAN lang=EN-US>3</SPAN>点根源之力</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：整轮动作<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">射程：操控<SPAN lang=EN-US>*10</SPAN>米<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">仁者之怒：<SPAN 
-lang=EN-US>D</SPAN>＋<SPAN lang=EN-US>500</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">使用统一言语与一个攻击者对话，以严厉的斥责抹消他的攻击行为。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标：一个目标<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：无<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持续：见下<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：你进行操控<SPAN lang=EN-US>+</SPAN>胁迫检定，目标意志豁免，若目标失败并且你在目标的攻击范围内，目标必须攻击你，如果不在，目标会用最快的速度让你进入自己的攻击距离并攻击你，这是一个<SPAN 
+lang=EN-US>C</SPAN>级影响心灵的效果。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">同时，你可以随时认怂来解除本效果，否则将持续一个场景，认怂后本场景内你不得再次发动本能力。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">用一个反射动作，消耗<SPAN 
-lang=EN-US>1</SPAN>点根源之力，指定一个处于与你能够交流的空间距离之内的目标，以响应他的攻击动作的形式使用此能力，发出一句简短的斥责。这是一个操控＋说服判定，使他产生强烈的不安，以至于你的每<SPAN 
-lang=EN-US>1</SPAN>个成功数，就可以抵消他的<SPAN lang=EN-US>1</SPAN>点攻击<SPAN 
-lang=EN-US>DP</SPAN>。这是影响心灵的效果。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">未曾洒落的雨：<SPAN 
-lang=EN-US>D+500</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">使用统一言语，与一个人的“物质性存在”对话，说服他的本身“并没有”失去什么东西。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标可以随时认怂来解除本效果，如果他这么做，则其接下来的全检定受到<SPAN lang=EN-US>6DP</SPAN>士气减值。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">特殊：如果目标的娘亲处于同一场景下，则目标无法进行意志豁免，视为直接失败。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">B</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">级统一语言技能树：<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">精魂翩然起舞<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN lang=EN-US>B+2000</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：标准动作<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">能耗：<SPAN lang=EN-US>5</SPAN>点根源之力<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">以一个标准动作，消耗<SPAN 
-lang=EN-US>1</SPAN>点根源之力，投操控＋说服，你可以指定一个目标，每个成功数抵消<SPAN 
-lang=EN-US>1</SPAN>点由于他受伤或受物品或效果影响而产生的减值。如果你取得<SPAN 
-lang=EN-US>7</SPAN>个成功数以上，你可以用<SPAN 
-lang=EN-US>7</SPAN>个成功数抵消一项他失去的某种能力或特性，利如，你可以“说服”一个被夺取眼睛的人“其实你并没有瞎”，从则使他恢复视力。这种效果持续<SPAN 
-lang=EN-US>1</SPAN>个场景。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">强化掌控：<SPAN 
-lang=EN-US>C+1000</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">当你使用“强化”能力强化物品时可以额外使用<SPAN 
-lang=EN-US>1</SPAN>点根源之力。若你如此做，则你获得<SPAN lang=EN-US>1</SPAN>个额外成功，且可以将物品多强化<SPAN 
-lang=EN-US>3</SPAN>。强化盔甲造成的防御减值减半。你可以再使用更多的根源之力，每<SPAN 
-lang=EN-US>1</SPAN>点可以取得如下效果中的一个：<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">·被你强化的武器具有“魔法”特质<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">射程：以自己为中心<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标：无<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：模糊范围<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持续：一场景<SPAN lang=EN-US>/</SPAN>解消<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">·被你强化的武器具有某种材质特质<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：你激发某些物质和能量的自身强度，使其能更好地杀伤敌人。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：你进行一个感知<SPAN lang=EN-US>+</SPAN>操控检定，然后你选择一种伤害的类型或者方式，如：穿刺伤害，火焰伤害，枪械攻击，肉搏攻击，坠落伤害等。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">·被你强化的武器具有加骰提升<SPAN 
-lang=EN-US>1</SPAN>级，最大到<SPAN lang=EN-US>8</SPAN>加骰<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">选择后，在持续时间内你所处的范围内无论是作为伤害的发起方还是接受方，其只要造成伤害的方式或者类型符合你选择的方式或者类型。则其攻击检定获得相当于你检定成功数的<SPAN 
+lang=EN-US>DP</SPAN>环境加值。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">你可以多次发动本能力，在一个场景内控制多个类型或者方式，但是上限为你的说服技能的附加成功。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">·被你强化的武器具有“眩晕”特质（消耗<SPAN 
-lang=EN-US>2</SPAN>点根源之力）<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">·被你强化的武器具有“神兵”特质（消耗<SPAN 
-lang=EN-US>3</SPAN>点根源之力）<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">·被你强化的铠甲具有“防能量武器”特性<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">群体之语<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN lang=EN-US>B+2000</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：被动<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：你现在使用本技能树下的所有技能时，若目标为一个目标或者一个物品。则你可以每额外花费<SPAN 
+lang=EN-US>3</SPAN>点根源之力来多影响一个目标，最多可以额外影响相当于你传奇操控与传奇感知之和<SPAN 
+lang=EN-US>/</SPAN>个。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">未曾洒落的雨<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN lang=EN-US>B+2000</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：标准动作<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">能耗：<SPAN lang=EN-US>5</SPAN>点根源之力<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">·被你强化的铠甲额外抵消<SPAN 
-lang=EN-US>1</SPAN>点破甲（你不可以重复选择此效果）<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">射程：敏感范围<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标：一个目标<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：无<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持续：一场景<SPAN lang=EN-US>/</SPAN>解消<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">当你使用“强化”能力强化生物时，你可以额外使用<SPAN 
-lang=EN-US>1</SPAN>点根源之力。若你如此做，则被你影响的生物在所有身体身体属性相关的判定上再<SPAN 
-lang=EN-US>+1</SPAN>自动成功的增强加值；或者你也可以额外使用<SPAN 
-lang=EN-US>3</SPAN>点根源之力以使被你影响的生物在所有身体属性相关的判定上再<SPAN 
-lang=EN-US>+2</SPAN>自动成功的增强加值。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">当你使用“强化”能力在短时间内大幅强化生物的某项属性时，你可以额外使用根源之力以取得更好的效果，每<SPAN 
-lang=EN-US>1</SPAN>点额外使用的根源之力都可以使你的判定增加<SPAN lang=EN-US>1</SPAN>个成功并且使增强的上限<SPAN 
-lang=EN-US>+1</SPAN>，或者使时间延长<SPAN lang=EN-US>1</SPAN>轮。你最多为此额外使用<SPAN 
-lang=EN-US>5</SPAN>点根源之力。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">无论你使用哪一种强化方式，你都可以额外使用<SPAN 
-lang=EN-US>6</SPAN>点根源之力，以一个迅捷动作使用此能力。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：使用统一言语，与一个人的“物质性存在”对话，说服他的本身“并没有”失去什么东西。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果，你进行一个操控<SPAN lang=EN-US>+</SPAN>交涉（说服）检定，每有<SPAN lang=EN-US>1</SPAN>点成功数，则可以暂时压制目标<SPAN lang=EN-US>1</SPAN>点由于他受伤，不良点数或受物品，环境或效果影响而产生的减值。（如重武器带来的器械减值，恶劣环境带来的环境减值，盔甲减值等），由受术者选择。利如，你可以“说服”一个被夺取眼睛的人“其实你并没有瞎”，从则使他恢复视力，这相当于消除相当于目标毁灭后果点数的目眩点数。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">弱化掌控：<SPAN 
-lang=EN-US>C+1000</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">当你使用“弱化”能力弱化物品时可以额外使用<SPAN 
-lang=EN-US>1</SPAN>点根源之力。若你如此做，则你获得<SPAN 
-lang=EN-US>1</SPAN>个额外成功，且你可以将物品多弱化<SPAN lang=EN-US>3</SPAN>。若是盔甲的加值被减少到<SPAN 
-lang=EN-US>0</SPAN>，则其失去“防弹”与“防能量武器”的效果。若本身不具魔法效果、且无支线的物品硬度被你弱化到<SPAN 
-lang=EN-US>0</SPAN>，则你对该物品造成等同于成功数一半的伤害。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本能力只能立即对你身上已有效果产生作用，所以之后产生的效果你依然承受。当持续时间结束后，所有暂时压制的效果全部爆发。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">当你使用“弱化”能力弱化生物时，你可以使用更多的根源之力来取得更强的效果，每<SPAN 
-lang=EN-US>1</SPAN>点额外使用的根源之力都可以获得以下效果之一：<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本效果产生争议由<SPAN lang=EN-US>ST</SPAN>拥有最终解释权。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">三秒轮回</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN lang=EN-US>B+2000</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">能耗：<SPAN lang=EN-US>5</SPAN>点根源之力</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：标准动作</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">射程：操控<SPAN lang=EN-US>*20</SPAN>米</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标：一个目标</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：无</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持续：立即</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：你选择一个目标，该目标的所有状态（如能量池，生命值状态，身上的持续效果时间等）全部变为上轮其轮结束时的状态。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本能力每场景只能使用一次。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">这是一个时间效果。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">这一言灵有可能部分改变已发生的事实，例如原本死亡的战士现在其实并没有死。若你改变了一个已经影响任一轮回小队成员支线奖励或分数的事实，这一影响不会被辙消或重复。（例如，你的队伍杀死剧情人物得到<SPAN 
+lang=EN-US>C+1000</SPAN>，你以此法术改变该剧情人物的死亡使之生存，不会使你已得到的<SPAN 
+lang=EN-US>C+1000</SPAN>被收回，任何人再次杀死他也不会得到奖励。）</SPAN><SPAN 
 lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">·对方的所有身体属性相关的检定上<SPAN 
-lang=EN-US>-1DP</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"; LINE-HEIGHT: 150%; mso-font-kerning: 0pt'></SPAN><SPAN lang=EN-US></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"; LINE-HEIGHT: 150%; mso-font-kerning: 0pt'></SPAN><SPAN lang=EN-US></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">形体禁锢</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN lang=EN-US>B+2000</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">能耗：<SPAN lang=EN-US>5</SPAN>点根源之力</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：标准动作</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">射程：操控<SPAN lang=EN-US>*20</SPAN>米</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标：一个或多个个体<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：无</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持续：立即</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：你进行一个操控<SPAN lang=EN-US>+</SPAN>胁迫的检定，选择麻痹点数、纠缠点数、目眩点数的其中之一。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">若你指定一个目标，则目标进行意志豁免，若你成功，则对目标造成差值的不良状态点数，可以叠加。</SPAN><SPAN 
 lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">·对方的基础防御<SPAN 
-lang=EN-US>-1</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">·对方的攻击减少<SPAN 
-lang=EN-US>1</SPAN>个自动成功<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">·对方的速度减少<SPAN 
-lang=EN-US>5</SPAN>米，最多以此法减少对方速度一半<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">最多因此使用<SPAN 
-lang=EN-US>5</SPAN>点根源之力。此外，你削弱对方能力的上限提升到了<SPAN lang=EN-US>7</SPAN>。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">若你指定多个目标，则选择目标中意志豁免最低者进行豁免，若你成功，则将你胜出的不良状态点数平分到所有目标上，向下取整，可以叠加。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">无论你使用哪一种弱化方式，你都可以额外使用<SPAN 
-lang=EN-US>6</SPAN>点根源之力，以一个迅捷动作使用此能力。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本技能最大有效的成功数上限为你的操控<SPAN lang=EN-US>+</SPAN>胁迫等级。</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"; LINE-HEIGHT: 150%; mso-font-kerning: 0pt'></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"; LINE-HEIGHT: 150%; mso-font-kerning: 0pt'></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"; LINE-HEIGHT: 150%; mso-font-kerning: 0pt'>&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">“你已经死了。”</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN lang=EN-US>B+2000</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">能耗：<SPAN lang=EN-US>5</SPAN>点根源之力<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">精魂翩然起舞：<SPAN 
-lang=EN-US>C</SPAN>＋<SPAN lang=EN-US>1000</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">你激发某些物质和能量的自身强度，使其能更好地杀伤敌人。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">进行一个“感知＋操控”判定，以一个标准动作进行操控＋胁迫判定，强化一个场景之内一类伤害的强度。每个成功数，你可以为此类伤害的攻击<SPAN 
-lang=EN-US>DP</SPAN>＋<SPAN lang=EN-US>1/</SPAN>成功数，或者为定值伤害＋<SPAN 
-lang=EN-US>1</SPAN>伤害。你可以选择任何一种能量伤害或物理伤害，或人造武器、天生武器、枪械、投射武器等。但你只能选择一种。你对话的目标是场景内物象本源，因此只要进入<SPAN 
-lang=EN-US>2</SPAN>米<SPAN lang=EN-US>/</SPAN>操控的范围，此能力就生效。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">你增加的上限是你的胁迫技能等级。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">群体之语：<SPAN 
-lang=EN-US>B+2000</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">当你使用统一语言或需要用语言发动或维持的能力时，你可以使用更多的根源之力来影响更多的目标，每多使用<SPAN 
-lang=EN-US>2</SPAN>点根源之力就可以多影响<SPAN lang=EN-US>1</SPAN>个目标，最多<SPAN 
-lang=EN-US>5</SPAN>个，你在操控上每有一个附加成功就能再增加一个。<SPAN 
-lang=EN-US></SPAN></SPAN></P></div> 
-<div id="winchm_template_footer">Copyright &copy; 2014. All rights reserved.</div>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：移动动作</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">射程：触及</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标：一个目标<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：无<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持续：立即</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：你以单指戳他胸口，接着后退两步。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：本技能必须在你进行了一次攻击检定并成功命中后才能使用。使用后你进行操控<SPAN lang=EN-US>+</SPAN>掩饰（唬骗）<SPAN lang=EN-US>/</SPAN>交涉（说服）检定，目标强韧或者意志取高进行豁免，若你成功，目标的身体进入假死状态，立刻陷入昏迷，持续差值<SPAN 
+lang=EN-US>/</SPAN>轮。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本技能最大有效的成功数上限为你的操控<SPAN lang=EN-US>+</SPAN>表达<SPAN lang=EN-US>-</SPAN>演讲等级。</SPAN><SPAN lang=EN-US 
+style='FONT-FAMILY: "Calibri","sans-serif"; mso-bidi-font-family: "Times New Roman"; mso-ascii-theme-font: minor-latin; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-bidi-theme-font: minor-bidi'></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">这是一个<SPAN lang=EN-US>B</SPAN>级影响心灵效果。</SPAN><SPAN lang=EN-US></SPAN></P></div>	
+	<div id="winchm_template_footer">Copyright &copy; 2018. All rights 
+reserved. (To change the copyright info, just edit it in template.)</div>
+</div>
+
 </body>
 </html>

@@ -17,112 +17,170 @@ html,body {
 
 
 
-<meta http-equiv="X-UA-Compatible" content="IE=8">
+
 <style>
-html {
-	overflow-y:scroll;
-}
+html,div { margin: 0; padding: 0;}
 
 body {
-	background-image: url(template1/back.png);
-	background-repeat: repeat-x;
-	background-color: #FFFFFF;
 	padding: 0px;
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-bottom: 15px;
-	margin-right: 15px;
+	margin: 0px;
+	overflow: auto;
+	height: 100%;
 }
 
-#winchm_template_button {
-	position: fixed; 
-	float: right; 
-	right: 15px; 
-	top: 15px;
+#winchm_template_button{
+	float: right;
+	width: 93px;
+	top: 7px;
+	position: relative;
+	text-align: right;
+	right: 5px;
+	height: auto;
 }
 
-#winchm_template_navigation {
+#winchm_template_top{
 	padding: 0px;
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
+	margin: 0px;
+	border-bottom: 1px solid #9B9B9B;
+	background-color: #B1CEFE;
+}
 
-	font-size: 8pt;
+#winchm_template_navigation{
+	margin: 0px;
+	padding-top: 7px;
+	padding-left: 7px;
+	padding-bottom: 3px;
+	padding-right: 0px;
+	font-size: 8.5pt;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #4A4A4A;
-	text-align: left;
+	font-weight: normal;
+	color: #585858;
 }
 
-#winchm_template_title {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 22px;
-	font-weight: bold;
-	color: #005680;
-	text-align: left;
+#winchm_template_title{
+	margin: 0px;
+	padding-top: 4px;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	padding-right: 0px;
+	font-size: 18px; 
+	font-family: Verdana, Geneva, sans-serif;
+	color: #363636;
 }
 
 #winchm_template_content{
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
+	margin-top: 20px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
 	width: auto  !important;
 	width: 100%;
 }
 
-
-#winchm_template_footer {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	padding-top: 7px;
+#winchm_template_footer{
 	border-width: 1px;
-	border-color: #c0c0c0;
+	border-color: #B1CEFE;
 	border-top-style: solid;
-
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #575757;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
+	padding-top: 7px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 8.5pt;
+	color: #696969;
+	width: auto;
 	text-align: left;
 }
 
+
+#winchm_template_container{
+	margin: 0px;
+	padding: 0px;
+	position: static;
+	padding-bottom: 3px;
+	overflow: auto;
+	background-color: #FFFFFF;
+}
+
+
 @media print
 {
+#winchm_template_container{
+	position: static;	
+	margin: 0px;
+	padding: 5px;
+	
+	width: auto;
+	height: auto;
+	overflow: auto;
+}
 #winchm_template_button{
 visibility:hidden;
 }
 }
 
-#winchm_template_navigation a:link	{text-decoration: none;color: 004080}
-#winchm_template_navigation a:visited  {text-decoration: none; color: #004080}
-#winchm_template_navigation a:active {text-decoration: none; color: #004080}
-#winchm_template_navigation a:hover {text-decoration: none;color: #0000FF}
+#winchm_template_navigation A:link	{text-decoration: none; color:#004080}
+#winchm_template_navigation A:visited  {text-decoration: none; color: #004080}
+#winchm_template_navigation A:active {text-decoration: none; color: #004080 }
+#winchm_template_navigation A:hover {text-decoration: none;color: #0080FF}
 
-a:link	{text-decoration: underline; color:#0033cc}
-a:visited  {text-decoration: underline; color: #0033cc}
-a:active {text-decoration: underline; color: #0033cc }
-a:hover {text-decoration: underline;color: #ff0000;}
-
+A:link	{text-decoration: underline; color:#0033CC}
+A:visited  {text-decoration: underline; color: #0033CC}
+A:active {text-decoration: underline; color: #0033CC }
+A:hover {text-decoration: underline;color: #FF0000;}
 </style>
+<script type="text/javascript">
+function isMobile(){
+Agent = window.navigator.userAgent;
+if (Agent.indexOf("iPhone")>=1 || Agent.indexOf("iPad")>=1 || Agent.indexOf("iPod")>=1 || Agent.indexOf("Android")>=1){
+return true;
+}else{
+return false;	
+}
+
+}
+function d_onresize(){
+if (window.navigator.userAgent.indexOf("MSIE")>=1){
+document.getElementById('winchm_template_container').style.pixelWidth = document.body.offsetWidth - 3;
+document.getElementById('winchm_template_container').style.pixelHeight = document.body.offsetHeight - document.getElementById('winchm_template_top').offsetHeight - 4;
+}
+document.getElementById('winchm_template_container').style.top = document.getElementById('winchm_template_top').offsetHeight + 'px';
+}
+
+function d_onbeforeprint(){
+document.getElementById('winchm_template_container').style.width = 'auto';
+document.getElementById('winchm_template_container').style.height = 'auto';
+}
+
+function d_onafterprint(){
+d_onresize();
+}
+
+if(!isMobile()){
+
+window.onload = d_onresize;
+window.onresize = d_onresize;
+window.onbeforeprint = d_onbeforeprint;
+window.onafterprint = d_onafterprint;
+
+document.write("<style>\n");
+document.write("body {overflow: hidden;}\n");
+document.write("#winchm_template_container {position: absolute;overflow: auto;top : 0px;right: 0px;bottom: 0px;left: 0px;}\n");
+document.write("</style>\n");
+}
+
+</script>
 </head>
 
 <body><script language="JavaScript" type="text/JavaScript">
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(278);
+  parent.nav.tree.selectNode(377);
  }else{
   setTimeout("syn()",500);
 }
@@ -142,174 +200,125 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 }
 </script> 
 
-<div id="winchm_template_button"><A href="萌化.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template1/btn_prev_n.gif" border="0"></a><A href="烈日行者.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template1/btn_next_n.gif" border="0"></a></div>
-<div id="winchm_template_navigation">Help &gt; 
-<A href="资源部分.htm">资源部分</A> &gt; <A href="改造.htm">改造</A> &gt; <A href="$$unsavedpage12.htm">魔幻类改造</A> &gt; </div>
-<div id="winchm_template_title">蓬莱药</div>
-<div id="winchm_template_content">
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">介绍：<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">这个微小的错误，就是把蓬莱药，也就是不老不死之药交给辉夜。辉夜出于天真的好奇心找我要不老不老之药。我告诉她，不老不死之药就是名为蓬莱药的东西，并且做给她看。 
-<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">月之民有蓬莱药并不是不可思议的事。主要是送给人类，用来测试地上的权力者，和引发新的纷争。<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">「人类喝了这药，身体就不会朽坏，永远地活着。可是，任何人都绝对不能喝这个药。」<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">「为什么不能喝？」<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">「人类喝了药，就会永远受苦。不被允许死去，也不能成仙，再也不能像一个人类一样和其它人类生活。这个药是月之民为了测试地上的人类而存在的。」<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">「不过，要是月之民喝了这个药会怎样？」<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">「如果，没有污秽的月之民喝了这个药……」<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">「如果喝了？」<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">「变得不老不死的同时，由于被不老不死所诱惑，也会产生和人类同样的污秽，再也不能在月都继续生活吧。」<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">引自―儚月抄<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">没有自带带异能，只能加速伤势愈合，而非快速医疗。<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">功能一长生不死为核心、倾向于一设的蓬莱药改造。<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">分类：改造<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">价格：<SPAN 
-lang=EN-US>C+2000 <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">效果：<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">服食用此药后（强化此体质后），你获得获得不受寿命限制的不老不死之躯，但也因此产生了污秽。<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">从此你变成黑暗生物，可能会导致剧情人物厌恶，且受相关能力的克制。<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">你的自然恢复能力得到增强，约为原本的四倍。这并不是快速医疗，没有迅速恢复战斗能力的可能。<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">自然恢复强化后如下：<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">每进行一次<SPAN 
-lang=EN-US>8</SPAN>小时不进行任何行动的，而是用于睡眠之类的长休息，人物可以恢复<SPAN 
-lang=EN-US>4</SPAN>点意志值，并选择一项属性，恢复<SPAN 
-lang=EN-US>4</SPAN>点属性伤害。若那项属性上受到属性伤害低于<SPAN 
-lang=EN-US>4</SPAN>，则另选一项属性进行恢复，直到恢复总额为<SPAN lang=EN-US>4</SPAN>点。<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">每进行一次<SPAN 
-lang=EN-US>15</SPAN>分钟的短休息（不能做其他行动），可以将<SPAN lang=EN-US>4</SPAN>点状态为【<SPAN 
-lang=EN-US>B</SPAN>】的生命值恢复为【完好】。<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">每天（至少要包括一次长休息），可以将<SPAN 
-lang=EN-US>2</SPAN>点状态为【<SPAN lang=EN-US>L</SPAN>】的生命值恢复为【完好】<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">每两天（至少要包括两次长休息），可以将<SPAN 
-lang=EN-US>1</SPAN>点状态为【<SPAN lang=EN-US>A</SPAN>】的生命值恢复为【完好】<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">当你的肉身被杀死后，不会彻底的死亡。<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">而是以魂魄为核心进行再生，此恢复过程只能靠你本身自然恢复进行恢复，直到到生命全部恢复完好，便可生出新的肉体复活。<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">除了复活能力，任何能力、药物或者其他能力，无法加速这个过程。因为再生的过程中，你还未真正从死亡中脱离。<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">用魂魄再生肉体的过程中，你被视为一个灵体，拥有灵体具有的相关特性；但除了观察、移动外，不能在这个状态使用你的原有任何一种能力。<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">拥有【幽冥】特性以及其他伤害灵体的能力，可以彻底杀死你。面对这些能力时，以你残余意志值算作<SPAN 
-lang=EN-US>HP</SPAN>，用于计算是否能够存活，若你变成灵体时意志为<SPAN 
-lang=EN-US>0</SPAN>，则你无法启动复活能力。<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">处于这个状态时，你会拥有回避侦测能力，其支线等级和你身上最高强化的支线等级相同。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">如果你在肉身死亡的状态下返回主神空间，则你可以花费分数来重铸肉身。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P></div> 
-<div id="winchm_template_footer">Copyright &copy; 2014. All rights reserved.</div>
+
+<div id="winchm_template_top">
+	<div id="winchm_template_button"><A href="神之英孽.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="$$unsavedpage42.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
+	<div id="winchm_template_navigation">Help &gt; 
+<A href="资源部分.htm">资源部分</A> &gt; <A href="改造.htm">改造</A> &gt; <A href="$$unsavedpage40.htm">魔幻本质类改造</A> &gt; <A href="$$unsavedpage41.htm">黑暗生物</A> &gt; </div>
+	<div id="winchm_template_title">蓬莱药</div>
+</div>
+<div id="winchm_template_container">
+	<div id="winchm_template_content">
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>本质：魔幻本质</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>描述：</FONT> <FONT face=宋体>这个微小的错误，就是把蓬莱药，也就是不老不死之药交给辉夜。辉夜出于天真的好奇心找我要不老不老之药。我告诉她，不老不死之药就是名为蓬莱药的东西，并且做给她看。</FONT> 
+</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>月之民有蓬莱药并不是不可思议的事。主要是送给人类，用来测试地上的权力者，和引发新的纷争。</FONT> </SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>「人类喝了这药，身体就不会朽坏，永远地活着。可是，任何人都绝对不能喝这个药。」</FONT> </SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>「为什么不能喝？」</FONT> </SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>「人类喝了药，就会永远受苦。不被允许死去，也不能成仙，再也不能像一个人类一样和其它人类生活。这个药是月之民为了测试地上的人类而存在的。」</FONT> 
+</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>「不过，要是月之民喝了这个药会怎样？」</FONT> </SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>「如果，没有污秽的月之民喝了这个药</FONT>……」 </SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>「如果喝了？」</FONT> </SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>「变得不老不死的同时，由于被不老不死所诱惑，也会产生和人类同样的污秽，再也不能在月都继续生活吧。」</FONT> </SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>引自</FONT>―儚月抄 </SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>没有自带带异能，只能加速伤势愈合，而非快速医疗。</FONT> </SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>功能一长生不死为核心、倾向于一设的蓬莱药改造。</FONT> </SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>价格：</FONT>C+1000 </SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特性：新生</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>（双特性）</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>、魂灵（四特性</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>）、黑暗生物（负特性）</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特殊：由于没有属性和技能树，额外获得三个特性</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>描述：服食用此药后（强化此体质后），你获得获得不受寿命限制的不老不死之躯，但也因此产生了污秽。</FONT> </SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>新生：</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>你</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>不会因为伤势而陷入昏迷，你的恢复能力得到增强，具有</FONT>1点再生。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>魂灵：当你的肉身被杀死后，不会彻底的死亡，而是以魂魄为核心进行再生，你必须如同恢复肢体一般，再生出等同于你体型的肉体才可以复活，在你复活期间，仅有新生所带来的再生</FONT>1可以生效，除了复活能力，任何能力、药物或者其他能力，无法加速这个过程。因为再生的过程中，你还未真正从死亡中脱离。 
+</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>用魂魄再生肉体的过程中，你被视为一个灵体，拥有灵体具有的相关特性，但除了观察、移动外，不能在这个状态使用你的原有任何一种能力，你的移动速度改为意志值</FONT>*1米 
+</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>拥有【幽冥】特性以及其他伤害灵体的能力，可以彻底杀死你。面对这些能力时，以你残余意志值算作</FONT>HP，用于计算是否能够存活，若你变成灵体时意志为0，则你无法启动复活能力。 
+</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>如果你在肉身死亡的状态下返回主神空间，则你可以花费分数来重铸肉身。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P></div>	
+	<div id="winchm_template_footer">Copyright &copy; 2018. All rights 
+reserved. (To change the copyright info, just edit it in template.)</div>
+</div>
+
 </body>
 </html>

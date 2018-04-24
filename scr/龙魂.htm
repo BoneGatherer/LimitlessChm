@@ -17,112 +17,170 @@ html,body {
 
 
 
-<meta http-equiv="X-UA-Compatible" content="IE=8">
+
 <style>
-html {
-	overflow-y:scroll;
-}
+html,div { margin: 0; padding: 0;}
 
 body {
-	background-image: url(template1/back.png);
-	background-repeat: repeat-x;
-	background-color: #FFFFFF;
 	padding: 0px;
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-bottom: 15px;
-	margin-right: 15px;
+	margin: 0px;
+	overflow: auto;
+	height: 100%;
 }
 
-#winchm_template_button {
-	position: fixed; 
-	float: right; 
-	right: 15px; 
-	top: 15px;
+#winchm_template_button{
+	float: right;
+	width: 93px;
+	top: 7px;
+	position: relative;
+	text-align: right;
+	right: 5px;
+	height: auto;
 }
 
-#winchm_template_navigation {
+#winchm_template_top{
 	padding: 0px;
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
+	margin: 0px;
+	border-bottom: 1px solid #9B9B9B;
+	background-color: #B1CEFE;
+}
 
-	font-size: 8pt;
+#winchm_template_navigation{
+	margin: 0px;
+	padding-top: 7px;
+	padding-left: 7px;
+	padding-bottom: 3px;
+	padding-right: 0px;
+	font-size: 8.5pt;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #4A4A4A;
-	text-align: left;
+	font-weight: normal;
+	color: #585858;
 }
 
-#winchm_template_title {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 22px;
-	font-weight: bold;
-	color: #005680;
-	text-align: left;
+#winchm_template_title{
+	margin: 0px;
+	padding-top: 4px;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	padding-right: 0px;
+	font-size: 18px; 
+	font-family: Verdana, Geneva, sans-serif;
+	color: #363636;
 }
 
 #winchm_template_content{
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
+	margin-top: 20px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
 	width: auto  !important;
 	width: 100%;
 }
 
-
-#winchm_template_footer {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	padding-top: 7px;
+#winchm_template_footer{
 	border-width: 1px;
-	border-color: #c0c0c0;
+	border-color: #B1CEFE;
 	border-top-style: solid;
-
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #575757;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
+	padding-top: 7px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 8.5pt;
+	color: #696969;
+	width: auto;
 	text-align: left;
 }
 
+
+#winchm_template_container{
+	margin: 0px;
+	padding: 0px;
+	position: static;
+	padding-bottom: 3px;
+	overflow: auto;
+	background-color: #FFFFFF;
+}
+
+
 @media print
 {
+#winchm_template_container{
+	position: static;	
+	margin: 0px;
+	padding: 5px;
+	
+	width: auto;
+	height: auto;
+	overflow: auto;
+}
 #winchm_template_button{
 visibility:hidden;
 }
 }
 
-#winchm_template_navigation a:link	{text-decoration: none;color: 004080}
-#winchm_template_navigation a:visited  {text-decoration: none; color: #004080}
-#winchm_template_navigation a:active {text-decoration: none; color: #004080}
-#winchm_template_navigation a:hover {text-decoration: none;color: #0000FF}
+#winchm_template_navigation A:link	{text-decoration: none; color:#004080}
+#winchm_template_navigation A:visited  {text-decoration: none; color: #004080}
+#winchm_template_navigation A:active {text-decoration: none; color: #004080 }
+#winchm_template_navigation A:hover {text-decoration: none;color: #0080FF}
 
-a:link	{text-decoration: underline; color:#0033cc}
-a:visited  {text-decoration: underline; color: #0033cc}
-a:active {text-decoration: underline; color: #0033cc }
-a:hover {text-decoration: underline;color: #ff0000;}
-
+A:link	{text-decoration: underline; color:#0033CC}
+A:visited  {text-decoration: underline; color: #0033CC}
+A:active {text-decoration: underline; color: #0033CC }
+A:hover {text-decoration: underline;color: #FF0000;}
 </style>
+<script type="text/javascript">
+function isMobile(){
+Agent = window.navigator.userAgent;
+if (Agent.indexOf("iPhone")>=1 || Agent.indexOf("iPad")>=1 || Agent.indexOf("iPod")>=1 || Agent.indexOf("Android")>=1){
+return true;
+}else{
+return false;	
+}
+
+}
+function d_onresize(){
+if (window.navigator.userAgent.indexOf("MSIE")>=1){
+document.getElementById('winchm_template_container').style.pixelWidth = document.body.offsetWidth - 3;
+document.getElementById('winchm_template_container').style.pixelHeight = document.body.offsetHeight - document.getElementById('winchm_template_top').offsetHeight - 4;
+}
+document.getElementById('winchm_template_container').style.top = document.getElementById('winchm_template_top').offsetHeight + 'px';
+}
+
+function d_onbeforeprint(){
+document.getElementById('winchm_template_container').style.width = 'auto';
+document.getElementById('winchm_template_container').style.height = 'auto';
+}
+
+function d_onafterprint(){
+d_onresize();
+}
+
+if(!isMobile()){
+
+window.onload = d_onresize;
+window.onresize = d_onresize;
+window.onbeforeprint = d_onbeforeprint;
+window.onafterprint = d_onafterprint;
+
+document.write("<style>\n");
+document.write("body {overflow: hidden;}\n");
+document.write("#winchm_template_container {position: absolute;overflow: auto;top : 0px;right: 0px;bottom: 0px;left: 0px;}\n");
+document.write("</style>\n");
+}
+
+</script>
 </head>
 
 <body><script language="JavaScript" type="text/JavaScript">
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(174);
+  parent.nav.tree.selectNode(125);
  }else{
   setTimeout("syn()",500);
 }
@@ -142,241 +200,499 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 }
 </script> 
 
-<div id="winchm_template_button"><A href="源能武者.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template1/btn_prev_n.gif" border="0"></a><A href="观察者效应综合症_1.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template1/btn_next_n.gif" border="0"></a></div>
-<div id="winchm_template_navigation">Help &gt; 
-<A href="资源部分.htm">资源部分</A> &gt; <A href="血统.htm">血统</A> &gt; <A href="$$unsavedpage6.htm">自带能量池血统</A> &gt; </div>
-<div id="winchm_template_title">龙魂</div>
-<div id="winchm_template_content"><P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">龙魂血统<SPAN 
+
+<div id="winchm_template_top">
+	<div id="winchm_template_button"><A href="New_Item71.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="$$unsavedpage15.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
+	<div id="winchm_template_navigation">Help &gt; 
+<A href="资源部分.htm">资源部分</A> &gt; <A href="血统.htm">血统</A> &gt; <A href="$$unsavedpage11.htm">非人类</A> &gt; <A href="$$unsavedpage12.htm">魔幻本质</A> &gt; <A href="$$unsavedpage14.htm">神话</A> &gt; </div>
+	<div id="winchm_template_title">龙魂</div>
+</div>
+<div id="winchm_template_container">
+	<div id="winchm_template_content"><P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">龙魂血统<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"><SPAN 
 lang=EN-US> 
+本质：魔幻本质 
 <BR></SPAN>龙，鳞虫之长，能幽能明，能细能巨，能短能长，春分而登天，秋分而潜渊。其角似鹿丶头似驼丶眼似兔丶项似蛇丶腹似蜃丶鳞似鱼丶爪似鹰丶掌似虎丶耳似牛，有九似之像。龙的传说蕴涵着中国人所重视的天人合一的宇宙观；仁者爱人互主体观的诉求；阴阳交合的发展观；兼容并包的多元文化观。<SPAN 
 lang=EN-US> 
 <BR></SPAN>所谓的龙魂血统，本质上并非血脉的力量，而是意志丶精神丶文化等多元意识层面的力量。龙丶汉文化从来不以血统区分，只要真心承继着龙的精神，胡人也会同化为汉；相反丢却龙的精神，纵使身披汉皮亦不过是番外蛮夷。<SPAN 
-lang=EN-US> <BR><BR>D</SPAN>级 蟠虺之魂<SPAN lang=EN-US> <BR></SPAN>属性：决心<SPAN 
+lang=EN-US> <BR><BR>D</SPAN>级：蟠虺之魂<SPAN lang=EN-US> <BR></SPAN>属性：决心<SPAN 
 lang=EN-US>+2 </SPAN>风度<SPAN lang=EN-US>+2</SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">能量池：龙气<SPAN 
-lang=EN-US><BR></SPAN>特性：龙之精神（负特性）丶龙魂加护丶鳞皮化龙（双特性），龙气充盈（双特性）<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">能量池：龙气<SPAN 
+lang=EN-US><BR></SPAN>技能树：开启<SPAN lang=EN-US>D</SPAN>级龙魂技能树<SPAN 
+lang=EN-US><BR></SPAN>特性：龙之精神（负特性）丶龙魂加护丶鳞皮化龙，龙气充盈<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">特殊：由于没有技能树，额外获得<SPAN 
-lang=EN-US>1</SPAN>个特性。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">特殊：无<SPAN 
 lang=EN-US><BR></SPAN>龙之精神：你怀有着仁义礼信的品德，使你的魂魄中滋养出一缕龙魂，你在生物类型上同时视为人和龙，取较不利的一方。你的角色的道德值必须为<SPAN 
 lang=EN-US>8</SPAN>以上。当你道德水平不符合本血统要求时，龙魂会进入沉睡，而你则会失去所有本血统来源的能力，直至你的道德水平回恢至符合本血统要求。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">龙魂寄体：在龙魂的加护下，非神兵难以伤你身躯。你获得<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">龙魂寄体：在龙魂的加护下，非神兵难以伤你身躯。你获得<SPAN 
 lang=EN-US>1DR/</SPAN>魔法的伤害减免。<SPAN lang=EN-US> 
-<BR></SPAN>鳞皮化龙：在龙魂寄宿於你的同时，也令你的身体慢慢往龙体的方向进化。你获得等同龙气能量池关键属性较低一方之附加成功数量的天生防御。 
-<SPAN lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">龙气充盈：你的龙气能量池获得<SPAN 
-lang=EN-US>D</SPAN>级能量强化的效果。<SPAN lang=EN-US><BR><BR>C</SPAN>级 蛟龙之魂<SPAN 
+<BR></SPAN>鳞皮化龙：在龙魂寄宿於你的同时，也令你的身体慢慢往龙体的方向进化。你获得传奇感知与传奇决心取高的天生防御。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">属性：决心<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">龙气充盈：你的龙气能量池上限增加<SPAN 
+lang=EN-US> 5</SPAN>点。<SPAN lang=EN-US><BR 
+style="mso-special-character: line-break"><BR 
+style="mso-special-character: line-break"></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"><BR>C</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">级 
+蛟龙之魂<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">属性：决心<SPAN 
 lang=EN-US>+3 </SPAN>风度<SPAN lang=EN-US>+3</SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">能量池：龙气<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">特性：鳞皮化龙（提升）——龙鳞铁筋，龙气充盈<SPAN 
+lang=EN-US><BR></SPAN>技能树：开启<SPAN lang=EN-US>C</SPAN>级龙魂技能树<SPAN 
+lang=EN-US><BR></SPAN>特殊：无<SPAN 
+lang=EN-US><BR></SPAN>龙鳞铁筋：寄宿於你体内的龙魂力量进一步渗透到你的筋骨之中，你获得传奇感知与传奇决心之和的天生防御。并且你“龙魂寄体”的<SPAN 
+lang=EN-US>DR/</SPAN>魔法变为<SPAN lang=EN-US>DR/</SPAN>神兵。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">特性：鳞皮化龙（提升）——龙鳞铁筋，龙气充盈（双特性）<SPAN 
-lang=EN-US><BR></SPAN>特殊：由于没有技能树，额外获得<SPAN lang=EN-US>1</SPAN>个特性。<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">龙气充盈：你的龙气能量池上限再增加<SPAN 
+lang=EN-US>10</SPAN>点。<SPAN lang=EN-US><BR 
+style="mso-special-character: line-break"><BR 
+style="mso-special-character: line-break"></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"><BR>B</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">级 
+蜃龙之魂<SPAN lang=EN-US> <BR></SPAN>属性：耐力<SPAN lang=EN-US>+2</SPAN>，感知<SPAN 
+lang=EN-US>+1</SPAN>，决心<SPAN lang=EN-US>+4 </SPAN>风度<SPAN 
+lang=EN-US>+4</SPAN>，沉着<SPAN lang=EN-US>+1</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">技能树：开启<SPAN 
+lang=EN-US>B</SPAN>级龙魂技能树<SPAN lang=EN-US><BR></SPAN>特性：神恩如海，神威如狱，龙气充盈<SPAN 
+lang=EN-US><BR></SPAN>特殊：无<SPAN 
+lang=EN-US><BR></SPAN>神恩如海：寄宿於你体内的龙魂已经凝虚成实，能够展现出龙的威仪。骄傲的龙魂自然替你驱除入侵的外邪，使你免疫<SPAN 
+lang=EN-US>B</SPAN>级的疾病，毒素及附身效果。<SPAN 
+lang=EN-US><BR></SPAN>神威如狱：寄宿於你体内的龙魂伟力不仅能保护自身不受外邪影响，更能外放於体外干扰外界和他人。每当你进行近战攻击时，若你成功造成伤害，则以你为中心，半径<SPAN 
+lang=EN-US>5</SPAN>米内的所有敌方单位获得等同于伤害值的恐惧点数（包括受到伤害的目标），意志豁免，可以叠加。同时，当你对一名拥有恐惧点数的单位进行攻击时，你额外获得等同其恐惧点数的内在加值。<SPAN 
+lang=EN-US> <BR></SPAN>龙气充盈：你的龙气能量池上限再增加<SPAN lang=EN-US>20</SPAN>点。<SPAN 
+lang=EN-US><BR style="mso-special-character: line-break"><BR 
+style="mso-special-character: line-break"></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"><BR>A</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">级 
+应龙之魂<SPAN lang=EN-US> <BR></SPAN>属性：耐力<SPAN lang=EN-US>+3</SPAN>，感知<SPAN 
+lang=EN-US>+3</SPAN>，决心<SPAN lang=EN-US>+5 </SPAN>风度<SPAN 
+lang=EN-US>+5</SPAN>，沉着<SPAN lang=EN-US>+3</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">技能树：无<SPAN 
+lang=EN-US><BR></SPAN>特性：龙魂交融，龙魂威仪，龙气充盈<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">龙鳞铁筋：寄宿於你体内的龙魂力量进一步渗透到你的筋骨之中，你获得等同你龙气能量池关键属性较高一方之附加成功数量的天生防御。<SPAN 
-lang=EN-US><BR></SPAN>龙气充盈：你的龙气能量池获得<SPAN lang=EN-US>C</SPAN>级能量强化的效果。<SPAN 
-lang=EN-US><BR><BR>B</SPAN>级 蜃龙之魂<SPAN lang=EN-US> <BR></SPAN>属性：耐力<SPAN 
-lang=EN-US>+2</SPAN>，感知<SPAN lang=EN-US>+1</SPAN>，决心<SPAN lang=EN-US>+4 
-</SPAN>风度<SPAN lang=EN-US>+4</SPAN>，沉着<SPAN 
-lang=EN-US>+1</SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">能量池：龙气<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">特性：神恩如海，神威如狱<SPAN 
-lang=EN-US>(</SPAN>双特性<SPAN lang=EN-US>) <BR></SPAN>特殊：由于没有技能树，额外获得<SPAN 
-lang=EN-US>3</SPAN>点属性。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">神恩如海：寄宿於你体内的龙魂已经凝虚成实，能够展现出龙的威仪。骄傲的龙魂自然替你驱除入侵的外邪，使你免疫疾病，毒素及附身效果。<SPAN 
-lang=EN-US><BR></SPAN>神威如狱：寄宿於你体内的龙魂伟力不仅能保护自身不受外邪影响，更能外放於体外干扰外界和他人。每当你进行近战攻击时，若你成功造成伤害，若以你为中心，半径<SPAN 
-lang=EN-US>5</SPAN>米内的所有敌方单位获得等同于伤害值的恐惧点数（包括受到伤害的目标），意志豁免。同时，当你对一名持有恐惧点数的单位进行攻击时，你额外获得等同其恐惧点数的表现加值。<SPAN 
-lang=EN-US> <BR><BR>A</SPAN>级 应龙之魂<SPAN lang=EN-US> <BR></SPAN>属性：耐力<SPAN 
-lang=EN-US>+3</SPAN>，感知<SPAN lang=EN-US>+3</SPAN>，决心<SPAN lang=EN-US>+5 
-</SPAN>风度<SPAN lang=EN-US>+5</SPAN>，沉着<SPAN 
-lang=EN-US>+3</SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">能量池：龙气<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">特性：龙魂交融（四特性）<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">特殊：由于没有技能树，额外获得<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">特殊：由于没有技能树，额外获得<SPAN 
 lang=EN-US>4</SPAN>点属性<SPAN 
 lang=EN-US><BR></SPAN>龙魂交融：寄宿於你体内的龙魂与你交融为一体，此刻你即龙魂，龙魂即你。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">你的肉体获得【防弹】【防能量武器】特性，并且获得全伤害吸收<SPAN 
-lang=EN-US>5</SPAN>点，以及<SPAN lang=EN-US>6DR/-</SPAN>的伤害减免和<SPAN 
-lang=EN-US>6</SPAN>点全能量抗力。此外你还能抵消任意共<SPAN 
-lang=EN-US>9</SPAN>点的破甲丶破魔或威猛。同时你的所有近战攻击获得总计<SPAN 
-lang=EN-US>12</SPAN>点的破甲，破魔与威猛，自由分配。<SPAN lang=EN-US><BR 
-style="mso-special-character: line-break"><BR 
-style="mso-special-character: line-break"></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><BR></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">龙魂技能树：<SPAN 
-lang=EN-US> <BR><BR><BR>D</SPAN>级： <SPAN lang=EN-US><BR><BR></SPAN>龙血化生<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">你的肉体获得【防弹】【防能量武器】特性，并且获得<SPAN 
+lang=EN-US>3</SPAN>点全伤害吸收。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">龙魂威仪：你学会释放龙魂的威仪，使附近感受到的这种龙威的生物惶惶不已，由於你并非真正的龙，散发的龙威也太过广，所以必须对每一名生物慢慢积累。每轮一次，所有敏感范围内有你的敌方目标获得<SPAN 
+lang=EN-US>1</SPAN>点不可避免的恐惧点数，可叠加。该恐惧点数不会自然消除也不会与其他恐惧点数叠加，只能通过超自然的能力来减少。若没有减少恐惧点数的能力，则这些恐惧点数可以持续一场恐怖片。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">价格：<SPAN 
-lang=EN-US>D+500<BR></SPAN>描述：你学会把龙魂的力量浸入血脉之中，从而获得龙族的恢复力和直觉。<SPAN lang=EN-US> 
-<BR></SPAN>效果：你获得<SPAN lang=EN-US>1</SPAN>点快速治疗。 <SPAN 
-lang=EN-US><BR></SPAN>进化：当你额外支付<SPAN lang=EN-US>DD+500</SPAN>，快速治疗提升至<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">龙气充盈：你的龙气能量池上限再增加<SPAN 
+lang=EN-US>40</SPAN>点。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><BR>&nbsp;</P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left>&nbsp;</P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left>D</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">级龙魂技能树：<SPAN 
+lang=EN-US> <BR><BR></SPAN>龙血化生<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN 
+lang=EN-US>D+500</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：被动<SPAN 
+lang=EN-US><BR></SPAN>描述：你学会把龙魂的力量浸入血脉之中，从而获得龙族的恢复力和直觉。<SPAN lang=EN-US> 
+<BR></SPAN>效果：你获得<SPAN lang=EN-US>1</SPAN>点快速治疗。<SPAN lang=EN-US> 
+<BR></SPAN>进化：当你额外支付<SPAN lang=EN-US>DD+500</SPAN>，快速治疗提升至<SPAN 
 lang=EN-US>2</SPAN>点，意志检定获得等同血统等级<SPAN 
 lang=EN-US>/1DP</SPAN>的洞察加值。而在此基础上再额外支付<SPAN 
 lang=EN-US>CC+1000</SPAN>，快速治疗提升至<SPAN lang=EN-US>4</SPAN>点，三项豁免检定获得等同血统等级<SPAN 
-lang=EN-US>/1DP</SPAN>的洞察加值。<SPAN lang=EN-US> <BR><BR></SPAN>龙战於野<SPAN 
+lang=EN-US>/1DP</SPAN>的洞察加值。<SPAN lang=EN-US> <BR><BR></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">龙战於野<SPAN 
 lang=EN-US> <BR></SPAN>价格：<SPAN lang=EN-US>D+500</SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">描述：你吸收了来自龙魂的骄傲和战意，这使你在战场上显得格外威猛，震慑敌人的同时使你越战越勇。<SPAN 
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：被动<SPAN 
+lang=EN-US><BR></SPAN>描述：你吸收了来自龙魂的骄傲和战意，这使你在战场上显得格外威猛，震慑敌人的同时使你越战越勇。<SPAN 
+lang=EN-US> <BR></SPAN>效果：当你进行对抗性检定时，你可以立即获得相当于传奇沉着的亢奋点数，并在此检定中获得等量的<SPAN 
+lang=EN-US>DP</SPAN>表现加值。每当本场景内一名敌人被击倒，击败，击杀，你能抵消身上<SPAN 
+lang=EN-US>1</SPAN>点亢奋点数带来的减值。战斗结束後，清空这些亢奋点数。 <SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">云龙隐现<SPAN 
+lang=EN-US> <BR></SPAN>价格：<SPAN lang=EN-US>D+500<BR></SPAN>动作：被动<SPAN 
+lang=EN-US><BR></SPAN>描述：你学会利用身体自然散逸的出云气，能把它们形成一团云气护身，令他人观测你的位置如雾里看花般偏移。<SPAN 
+lang=EN-US> <BR></SPAN>效果：只要你的龙气能量池不为空，你获得等同传奇决心，传奇风度与传奇感知之和的偏斜防御。<SPAN 
+lang=EN-US></SPAN></SPAN></P><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><BR></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">龙气加身<SPAN 
+lang=EN-US><BR></SPAN>价格：<SPAN lang=EN-US>D+500</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：被动<SPAN 
+lang=EN-US><BR></SPAN>描述：龙魂附身使你共享了龙族的气运，这种气运的祝福保佑着你纵横战场而无伤。。<SPAN lang=EN-US> 
+<BR></SPAN>效果：只要你的龙气池不为空，你传奇感知带来的防御附加成功不会被消耗掉。<SPAN lang=EN-US><BR 
+style="mso-special-character: line-break"><BR 
+style="mso-special-character: line-break"></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"><BR>C</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">级龙魂技能树：<SPAN 
+lang=EN-US> <BR style="mso-special-character: line-break"><BR 
+style="mso-special-character: line-break"></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">潜龙在渊 
+<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN 
+lang=EN-US>C+1000</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：自由动作<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">能耗：<SPAN 
+lang=EN-US>1</SPAN>点龙气<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">射程：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标：自身<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持续：<SPAN 
+lang=EN-US>1</SPAN>轮<SPAN 
+lang=EN-US><BR></SPAN>描述：潜龙在渊，蓄势待发，你学会如潜龙一般以逸代劳，静待时机。<SPAN lang=EN-US> 
+<BR></SPAN>效果：你获得相当于你传奇决心与传奇感知之和的临时生命值，持续至你下一轮结束。当你进行攻击时，你能把你上轮通过本能力获得的临时生命值等量化为等量的附加成功。本能力获得的临时生命不可叠加，但是同一场景之内可以重复获得。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">龙魂战驹<SPAN 
+lang=EN-US> <BR></SPAN>价格：<SPAN lang=EN-US>C+1000</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：移动动作<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">消耗：<SPAN 
+lang=EN-US>1</SPAN>点龙气<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">射程：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标：自身<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持续：一场景<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：你通过能量作为媒介，在你身下塑形成一匹能量龙驹，并由你体内的龙魂把其形体固化，甚至代你控制这匹能量龙驹载你穿梭战场。 
+<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">效果：你召唤并骑上一匹由你龙魂所化的龙驹。龙驹无法攻击，只能使你符合骑乘生物载具为条件的能力，你们视为同一单位。龙驹的体积为你的体积<SPAN 
+lang=EN-US>+1</SPAN>，其会获得相当于你基础移动速度的飞行速度，机动性完美。龙魂战驹并不视为一个额外的单位。非你以外的任何目标无法骑乘龙驹。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">进化：当你额外支付<SPAN 
+lang=EN-US>C+1000</SPAN>，<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">当你骑乘龙魂战驹时，你可以以一个反射动作花费<SPAN 
+lang=EN-US>2</SPAN>点龙气，立即利用龙魂战驹移动不超过其体积<SPAN lang=EN-US>/</SPAN>米的距离。</SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">B</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">级龙魂技能树：<SPAN 
+lang=EN-US> <BR><BR></SPAN>破妄龙瞳<SPAN lang=EN-US></SPAN></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN 
+lang=EN-US>B+2000</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：迅捷动作<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">能耗：<SPAN 
+lang=EN-US>5</SPAN>点龙气<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">射程：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标：自身<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持续：决心<SPAN 
+lang=EN-US>/</SPAN>轮<SPAN 
+lang=EN-US><BR></SPAN>描述：通过血统能量的勾连，你能令龙魂之眼与你的双眼同位，使你能看穿虚妄与因果。<SPAN lang=EN-US> 
+<BR></SPAN>效果：你获得<SPAN lang=EN-US>A</SPAN>级特异本质侦察等级，并且无视幻象。<SPAN lang=EN-US> 
+<BR><BR></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">矫若惊龙 <SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN 
+lang=EN-US>B+2000</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：迅捷动作<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">能耗：<SPAN 
+lang=EN-US>5</SPAN>点龙气<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">射程：见下<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标：所有目标<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持续：<SPAN 
+lang=EN-US>1/</SPAN>轮<SPAN 
+lang=EN-US><BR></SPAN>描述：你学会如龙一般矫捷的移动，而且还能在移动时利用散逸的云气带出层层真假难辨的残象，使人难以捉摸。<SPAN 
+lang=EN-US> <BR></SPAN>效果：当你以一个移动动作进行移动之后才可以发动本能力，你进行一次风度<SPAN 
+lang=EN-US>+</SPAN>运动（逃脱）的检定，所有可以感知到你的敌方目标，进行一个感知<SPAN 
+lang=EN-US>+</SPAN>调查（侦查）对抗，若其失败，则其下一轮的攻击检定受到差值的洞察减值，并且若其选择攻击你，则你的防御再获得等额的闪避加值，这是一个幻觉效果。</SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">龙入云深 
+<SPAN lang=EN-US><BR></SPAN>价格：<SPAN 
+lang=EN-US>B+2000</SPAN></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">动作：整轮动作<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">能耗：<SPAN 
+lang=EN-US>5</SPAN>点龙气<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">射程：以自己为中心<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">目标：见下<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：风度值<SPAN 
+lang=EN-US>*10</SPAN>米<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持续：决心值<SPAN 
+lang=EN-US>/</SPAN>轮<SPAN 
+lang=EN-US><BR></SPAN>描述：你操控云气变幻的手段已和真龙无异，你能随心地使用云气架构一个幻象小方天地，遮蔽他人的感观，限制他人的行动力。<SPAN 
 lang=EN-US> 
-<BR></SPAN>效果：你能在对抗检定中自主获得不多於沉着上附加成功的亢奋点数，并在此检定中获得等量的表现加值。每当你击倒或击杀一名敌人，你能抵消身上<SPAN 
-lang=EN-US>1</SPAN>点亢奋点数带来的减值。战斗结束後，清空这些亢奋点数。<SPAN lang=EN-US> 
-<BR><BR></SPAN>龙魂战驹<SPAN lang=EN-US> <BR></SPAN>价格：<SPAN 
-lang=EN-US>D+1000</SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">描述：你通过能量作为媒介，在你身下塑形成一匹能量龙驹，并由你体内的龙魂把其形体固化，甚至代你控制这匹能量龙驹载你穿梭战场。<SPAN 
-lang=EN-US> </SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">效果：花费一个移动动作及<SPAN 
-lang=EN-US>1</SPAN>点龙气，你能召唤并骑上一匹由你龙魂所化的龙驹，持续一场景。龙驹无法攻击，只能使你符合骑乘生物载具为条件的能力，你们视为同一单位。龙驹的体积为你的体积<SPAN 
-lang=EN-US>+1</SPAN>，其会使你的陆行速度翻倍。龙魂战驹并不视为一个额外的单位。<SPAN 
+<BR></SPAN>效果：你生成一片云雾，在云雾内你选择不超过你传奇决心的目标。该目标被云雾笼罩，对其他目标失去视野线，对目标发动的远程攻击，攻击者可以视为隐形。若目标拥有<SPAN 
+lang=EN-US>A</SPAN>级以上的侦查手段则可以无视本能力。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">进化：当你额外支付<SPAN 
-lang=EN-US>C+1000</SPAN>，你能花费<SPAN 
-lang=EN-US>2</SPAN>点龙气能量池以反射动作利用龙魂战驹移动不超过其体积<SPAN lang=EN-US>/</SPAN>米的距离。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><BR><BR><BR>C</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">级：<SPAN 
-lang=EN-US> <BR><BR></SPAN>潜龙在渊 <SPAN lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">价格：<SPAN 
-lang=EN-US>C+1000<BR></SPAN>描述：潜龙在渊，蓄势待发，你学会如潜龙一般以逸代劳，静待时机。<SPAN lang=EN-US> 
-<BR></SPAN>效果：你能花费一个自由动作以及<SPAN 
-lang=EN-US>1</SPAN>点龙气获得血统等级的临时生命值，持续至你下一轮结束。当你进行攻击时，你能把你上轮通过本能力获得的临时生命值等量化为等量的附加成功。本能力获得的临时生命不可叠加，但是同一场景之内可以重复获得。<SPAN 
-lang=EN-US><BR><BR></SPAN>云龙隐现<SPAN lang=EN-US> <BR></SPAN>价格：<SPAN 
-lang=EN-US>C+1000<BR></SPAN>描述：你学会利用身体自然散逸的出云气，能把它们形成一团云气护身，令他人观测你的位置如雾里看花般偏移。<SPAN 
-lang=EN-US> <BR></SPAN>效果：只要你的龙气能量池不为空，你获得等同血统等级<SPAN 
-lang=EN-US>*2+</SPAN>决心<SPAN lang=EN-US>/</SPAN>风度附加成功数的偏斜防御。<SPAN lang=EN-US> 
-<BR><BR></SPAN>龙气加身<SPAN lang=EN-US><BR></SPAN>价格：<SPAN 
-lang=EN-US>C+1000<BR></SPAN>描述：龙魂附身使你共享了龙族的气运，这种气运的祝福保佑着你纵横战场而无伤。。<SPAN 
-lang=EN-US> <BR></SPAN>效果：只要你的龙气池不为空，你获得等同血统等级的防御附加成功。同时该防御附加成功不会被消耗掉。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><BR>B</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">级：<SPAN 
-lang=EN-US> <BR><BR></SPAN>破妄龙瞳<SPAN lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">价格：<SPAN 
-lang=EN-US>B+2000<BR></SPAN>描述：通过血统能量的勾连，你能令龙魂之眼与你的双眼同位，使你能看穿虚妄与因果。<SPAN 
-lang=EN-US> <BR></SPAN>效果：花费<SPAN lang=EN-US>5</SPAN>点龙气及一个迅捷动作，你获得<SPAN 
-lang=EN-US>A</SPAN>级特异本质侦察等级，并且无视幻象，持续决心<SPAN lang=EN-US>/</SPAN>轮。<SPAN 
-lang=EN-US><BR><BR></SPAN>矫若惊龙 <SPAN lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">价格：<SPAN 
-lang=EN-US>B+2000<BR></SPAN>描述：你学会如龙一般矫捷的移动，而且还能在移动时利用散逸的云气带出层层真假难辨的残象，使人难以捉摸。<SPAN 
-lang=EN-US> <BR></SPAN>效果：当你进行了一次移动之后，你可以进行一次风度<SPAN 
-lang=EN-US>+</SPAN>运动（逃脱）的检定，所有敏感范围内有你的敌方目标，进行一个感知<SPAN 
-lang=EN-US>+</SPAN>调查（侦查）对抗，若其失败，则其下一轮的攻击检定受到差值的洞察减值，同时你的防御获得等额的闪避加值，这是一个幻觉效果。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><BR></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">龙入云深<SPAN 
-lang=EN-US> <BR></SPAN>价格：<SPAN 
-lang=EN-US>B+2000<BR></SPAN>描述：你操控云气变幻的手段已和真龙无异，你能随心地使用云气架构一个幻象小方天地，遮蔽他人的感观，限制他人的行动力。 
-<SPAN lang=EN-US><BR></SPAN>效果：花费<SPAN 
-lang=EN-US>5</SPAN>点龙气及一整轮动作，你能生成半径风度<SPAN 
-lang=EN-US>/10</SPAN>米的云雾，在云雾内你选择不超过你决心值附加成功的任意单位视自身触及外的其他单位失去视野线，对其发动的远程攻击，攻击者可以视为隐形。若其只有视觉辨识能力，则其他目标对其视为全掩蔽。若目标拥有<SPAN 
-lang=EN-US>A</SPAN>级以上的侦查手段则可以无视本能力。本能力是一个幻觉效果。<SPAN 
-lang=EN-US></SPAN></SPAN></P><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; tab-stops: 66.75pt; mso-layout-grid-align: none" 
-class=MsoNormal><BR>A</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">级：<SPAN 
-lang=EN-US> <BR><BR></SPAN>威震四海</SPAN></P>
-<P 
-style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; tab-stops: 66.75pt; mso-layout-grid-align: none" 
-class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">价格：A+4000<SPAN lang=EN-US> 
-<BR></SPAN>描述：你学会释放龙魂的威仪，使附近感受到的这种龙威的生物惶惶不已，由於你并非真正的龙，散发的龙威也太过广，所以必须对每一名生物慢慢积累。效果：每轮一次，所有敏感范围内有你的敌方目标获得<SPAN 
-lang=EN-US>1</SPAN>点不可避免的恐惧点数，可叠加。该恐惧点数不会自然消除也不会与其他恐惧点数叠加，只能通过超自然的能力来减少。若没有减少恐惧点数的能力，则这些恐惧点数可以一场恐怖片。<SPAN 
-lang=EN-US></SPAN></SPAN></P></div> 
-<div id="winchm_template_footer">Copyright &copy; 2014. All rights reserved.</div>
+<P class=MsoNormal 
+style="LAYOUT-GRID-MODE: char; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; mso-layout-grid-align: none" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本能力是一个幻觉效果。<SPAN 
+lang=EN-US></SPAN></SPAN></P></div>	
+	<div id="winchm_template_footer">Copyright &copy; 2018. All rights 
+reserved. (To change the copyright info, just edit it in template.)</div>
+</div>
+
 </body>
 </html>

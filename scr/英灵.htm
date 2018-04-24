@@ -17,112 +17,170 @@ html,body {
 
 
 
-<meta http-equiv="X-UA-Compatible" content="IE=8">
+
 <style>
-html {
-	overflow-y:scroll;
-}
+html,div { margin: 0; padding: 0;}
 
 body {
-	background-image: url(template1/back.png);
-	background-repeat: repeat-x;
-	background-color: #FFFFFF;
 	padding: 0px;
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-bottom: 15px;
-	margin-right: 15px;
+	margin: 0px;
+	overflow: auto;
+	height: 100%;
 }
 
-#winchm_template_button {
-	position: fixed; 
-	float: right; 
-	right: 15px; 
-	top: 15px;
+#winchm_template_button{
+	float: right;
+	width: 93px;
+	top: 7px;
+	position: relative;
+	text-align: right;
+	right: 5px;
+	height: auto;
 }
 
-#winchm_template_navigation {
+#winchm_template_top{
 	padding: 0px;
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
+	margin: 0px;
+	border-bottom: 1px solid #9B9B9B;
+	background-color: #B1CEFE;
+}
 
-	font-size: 8pt;
+#winchm_template_navigation{
+	margin: 0px;
+	padding-top: 7px;
+	padding-left: 7px;
+	padding-bottom: 3px;
+	padding-right: 0px;
+	font-size: 8.5pt;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #4A4A4A;
-	text-align: left;
+	font-weight: normal;
+	color: #585858;
 }
 
-#winchm_template_title {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 22px;
-	font-weight: bold;
-	color: #005680;
-	text-align: left;
+#winchm_template_title{
+	margin: 0px;
+	padding-top: 4px;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	padding-right: 0px;
+	font-size: 18px; 
+	font-family: Verdana, Geneva, sans-serif;
+	color: #363636;
 }
 
 #winchm_template_content{
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
+	margin-top: 20px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
 	width: auto  !important;
 	width: 100%;
 }
 
-
-#winchm_template_footer {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	padding-top: 7px;
+#winchm_template_footer{
 	border-width: 1px;
-	border-color: #c0c0c0;
+	border-color: #B1CEFE;
 	border-top-style: solid;
-
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #575757;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
+	padding-top: 7px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 8.5pt;
+	color: #696969;
+	width: auto;
 	text-align: left;
 }
 
+
+#winchm_template_container{
+	margin: 0px;
+	padding: 0px;
+	position: static;
+	padding-bottom: 3px;
+	overflow: auto;
+	background-color: #FFFFFF;
+}
+
+
 @media print
 {
+#winchm_template_container{
+	position: static;	
+	margin: 0px;
+	padding: 5px;
+	
+	width: auto;
+	height: auto;
+	overflow: auto;
+}
 #winchm_template_button{
 visibility:hidden;
 }
 }
 
-#winchm_template_navigation a:link	{text-decoration: none;color: 004080}
-#winchm_template_navigation a:visited  {text-decoration: none; color: #004080}
-#winchm_template_navigation a:active {text-decoration: none; color: #004080}
-#winchm_template_navigation a:hover {text-decoration: none;color: #0000FF}
+#winchm_template_navigation A:link	{text-decoration: none; color:#004080}
+#winchm_template_navigation A:visited  {text-decoration: none; color: #004080}
+#winchm_template_navigation A:active {text-decoration: none; color: #004080 }
+#winchm_template_navigation A:hover {text-decoration: none;color: #0080FF}
 
-a:link	{text-decoration: underline; color:#0033cc}
-a:visited  {text-decoration: underline; color: #0033cc}
-a:active {text-decoration: underline; color: #0033cc }
-a:hover {text-decoration: underline;color: #ff0000;}
-
+A:link	{text-decoration: underline; color:#0033CC}
+A:visited  {text-decoration: underline; color: #0033CC}
+A:active {text-decoration: underline; color: #0033CC }
+A:hover {text-decoration: underline;color: #FF0000;}
 </style>
+<script type="text/javascript">
+function isMobile(){
+Agent = window.navigator.userAgent;
+if (Agent.indexOf("iPhone")>=1 || Agent.indexOf("iPad")>=1 || Agent.indexOf("iPod")>=1 || Agent.indexOf("Android")>=1){
+return true;
+}else{
+return false;	
+}
+
+}
+function d_onresize(){
+if (window.navigator.userAgent.indexOf("MSIE")>=1){
+document.getElementById('winchm_template_container').style.pixelWidth = document.body.offsetWidth - 3;
+document.getElementById('winchm_template_container').style.pixelHeight = document.body.offsetHeight - document.getElementById('winchm_template_top').offsetHeight - 4;
+}
+document.getElementById('winchm_template_container').style.top = document.getElementById('winchm_template_top').offsetHeight + 'px';
+}
+
+function d_onbeforeprint(){
+document.getElementById('winchm_template_container').style.width = 'auto';
+document.getElementById('winchm_template_container').style.height = 'auto';
+}
+
+function d_onafterprint(){
+d_onresize();
+}
+
+if(!isMobile()){
+
+window.onload = d_onresize;
+window.onresize = d_onresize;
+window.onbeforeprint = d_onbeforeprint;
+window.onafterprint = d_onafterprint;
+
+document.write("<style>\n");
+document.write("body {overflow: hidden;}\n");
+document.write("#winchm_template_container {position: absolute;overflow: auto;top : 0px;right: 0px;bottom: 0px;left: 0px;}\n");
+document.write("</style>\n");
+}
+
+</script>
 </head>
 
 <body><script language="JavaScript" type="text/JavaScript">
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(251);
+  parent.nav.tree.selectNode(384);
  }else{
   setTimeout("syn()",500);
 }
@@ -142,516 +200,452 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 }
 </script> 
 
-<div id="winchm_template_button"><A href="假面骑士1.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template1/btn_prev_n.gif" border="0"></a><A href="特殊改造.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template1/btn_next_n.gif" border="0"></a></div>
-<div id="winchm_template_navigation">Help &gt; 
-<A href="资源部分.htm">资源部分</A> &gt; <A href="改造.htm">改造</A> &gt; <A href="$$unsavedpage12.htm">魔幻类改造</A> &gt; </div>
-<div id="winchm_template_title">英灵契约</div>
-<div id="winchm_template_content"><P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">英灵契约<SPAN 
-lang=EN-US>B+4000</SPAN>（改造）<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">英灵有两种，由生前立下了伟大的功绩而死后还继续被人们所景仰的英雄，自愿在死后继续守护这个世界所变成的，或者在生前与阿赖耶签定了契约，以死后必然成为英灵来守护这个世界为代价，获取力量而成为英雄。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">英灵契约是一项改造，以与阿赖耶的契约为代价，预支自己成为英灵后获得的力量。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">进行英灵契约的人物获得以下特性：<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">升华：英灵的内在由无数人的理想编织而成，因此英灵进行的任何判定或对抗时都有<SPAN 
-lang=EN-US>+2</SPAN>内在加值。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"><SPAN lang=EN-US>知名度：英灵的战斗力与其知名度成正比，计算英灵所有的兑换，其兑换中每包含一个B则</SPAN></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"><SPAN lang=EN-US>在兑换后其全检定获得1DP内在加值。</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"><SPAN lang=EN-US></SPAN></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">宝具：宝具也被称为<SPAN 
-lang=EN-US>[</SPAN>珍贵的幻想<SPAN 
-lang=EN-US>]</SPAN>，英灵在生前常年所遵循的概念，使用的物品和能力，被人类的幻想所升华成为宝具，定下英灵契约后，你在基础智力上每有一个自动成功可以自创一个技能，这个自创技能花费的经验减半。这个技能必须在你成为英灵的时候兑换，不得保存。</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">这个自创的技能可以是资源中的任何一个能力，包括：</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">技能：你可以获得一个技能。</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">法术：你可以获得一个法术，你无法获得比自己施法者等级高的法术，并且施法职能为英灵。</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">称号：你可以获得一个称号，但是必须从D级开始兑换。</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">物品：获得一个物品，该物品的价格增加一倍，如一个物品的价格是D+1000，若你想获得，计算时为DD+2000.宝具不会遗失，不能转交。</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">若法术和技能允许升阶或者进化，或者研发新用法等，将其升级视为一个新的技能。</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">若你拥有足够的栏位，则你甚至可以通过本能力兑换整个称号，魔导书都可以，这意味着你要兑换一个法术书或者称号下的所有技能和等级，每个等级和技能分别计算。</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"><SPAN 
-lang=EN-US></SPAN></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">不完全体：由于是预支的力量，你没有正统英灵那由以太构筑的身体，因此不能免疫科技武器，也不能化为灵体，你死亡后灵魂将被阿赖耶所束缚，无法以任何手段复活。但是你获得魔力能量池，并且你可以购买通用法术，在计算你的施法者等级时，该等级视为B级。<SPAN 
-lang=EN-US></SPAN><SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">特殊：此改造一旦购买，则无法使用洗点系统。</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">从者契约：这需要额外支付<SPAN 
-lang=EN-US>C+2000</SPAN>（可以由契约双方共同支付），只有进行过英灵契约的人物才能和人进行从者契约，这是月世界中第三魔法的一种特殊系统。你可以与一个自愿的魔力使用者定下契约，成为第三法系统中固有的职阶，来获得职阶技能，但也因此会受到魔力使用者令咒的约束。一位自愿的魔力使用者支付<SPAN 
-lang=EN-US>10%</SPAN>的魔力上限或<SPAN 
-lang=EN-US>10</SPAN>点（取高者）来维系这份契约，他被认为是主人，英灵被认为是从者。一个主人可以维系多个从者，但一个从者只能有一个主人。拥有主人身份的人物不能成为他人的从者，除非他在拥有主人身份之前已经成为了他人的从者。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">主人可以任意破弃与从者的契约，但从者不能，主人也可以切断魔力供应，这会使从者的所有行动承受<SPAN 
-lang=EN-US>-5</SPAN>不利，并且若持续达<SPAN 
-lang=EN-US>24</SPAN>小时，则契约解除。主人死亡的场合如同切断魔力供应。契约解除之后从者和主人均失去所有来自契约的特性，从者也可以与其他魔力使用者签定契约，这仍然需要支付契约的支线和分数（B<SPAN 
-lang=EN-US>+4000</SPAN>）。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">进行契约之后，主人能获得令咒，从者则能选择一个职阶获得对应的特性。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">主人的令咒：主人在完成契约后在身体的某一部位（自选）出现三枚令咒，使用是一个自由动作并会消耗掉一枚，对于自己的从者来说，效果相当于精神力技能<SPAN 
-lang=EN-US>S</SPAN>级的奴役术，不同的是，意志总值低于<SPAN 
-lang=EN-US>10</SPAN>的从者无法进行意志判定，高于<SPAN lang=EN-US>10</SPAN>的从者可以以<SPAN 
-lang=EN-US>-10</SPAN>不利进行对抗，若从者进行反抗，你可以消耗额外的令咒进行压制，每一枚都能使从者额外承受<SPAN 
-lang=EN-US>-10</SPAN>不利。一旦从者无法反抗或反抗失败，必须第一时间执行你的命令（刚刚发出的攻击动作无效，立刻进行一个反射动作<SPAN 
-lang=EN-US>[</SPAN>如果他还有的话<SPAN 
-lang=EN-US>]</SPAN>，下个回合行动时先执行你命令的标准动作等等）。令咒也可以用来强化从者的行动，使从者的一个行动获得<SPAN 
-lang=EN-US>5</SPAN>个额外自动成功。令咒也可以用来强化从者的移动，令其一个移动动作以传送形式移动不超过<SPAN 
-lang=EN-US>[</SPAN>主人智力上的自动成功数<SPAN 
-lang=EN-US>+1]</SPAN>公里的距离。三枚令咒全部用完时，主人的魔力供应自动切断，令咒不会自行补充，在主神处可以以<SPAN 
-lang=EN-US>D+500</SPAN>的价格购买一枚令咒。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">从者的职阶：从者在定下契约时可以选择下列职阶中的一个，之后除非另定契约否则不能改变，以下提供的只是第三法中的标准职阶，按相关资料，并不仅限以下<SPAN 
-lang=EN-US>7</SPAN>个（如<SPAN lang=EN-US>AVENGER</SPAN>），<SPAN 
-lang=EN-US>ST</SPAN>可自由追加。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>S</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>aber</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">：此职阶有以下特性：<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">对魔力：此职阶免疫<SPAN 
-lang=EN-US>C</SPAN>级或以下基于心智属性却不基于生理属性的能量或类能量对自己造成的效果（原力，魔力等），但不影响不针对自己的效果（如施法者自身），或针对环境的效果（如范围攻击，尽管你自己免疫那个范围攻击）。你可以主动压制这个能力来承受效果，这不需要动作。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">骑乘：你在进行驾驶技能或以骑术为专业的相关判定时，有<SPAN 
-lang=EN-US>+3</SPAN>的技艺加值。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">剑专精：当你使用剑类武器时（见白刃中剑类武器的分类，但包括异种剑，如光剑），有<SPAN 
-lang=EN-US>+5</SPAN>的技艺加值，并且武器变为神兵，若使用的本来就是神兵，则加值提升到+10的技艺加值，并且获得2个自动成功，同时在格挡防御上也获得等量加值（<SPAN 
-lang=EN-US>+10</SPAN>和2自动）。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>Archer</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">：此职阶有以下特性：<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">对魔力：此职阶免疫<SPAN 
-lang=EN-US>D</SPAN>级或以下基于心智属性却不基于生理属性的能量或类能量对自己造成的效果（原力，魔力等），但不影响不针对自己的效果（如施法者自身），或针对环境的效果（如范围攻击，尽管你自己免疫那个范围攻击）。你可以主动压制这个能力来承受效果，这不需要动作。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">单独行动：此职阶在失去魔力供给后还能将契约维持<SPAN 
-lang=EN-US>7</SPAN>天，并且期间不会因失去魔力供给而承受减值。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">远程专精：此职阶在使用任何远程武器时有<SPAN 
-lang=EN-US>+5</SPAN>的技艺加值，并且武器变为神兵，若使用的是本来就是神兵，则加值提升到+10的技艺加值，并获得<SPAN 
-lang=EN-US>2</SPAN>个自动成功。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>Caster</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">：此职阶有以下特性：<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">阵地作成：你可以以<SPAN 
-lang=EN-US>1</SPAN>小时的时间以及<SPAN 
-lang=EN-US>10</SPAN>点魔力，将一片土地渗透魔力成为你的据点，进行一次智力<SPAN 
-lang=EN-US>+</SPAN>神秘学判定，每成功数<SPAN 
-lang=EN-US>100</SPAN>米半径范围成为你的据点，当你在自己的据点中时，每轮投入魔力可以给对手带来威压和为队友激励士气。每点魔力投入可以换取所有对手所有判定<SPAN 
-lang=EN-US>-1</SPAN>不利的环境减值及所有队友所有判定上<SPAN 
-lang=EN-US>+1</SPAN>有利的士气加值，上限是你作成阵地时的成功数。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">道具作成：你可以如制作科技物品般制作魔法物品，关键技能变为神秘学，但制作魔法物品需要投入极大的精力，制作魔法物品将使你失去物品每支线等级<SPAN 
-lang=EN-US>8</SPAN>点魔力上限（<SPAN 
-lang=EN-US>D1-A4</SPAN>），你也可以支付意志上限来代替能量，每点意志可以当作<SPAN 
-lang=EN-US>2</SPAN>点能量用。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">神秘专精：在与神秘学相关的判定上有<SPAN 
-lang=EN-US>+3</SPAN>技艺加值，并且你不再占用主人的魔力上限，也不会因为切断魔力供应而失去契约，只有你的主人死亡时，你才会失去契约。同时，你的施法者等级提升为A级。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>Assassian</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">：此职阶有以下特性：<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">气配遮断：此职阶可以以特殊的方式隐匿行踪，无论何时，此职阶都可以以移动动作宣称躲藏，所有对手都必须以感知<SPAN 
-lang=EN-US>+</SPAN>沉着对抗此职阶的敏捷<SPAN 
-lang=EN-US>+</SPAN>潜行，失败则如同此职阶隐形一般，对手中只要有一个人成功，所有人皆算成功，只要成功过一次，此遭遇中不能再进行这种躲藏尝试。这种方式是躲避目标的观察手段而非屏蔽，因此任何反侦查的手段对气配遮断无效。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">百般皆通：获得此职阶后所有不足<SPAN 
-lang=EN-US>3</SPAN>的技能立刻提升到<SPAN 
-lang=EN-US>3</SPAN>，并且在任何技能检定时总是视为在该技能上有专业而获得那<SPAN 
-lang=EN-US>+1</SPAN>的专业加值。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">偷袭：此职阶攻击基本防御为<SPAN 
-lang=EN-US>0</SPAN>（无论是否暂时失去）的对手并造成至少<SPAN 
-lang=EN-US>1</SPAN>点伤害时能造成额外的伤害，相当于<SPAN lang=EN-US>[</SPAN>敏捷上的自动成功数+关键技能的自动成功数<SPAN 
-lang=EN-US>+1]</SPAN>。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>Berserker</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">：此职阶有以下特性：<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">狂化：此职阶的生理属性<SPAN 
-lang=EN-US>+3能量加值</SPAN></SPAN>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">完全狂暴：此职阶可以进入狂暴状态，此状态中生理属性再<SPAN 
-lang=EN-US>+5能量加值</SPAN>，生理系所有技能视为提升3级，最大为15，社交属性降低到<SPAN 
-lang=EN-US>1</SPAN>，并且完全失去自己的意识，不能自主行动，所有的行动都由主人决定，对此状态下的人物使用基于影响心灵的能力时，此人物视为无心智，意味免疫，并且此状态下无法使用任何技能（招式心法身法护身劲都在此列），这种状态每维持<SPAN 
-lang=EN-US>1</SPAN>轮，主人都需要支付<SPAN lang=EN-US>5</SPAN>点魔力并受<SPAN 
-lang=EN-US>1</SPAN>点不可吸收的严重伤害。<SPAN lang=EN-US></SPAN></SPAN>
-<P></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>Rider</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">：此职阶有以下特性：<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">对魔力：此职阶免疫<SPAN 
-lang=EN-US>D</SPAN>级或以下基于心智属性却不基于生理属性的能量或类能量对自己造成的效果（原力，魔力等），但不影响不针对自己的效果（如施法者自身），或针对环境的效果（如范围攻击，尽管你自己免疫那个范围攻击）。你可以主动压制这个能力来承受效果，这不需要动作。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">骑乘：你在进行驾驶技能或以骑术为专业的相关判定时，有<SPAN 
-lang=EN-US>+5</SPAN>的技艺加值，并获得<SPAN lang=EN-US>1</SPAN>个额外自动成功。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">骑乘战斗：你在乘坐载具或坐骑时，你的全部检定获得<SPAN 
-lang=EN-US>+5DP</SPAN>的技艺加值，同时该载具的机动和限界各+5，获得神兵特性，若为坐骑，则该坐骑的全属性+2。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>Lancer</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">：此职阶有以下特性：<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">对魔力：此职阶免疫<SPAN 
-lang=EN-US>DD</SPAN>级或以下基于心智属性却不基于生理属性的能量或类能量对自己造成的效果（原力，魔力等），但不影响不针对自己的效果（如施法者自身），或针对环境的效果（如范围攻击，尽管你自己免疫那个范围攻击）。你可以主动压制这个能力来承受效果，这不需要动作。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">初状回归：此职阶在使用长柄武器时触及范围增加一倍，当你并非和对手处于邻接状态时，你可以发动健步如飞3的效果，动作变为自由动作。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">长柄专精：此职阶在使用任何长柄武器时有<SPAN 
-lang=EN-US>+5</SPAN>的技艺加值，获得神兵特性，若使用的是本来就是神兵，则加值提升到+10的技艺加值，并获得<SPAN 
-lang=EN-US>2</SPAN>个自动成功。同时对远程武器获得额外<SPAN 
-lang=EN-US>+5</SPAN>的格挡加值，针对并非使用长柄武器的近战对手时，在攻击和防御上获得<SPAN 
-lang=EN-US>+5</SPAN>的环境加值。</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">
+
+<div id="winchm_template_top">
+	<div id="winchm_template_button"><A href="千手一族.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="New_Item172.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
+	<div id="winchm_template_navigation">Help &gt; 
+<A href="资源部分.htm">资源部分</A> &gt; <A href="改造.htm">改造</A> &gt; <A href="$$unsavedpage40.htm">魔幻本质类改造</A> &gt; </div>
+	<div id="winchm_template_title">英灵契约</div>
+</div>
+<div id="winchm_template_container">
+	<div id="winchm_template_content">
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US>Avenger:</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">此职介有以下特性<SPAN 
-lang=EN-US>:</SPAN></SPAN></P><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"><SPAN 
-lang=EN-US>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">对魔力：此职阶免疫<SPAN 
-lang=EN-US>D</SPAN>级或以下基于心智属性却不基于生理属性的能量或类能量对自己造成的效果（原力，魔力等），但不影响不针对自己的效果（如施法者自身），或针对环境的效果（如范围攻击，尽管你自己免疫那个范围攻击）。你可以主动压制这个能力来承受效果，这不需要动作。</SPAN><BR></SPAN>复仇者<SPAN 
-lang=EN-US>:</SPAN>象征集人之怨恨于一身的存在的技能，能够更简单的积攒怨念与仇恨。攻击过自己的目标会被复仇者视为仇恨目标<SPAN 
-lang=EN-US>,</SPAN>仇恨目标每攻击自身一次<SPAN lang=EN-US>,</SPAN>则你对其攻击和防御<SPAN 
-lang=EN-US>+2DP</SPAN>无名加值，上限为你的决心值<SPAN lang=EN-US>.<BR></SPAN>自我回复<SPAN 
-lang=EN-US>[</SPAN>魔力<SPAN lang=EN-US>]:</SPAN>因受到黑泥的污染<SPAN 
-lang=EN-US>,</SPAN>直到完成复仇为止，魔力会不断涌出。人物从此被视为黑暗生物<SPAN 
-lang=EN-US>,</SPAN>同时品行值下降为<SPAN lang=EN-US>2.</SPAN>攻击仇恨目标时<SPAN 
-lang=EN-US>,</SPAN>若造成伤害<SPAN lang=EN-US>,</SPAN>则可选择一个自身拥有的能量池<SPAN 
-lang=EN-US>,</SPAN>回复伤害量一半的数值<SPAN lang=EN-US>.</SPAN>不能超过上限值<SPAN 
-lang=EN-US>.</SPAN></SPAN></P>
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>本质：魔幻本质</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"><SPAN 
-lang=EN-US></SPAN></SPAN>&nbsp;</P>
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>价格：</FONT>B+2000</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"><SPAN 
-lang=EN-US></SPAN></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"><SPAN 
-lang=EN-US>&nbsp;</P>
-<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="FONT-FAMILY: 宋体; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US>Ruler:</SPAN><SPAN 
-style="FONT-FAMILY: 宋体; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">此职介有以下特性<SPAN 
-lang=EN-US>:<BR></SPAN>真名看破<SPAN lang=EN-US>:</SPAN>一旦作为<SPAN 
-lang=EN-US>Ruler</SPAN>被召唤，与其直接遭遇的所有敌人的真名和能力情报都会自动明示。敌方对你进行攻击时<SPAN 
-lang=EN-US>,</SPAN>你获得<SPAN lang=EN-US>5</SPAN>点洞察防御<SPAN 
-lang=EN-US>.</SPAN>若对方使用的是神兵<SPAN lang=EN-US>,</SPAN>你额外获得一点防御附加成功。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>属性：</FONT>8点属性，自由分配，最高不得超过4点</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">统治战场：当<SPAN 
-lang=EN-US>Ruler</SPAN>在战场上时，当他在友军的敏感范围中时，该友军的攻击，防御和豁免检定获得<SPAN 
-lang=EN-US>+10DP</SPAN>加值。<SPAN lang=EN-US><BR></SPAN>对魔力<SPAN 
-lang=EN-US>:</SPAN>由于不可动摇的信仰心，而发挥出高强的抗魔力。此职阶免疫<SPAN 
-lang=EN-US>C</SPAN>级或以下基于心智属性却不基于生理属性的能量或类能量对自己造成的效果（原力，魔力等），但不影响不针对自己的效果（如施法者自身），或针对环境的效果（如范围攻击，尽管你自己免疫那个范围攻击）。你可以主动压制这个能力来承受效果，这不需要动作。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P></SPAN></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"><SPAN 
-lang=EN-US><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US></SPAN>&nbsp;</P>
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>能量池：无</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US>Shielder:</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">此职介有以下特性<SPAN 
-lang=EN-US>:<BR></SPAN>对魔力：此职阶免疫<SPAN 
-lang=EN-US>C</SPAN>级或以下基于心智属性却不基于生理属性的能量或类能量对自己造成的效果（原力，魔力等），但不影响不针对自己的效果（如施法者自身），或针对环境的效果（如范围攻击，尽管你自己免疫那个范围攻击）。你可以主动压制这个能力来承受效果，这不需要动作。<SPAN 
-lang=EN-US><BR></SPAN>盾牌猛击：当你使用盾牌攻击的时候，视为你精通盾击专长<SPAN lang=EN-US>1</SPAN>，<SPAN 
-lang=EN-US>2</SPAN>，<SPAN lang=EN-US>3</SPAN>。当你使用盾牌攻击时<SPAN 
-lang=EN-US>,</SPAN>有<SPAN lang=EN-US>+2DP</SPAN>加值<SPAN 
-lang=EN-US>,</SPAN>获得神兵特性，若使用的本来就是神兵<SPAN lang=EN-US>,</SPAN>则加值提升<SPAN 
-lang=EN-US>+5DP</SPAN>加值，并获得1个攻击附加成功，</SPAN></P>
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特性：契约，不可复活（负特性），宝具（双特性），职阶，属性自由分配，</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">自我防护<SPAN 
-lang=EN-US>:</SPAN>当你使用盾牌防御时<SPAN lang=EN-US>,</SPAN>有<SPAN 
-lang=EN-US>+5</SPAN>格挡防御加值<SPAN lang=EN-US>,</SPAN>获得神兵特性，若使用的本来就是神兵<SPAN 
-lang=EN-US>,</SPAN>则加值提升<SPAN lang=EN-US>+10</SPAN>的格挡防御加值，并获得<SPAN 
-lang=EN-US>2</SPAN>个防御附加成功，并且在针对远程攻击时，再增加<SPAN 
-lang=EN-US>5</SPAN>点格挡加值，在面对范围攻击时，减免<SPAN lang=EN-US>10</SPAN>点伤害。<SPAN 
-lang=EN-US></SPAN></SPAN></P></SPAN></SPAN></div> 
-<div id="winchm_template_footer">Copyright &copy; 2014. All rights reserved.</div>
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特殊：一次性改造，额外获得2个特性；由于没有技能树，额外获得1个特性。</FONT></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>描述：英灵有两种，由生前立下了伟大的功绩而死后还继续被人们所景仰的英雄，自愿在死后继续守护这个世界所变成的，或者在生前与阿赖耶签定了契约，以死后必然成为英灵来守护这个世界为代价，获取力量而成为英雄。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>英灵契约是一项改造，以与阿赖耶的契约为代价，预支自己成为英灵后获得的力量。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>这种力量超脱于世界之外，要让自身继续存在于世界之中需要利用第三法</FONT>·天之杯利用媒介（master）和框架（职阶）实现灵子固定化。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>不可复活：英灵的身体本身由以太构成，这意味着，一旦英灵死亡，则无法以任何复活的形式重新复活英灵。同时，一旦获得本改造，则无法使用任何</FONT>“洗点”以及类似能力和效果。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>契约：这是月世界中第三魔法的一种特殊系统。你可以与一个自愿的魔力使用者定下契约，成为第三法系统中固有的职阶，但也因此会受到魔力使用者令咒的约束。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>通常，契约者由主神充当，你也可以和自愿的魔力使用者签订契约，成为对方的从者。一位自愿的魔力使用者支付</FONT>10%或1</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">5</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>点魔力上限（取高者）来维系这份契约，他被认为是主人，英灵被认为是从者。同时，签订契约后，从者将无法使用洗点系统。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>一个主人可以维系多个从者，但一个从者只能有一个主人。拥有主人身份的人物不能成为他人的从者，除非他在拥有主人身份之前已经成为了他人的从者。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>主人可以任意破弃与从者的契约，但从者不能，主人也可以切断魔力供应，这会使从者的所有检定上承受</FONT>10点完美减值，并且若切断魔力供应的时间达到24小时，从者将失去“职阶”特性带来的好处，只有回到主神空间并支付C+2000与主神或一位自愿的魔力使用者签订契约后才能再次获得“职阶”特性带来的好处，若主人死亡，在判定上视同同魔力供应被切断。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>主人在完成契约后在身体的某一部位（自选）出现三枚令咒，使用令咒是一个迅捷</FONT>/反射动作并会消耗掉一枚令咒，对于自己的从者来说，效果相当于精神力技能S级的奴役术，不同的是，意志力总值低于10的从者无法进行意志检定，高于10的从者可以与主人进行意志对抗，但从者在意志检定中失去10个成功数，若从者进行反抗，主人可以消耗额外的令咒进行压制，每一枚都能使从者在这次意志对抗中再失去10个成功数。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>一旦从者无法反抗或反抗失败，必须第一时间执行主人的命令（包括但不限于使其刚刚发出的攻击动作无效；使其立刻进行一个反射动作</FONT>[如果从者还有反射动作的话]；下个回合行动时优先执行主人命令的标准动作等等）。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>令咒也可以用来强化从者的行动，只要主人能以任何方式对自己的从者进行模糊定位，主人就能消耗令咒使从者的下一个行动获得</FONT>5个附加成功。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>令咒也可以用来强化从者的移动，即便主人无法对自己的从者进行定位，他也能消耗令咒命其从者立刻以传送的形式朝某个方向移动不超过</FONT>[主人传奇智力+1]*1公里的距离，这会消耗从者下一轮的反射动作与移动动作。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>三枚令咒全部用完时，主人的魔力供应自动切断，令咒不会自行补充，在主神处可以以</FONT>D+500的价格购买一枚令咒。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><BR style="PAGE-BREAK-BEFORE: always" clear=all></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>宝具：宝具也被称为</FONT>[珍贵的幻想]，英灵在生前常年所遵循的概念，使用的物品和能力，被人类的幻想所升华成为宝具。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>定下英灵契约后你获得</FONT>2点幻想点数，并且在你购买时你的永久属性每有1点传奇属性则你获得1点幻想点数。</SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">你可以为你已经获得技能，招式，法术或者物品附加幻想点数，<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">该技能，招式，法术或者物品每有1级支线等级则需要额外消耗1点幻想点数（无支线：1，D:2，C:3以此类推）。使其获得增强：</SPAN></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">技能，招式：该技能和招式的能耗降低一半，最低为1，并且若该技能，招式的消耗为通用能量池，则可以以意志力代替消耗，每1点意志力可以代替2点通用能量。</SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">法术：你可以如同“A级法术恒定术”一般对该法术进行恒定，并且恒定后的法术若被解除，你可以重新通过本特性恒定。你可以随时以一个自由动作启动或者关闭自己身上通过本特性恒定的法术。</SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">物品：该物品获得【魔法】特性，若其本身为B级以上物品，则额外获得【神兵】特性，并且本质转变为魔幻本质。你获得一个特殊的空间来保存你的宝具，随时以一个自由动作召唤出来，放入也是一个自由动作。</SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>职阶：第三法中用于将英灵固定化的框架，你在获得英灵时，可以额外消耗C+1000来选择一个职阶来获得其特性，可选范围包括了</FONT>saber，rider，caster，archer，lancer，assassian，berserker，avenger，ruler，shielder</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">saber：</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>对魔力：此职阶免疫</FONT>C级或以下消耗基于心智属性却不基于生理属性的能量或类能量（原力，魔力等）对自己造成的效果（包括伤害），但不影响不针对自己的效果（如施法者自身），或针对环境的效果（如范围攻击，尽管你自己免疫那个范围攻击）。你可以主动压制这个能力来承受效果，这不需要动作。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>剑专精：当你使用长剑，短剑，突刺剑分类的武器时，你的武器获得【神兵】特性，若使用的本来就是神兵，则获得【</FONT>8加骰】，若其已拥有【神兵】和【8加骰】特性，则武器伤害额外增加3点。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">rider：</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>对魔力：此职阶免疫</FONT>D级或以下消耗基于心智属性却不基于生理属性的能量或类能量（原力，魔力等）对自己造成的效果（包括伤害），但不影响不针对自己的效果（如施法者自身），或针对环境的效果（如范围攻击，尽管你自己免疫那个范围攻击）。你可以主动压制这个能力来承受效果，这不需要动作。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>骑乘：你在驾驶或骑乘相关技能判定中获得</FONT>6DP的修行加值，以及3点附加成功。同时你使用“宝具”能力若自创的为载具，则该载具获得【认主】特性。但是若该载具被摧毁，则你只能在主神空间才能重新获得。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">caster：</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>阵地作成：消耗</FONT>1个小时，并支付5点魔力，你将一片土地渗透魔力成为你的据点，进行一次智力+神秘学检定，每成功数100米半径范围成为你的据点，持续每点成功数*1天。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>当你在自己的据点中时，你每轮都可以自由动作向据点投入魔力，你每投入</FONT>2点魔力，便能使位于你据点范围内的敌方单位在所有检定上承受1点环境减值，同时使“据点”范围内的友方轮回者在所有检定上获得1点士气加值，持续一轮。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>你每轮可投入据点的魔力上限为你的神秘学等级</FONT>+1。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>道具作成：你可以如制作科技物品般制作</FONT>A级或以下的魔幻本质物品，解读图纸的关键技能变为神秘学，由于制作魔法物品需要投入极大的精力，你需要为该物品的每个支线等级（D1C3B5A7）支付7XP。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>施法者：你获得</FONT>B级施法者职能，对应能量池为魔力，对应法术列表为通用法术。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">archer：</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>对魔力：此职阶免疫</FONT>D级或以下消耗基于心智属性却不基于生理属性的能量或类能量（原力，魔力等）对自己造成的效果（包括伤害），但不影响不针对自己的效果（如施法者自身），或针对环境的效果（如范围攻击，尽管你自己免疫那个范围攻击）。你可以主动压制这个能力来承受效果，这不需要动作。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>千里眼：你的基础敏感范围和模糊范围提升四倍，同时你在进行远程攻击时，在最大射程范围之内都不受射程减值。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>自由行动：主人就算切断魔力供应也可以照常行动</FONT>7天而不受到任何减值。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">lancer：</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>对魔力：此职阶免疫</FONT>D级或以下消耗基于心智属性却不基于生理属性的能量或类能量（原力，魔力等）对自己造成的效果（包括伤害），但不影响不针对自己的效果（如施法者自身），或针对环境的效果（如范围攻击，尽管你自己免疫那个范围攻击）。你可以主动压制这个能力来承受效果，这不需要动作。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>初状回归：你可以以迅捷动作进行移动，但移动距离不可超过你的体积。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>长柄专精：当你使用拥有【长柄武器】特性的武器时，你的武器获得【神兵】特性，若使用的本来就是神兵，则获得【</FONT>8加骰】，若其已拥有【神兵】和【8加骰】特性，则武器伤害额外增加3点。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">assassian：</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>气配遮断：你可以以特殊的方式隐匿行踪，无论何时，你都可以以移动动作宣称躲藏，所有对手都必须以感知</FONT>+求生对抗你的敏捷+躲藏（潜行），失败的如同你隐形一般，对手中只要有一个人成功，所有人皆算成功，只要成功过一次，此遭遇中不能再进行这种躲藏尝试。这种方式是躲避目标的观察手段而非屏蔽，因此任何反侦查的手段对气配遮断无效。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>你在潜行相关检定中获得</FONT>6点修行加值以及2点附加成功。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>万般皆通：你拥有所有的技能的所有专业，并且所有技能自动提升</FONT>1级，最大为1。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">Berserker：</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>狂化：你可以以一个自由动作进入狂化状态，狂化中所有生理属性获得</FONT>5点能量加值，但是角色失去自己的控制权，狂化期间人物不受影响心灵的效果影响。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>若角色的主人是主神，角色每保持一轮狂化便需要支付</FONT>1点意志力。角色会从能感知到的敌人开始攻击，并在敌人被消灭之后攻击中立方，最后是友方，直到其视距中不存在任何活物或昏迷后，角色可以在下一轮从狂化中脱离，若中途有新的活物进入角色视距，则角色会继续保持狂化状态并攻击对方，狂化期间由ST视情况决定人物使用什么技能进行攻击。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>若角色的主人不是主神，则角色每保持一轮狂化，主人便需支付</FONT>3点魔力，但主人可以以一个自由动作向Berserker发出简单的指令（如使用什么技能，攻击谁，破坏什么东西，搬开障碍物等），指定其下一轮的行动，但无法让Berserker进行复杂的行动（具体由ST判定），若不进行指定，则其行动参考上一段描述。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>主人可以以一个自由动作支付</FONT>10点魔力，使Berserker脱离狂化状态。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">shielder：</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>对魔力：此职阶免疫</FONT>C级或以下消耗基于心智属性却不基于生理属性的能量或类能量对自己造成的效果（原力，魔力等），但不影响不针对自己的效果（如施法者自身），或针对环境的效果（如范围攻击，尽管你自己免疫那个范围攻击）。你可以主动压制这个能力来承受效果，这不需要动作。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>自阵防御：每轮一次，若一个在你敏感范围内的队友受到攻击，你可以支付一个反射动作和</FONT>1点意志力，瞬间移动到该队友面前并强制将这次攻击的目标更改为你，若这是一个范围攻击则不会对该队友造成伤害，但其他人，包括你都如常受到伤害，这意味着你会受到两次伤害。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>盾专精：当你使用盾牌进行格挡时，盾牌获得【神兵】特性。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">Avenger：</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>复仇者：你在一个场景中第一次受到伤害时，以及生命槽不再有完好时，以及当生命槽中最严重的伤害为恶性时，分别获得</FONT>2点临时意志力，临时意志力每场景清空一次。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>忘却补正：攻击过你的目标会被你标记为仇恨目标，当你攻击仇恨目标时</FONT>,你的攻击检定与施法检定获得6点增强加值以及2点附加成功。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">ruler：</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>对魔力：此职阶免疫</FONT>B级或以下消耗基于心智属性却不基于生理属性的能量或类能量（原力，魔力等）对自己造成的效果（包括伤害），但不影响不针对自己的效果（如施法者自身），或针对环境的效果（如范围攻击，尽管你自己免疫那个范围攻击）。你可以主动压制这个能力来承受效果，这不需要动作。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>看破真名：仅限针对并非主神强化，来自影片</FONT>/其他状况下通常由第三法召唤出的英灵有效，你自动识破其真名，包括其所有特性和能力，以及宝具，除非其具有隐匿自身身份的能力。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>神明裁决：你总计获得两个令咒，如通常令咒般产生效力，但仅限针对并非主神强化，来自影片</FONT>/其他情况下通常由第三法召唤出的英灵有效，这样的令咒消耗后无法补充。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P></div>	
+	<div id="winchm_template_footer">Copyright &copy; 2018. All rights 
+reserved. (To change the copyright info, just edit it in template.)</div>
+</div>
+
 </body>
 </html>

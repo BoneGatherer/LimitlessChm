@@ -17,112 +17,170 @@ html,body {
 
 
 
-<meta http-equiv="X-UA-Compatible" content="IE=8">
+
 <style>
-html {
-	overflow-y:scroll;
-}
+html,div { margin: 0; padding: 0;}
 
 body {
-	background-image: url(template1/back.png);
-	background-repeat: repeat-x;
-	background-color: #FFFFFF;
 	padding: 0px;
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-bottom: 15px;
-	margin-right: 15px;
+	margin: 0px;
+	overflow: auto;
+	height: 100%;
 }
 
-#winchm_template_button {
-	position: fixed; 
-	float: right; 
-	right: 15px; 
-	top: 15px;
+#winchm_template_button{
+	float: right;
+	width: 93px;
+	top: 7px;
+	position: relative;
+	text-align: right;
+	right: 5px;
+	height: auto;
 }
 
-#winchm_template_navigation {
+#winchm_template_top{
 	padding: 0px;
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
+	margin: 0px;
+	border-bottom: 1px solid #9B9B9B;
+	background-color: #B1CEFE;
+}
 
-	font-size: 8pt;
+#winchm_template_navigation{
+	margin: 0px;
+	padding-top: 7px;
+	padding-left: 7px;
+	padding-bottom: 3px;
+	padding-right: 0px;
+	font-size: 8.5pt;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #4A4A4A;
-	text-align: left;
+	font-weight: normal;
+	color: #585858;
 }
 
-#winchm_template_title {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 22px;
-	font-weight: bold;
-	color: #005680;
-	text-align: left;
+#winchm_template_title{
+	margin: 0px;
+	padding-top: 4px;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	padding-right: 0px;
+	font-size: 18px; 
+	font-family: Verdana, Geneva, sans-serif;
+	color: #363636;
 }
 
 #winchm_template_content{
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
+	margin-top: 20px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
 	width: auto  !important;
 	width: 100%;
 }
 
-
-#winchm_template_footer {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	padding-top: 7px;
+#winchm_template_footer{
 	border-width: 1px;
-	border-color: #c0c0c0;
+	border-color: #B1CEFE;
 	border-top-style: solid;
-
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #575757;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
+	padding-top: 7px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 8.5pt;
+	color: #696969;
+	width: auto;
 	text-align: left;
 }
 
+
+#winchm_template_container{
+	margin: 0px;
+	padding: 0px;
+	position: static;
+	padding-bottom: 3px;
+	overflow: auto;
+	background-color: #FFFFFF;
+}
+
+
 @media print
 {
+#winchm_template_container{
+	position: static;	
+	margin: 0px;
+	padding: 5px;
+	
+	width: auto;
+	height: auto;
+	overflow: auto;
+}
 #winchm_template_button{
 visibility:hidden;
 }
 }
 
-#winchm_template_navigation a:link	{text-decoration: none;color: 004080}
-#winchm_template_navigation a:visited  {text-decoration: none; color: #004080}
-#winchm_template_navigation a:active {text-decoration: none; color: #004080}
-#winchm_template_navigation a:hover {text-decoration: none;color: #0000FF}
+#winchm_template_navigation A:link	{text-decoration: none; color:#004080}
+#winchm_template_navigation A:visited  {text-decoration: none; color: #004080}
+#winchm_template_navigation A:active {text-decoration: none; color: #004080 }
+#winchm_template_navigation A:hover {text-decoration: none;color: #0080FF}
 
-a:link	{text-decoration: underline; color:#0033cc}
-a:visited  {text-decoration: underline; color: #0033cc}
-a:active {text-decoration: underline; color: #0033cc }
-a:hover {text-decoration: underline;color: #ff0000;}
-
+A:link	{text-decoration: underline; color:#0033CC}
+A:visited  {text-decoration: underline; color: #0033CC}
+A:active {text-decoration: underline; color: #0033CC }
+A:hover {text-decoration: underline;color: #FF0000;}
 </style>
+<script type="text/javascript">
+function isMobile(){
+Agent = window.navigator.userAgent;
+if (Agent.indexOf("iPhone")>=1 || Agent.indexOf("iPad")>=1 || Agent.indexOf("iPod")>=1 || Agent.indexOf("Android")>=1){
+return true;
+}else{
+return false;	
+}
+
+}
+function d_onresize(){
+if (window.navigator.userAgent.indexOf("MSIE")>=1){
+document.getElementById('winchm_template_container').style.pixelWidth = document.body.offsetWidth - 3;
+document.getElementById('winchm_template_container').style.pixelHeight = document.body.offsetHeight - document.getElementById('winchm_template_top').offsetHeight - 4;
+}
+document.getElementById('winchm_template_container').style.top = document.getElementById('winchm_template_top').offsetHeight + 'px';
+}
+
+function d_onbeforeprint(){
+document.getElementById('winchm_template_container').style.width = 'auto';
+document.getElementById('winchm_template_container').style.height = 'auto';
+}
+
+function d_onafterprint(){
+d_onresize();
+}
+
+if(!isMobile()){
+
+window.onload = d_onresize;
+window.onresize = d_onresize;
+window.onbeforeprint = d_onbeforeprint;
+window.onafterprint = d_onafterprint;
+
+document.write("<style>\n");
+document.write("body {overflow: hidden;}\n");
+document.write("#winchm_template_container {position: absolute;overflow: auto;top : 0px;right: 0px;bottom: 0px;left: 0px;}\n");
+document.write("</style>\n");
+}
+
+</script>
 </head>
 
 <body><script language="JavaScript" type="text/JavaScript">
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(860);
+  parent.nav.tree.selectNode(998);
  }else{
   setTimeout("syn()",500);
 }
@@ -142,369 +200,378 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 }
 </script> 
 
-<div id="winchm_template_button"><A href="特殊附魔.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template1/btn_prev_n.gif" border="0"></a><A href="剧情物品.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template1/btn_next_n.gif" border="0"></a></div>
-<div id="winchm_template_navigation">Help &gt; 
-<A href="资源部分.htm">资源部分</A> &gt; <A href="物品.htm">物品</A> &gt; <A href="$$unsavedpage55.htm">物品附魔与改造</A> &gt; </div>
-<div id="winchm_template_title">材质改造</div>
-<div id="winchm_template_content"><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">
+
+<div id="winchm_template_top">
+	<div id="winchm_template_button"><A href="特殊附魔.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="$$unsavedpage91.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
+	<div id="winchm_template_navigation">Help &gt; 
+<A href="资源部分.htm">资源部分</A> &gt; <A href="物品.htm">物品</A> &gt; <A href="$$unsavedpage90.htm">物品附魔与改造</A> &gt; </div>
+	<div id="winchm_template_title">材质改造</div>
+</div>
+<div id="winchm_template_container">
+	<div id="winchm_template_content"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>===========================================================================================================<?xml:namespace 
-prefix = o ns = "urn:schemas-microsoft-com:office:office" 
-/><o:p></o:p></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US><o:p></o:p></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
+lang=EN-US>===========================================================================================================</SPAN></P>
+<P style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%" class=MsoNormal><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%" 
+lang=EN-US></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left>精金改造<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left>精金改造<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本质：魔幻本质<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本质：魔幻本质<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：见下<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：见下<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">分类：材质改造<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">分类：材质改造<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：常在奇幻世界中出现的高硬度材料，黑色沉重的金属。精金极为坚硬。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：常在奇幻世界中出现的高硬度材料，黑色沉重的金属。精金极为坚硬。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">材料属性：未经任何强化的情况下，精金的硬度已经达到<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">材料属性：未经任何强化的情况下，精金的硬度已经达到<SPAN 
 lang=EN-US>12</SPAN>。即使在对抗电流、音波、光能、腐蚀、力场伤害时，该硬度也可以有一半生效。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">指定物品：精金改造只能改造武器，盔甲，盾牌以及弹药，其余物品无法进行精金改造。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">指定物品：精金改造只能改造武器，盔甲，盾牌以及弹药，其余物品无法进行精金改造。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">特殊材质：该物品获得【精金】特性。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">特殊材质：该物品获得【精金】特性。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">沉重金属：使用精金制造非弹药类物品，其力量需求<SPAN 
-lang=EN-US>+2</SPAN>。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">沉重金属：使用精金制造非弹药类物品，其力量需求<SPAN 
+lang=EN-US>+2</SPAN>。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">武器提升：由于其高硬度和与一般金属相异的晶体构造，精金制造的近战武器异常威猛，破甲增加<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">武器提升：由于其高硬度和与一般金属相异的晶体构造，精金制造的近战武器异常威猛，破甲增加<SPAN 
 lang=EN-US>3</SPAN>点。同时其在破坏物品时额外忽略目标<SPAN lang=EN-US>8</SPAN>点硬度，这需要花费价格的<SPAN 
 lang=EN-US>50</SPAN>倍或者增加<SPAN lang=EN-US>500</SPAN>分，取低。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">盔甲提升：使用主神提供的精金，替换掉盔甲原有的材质，盔甲本身的伤害减免提升<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">盔甲提升：使用主神提供的精金，替换掉盔甲原有的材质，盔甲本身的伤害减免提升<SPAN 
 lang=EN-US>1</SPAN>点，若盔甲本身没有，则为穿戴者提供<SPAN 
 lang=EN-US>1DR/-</SPAN>的伤害减免，这需要花费价格的<SPAN lang=EN-US>50</SPAN>倍或者增加<SPAN 
-lang=EN-US>500</SPAN>分，取低。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>500</SPAN>分，取低。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">盾牌提升：主神拥有改变盾牌原本材质，直接用精金制造的能力，盾牌防御增加<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">盾牌提升：主神拥有改变盾牌原本材质，直接用精金制造的能力，盾牌防御增加<SPAN 
 lang=EN-US>3/3</SPAN>这需要花费价格的<SPAN lang=EN-US>50</SPAN>倍或者增加<SPAN 
-lang=EN-US>500</SPAN>分，取低。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>500</SPAN>分，取低。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">弹药提升：主神提供任何精金箭矢或弹药，包括高斯枪弹等，这会使使用该弹药的攻击检定，破甲增加<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">弹药提升：主神提供任何精金箭矢或弹药，包括高斯枪弹等，这会使使用该弹药的攻击检定，破甲增加<SPAN 
 lang=EN-US>3</SPAN>点，价格为标准值的<SPAN lang=EN-US>50</SPAN>倍或<SPAN 
 lang=EN-US>1</SPAN>发<SPAN lang=EN-US>3</SPAN>分，取低者。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>===========================================================================================================<o:p></o:p></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
+lang=EN-US>===========================================================================================================</SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">天空圣宝石<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">天空圣宝石<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本质：魔幻本质<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本质：魔幻本质<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：见下<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：见下<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">分类：材质改造<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">分类：材质改造<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：艾斯科尼嘉世界的神秘矿物，具有魔力活性的特殊物质。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：艾斯科尼嘉世界的神秘矿物，具有魔力活性的特殊物质。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">材料属性：天空圣宝石具有硬度<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">材料属性：天空圣宝石具有硬度<SPAN 
 lang=EN-US>5</SPAN>，但它内含特殊魔力，因此对于超自然力量造成的除音波效果之外的能量伤害或力场伤害，其硬度照常生效。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">制定物品：天空圣宝石改造只能改造武器和弹药。无法改造其他物品。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">制定物品：天空圣宝石改造只能改造武器和弹药。无法改造其他物品。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">武器提升：圣宝石强化的武器具有与超自然力量相融、部分扰乱超自然能量的特性，其破魔增加<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">武器提升：圣宝石强化的武器具有与超自然力量相融、部分扰乱超自然能量的特性，其破魔增加<SPAN 
 lang=EN-US>2</SPAN>点。特别的，圣宝石制作的近战武器可以传导魔力，因此可以用来传递距离为“接触”的法术，并且可以视为魔杖。这需要花费价格的<SPAN 
 lang=EN-US>10</SPAN>倍或者增加<SPAN lang=EN-US>1000</SPAN>分，取低。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">弹药提升：圣宝石强化的弹药同样可以破坏目标的超自然能量，这会使使用该弹药的攻击检定，破魔增加<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">弹药提升：圣宝石强化的弹药同样可以破坏目标的超自然能量，这会使使用该弹药的攻击检定，破魔增加<SPAN 
 lang=EN-US>2</SPAN>点。这需要花费价格的<SPAN lang=EN-US>10</SPAN>倍或者增加<SPAN 
-lang=EN-US>20</SPAN>分，取低。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>20</SPAN>分，取低。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>===========================================================================================================<o:p></o:p></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
+lang=EN-US>===========================================================================================================</SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">玄铁<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">玄铁<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本质：魔幻本质<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本质：魔幻本质<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：见下<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：见下<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">分类：材质改造<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">分类：材质改造<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：常在武侠世界中出现的高强度金属，黑色，性状如铁，但更加沉重坚硬。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：常在武侠世界中出现的高强度金属，黑色，性状如铁，但更加沉重坚硬。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">材料属性：玄铁的硬度为<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">材料属性：玄铁的硬度为<SPAN 
 lang=EN-US>9</SPAN>。在对抗火焰伤害时，视为硬度<SPAN 
 lang=EN-US>12</SPAN>，且对抗光能和腐蚀伤害时，该硬度也有一半生效。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">指定物品：精金改造只能改造武器。其余物品无法进行精金改造。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">指定物品：玄铁改造只能改造武器。其余物品无法进行玄铁改造。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">特殊材质：该物品获得【玄铁】特性。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">特殊材质：该物品获得【玄铁】特性。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">沉重金属：使用精金制造非弹药类物品，其力量需求<SPAN 
-lang=EN-US>+2</SPAN>。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">沉重金属：使用精金制造非弹药类物品，其力量需求<SPAN 
+lang=EN-US>+2</SPAN>。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">武器提升：由于其特殊的结晶构造，玄铁制的近战武器破甲增加<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">武器提升：由于其特殊的结晶构造，玄铁制的近战武器破甲增加<SPAN 
 lang=EN-US>4</SPAN>点，体积增加<SPAN lang=EN-US>1</SPAN>点。同时其在破坏物品时额外忽略目标<SPAN 
 lang=EN-US>5</SPAN>点硬度，由于玄铁的晶体结构特殊，玄铁武器可以承受高强度的使用，在招式适应性上提升<SPAN 
 lang=EN-US>1</SPAN>级。这需要花费价格的<SPAN lang=EN-US>50</SPAN>倍或者增加<SPAN 
-lang=EN-US>500</SPAN>分，取低。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>500</SPAN>分，取低。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>===========================================================================================================<o:p></o:p></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
+lang=EN-US>===========================================================================================================</SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">秘银<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">秘银<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本质：魔幻本质<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本质：魔幻本质<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：见下<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：见下<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">分类：材质改造<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">分类：材质改造<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：常在奇幻世界中出现的材料之一，这种闪耀着银光的金属虽然比钢铁轻，却有同样的硬度。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：常在奇幻世界中出现的材料之一，这种闪耀着银光的金属虽然比钢铁轻，却有同样的硬度。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">材料属性：秘银的硬度为<SPAN 
-lang=EN-US>5</SPAN>。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">材料属性：秘银的硬度为<SPAN 
+lang=EN-US>5</SPAN>。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">指定物品：秘银改造只能改造武器，盔甲以及弹药，其余物品无法进行精金改造。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">指定物品：秘银改造只能改造武器，盔甲以及弹药，其余物品无法进行秘银改造。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">武器提升：使用秘银制造的武器，其力量需求<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">武器提升：使用秘银制造的武器，其力量需求<SPAN 
 lang=EN-US>-2</SPAN>，并且额外获得【银】特性<SPAN lang=EN-US>. </SPAN>这需要花费价格的<SPAN 
-lang=EN-US>50</SPAN>倍或者增加<SPAN lang=EN-US>500</SPAN>分，取低。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>50</SPAN>倍或者增加<SPAN lang=EN-US>500</SPAN>分，取低。</SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">盔甲提升：使用秘银制造的防具，其盔甲减值减少<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">弹药提升：主神提供任何精金箭矢或弹药，包括高斯枪弹等，其获得【银】特性，这需要花费价格的<SPAN 
+lang=EN-US>50</SPAN>倍或者增加<SPAN lang=EN-US>500</SPAN>分，取低。</SPAN></P>
+<P 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">盔甲提升：使用秘银制造的防具，其盔甲减值减少<SPAN 
 lang=EN-US>1</SPAN>点，并且增加<SPAN lang=EN-US>2</SPAN>点法术抗力。这需要花费价格的<SPAN 
 lang=EN-US>50</SPAN>倍或者增加<SPAN lang=EN-US>500</SPAN>分，取低。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>===========================================================================================================<o:p></o:p></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
+lang=EN-US>===========================================================================================================</SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">如意神珍铁 
-<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">如意神珍铁 
+<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本质：魔幻本质<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本质：魔幻本质<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN 
-lang=EN-US>A+10000<o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN 
+lang=EN-US>A+10000</SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">分类：材质改造<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">分类：材质改造<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：出自东方玄幻世界，据传由太清道德天尊亲手炼制而成的仙家奇珍，是一种可以自由变化自身体积与质量的神奇金属，通常情况下呈现出暗金色泽，即使只是一小块也有惊人的重量。当持有者握住时，表面缭绕着瑞气与霞光，挥舞时则转为煌煌大日般的闪耀金光。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：出自东方玄幻世界，据传由太清道德天尊亲手炼制而成的仙家奇珍，是一种可以自由变化自身体积与质量的神奇金属，通常情况下呈现出暗金色泽，即使只是一小块也有惊人的重量。当持有者握住时，表面缭绕着瑞气与霞光，挥舞时则转为煌煌大日般的闪耀金光。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">材料属性：如意神珍铁的硬度为<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">材料属性：如意神珍铁的硬度为<SPAN 
 lang=EN-US>15</SPAN>。在任何情况下，其硬度如常生效。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan; tab-stops: 30.0pt" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan; tab-stops: 30.0pt" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">指定物品：如意神珍铁只能改造武器。其余物品无法进行如意神珍铁改造。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">指定物品：如意神珍铁只能改造武器。其余物品无法进行如意神珍铁改造。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">沉重金属：神珍铁制成的武器其实力量需求翻倍。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">沉重金属：神珍铁制成的武器其实力量需求翻倍。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">武器提升：力量需求每因“沉重金属”增加<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">武器提升：力量需求每因“沉重金属”增加<SPAN 
 lang=EN-US>1</SPAN>点，你就可以让武器伤害提高<SPAN lang=EN-US>1L</SPAN>与<SPAN 
 lang=EN-US>1</SPAN>破甲；每因此提高<SPAN lang=EN-US>3</SPAN>点，可以忽视<SPAN 
 lang=EN-US>1</SPAN>点伤害减免或者吸收。除此以外，还获得【认主】【威猛】【魔法】【神兵】特性，加骰提高一级，以及【重武器】【致命一击】【无限膨胀】特性。<SPAN 
 lang=EN-US><BR></SPAN>重武器：如意神珍铁制造的武器攻击其体积小于武器的目标时，其攻击检定承受<SPAN 
 lang=EN-US>1DP</SPAN>器械减值，获得<SPAN lang=EN-US>1</SPAN>点附加成功。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">致命一击：使用如意神珍铁制造的武器进行攻击时，在计算目标的盔甲防御，盾牌防御，天生防御之后，若还有剩余，则对目标造成的伤害中等于剩余破甲数的部分转为恶性或者忽略等于剩余破甲数的伤害吸收或者伤害减免。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">致命一击：使用如意神珍铁制造的武器进行攻击时，在计算目标的盔甲防御，盾牌防御，天生防御之后，若还有剩余，则对目标造成的伤害中等于剩余破甲数的部分转为恶性或者忽略等于剩余破甲数的伤害吸收或者伤害减免。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">无限膨胀：持有者花费一个迅捷动作，神珍铁制作的兵器将会急速膨胀，从虚无中凭空诞生出无尽质量，瞬间成长为擎天的巨大兵装，以挟山压卵之势向敌人碾去，变回来需要一个迅捷动作。按照你的最大承受的负重，兵器的体积也将同时放大（兵器最大的体积不得超过你此时的最大负重）。你计算你的力量<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">无限膨胀：持有者花费一个迅捷动作，神珍铁制作的兵器将会急速膨胀，从虚无中凭空诞生出无尽质量，瞬间成长为擎天的巨大兵装，以挟山压卵之势向敌人碾去，变回来需要一个迅捷动作。按照你的最大承受的负重，兵器的体积也将同时放大（兵器最大的体积不得超过你此时的最大负重）。你计算你的力量<SPAN 
 lang=EN-US>-</SPAN>本武器的基础负重<SPAN lang=EN-US>-</SPAN>其他物品的负重<SPAN 
-lang=EN-US>=</SPAN>你能提升的空间。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>=</SPAN>你能提升的空间。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">你能提升的空间以<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">你能提升的空间以<SPAN 
 lang=EN-US>5</SPAN>为单位，每有<SPAN lang=EN-US>1</SPAN>点，则可以提升如意神珍铁的<SPAN 
-lang=EN-US>1</SPAN>级体积，表如下。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>1</SPAN>级体积，表如下。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">空间在<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">空间在<SPAN 
 lang=EN-US>1-5</SPAN>时，每提升<SPAN lang=EN-US>1</SPAN>点体积，提升<SPAN 
-lang=EN-US>1</SPAN>点力量需求。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>1</SPAN>点力量需求。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">空间在<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">空间在<SPAN 
 lang=EN-US>1-10</SPAN>时，初始<SPAN lang=EN-US>1-5</SPAN>点，每提升<SPAN 
 lang=EN-US>1</SPAN>点体积，提升<SPAN lang=EN-US>1</SPAN>点力量需求。而<SPAN 
 lang=EN-US>6-10</SPAN>的部分，每提升<SPAN lang=EN-US>2</SPAN>点体积，提升<SPAN 
-lang=EN-US>1</SPAN>点力量需求。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>1</SPAN>点力量需求。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">空间在<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">空间在<SPAN 
 lang=EN-US>1-15</SPAN>时，初始<SPAN lang=EN-US>1-5</SPAN>点，每提升<SPAN 
 lang=EN-US>1</SPAN>点体积，提升<SPAN lang=EN-US>1</SPAN>点力量需求。而<SPAN 
 lang=EN-US>6-10</SPAN>的部分，每提升<SPAN lang=EN-US>2</SPAN>点体积，提升<SPAN 
 lang=EN-US>1</SPAN>点力量需求，最后<SPAN lang=EN-US>11-15</SPAN>时，每提升<SPAN 
 lang=EN-US>3</SPAN>点体积，提升<SPAN lang=EN-US>1</SPAN>点力量需求，以此类推。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">你也可以选择不增加体积，则视为增加密度上的增加，使每提升<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">你也可以选择不增加体积，则视为增加密度上的增加，使每提升<SPAN 
 lang=EN-US>1</SPAN>点力量需求，破甲额外<SPAN lang=EN-US>+1</SPAN>。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>===========================================================================================================<o:p></o:p></SPAN></P></div> 
-<div id="winchm_template_footer">Copyright &copy; 2014. All rights reserved.</div>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
+lang=EN-US>===========================================================================================================</SPAN></P></div>	
+	<div id="winchm_template_footer">Copyright &copy; 2018. All rights 
+reserved. (To change the copyright info, just edit it in template.)</div>
+</div>
+
 </body>
 </html>

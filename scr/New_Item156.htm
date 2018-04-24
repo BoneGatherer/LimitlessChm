@@ -17,112 +17,170 @@ html,body {
 
 
 
-<meta http-equiv="X-UA-Compatible" content="IE=8">
+
 <style>
-html {
-	overflow-y:scroll;
-}
+html,div { margin: 0; padding: 0;}
 
 body {
-	background-image: url(template1/back.png);
-	background-repeat: repeat-x;
-	background-color: #FFFFFF;
 	padding: 0px;
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-bottom: 15px;
-	margin-right: 15px;
+	margin: 0px;
+	overflow: auto;
+	height: 100%;
 }
 
-#winchm_template_button {
-	position: fixed; 
-	float: right; 
-	right: 15px; 
-	top: 15px;
+#winchm_template_button{
+	float: right;
+	width: 93px;
+	top: 7px;
+	position: relative;
+	text-align: right;
+	right: 5px;
+	height: auto;
 }
 
-#winchm_template_navigation {
+#winchm_template_top{
 	padding: 0px;
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
+	margin: 0px;
+	border-bottom: 1px solid #9B9B9B;
+	background-color: #B1CEFE;
+}
 
-	font-size: 8pt;
+#winchm_template_navigation{
+	margin: 0px;
+	padding-top: 7px;
+	padding-left: 7px;
+	padding-bottom: 3px;
+	padding-right: 0px;
+	font-size: 8.5pt;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #4A4A4A;
-	text-align: left;
+	font-weight: normal;
+	color: #585858;
 }
 
-#winchm_template_title {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 22px;
-	font-weight: bold;
-	color: #005680;
-	text-align: left;
+#winchm_template_title{
+	margin: 0px;
+	padding-top: 4px;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	padding-right: 0px;
+	font-size: 18px; 
+	font-family: Verdana, Geneva, sans-serif;
+	color: #363636;
 }
 
 #winchm_template_content{
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
+	margin-top: 20px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
 	width: auto  !important;
 	width: 100%;
 }
 
-
-#winchm_template_footer {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	padding-top: 7px;
+#winchm_template_footer{
 	border-width: 1px;
-	border-color: #c0c0c0;
+	border-color: #B1CEFE;
 	border-top-style: solid;
-
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #575757;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
+	padding-top: 7px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 8.5pt;
+	color: #696969;
+	width: auto;
 	text-align: left;
 }
 
+
+#winchm_template_container{
+	margin: 0px;
+	padding: 0px;
+	position: static;
+	padding-bottom: 3px;
+	overflow: auto;
+	background-color: #FFFFFF;
+}
+
+
 @media print
 {
+#winchm_template_container{
+	position: static;	
+	margin: 0px;
+	padding: 5px;
+	
+	width: auto;
+	height: auto;
+	overflow: auto;
+}
 #winchm_template_button{
 visibility:hidden;
 }
 }
 
-#winchm_template_navigation a:link	{text-decoration: none;color: 004080}
-#winchm_template_navigation a:visited  {text-decoration: none; color: #004080}
-#winchm_template_navigation a:active {text-decoration: none; color: #004080}
-#winchm_template_navigation a:hover {text-decoration: none;color: #0000FF}
+#winchm_template_navigation A:link	{text-decoration: none; color:#004080}
+#winchm_template_navigation A:visited  {text-decoration: none; color: #004080}
+#winchm_template_navigation A:active {text-decoration: none; color: #004080 }
+#winchm_template_navigation A:hover {text-decoration: none;color: #0080FF}
 
-a:link	{text-decoration: underline; color:#0033cc}
-a:visited  {text-decoration: underline; color: #0033cc}
-a:active {text-decoration: underline; color: #0033cc }
-a:hover {text-decoration: underline;color: #ff0000;}
-
+A:link	{text-decoration: underline; color:#0033CC}
+A:visited  {text-decoration: underline; color: #0033CC}
+A:active {text-decoration: underline; color: #0033CC }
+A:hover {text-decoration: underline;color: #FF0000;}
 </style>
+<script type="text/javascript">
+function isMobile(){
+Agent = window.navigator.userAgent;
+if (Agent.indexOf("iPhone")>=1 || Agent.indexOf("iPad")>=1 || Agent.indexOf("iPod")>=1 || Agent.indexOf("Android")>=1){
+return true;
+}else{
+return false;	
+}
+
+}
+function d_onresize(){
+if (window.navigator.userAgent.indexOf("MSIE")>=1){
+document.getElementById('winchm_template_container').style.pixelWidth = document.body.offsetWidth - 3;
+document.getElementById('winchm_template_container').style.pixelHeight = document.body.offsetHeight - document.getElementById('winchm_template_top').offsetHeight - 4;
+}
+document.getElementById('winchm_template_container').style.top = document.getElementById('winchm_template_top').offsetHeight + 'px';
+}
+
+function d_onbeforeprint(){
+document.getElementById('winchm_template_container').style.width = 'auto';
+document.getElementById('winchm_template_container').style.height = 'auto';
+}
+
+function d_onafterprint(){
+d_onresize();
+}
+
+if(!isMobile()){
+
+window.onload = d_onresize;
+window.onresize = d_onresize;
+window.onbeforeprint = d_onbeforeprint;
+window.onafterprint = d_onafterprint;
+
+document.write("<style>\n");
+document.write("body {overflow: hidden;}\n");
+document.write("#winchm_template_container {position: absolute;overflow: auto;top : 0px;right: 0px;bottom: 0px;left: 0px;}\n");
+document.write("</style>\n");
+}
+
+</script>
 </head>
 
 <body><script language="JavaScript" type="text/JavaScript">
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(273);
+  parent.nav.tree.selectNode(379);
  }else{
   setTimeout("syn()",500);
 }
@@ -142,358 +200,547 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 }
 </script> 
 
-<div id="winchm_template_button"><A href="神之英孽.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template1/btn_prev_n.gif" border="0"></a><A href="伟大种族.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template1/btn_next_n.gif" border="0"></a></div>
-<div id="winchm_template_navigation">Help &gt; 
-<A href="资源部分.htm">资源部分</A> &gt; <A href="改造.htm">改造</A> &gt; <A href="$$unsavedpage12.htm">魔幻类改造</A> &gt; </div>
-<div id="winchm_template_title">神话英雄</div>
-<div id="winchm_template_content">
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">神话中不朽的英雄之血在你的体内流动，你身具种种超越凡俗人类的力量，亦拥有与此力量相配的豪情。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">神话英雄需要按照支线从低到高的顺序购买，但在同一级内，你可以自行决定购买顺序。神话英雄必然是超越凡人的强者，因此你购买神话英雄所花费的支线，不可高于你购买其他非物品强化所花费的支线。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">特殊：神性的血脉带给了神话英雄奔放、不羁、有如大自然一般汹涌澎湃的本性，这使得神话英雄难以使用那些注重沉静、内省与自我修行的能力。这使得注重谦逊与自我克制，摒弃骄傲与放纵感情的能力，比如剑修、儒生、原力、楷覆功等与神话英雄难以兼修。神话英雄在购买该类能力时，需要花费双倍的支线。若神话英雄已经具有该类能力，则该能力失效，直到神话英雄重新花费等量的支线以重新开启该类能力。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">另外，不死生物无法成为神话英雄。若神话英雄因为某些原因成为了不死生物，则其会被替换为同等级的神孽模板。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">尊贵血脉<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>D+600</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">高贵的血脉在神话英雄体内流淌，令人一眼望去就能感到英雄的不凡气度。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">英雄在交际、说服与威吓检定上获得等同于神话英雄等级的<SPAN 
-lang=EN-US>DP</SPAN>加值。此外，在英雄为任何关键属性不为风度的主动检定使用意志力以获得<SPAN 
-lang=EN-US>DP</SPAN>加值时，英雄可以在此检定上使用风度带来的附加成功。这会正常地消耗此附加成功，导致直到下回合之前，无法在其他检定中再次使用此附加成功。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">不屈肉体<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>D+600</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">神话英雄的肌肉强壮，坚硬如铁。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">英雄的天生防御获得额外加值，其数值等同于神话英雄等级。英雄的皮肤坚韧无比，散发着古铜色的光泽，视为具有【防能量武器】特性。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">非凡气概<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>D+600</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">神话英雄勇敢无畏，世俗的权力对其来说不值一哂，国王与暴君因英雄的诞生而心惊胆寒。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">英雄在用于对抗效果的意志检定上获得等同于神话英雄等级的附加成功加值。只要英雄不愿意倒地，就永远不会倒地，即使死后也会保持站立。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">天生神力<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>C+1200</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">神话英雄出生就可以掐死毒蛇，驯服白象。只有最凶悍暴躁的烈马，才能配得上神话英雄骑乘；只有最沉重威武的兵器，才能配得上神话英雄握持。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">英雄在体型上获得<SPAN 
-lang=EN-US>+1</SPAN>加值，在力量检定和耐力检定上获得等同于神话英雄等级的<SPAN 
-lang=EN-US>DP</SPAN>加值与附加成功加值。无论美丑，英雄无不显得高贵威严，男性强壮威武如山峦，女性高大健壮如橡树，给人以深刻的印象。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">青铜铸就<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>C+1200</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">神话英雄的肉体以天地为熔炉冶炼，如铜铸铁打，坚不可摧。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">英雄获得<SPAN 
-lang=EN-US>1/</SPAN>精金的伤害减免。英雄的双拳硬如钢铁，视为<SPAN 
-lang=EN-US>3L</SPAN>的天生武器。英雄免疫凡俗疾病和自然毒素，闭气、耐饥渴、不睡眠时间增长到通常的<SPAN 
-lang=EN-US>10</SPAN>倍，可与其他来源叠加。在对抗攻击内部的攻击时，英雄视同体表被攻击般照常防御。英雄的寿命增长为正常人的<SPAN 
-lang=EN-US>3</SPAN>倍，但仍会受到衰老影响。英雄无视寒暑、气压等一般环境带来的减值，并且对任何环境带来的伤害获得<SPAN 
-lang=EN-US>5</SPAN>点全伤害抵抗，但这无法使其免除身处液体或固体之中带来的影响（可以想见，<SPAN 
-lang=EN-US>5</SPAN>点伤害抵抗也不足以免除诸如火山熔岩、真空之类极端环境效果）。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">英雄出世<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>B+4000</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">神话英雄鲜衣怒马，踏入不平人世，惩奸除恶，所向无敌。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">当英雄投掷先攻检定时，其可以在投掷前选择获得<SPAN 
-lang=EN-US>+10</SPAN>加值或<SPAN lang=EN-US>-10</SPAN>减值。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">若英雄选择获得<SPAN 
-lang=EN-US>+10</SPAN>加值，则英雄的攻击获得等同于神话英雄等级的高速效果，并且在第一回合额外获得一个移动动作，此动作只能用来接近某个敌人。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">若英雄选择获得<SPAN 
-lang=EN-US>-10</SPAN>减值，则英雄获得全伤害吸收，数值为神话英雄等级，且在到其第一次行动之前，英雄可以随时选择额外插入一个标准动作。此标准动作只能用来对某个攻击自己的敌人进行基础近战攻击，或进行格挡。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">英雄无畏<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>B+4000</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">神话英雄但求在人生初始即无惧无畏，如此方能在人生结束时无悔无憾。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">英雄在对抗带来恐惧或沮丧的效果时，在检定上额外获得<SPAN 
-lang=EN-US>+5</SPAN>附加成功加值。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">只要英雄不愿意，就永远不会被强制远离敌人。这视为将英雄推离敌人的、<SPAN 
-lang=EN-US>B</SPAN>级以下的强迫移动能力对英雄无效，而对于<SPAN 
-lang=EN-US>A</SPAN>级或以上的该类能力，英雄也可以选择承受任意点不可减免、不可抵消的冲击伤害，来抵消对应米数的强迫移动距离。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">当英雄投掷先攻权检定时，检视场景。若在英雄的感知或了解范围内，本场景中存在一个或多个在力量、耐力、风度、体型四项属性中有两项或以上高于英雄且可以行动的敌人，则英雄在攻击检定上获得<SPAN 
-lang=EN-US>DP</SPAN>神圣加值，其数值为其在该些属性上超过英雄的数值，最高不超过神话英雄等级×<SPAN 
-lang=EN-US>3</SPAN>（如，一个<SPAN lang=EN-US>A</SPAN>级英雄与一条可怕的九头蛇对战。<SPAN 
-lang=EN-US>ST</SPAN>判断九头蛇具有体型<SPAN lang=EN-US>15</SPAN>，超过体型<SPAN 
-lang=EN-US>6</SPAN>的英雄<SPAN lang=EN-US>9</SPAN>点；同时具有力量<SPAN 
-lang=EN-US>20</SPAN>，超过力量<SPAN lang=EN-US>15</SPAN>的英雄<SPAN 
-lang=EN-US>5</SPAN>点，则总计超过英雄<SPAN lang=EN-US>14</SPAN>点，英雄因此在攻击检定上获得了<SPAN 
-lang=EN-US>+12DP</SPAN>神圣加值），直到战斗结束，或英雄做出了任何主动逃避该敌人的行为。如果需要，<SPAN 
-lang=EN-US>ST</SPAN>可以暗中投掷此<SPAN 
-lang=EN-US>DP</SPAN>加值，但英雄必须了解到对方的强度胜过自己。英雄可以消耗<SPAN 
-lang=EN-US>1</SPAN>个移动动作，重新检视场景并评判敌人的强度。这是为表现英雄在面对强大的敌人时创造出奇迹般功业的场景，并非英雄的攻击能力真的得到了提高。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">每当英雄投掷先攻权检定时，检视场景。若在英雄的感知或了解范围内，本场景中存在的敌人数量超过英雄及英雄盟友的数量<SPAN 
-lang=EN-US>1</SPAN>倍或以上，则英雄在防御上获得闪避加值，其数值为敌人总数超过英雄及英雄盟友人数的倍数，最高不超过神话英雄等级×<SPAN 
-lang=EN-US>2</SPAN>（例如，一个<SPAN lang=EN-US>A</SPAN>级英雄及其<SPAN 
-lang=EN-US>4</SPAN>名盟友面对<SPAN lang=EN-US>47</SPAN>名敌人，敌人数量超过英雄及其盟友<SPAN 
-lang=EN-US>42</SPAN>人，即<SPAN lang=EN-US>5</SPAN>人的<SPAN 
-lang=EN-US>8</SPAN>倍，则英雄在防御上获得<SPAN 
-lang=EN-US>+8</SPAN>闪避加值），直到战斗结束，或英雄做出了任何主动逃避这些敌人的行为。如果需要，<SPAN 
-lang=EN-US>ST</SPAN>可以暗中计算此防御加值，但英雄必须了解到对方的数量远超己方。英雄可以消耗<SPAN 
-lang=EN-US>1</SPAN>个移动动作，重新检视场景并评判敌人的数量。这是为表现英雄面对众多敌人所向无敌的场景，并非英雄的防御能力真的得到了提高。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">盖世英豪<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>A+10000</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">王中王，人上人，骑士之骑士，神话英雄无论面对何种境遇、走过何种人生，都将成为出类拔萃的战士、冠绝古今的勇者，概不例外。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">选择白刃、肉搏、枪械或运动之一，作为所选技能，并选择感知、决心或风度之一，作为所选属性。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">神话英雄在所选项技能上获得所有专业，并在该项技能上获得等同于技能级数的<SPAN 
-lang=EN-US>DP</SPAN>加值。同时，所选技能获得附加成功加值，其数值等同于所选属性上的附加成功数量。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">神话英雄绝不惧怕面对面的挑战，因此只要神话英雄处于某生物的基础触及范围之内，对该生物的攻击，神话英雄在防御上就获得等同于所选技能等级的闪避加值。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">神话英雄的战技是如此高超，以至于可以挑战原本不能被战胜的事物——无论是山峦、疾病、时间还是死亡。神话英雄获得等同于所选技能等级的额外生命值，并且每天<SPAN 
-lang=EN-US>1</SPAN>次，可以用所选技能代替其他技能进行检定。神话英雄的攻击，无论是通过任何形式发出，都视为具有【魔法】特性，并且任何免疫或无视物理伤害的能力或事物，在面对神话英雄时，都改为额外减免等同于该能力<SPAN 
-lang=EN-US>/</SPAN>事物等级×<SPAN lang=EN-US>10</SPAN>的伤害。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">神话英雄了解自己的天命所在，必将踏上面对命运赋予其的任务的旅途——这视为在每章或每部电影中，神话英雄可以申请获得<SPAN 
-lang=EN-US>ST</SPAN>的提示，次数等同于其所选属性上的附加成功数量。该提示只能用于了解其在本章或本部电影中所需要完成的最重要的、符合英雄特质的任务为何，及避免在完成该任务中误入歧途。这可能会使得任务变得较容易，但只能通过“获取额外优势”的形式，具体由<SPAN 
-lang=EN-US>ST</SPAN>决定。例如，<SPAN 
-lang=EN-US>ST</SPAN>判断英雄在本章中最重要的任务是终结某只巨龙的残暴统治。英雄会了解这一点，知道其比“帮助主角建立王国”等其他任务更为重要。英雄也可能会了解巨龙所在的大致方位，某个城堡里藏有可以对巨龙产生巨大伤害的屠龙剑。但英雄不会自动知晓巨龙迷宫入口的谜题密门的答案，也无法了解到足以对巨龙进行定位探知和传送的具体方位。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">在达到<SPAN 
-lang=EN-US>A</SPAN>级之后，你必须完成一些重大任务与功德，才能继续购买<SPAN 
-lang=EN-US>S</SPAN>级或更高等级的神话英雄。一般来说，这些任务包括“单独击败极为强大的怪物”“拯救一个国家甚至整个世界”“寻获失落的传奇神器”或“杀死神明”等，具体由<SPAN 
-lang=EN-US>ST</SPAN>决定。英雄在达到<SPAN lang=EN-US>A</SPAN>级的同时可以选择一个<SPAN 
-lang=EN-US>1</SPAN>或以上，<SPAN 
-lang=EN-US>20</SPAN>或以下的数字，来决定其完成多少项任务才可以获取此等级强化的能力，数字越少则难度就越高。一般来说，<SPAN 
-lang=EN-US>9</SPAN>或<SPAN 
-lang=EN-US>12</SPAN>是比较平均且常见的选择，代表适中（英雄独自可以艰难完成，或者与同伴在有挑战的情况下完成）的难度。在完成最后一个任务的该章或该部影片结束时，英雄获得购买<SPAN 
-lang=EN-US>S</SPAN>级或更高等级神话英雄的资格。<SPAN 
-lang=EN-US>ST</SPAN>应配合安排一些合适的剧情，尽量使其在<SPAN lang=EN-US>3</SPAN>章<SPAN 
-lang=EN-US>/3</SPAN>部影片左右的时间内完成所有任务。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">半神英雄<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>S+20000</SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">【庄严外貌】神话英雄的外表愈加威严高贵，肌肉筋骨宛如雕塑，皮肤光滑无瑕如金属，无论善恶美丑，皆散发着摄人心魄的魅力，令人誓死追随。英雄获得<SPAN 
-lang=EN-US>2</SPAN>点加值，可以选择加在体型和<SPAN lang=EN-US>/</SPAN>或外貌上，任意分配。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">【不朽英灵】神话英雄不再会因为衰老而承受属性减值。达到此等级的英雄在第一次死亡后（无论死因为何），都会带着身上装备<SPAN 
-lang=EN-US>/</SPAN>携带的所有物品立即消失，并在下一个场景中携带着这些装备和物品复活且出现在场景中的任一位置。此效果压制其他复活能力。在此复活之后，神话英雄便视为异界生物存在，这产生了以下效果：<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">英雄免疫一切衰老效果，寿命视为无限。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">英雄不需要呼吸和饮食即可生存，但并不妨碍英雄享受美食美酒。事实上，神话英雄的胃部对食物和饮料的容量变为正常该体型生物的十倍，这只影响其食量上限，是否真的要大吃大嚼到有饱胀感视英雄自身的个性和意愿而定。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">英雄获得<SPAN 
-lang=EN-US>10/-</SPAN>与<SPAN lang=EN-US>30/</SPAN>魔法的伤害减免。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">英雄可以正常地影响虚体和灵体生物，如同其本身与所持用的物体都带有“幽冥”效果一般。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">只要英雄身处某一魔幻或特异本源的世界，该世界的天空中就会多出一颗星星，无论身处该世界的何地，包括在该世界的任何一个星球上，都可以观察到该星。但另一方面，接触该星是不可能完成的事情，无论身处何处，该星看来都一般遥远，以天文设施观察只会看到一个亮点。人们会自动认知到那星星的存在是因为一名了不起的大英雄踏入世间。若神话英雄死亡，则该星星会化为流星消逝。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">选择【光明生物】或【黑暗生物】之一，英雄成为该类生物。这压制其他类似效果。基于生物类别的能力（如“灯塔”专长）可能会因此而失效，但带来生物类别的强化（如“狼人血统”）不会受到影响。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">英雄某种意义上已经视为神灵，因此只对神灵有效的能力对英雄也有效，只对凡人有效的能力则对英雄无效。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">【威震山河】当神话英雄策马前行之时，山峦避让，森林畏缩，连星辰都不敢位于英雄头顶！神话英雄的威吓检定获得<SPAN 
-lang=EN-US>+10</SPAN>附加成功加值，并且可以对自然事物进行威吓检定。这难以促使自然事物做出自身无法实现的事情以帮助英雄——如，高山无法拔起自己以践踏英雄的敌人，但一般可以提供英雄需要的信息。该威吓<SPAN 
-lang=EN-US>DC</SPAN>由<SPAN 
-lang=EN-US>ST</SPAN>决定，不过即使失败，自然事物也会对英雄表达出敬畏。这表现为：<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">英雄无视任何阻碍行动的困难地形。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">英雄不会因溺水而亡。水流会自动将英雄送至其希望到达的岸边或水底的某处，但英雄必须自身知道该地点的位置。在英雄落水的同时，英雄也可以消耗任意点意志力，分开水流，每点意志力可以持续<SPAN 
-lang=EN-US>10</SPAN>轮时间。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">英雄的攻击免疫自然事物带来的掩蔽效果。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">英雄不会因自然环境而受到任何伤害，这包括气温、气压带来的持续效果或火山熔岩、剧毒瘴气等直接造成伤害的事物。但这源于自然事物会自主规避对英雄带来伤害的行为，并不表示英雄自身的抵抗力得到了提高，因此人工制造和操作的火焰、高压或将重物搬起以砸伤英雄等效果仍然可以正常对英雄生效。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">任何没有智慧生物操作的武器系统，如镰刀陷阱、“密集阵”近程防御系统或<SPAN 
-lang=EN-US>AI</SPAN>无法通过图灵测试的机器人，若支线等级或同值支线等级为<SPAN 
-lang=EN-US>A</SPAN>级或以下，则其对英雄所进行的攻击检定在所有骰子上都视为失败。这是因为构成这些系统的物质本身惧怕英雄。刀刃会卷曲，子弹会自己坠地，而英雄不会受到损伤。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">【传奇】神话英雄的一举一动皆已成为传奇，而如此伟大的英雄所用过的物品也会成为传奇的一部分。任何被英雄使用并在正常剧情中进行<SPAN 
-lang=EN-US>30</SPAN>次或以上的检定的工具，或任何被英雄在一整场与英雄等级相符的、有挑战性的战斗中持用的武器或穿戴的甲胄，或任何被英雄装备长达一章或一部影片的其他装备位物品，若本身没有任何支线，则在满足此条件，且英雄离开该物品所在的世界（若不采用主神空间系统，至少离开该位面<SPAN 
-lang=EN-US>/</SPAN>该星球并预期短时间内不会回来）后，由非玩家人物使用时，可以成为一件相同类型的、<SPAN 
-lang=EN-US>C</SPAN>级或更低等级的非消耗性魔幻来源物品。这些物品无法被拆解成支线或分数。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">【战争之神】黄金时代的完美人类喜爱田园与牧歌，但青铜时代的无尽战乱才是属于英雄的地方——英雄在此出生，战死，并高唱着赞颂自己不朽事迹的歌曲。神话英雄在肉搏，白刃，运动，枪械，神秘，表达与生存检定上获得<SPAN 
-lang=EN-US>+10</SPAN>附加成功神圣加值，并在防御上获得<SPAN 
-lang=EN-US>+10</SPAN>附加成功加值。英雄在所选属性（参见【盖世英豪】）上每有<SPAN 
-lang=EN-US>1</SPAN>个附加成功，此技能和防御上的附加成功加值就<SPAN 
-lang=EN-US>+1</SPAN>。若在一章或一部影片中，英雄没有进行任何战斗，则其在所有检定中都承受可以叠加的<SPAN 
-lang=EN-US>-1DP</SPAN>减值，此减值持续到其进入先攻权检定并对一名敌人进行攻击为止。<SPAN 
-lang=EN-US></SPAN></SPAN></P></div> 
-<div id="winchm_template_footer">Copyright &copy; 2014. All rights reserved.</div>
+
+<div id="winchm_template_top">
+	<div id="winchm_template_button"><A href="$$unsavedpage42.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="烈日行者.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
+	<div id="winchm_template_navigation">Help &gt; 
+<A href="资源部分.htm">资源部分</A> &gt; <A href="改造.htm">改造</A> &gt; <A href="$$unsavedpage40.htm">魔幻本质类改造</A> &gt; <A href="$$unsavedpage42.htm">光明生物</A> &gt; </div>
+	<div id="winchm_template_title">神话英雄</div>
+</div>
+<div id="winchm_template_container">
+	<div id="winchm_template_content">
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>本质：魔幻本质</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>描述：</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>神话中不朽的英雄之血在你的体内流动，你身具种种超越凡俗人类的力量，亦拥有与此力量相配的豪情。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特殊：</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>神话英雄需要按照支线从低到高的顺序购买，但在同一级内，你可以自行决定购买顺序。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>选开：</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>在达到</FONT>A级之后，</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>轮回者</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>必须完成一些重大任务与功德，才能继续购买</FONT>S级或更高等级的神话英雄。一般来说，这些任务包括“单独击败极为强大的怪物”“拯救一个国家甚至整个世界”“寻获失落的传奇神器”或“杀死神明”等，具体由ST决定。英雄在达到A级的同时可以选择一个1或以上，20或以下的数字，来决定其完成多少项任务才可以获取此等级强化的能力，数字越少则难度就越高。一般来说，9或12是比较平均且常见的选择，代表适中（英雄独自可以艰难完成，或者与同伴在有挑战的情况下完成）的难度。在完成最后一个任务的该章或该部影片结束时，英雄获得购买S级或更高等级神话英雄的资格。ST应配合安排一些合适的剧情，尽量使其在3章/3部影片左右的时间内完成所有任务。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>尊贵血脉</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>价格：</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'">D+</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'">5</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'">00</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>属性：力量</FONT>+2 耐力+2 决心+1</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特性：</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>不凡气度</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>、铜皮铁骨（双特性），光明生物（负特性）</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特殊：由于没有能量池，额外获得</FONT>1个特性，由于没有技能树，额外获得1点属性。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>描述：</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>高贵的血脉在神话英雄体内流淌，令人一眼望去就能感到英雄的不凡气度。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>不凡气度</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>：</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>英雄在交际与威吓相关检定上获得等同于</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>改造</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>等级</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>（</FONT>D1S5）</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>的</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>内在</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>加值。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>铜皮铁骨：</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>英雄</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>获得</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>天生防御</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>，</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>其数值等同于</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>改造</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>等级</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>（</FONT>D1S5），</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>英雄的皮肤坚韧无比，散发着古铜色的光泽，视为具有</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>【防弹】</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特性。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'">&nbsp;&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>青铜铸就</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>价格：</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'">C+1</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'">0</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'">00</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>属性：耐力</FONT>+3 
+决心+3</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特性：铜铁浇筑、超强体魄，超脱自然</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特殊：由于没有技能树，</FONT>额外获得1个特性。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>描述；</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>神话英雄的肉体以天地为熔炉冶炼，如铜铸铁打，坚不可摧。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>铜铁浇筑：英雄获得</FONT>1</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'">dr</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'">/精金</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>，并且</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>双拳硬如钢铁，视为</FONT>3L的天生武器。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>超强体魄：英雄免疫自然本质的疾病和毒素。在计算英雄闭气，睡眠以及不吃不喝时，英雄视为传奇耐力</FONT>+1.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>超脱自然：英雄免疫环境带来的减值，以及温度，海拔变化带来的影响。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体></FONT></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体></FONT></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>天生神力</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>价格：</FONT>C+1000</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>属性：力量</FONT>+3 
+感知+3</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>描述：</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>神话英雄出生就可以掐死毒蛇，驯服白象。只有最凶悍暴躁的烈马，才能配得上神话英雄骑乘；只有最威武的兵器，才能配得上神话英雄握持。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特性：巨大体型，非凡气概，绝不倒下</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特殊：由于没有技能树，</FONT>额外获得1个特性。</SPAN></FONT></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>巨大体型：</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>无论美丑，英雄无不显得高贵威严，男性强壮威武如山峦，女性高大健壮如橡树，给人以深刻的印象。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>英雄的体积</FONT>+1.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>非凡气概</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>：英雄的力量检定以及耐力检定获得改造等级的附加成功。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>绝不倒下：只要</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>英雄不愿意倒地，就永远不会倒地，即使死后也会保持站立。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>这意味着英雄免疫倒地效果。（当一个效果造成多个效果，英雄不会全部免疫，只会免疫其中的倒地效果）</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'">&nbsp;&nbsp;</SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>英雄出世</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>价格：</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'">B+</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'">2</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'">000</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>属性：力量</FONT>+4 
+决心+4</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特性：出世（双特性）、直感</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>描述：</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>神话英雄鲜衣怒马，踏入不平人世，惩奸除恶，所向无敌。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特殊：由于没有技能树，</FONT>额外获得1个特性。</SPAN></FONT></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>出世：当英雄进行先攻检定时，在投掷之前可以选择结果获得</FONT>+10或者-10.</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>若选择</FONT>+10，则英雄的所有攻击获得相当于改造等级的高速。并且第一回合额外获得一个移动动作，但是只能用来接近目标。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>若选择</FONT>-10，则英雄获得相当于改造等级的全伤害吸收。且本场战斗可以以迅捷动作或者反射动作进行格挡。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>坚韧不拔：英雄可以自愿免疫让自己强制移动的行动或者效果。（当一个效果造成多个效果，英雄不会全部免疫，只会免疫其中的强制移动效果）</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>英雄无畏</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>价格：</FONT>B+2000</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>属性：耐力</FONT>+4 
+感知+4</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特性：无所畏惧</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>描述：神话英雄但求在人生初始即无惧无畏，如此方能在人生结束时无悔无憾。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特殊：由于没有技能树，</FONT>额外获得1个特性。</SPAN></FONT></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>无所畏惧：英雄在面对带来恐惧效果以及沮丧的效果时，对抗检定获得改造等级的附加成功。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>光辉伟绩：当英雄进行战斗时，若其敏感范围内有一个或者多个敌方目标当前的力量，耐力，风度，体积之和大于英雄当前自身的力量，耐力，风度，体积之和。此时英雄的攻击检定针对该目标获得差值的增强加值。直至战斗结束，或者该目标失去威胁，或者英雄失去意识。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>以一敌众：当英雄进行战斗时，若其敏感范围内的敌方目标数量每大于友军数量一倍。则英雄的防御增加</FONT>1点闪避防御，上限不得超过本改造等级*3。直至战斗结束，或者该目标失去威胁，或者英雄失去意识。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: Calibri; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'; mso-fareast-font-family: 宋体"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: Arial; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'; mso-fareast-font-family: 宋体"></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: Calibri; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'; mso-fareast-font-family: 宋体"></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000">&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>盖世英豪</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>价格：</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'">A+</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'">4</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'">000</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>属性：力量</FONT>+6 
+决心+6</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特性；不朽（双特性）、神技</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特殊：由于没有技能树，</FONT>额外获得1个特性。</SPAN></FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>描述：</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>王中王，人上人，骑士之骑士，神话英雄无论面对何种境遇、走过何种人生，都将成为出类拔萃的战士、冠绝古今的勇者，概不例外。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>不朽：英雄选择白刃，肉搏，运动之一，作为所选技能。一旦选择不可更改。英雄在所选的技能上获得全专业，并且该技能的相关检定获得相当于该技能等级的附加成功。英雄绝不惧怕面对面的挑战。只要英雄处于目标的触及范围之内，针对该目标的攻击，英雄在防御上增加相当于所选技能的闪避防御。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>神技：英雄可以用所选技能代替任何其他技能进行检定，这次检定不能是延长检定，并且视为拥有对应的子技能或者专业，并且对应改变伤害上限。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>使用本能力第一次免费，第二次花费</FONT>1点意志力，第二次2点，第三次4点，以此类推。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体></FONT></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体></FONT></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>传奇英雄</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>价格：</FONT>A+4000</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>属性：耐力</FONT>+6 
+感知+6</SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特性：不灭、天命、超限</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特殊：由于没有技能树，</FONT>额外获得1个特性。</SPAN></FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>描述：神话英雄无论走到哪里都将成为传奇，带来新的传说。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>不灭：英雄选择力量，风度，决心之一，作为所选属性。一旦选择不可更改。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>超限：英雄针对所选属性的相关检定获得相当于该属性传奇属性的附加成功和</FONT>DP内在加值。英雄的生命值提升相当于所选属性传奇属性*2点。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>天命：神话英雄了解自己的天命所在，必将踏上面对命运赋予其的任务的旅途</FONT>——这视为在每章或每部电影中，神话英雄可以申请获得ST的提示，次数等同于其所选属性上的附加成功数量。该提示只能用于了解其在本章或本部电影中所需要完成的最重要的、符合英雄特质的任务为何，及避免在完成该任务中误入歧途。这可能会使得任务变得较容易，但只能通过“获取额外优势”的形式，具体由ST决定。例如，ST判断英雄在本章中最重要的任务是终结某只巨龙的残暴统治。英雄会了解这一点，知道其比“帮助主角建立王国”等其他任务更为重要。英雄也可能会了解巨龙所在的大致方位，某个城堡里藏有可以对巨龙产生巨大伤害的屠龙剑。但英雄不会自动知晓巨龙迷宫入口的谜题密门的答案，也无法了解到足以对巨龙进行定位探知和传送的具体方位。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>超限：英雄可以用所选属性代替任何其他属性进行检定，这次检定不能是延长检定，并且对应改变伤害上限。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>使用本能力第一次免费，第二次花费</FONT>1点意志力，第二次2点，第三次4点，以此类推。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体></FONT></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体></FONT></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>半神英雄</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>价格：</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'">S+</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'">8</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'">000</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>属性：力量</FONT>+8 决心+8 
+沉着+8&nbsp; </SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特性：半神、非凡、传奇</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特殊：由于没有技能树，</FONT>额外获得1个特性。</SPAN></FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>描述：</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>话英雄的外表愈加威严高贵，肌肉筋骨宛如雕塑，皮肤光滑无瑕如金属，无论善恶美丑，皆散发着摄人心魄的魅力，令人誓死追随。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>半神；你免疫</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>任何</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>不具有【神兵】特性的物理攻击，</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>则其对英雄所进行的攻击检定在所有骰子上都视为失败。这是因为构成这些系统的物质本身惧怕英雄。刀刃会卷曲，子弹会自己坠地，而英雄不会受到损伤。并且你</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>免疫一切衰老效果，寿命视为无限。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>非凡：英雄可以正常影响虚体和灵体生物，英雄不需要呼吸和饮食即可生存，但并不妨碍英雄享受美食美酒。事实上</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>你</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>的胃部对食物和饮料的容量变为正常该体型生物的十倍，这只影响其食量上限，是否真的要大吃大嚼到有饱胀感视</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>你</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>自身的个性和意愿而定。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>传奇：你获得在任何检定上均获得</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">15dp的增强加值，并且其在“盖世英豪”和“传奇英雄”上选择的技能每有1点附加成功和每有1点传奇属性本加值再+1。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>黄金时代的完美人类喜爱田园与牧歌，但青铜时代的无尽战乱才是属于英雄的地方</FONT>——英雄在此出生，战死，并高唱着赞颂自己不朽事迹的歌曲。只要英雄身处某一魔幻或特异本源的世界，该世界的天空中就会多出一颗星星，无论身处该世界的何地，包括在该世界的任何一个星球上，都可以观察到该星。但另一方面，接触该星是不可能完成的事情，无论身处何处，该星看来都一般遥远，以天文设施观察只会看到一个亮点。人们会自动认知到那星星的存在是因为一名了不起的大英雄踏入世间。若神话英雄死亡，则该星星会化为流星消逝。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体></FONT></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体></FONT></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>人神合一</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>价格：</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">S+8000</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>属性：敏捷</FONT>+12 耐力+12 感知+12</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特性：如神、自然、神力</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>描述：此时的神话英雄犹如神明一般，神明的威严在英雄身上展露无遗。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特殊：由于没有技能树，</FONT>额外获得1个特性。</SPAN></FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: none; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>如神：英雄获得神格，在判定上超凡神圣等级视为</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">0级。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: widow-orphan; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>自然：</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri"><FONT face=宋体>并且</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>自然事物也会对英雄表达出敬畏。这表现为：英雄无视任何阻碍行动的困难地形。英雄不会因溺水而亡。水流会自动将英雄送至其希望到达的岸边或水底的某处，但英雄必须自身知道该地点的位置。在英雄落水的同时，英雄也可以消耗任意点意志力，分开水流，每点意志力可以持续</FONT>10轮时间。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>英雄免疫所有对自己不利的环境影响。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: Calibri; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'; mso-fareast-font-family: 宋体"></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0pt; LINE-HEIGHT: 150%; TEXT-AUTOSPACE: ideograph-numeric; TEXT-INDENT: 0pt; mso-pagination: none; mso-para-margin-right: 0.0000gd; mso-para-margin-left: 0.0000gd; mso-char-indent-count: 0.0000"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>神力：</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri"><FONT face=宋体>英雄所持有的所有物品若原本没有，则现在获得【魔法】【神兵】特性，但是一旦脱手则失去。</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>并且任何免疫物理伤害的能力或事物，在面对神话英雄</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>造成的物理伤害</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>时，都改为</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>等</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>同于该能力</FONT>/事物等级</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'">*</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'">10</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 0.0000pt; mso-spacerun: 'yes'">DR/-的伤害减免</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P></div>	
+	<div id="winchm_template_footer">Copyright &copy; 2018. All rights 
+reserved. (To change the copyright info, just edit it in template.)</div>
+</div>
+
 </body>
 </html>

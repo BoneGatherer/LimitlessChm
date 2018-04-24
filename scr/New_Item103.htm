@@ -17,112 +17,170 @@ html,body {
 
 
 
-<meta http-equiv="X-UA-Compatible" content="IE=8">
+
 <style>
-html {
-	overflow-y:scroll;
-}
+html,div { margin: 0; padding: 0;}
 
 body {
-	background-image: url(template1/back.png);
-	background-repeat: repeat-x;
-	background-color: #FFFFFF;
 	padding: 0px;
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-bottom: 15px;
-	margin-right: 15px;
+	margin: 0px;
+	overflow: auto;
+	height: 100%;
 }
 
-#winchm_template_button {
-	position: fixed; 
-	float: right; 
-	right: 15px; 
-	top: 15px;
+#winchm_template_button{
+	float: right;
+	width: 93px;
+	top: 7px;
+	position: relative;
+	text-align: right;
+	right: 5px;
+	height: auto;
 }
 
-#winchm_template_navigation {
+#winchm_template_top{
 	padding: 0px;
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
+	margin: 0px;
+	border-bottom: 1px solid #9B9B9B;
+	background-color: #B1CEFE;
+}
 
-	font-size: 8pt;
+#winchm_template_navigation{
+	margin: 0px;
+	padding-top: 7px;
+	padding-left: 7px;
+	padding-bottom: 3px;
+	padding-right: 0px;
+	font-size: 8.5pt;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #4A4A4A;
-	text-align: left;
+	font-weight: normal;
+	color: #585858;
 }
 
-#winchm_template_title {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 22px;
-	font-weight: bold;
-	color: #005680;
-	text-align: left;
+#winchm_template_title{
+	margin: 0px;
+	padding-top: 4px;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	padding-right: 0px;
+	font-size: 18px; 
+	font-family: Verdana, Geneva, sans-serif;
+	color: #363636;
 }
 
 #winchm_template_content{
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
+	margin-top: 20px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
 	width: auto  !important;
 	width: 100%;
 }
 
-
-#winchm_template_footer {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	padding-top: 7px;
+#winchm_template_footer{
 	border-width: 1px;
-	border-color: #c0c0c0;
+	border-color: #B1CEFE;
 	border-top-style: solid;
-
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #575757;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
+	padding-top: 7px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 8.5pt;
+	color: #696969;
+	width: auto;
 	text-align: left;
 }
 
+
+#winchm_template_container{
+	margin: 0px;
+	padding: 0px;
+	position: static;
+	padding-bottom: 3px;
+	overflow: auto;
+	background-color: #FFFFFF;
+}
+
+
 @media print
 {
+#winchm_template_container{
+	position: static;	
+	margin: 0px;
+	padding: 5px;
+	
+	width: auto;
+	height: auto;
+	overflow: auto;
+}
 #winchm_template_button{
 visibility:hidden;
 }
 }
 
-#winchm_template_navigation a:link	{text-decoration: none;color: 004080}
-#winchm_template_navigation a:visited  {text-decoration: none; color: #004080}
-#winchm_template_navigation a:active {text-decoration: none; color: #004080}
-#winchm_template_navigation a:hover {text-decoration: none;color: #0000FF}
+#winchm_template_navigation A:link	{text-decoration: none; color:#004080}
+#winchm_template_navigation A:visited  {text-decoration: none; color: #004080}
+#winchm_template_navigation A:active {text-decoration: none; color: #004080 }
+#winchm_template_navigation A:hover {text-decoration: none;color: #0080FF}
 
-a:link	{text-decoration: underline; color:#0033cc}
-a:visited  {text-decoration: underline; color: #0033cc}
-a:active {text-decoration: underline; color: #0033cc }
-a:hover {text-decoration: underline;color: #ff0000;}
-
+A:link	{text-decoration: underline; color:#0033CC}
+A:visited  {text-decoration: underline; color: #0033CC}
+A:active {text-decoration: underline; color: #0033CC }
+A:hover {text-decoration: underline;color: #FF0000;}
 </style>
+<script type="text/javascript">
+function isMobile(){
+Agent = window.navigator.userAgent;
+if (Agent.indexOf("iPhone")>=1 || Agent.indexOf("iPad")>=1 || Agent.indexOf("iPod")>=1 || Agent.indexOf("Android")>=1){
+return true;
+}else{
+return false;	
+}
+
+}
+function d_onresize(){
+if (window.navigator.userAgent.indexOf("MSIE")>=1){
+document.getElementById('winchm_template_container').style.pixelWidth = document.body.offsetWidth - 3;
+document.getElementById('winchm_template_container').style.pixelHeight = document.body.offsetHeight - document.getElementById('winchm_template_top').offsetHeight - 4;
+}
+document.getElementById('winchm_template_container').style.top = document.getElementById('winchm_template_top').offsetHeight + 'px';
+}
+
+function d_onbeforeprint(){
+document.getElementById('winchm_template_container').style.width = 'auto';
+document.getElementById('winchm_template_container').style.height = 'auto';
+}
+
+function d_onafterprint(){
+d_onresize();
+}
+
+if(!isMobile()){
+
+window.onload = d_onresize;
+window.onresize = d_onresize;
+window.onbeforeprint = d_onbeforeprint;
+window.onafterprint = d_onafterprint;
+
+document.write("<style>\n");
+document.write("body {overflow: hidden;}\n");
+document.write("#winchm_template_container {position: absolute;overflow: auto;top : 0px;right: 0px;bottom: 0px;left: 0px;}\n");
+document.write("</style>\n");
+}
+
+</script>
 </head>
 
 <body><script language="JavaScript" type="text/JavaScript">
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(143);
+  parent.nav.tree.selectNode(176);
  }else{
   setTimeout("syn()",500);
 }
@@ -142,412 +200,283 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 }
 </script> 
 
-<div id="winchm_template_button"><A href="New_Item122.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template1/btn_prev_n.gif" border="0"></a><A href="泰坦.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template1/btn_next_n.gif" border="0"></a></div>
-<div id="winchm_template_navigation">Help &gt; 
-<A href="资源部分.htm">资源部分</A> &gt; <A href="血统.htm">血统</A> &gt; <A href="$$unsavedpage5.htm">非人类</A> &gt; </div>
-<div id="winchm_template_title">知识与历史的半兽变化</div>
-<div id="winchm_template_content">
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">白泽是一种在古代神话传说中具有着可使人逢凶化吉的神兽，它浑身雪白，能说人话，通晓万物之情。但白泽很少出没于世，只有当世有圣人治理天下，才奉书而至，因此白泽也被人们视为智慧和道德的象征。然而很少有人知道白泽有着这样一种特殊的能力——吞噬历史和创造历史的能力。拥有着这种能力的白泽无疑是君王们所看重的最优秀的辉煌史创造工具，正因为如此，历代君王们才会不惜一切得追求着白泽踪迹，甚至利用神秘的仪式将白泽封印于人类的身体里将其化为半兽以此来支配白泽创造他们所期望的历史。<SPAN 
+
+<div id="winchm_template_top">
+	<div id="winchm_template_button"><A href="触手怪.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="月之民.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
+	<div id="winchm_template_navigation">Help &gt; 
+<A href="资源部分.htm">资源部分</A> &gt; <A href="血统.htm">血统</A> &gt; <A href="$$unsavedpage11.htm">非人类</A> &gt; <A href="$$unsavedpage19.htm">特异本质</A> &gt; <A href="$$unsavedpage23.htm">其他生物</A> &gt; </div>
+	<div id="winchm_template_title">知识与历史的半兽变化</div>
+</div>
+<div id="winchm_template_container">
+	<div id="winchm_template_content">
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">本质：特异本质<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">渊博聪慧的历史学家（正负特性）：身体内寄宿着神兽白泽的灵魂的人类被称之为半兽，并且会因为受其影响而导致自己的身体能力以及外貌发生改变，相比于人类，半兽的寿命逐渐增长为人类的几倍之多，而在外表上，头发等其他部位的毛发将会逐渐褪色并最终会变为白色，半兽具有着极好的记忆力，这视为拥有专长过目不忘一般。身为半兽具有着成为一名历史学家的良好资质，但也会变得对历史过度执着，在拥有半兽血统之前，人物必须拥有一块可以储存信息的媒介，在拥有半兽血统之后，每天都必须通过储存媒介花费<SPAN 
-lang=EN-US>1</SPAN>个小时来详尽记录下一天内发生的事件，如有中断，则在人物第二天所有判定上受到<SPAN 
-lang=EN-US>1</SPAN>点的减值，这个减值可以被积累，但如果在之后花费每减值<SPAN 
-lang=EN-US>3</SPAN>个小时来补完记录，则可以消除因此获得的所有的减值。<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">描述：白泽是一种在古代神话传说中具有着可使人逢凶化吉的神兽，它浑身雪白，能说人话，通晓万物之情。但白泽很少出没于世，只有当世有圣人治理天下，才奉书而至，因此白泽也被人们视为智慧和道德的象征。然而很少有人知道白泽有着这样一种特殊的能力——吞噬历史和创造历史的能力。拥有着这种能力的白泽无疑是君王们所看重的最优秀的辉煌史创造工具，正因为如此，历代君王们才会不惜一切得追求着白泽踪迹，甚至利用神秘的仪式将白泽封印于人类的身体里将其化为半兽以此来支配白泽创造他们所期望的历史。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>D</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">级：<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">前提：角色必须拥有某个通用能量池<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">属性：智力<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">D</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">级<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">属性：智力<SPAN 
 lang=EN-US>+2</SPAN>，感知<SPAN lang=EN-US>+1</SPAN>，风度<SPAN 
 lang=EN-US>+1</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">能量：无<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">能量池：无<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">特性：三种神器之剑（双特性）、三种神器之玉（双特性）<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">特性：三种神器之剑（双特性），三种神器之玉（双特性），渊博聪慧的历史学家（正负特性）<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">技能树：无技能树和能量槽，额外二特性<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">技能树：无<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">三种神器之剑：将太古时代的神剑投影到现世进行战力的加护，以一个自由动作进行一次智力<SPAN 
-lang=EN-US>+</SPAN>学识（专业：历史学）的判定并消耗<SPAN 
-lang=EN-US>1</SPAN>点任意通用能量可以投影出一把神剑，神剑的力量所能影响的范围最多能够延伸至以你为中心<SPAN 
-lang=EN-US>15</SPAN>米为半径的范围，你可以选择一种武器类型并选择这个范围内的一个目标，在神剑力量的加护下，目标在使用所选定的武器类型进行攻击判定时获得相当于你血统等级<SPAN 
-lang=EN-US>+1</SPAN>的器械加值，可以多次投影神剑来进行加护，但是每把投影神剑最多加护一个目标，每个目标最多受到一把投影神剑的加护，一把神剑最多持续相当于你判定成功数轮，你可以通过一个标准动作更改一把投影神剑所加护的目标或者更改一把投影神剑所加护的武器类型，你最多召唤出每血统等级<SPAN 
-lang=EN-US>3</SPAN>把投影神剑。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">三种神器之玉：将太古时代的勾玉投影到现世进行战力的加护，以一个自由动作进行一次智力<SPAN 
-lang=EN-US>+</SPAN>学识（专业：历史学）的判定并消耗<SPAN 
-lang=EN-US>1</SPAN>点任意通用能量可以投影出一件勾玉，勾玉的力量所能影响的范围最多能够延伸至以你为中心<SPAN 
-lang=EN-US>15</SPAN>米为半径的范围，你可以选择一种心智技能并选择这个范围内的一个目标，在勾玉力量的加护下，目标在使用所选定的技能进行相关判定时获得相当于你血统等级<SPAN 
-lang=EN-US>+1</SPAN>的幸运加值，可以多次投影勾玉来进行加护，但是每件投影勾玉最多加护一个目标，每个目标最多受到一件投影勾玉的加护，一件勾玉最多持续相当于你判定成功数轮，你可以通过一个标准动作更改一件投影勾玉所加护的目标或者更改一件投影勾玉所加护的技能，你最多召唤出每血统等级<SPAN 
-lang=EN-US>3</SPAN>件投影勾玉。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>C</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">级：<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">描述：身体内寄宿着神兽白泽的灵魂的人类被称之为半兽，并且会因为受其影响而导致自己的身体能力以及外貌发生改变，相比于人类，半兽的寿命逐渐增长为人类的几倍之多，而在外表上，头发等其他部位的毛发将会逐渐褪色并最终会变为白色，半兽具有着极好的记忆力，身为半兽具有着成为一名历史学家的良好资质，但也会变得对历史过度执着。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">属性：智力<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">在现在这个等级，你可以将太古时代的神剑和勾玉投影到现世进行战力的加护。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">特殊：由于没有能量池和技能树，额外获得<SPAN 
+lang=EN-US>2</SPAN>个特性。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">三种神器之剑：你能够花费一个自由动作支付<SPAN 
+lang=EN-US>1</SPAN>点通用能量，之后你选择一种武器分类并投影出一把神剑，你可以指定一名距离你不超过<SPAN 
+lang=EN-US>20</SPAN>米的友方单位，让神剑依附在他身上，神剑没有实体，也不会受到任何影响，但被你指定的单位在使用具备你所选择的武器分类的武器进行攻击时可以增加等同于你血统等级<SPAN 
+lang=EN-US>+1DP</SPAN>的器械加值，神剑的持续时间等同于你的学识技能等级<SPAN lang=EN-US>*1</SPAN>轮。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">你可以透过一个移动动作改变其中一柄神剑所加护的目标或是该神剑对应的武器分类。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">你最多能够召唤出等同于你血统等级<SPAN 
+lang=EN-US>*3</SPAN>把神剑，每次召唤可以选择不同的武器分类并指定不同的目标，当你召唤的神剑数量超出你可召唤的上限时，最早被召唤的神剑会消失。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">三种神器之玉：你能够花费一个自由动作支付<SPAN 
+lang=EN-US>1</SPAN>点通用能量，之后你选择一项心智系技能并投影出一枚勾玉，你可以指定一名距离你不超过<SPAN 
+lang=EN-US>20</SPAN>米的友方单位，让勾玉依附在他身上，勾玉没有实体，也不会受到任何影响，但被你指定的单位在进行该项技能相关检定时可以增加等同于你血统等级<SPAN 
+lang=EN-US>+1DP</SPAN>的幸运加值，勾玉的持续时间等同于你的学识技能等级<SPAN lang=EN-US>*1</SPAN>轮。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">你可以透过一个移动动作改变其中一枚勾玉所加护的目标或是该勾玉对应的心智系技能。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">你最多能够召唤出等同于你血统等级<SPAN 
+lang=EN-US>*3</SPAN>枚勾玉，每次召唤可以选择不同的心智系技能并指定不同的目标，当你召唤的勾玉数量超出你可召唤的上限时，最早被召唤的勾玉会消失。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">渊博聪慧的历史学家：人物必须拥有一块可以储存信息的媒介（包括但不限于手机，羊皮卷，纸张，笔记本电脑等等，具体可由<SPAN 
+lang=EN-US>ST</SPAN>裁定），在拥有半兽血统之后，每天都必须通过储存媒介花费<SPAN 
+lang=EN-US>1</SPAN>个小时来详尽记录下一天内发生的事件，如有中断，则在人物第二天所有检定上承受<SPAN 
+lang=EN-US>1DP</SPAN>表现减值，这个减值可以叠加计算，但如果在之后花费因此承受的表现减值<SPAN 
+lang=EN-US>*1</SPAN>个小时来补完记录，则可以消除因此获得的所有的减值。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">你获得过目不忘专长，并且学识技能上的专业带来的专业加值提升至<SPAN 
+lang=EN-US>3DP</SPAN>。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">C</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">级<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">属性：智力<SPAN 
 lang=EN-US>+3</SPAN>，感知<SPAN lang=EN-US>+1</SPAN>，风度<SPAN 
 lang=EN-US>+1</SPAN>，耐力<SPAN lang=EN-US>+1</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">特性：三种神器之镜、天照御史光剑（双特性）<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">特性：三种神器之镜，天照御史光剑（双特性）<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">技能树：无技能树，额外一特性<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">技能树：无<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">三种神器之镜：将太古时代的宝镜投影到现世进行战力的加护，以一个自由动作进行一次智力<SPAN 
-lang=EN-US>+</SPAN>学识（专业：历史学）的判定可以投影出一件宝镜，宝镜最多只能有一件，且最多在现世存在相当于你判定成功数的时间，宝镜的力量所能影响的范围最多能够延伸至以你为中心<SPAN 
-lang=EN-US>15</SPAN>米为半径的范围，使用宝镜的力量可以治愈他人身上的伤痛，唤回他人混乱的神智，你可以以一个标准动作并消耗<SPAN 
-lang=EN-US>3</SPAN>点任意通用能量来激发宝镜的能力，使范围内的一个目标身上所拥有的一种异常状态点数下降相当于血统等级的点数。<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">描述：现在你能够将太古时代的宝镜投影到现世进行战力的加护，使用宝镜的力量可以治愈他人身上的伤痛，唤回他人混乱的神智。此外，你还能召唤出御制的无数利刃化作从天而降的光刺去刺穿眼前的不净之物。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">天照御史光剑：从天而降的光刺，是御制的无数利刃，用那圣光的利刃去刺穿眼前的不净之物，以一个自由动作可以在身边召唤出无数的光之利刃，你可以以一个标准动作并消耗<SPAN 
-lang=EN-US>3</SPAN>点任意通用能量来指挥这无数的光之利刃对敏感范围内的一个目标进行攻击，无数的光之利刃视为一种远程能量武器，伤害值<SPAN 
-lang=EN-US>=</SPAN>你的风度属性，但最多不超过血统等级的两倍，通过智力<SPAN 
-lang=EN-US>+</SPAN>学识（专业：历史学）来进行判定，造成严重光能伤害，光之利刃在进行攻击时自动触发连射特性，并获得相关的好处。<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">特殊：由于没有技能树，额外获得<SPAN 
+lang=EN-US>1</SPAN>个特性。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">三种神器之镜：你能够花费自由动作投影出宝镜，宝镜同一时间最多只能有一件，宝镜持续时间等同于你的学识技能<SPAN 
+lang=EN-US>*1</SPAN>轮，你能够花费标准动作并支付<SPAN 
+lang=EN-US>3</SPAN>点通用能量激发宝镜的力量，之后你可以选择以你为中心半径<SPAN 
+lang=EN-US>50</SPAN>米的球形范围内的所有友方单位身上的一种不良状态点数，使其降低等同于你血统等级<SPAN 
+lang=EN-US>*1</SPAN>点，并且使其身上<SPAN lang=EN-US>1</SPAN>点伤害恢复至完好（包括恶性伤害）。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>B</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">级：<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">天照御史光剑：你能够花费整轮动作支付<SPAN 
+lang=EN-US>3</SPAN>点通用能量并对距离你不超过你智力值<SPAN lang=EN-US>*10</SPAN>米的单位进行一次智力<SPAN 
+lang=EN-US>+</SPAN>学识（历史学）<SPAN lang=EN-US>+</SPAN>武器伤害（武器伤害等同于你血统等级<SPAN 
+lang=EN-US>*2L</SPAN>）的检定以进行一次远程接触攻击，该次攻击具备【能量武器】【连射】特性，造成光能严重伤害。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">属性：智力<SPAN 
-lang=EN-US>+4</SPAN>，感知<SPAN lang=EN-US>+1</SPAN>，决心<SPAN 
-lang=EN-US>+1</SPAN>，风度<SPAN lang=EN-US>+1</SPAN>，耐力<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">B</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">级<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">属性：智力<SPAN 
+lang=EN-US>+4</SPAN>，感知<SPAN lang=EN-US>+1</SPAN>，风度<SPAN 
+lang=EN-US>+1</SPAN>，决心<SPAN lang=EN-US>+1</SPAN>，耐力<SPAN 
 lang=EN-US>+1</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">特性：日出之国的天子、三种神器之乡、转世的高天原（双特性）<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">特性：日出之国的天子，三种神器之乡，转世的高天原（双特性）<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">技能树：无技能树，额外一特性<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">技能树：无<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">日出之国的天子：召唤出一座历史之门，持续扰乱敌人的状态，降低敌人的速度，这简直是历史的变革。以一个移动动作召唤出历史之门，然后消耗<SPAN 
-lang=EN-US>5</SPAN>点任意通用能量以一个标准动作展现历史之门的力量，进行一个智力<SPAN 
-lang=EN-US>+</SPAN>学识（专业：历史学）判定来决定历史之门力量的程度，敏感范围内的所有指定目标在先攻权判定或者基础速度值上将在<SPAN 
-lang=EN-US>5</SPAN>轮里受到判定成功数的减值，这个效果不叠加，但是在战斗中可能会影响先攻顺位。<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">描述：你现在可以召唤出一座历史之门，持续扰乱敌人的状态，降低敌人的速度，这简直是历史的变革。此外，你还能同时借助三种太古神器之力扭曲改写历史，迫使敌方本可发动的极义回归虚无不复存在！<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">转世的高天原：吞噬自身的负面状态转化为有益状态，以一个整轮动作，消耗你所有通用能量槽里的全部能量，你身上所拥有的异常状态点数所造成的负面效果变更为正面效果，所有异常状态点数造成的减值变为增强加值，不同异常状态点数因此带来的增强加值不叠加取高，但是这不会消除你身上的异常状态点数，你依旧要承担异常状态进入重度或毁灭状态所带来的后果，使用这个能力之后，你的所有通用能量槽不会自然恢复，也无法通过冥想打坐等方式恢复，直到你身上的所有异常状态点数全部消失，你的所有能量槽才会正常恢复能量。<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">特殊：由于没有技能树，额外获得<SPAN 
+lang=EN-US>1</SPAN>个特性。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">日出之国的天子：你能够花费一个移动动作支付<SPAN 
+lang=EN-US>5</SPAN>点通用能量并进行一次智力<SPAN 
+lang=EN-US>+</SPAN>学识（历史学）检定，之后指定你敏感范围内最多不超过你传奇智力<SPAN 
+lang=EN-US>*1</SPAN>名单位，使其在先攻与基础移动速度上承受等同于该次检定成功数的无名减值，持续一个场景。该减值不可叠加，但可能会影响先攻顺位。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">三种神器之乡：同时借助三种太古神器之力扭曲改写历史，迫使敌方本可发动的极义回归虚无不复存在！如果在一个场景中你已经从历史中召唤过三种太古神器后，你才可以使用这个能力，借助三种神器的力量并消耗<SPAN 
-lang=EN-US>5</SPAN>点任意通用能量，你可以使这个场景中的一个目标所进行的整轮及其以上动作的行动延长时间，你用智力<SPAN 
-lang=EN-US>+</SPAN>学识（专业：历史学）对抗对方的施展判定，若没有施展判定，则用意志判定，若对方判定成功数高过你的判定成功数则无效，若没有通过，则你的判定成功数每比对方高<SPAN 
-lang=EN-US>1</SPAN>点则可以让对方进行这个动作延长一个时间基数（如果以小时来计算的行动则每高<SPAN 
-lang=EN-US>1</SPAN>点增加<SPAN lang=EN-US>1</SPAN>小时，如果以整轮动作来计算的行动则每高<SPAN 
-lang=EN-US>1</SPAN>点增加<SPAN lang=EN-US>1</SPAN>整轮动作。具体由<SPAN 
-lang=EN-US>st</SPAN>判定）。对同一个目标，这个效果同一时间只能生效一次，直到对方完成动作或者放弃动作，才能再次对其使用能力。<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">转世的高天原：每天一次，你能够花费一个整轮动作并支付你所有通用能量槽里的全部能量，你身上所有因不良状态点数造成的减值都变为增强加值，因不良状态点数造成的伤害改为为你恢复等额的生命值，不同不良状态点数因此带来的增强加值取高计算，不叠加，但是这不会消除你身上的不良状态点数，你依旧要承担异常状态进入重度或毁灭状态所带来的后果，使用这个能力之后，你的所有通用能量无法透过任何方式恢复，直到你身上的所有不良状态点数全部消失后，你的所有能量槽才会正常恢复能量。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>A</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">级：<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">三种神器之乡：若在一个场景中你已经投影过神剑、勾玉与宝镜，你可以花费一个反射动作支付<SPAN 
+lang=EN-US>5</SPAN>点通用能量进行一次智力<SPAN 
+lang=EN-US>+</SPAN>学识（历史学）检定，之后指定你敏感范围内的一个正在施展能力的目标，其必须以施展该能力的检定与你该次检定进行一次对抗，若目标施展该能力无须检定，则改为以意志检定与你该次检定进行一次对抗，若目标对抗失败，则其施展该项能力所需的动作延长一级，（即需要标准动作施展的能力上升至整轮动作，需要整轮动作施展的能力上升至<SPAN 
+lang=EN-US>2</SPAN>个整轮动作，需要<SPAN lang=EN-US>2</SPAN>个整轮动作施展的能力上升至<SPAN 
+lang=EN-US>5</SPAN>个整轮，需要<SPAN lang=EN-US>5</SPAN>个整轮的动作上升至<SPAN 
+lang=EN-US>1</SPAN>分钟等），若对方施展后的动作不足，则该能力取消，目标的动作返还。该能力同一时间内对同一个目标的同一个能力只能生效一次，知道对方完成动作或是主动放弃施展后你才能再次对其使用该能力。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">属性：智力<SPAN 
-lang=EN-US>+5</SPAN>，感知<SPAN lang=EN-US>+3</SPAN>，决心<SPAN 
-lang=EN-US>+3</SPAN>，风度<SPAN lang=EN-US>+2</SPAN>，耐力<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">A</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">级<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">属性：智力<SPAN 
+lang=EN-US>+6</SPAN>，感知<SPAN lang=EN-US>+4</SPAN>，决心<SPAN 
+lang=EN-US>+2</SPAN>，风度<SPAN lang=EN-US>+2</SPAN>，耐力<SPAN 
+lang=EN-US>+2</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">特性：丑时三刻的满月史（正负特性），执教的鞭策，痛心之头槌（双特性） 
+<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">技能树：无<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">描述：禁忌的力量，将隐藏在历史卷轴中丑时三刻的满月之力召唤出来，自身成为兽化的姿态，当你在被一件事或者一个人激怒到一定程度之后才能启动这个能力，两根尖锐的利角从你的头顶两侧延伸出来，你的眼神被怒意所形成的火焰充满，你的身边辐射出异样颜色的气体，化身为兽形态的你无差别地将敌人视为学生进行授课，对于作乱的学生施加的头槌，必定爆机，这不是体罚，是爱！<SPAN 
+lang=EN-US><SPAN style="mso-tab-count: 1">&nbsp;&nbsp; 
+</SPAN></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">特殊：由于没有技能树，额外增加<SPAN 
+lang=EN-US>4</SPAN>点属性。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">丑时三刻的满月史：当你在战斗中出现某种极其强烈的愤怒情绪时，你会兽化，此时你可以无视<SPAN 
+lang=EN-US>A</SPAN>级以下的影响心灵效果，但你会失去控制地追打引起你怒火的目标，直到他死亡、离开你的视线或你失去意识。兽化期间你的行动由<SPAN 
+lang=EN-US>ST</SPAN>控制。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">在兽化状态下，你本血统带来的所有智力上的加值变为力量上的加值，你的天生武器能够造成严重伤害，你能够用学识技能代替肉搏技能进行近战肉搏攻击和伤害上限，但你无法使用除本血统<SPAN 
+lang=EN-US>A</SPAN>级或以上之外的主动能力。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">进入这种状态的条件通常由<SPAN 
+lang=EN-US>ST</SPAN>判断，主动启动需要以一个自由动作支付<SPAN lang=EN-US>1</SPAN>点意志力并选定一个目标。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">执教的鞭策：在兽化状态下，你可以花费一个标准动作进行一次风度<SPAN 
+lang=EN-US>+</SPAN>学识（历史学）检定，对你视距内所有能够听到你声音的敌人造成等同于该次检定成功数的沮丧点数，该沮丧点数不可豁免，可叠加，可陷入毁灭性后果。这是一个基于语言的能力。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">痛心之头槌：你的头视作武器伤害等同于血统等级<SPAN 
+lang=EN-US>*2L</SPAN>的天生武器，并且在兽化状态下，你的头还拥有相当于你武器伤害值的【破甲】与【破魔】，目标身上每拥有<SPAN 
+lang=EN-US>1</SPAN>点因“执教的鞭策”带来的沮丧点数，你在使用头对其进行近战肉搏攻击时便可以额外获得<SPAN 
+lang=EN-US>1</SPAN>点附加成功。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">S</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">级<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">属性：智力<SPAN 
+lang=EN-US>+6</SPAN>，感知<SPAN lang=EN-US>+6</SPAN>，风度<SPAN 
+lang=EN-US>+6</SPAN>，决心<SPAN lang=EN-US>+3</SPAN>，耐力<SPAN 
 lang=EN-US>+3</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">特性：丑时三刻的满月史、执教的鞭策、痛心之头槌（双特性）<SPAN 
-lang=EN-US> </SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">技能树：无技能树，额外增加<SPAN 
-lang=EN-US>4</SPAN>点属性<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">丑时三刻的满月史：禁忌的力量，将隐藏在历史卷轴中丑时三刻的满月之力召唤出来，自身成为兽化的姿态，当你在被一件事或者一个人激怒到一定程度之后才能启动这个能力，两根尖锐的利角从你的头顶两侧延伸出来，你的眼神被怒意所形成的火焰充满，你的身边辐射出异样颜色的气体，在兽化姿态下，你的力量变得巨大无比，由血统带来的智力属性内在加值全部转变为力量属性内在加值，你会发疯似的追打着引起你发怒的人直到对方离开你的视野，你才可以解除兽化姿态，同时兽化姿态下的你无法运用你所具备的任何技艺，你只能运用<SPAN 
-lang=EN-US>A</SPAN>级血统及其以上等级所带来的血统本身的能力，特别的，在兽化姿态下，你被视为是黑暗生物，但是白泽同时身为圣兽，因此你不会承受由黑暗生物特性带来的一切不良影响！<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">特性：邪马台的女王，似有似无的净化（三特性）<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">执教的鞭策：只有当你处于兽化姿态才能使用这个能力，化身为兽形态的你无差别地将敌人视为学生进行授课，选择视野范围内且可以听到人物话语声音（既自己在对方的敏感听觉范围内且对方在自己的敏感视觉范围内）的一个目标或者数个目标，以一个标准动作投掷风度<SPAN 
-lang=EN-US>+</SPAN>学识（专业：历史学），对方以意志判定进行对抗，你的话语会令对方感到自卑，从而陷入自卑感造成的沮丧之中，你的每点胜出将对目标造成<SPAN 
-lang=EN-US>1</SPAN>点沮丧点数，即使对方的意志判定成功数高过你的判定成功，若对方学识技能在你之下就必须要受到<SPAN 
-lang=EN-US>1</SPAN>点沮丧点数，这个能力造成的情绪异常会累加，并且只有这个这个能力造成的情绪异常会给你的头槌能力造成影响。<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">技能树：无<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">痛心之头槌：对于作乱的学生施加的头槌，必定爆机，这不是体罚，是爱！你的头槌视为伤害相当于血统等级两倍的天生武器，当你处于兽化姿态下，你的头槌可以造成严重物理伤害并且具有相当于天生武器伤害值等量的破甲值与破魔值，陷入自卑感而不能自拔的学生会因此受到更严重的伤害，对方身上每有<SPAN 
-lang=EN-US>1</SPAN>点执教的鞭策造成的沮丧情绪异常点数，在你对其进行头槌攻击时都将获得一点附加成功的增强加值！<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">描述：你将创造新的历史。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>AA</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">级：<SPAN 
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">特殊：由于没有技能树，额外获得<SPAN 
+lang=EN-US>1</SPAN>个特性。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">邪马台的女王：你将沉睡的邪马台女王卑弥呼的力量呼唤出来，对眼前的敌人进行最为猛烈的全方位轰击，花费一个标准动作并支付<SPAN 
+lang=EN-US>9</SPAN>点通用能量进行一次智力<SPAN 
+lang=EN-US>+</SPAN>学识（历史学）检定，你在该次检定中增加等同于你风度值的内在加值，之后你召唤导弹群对视距内所有敌方单位造成等同于你智力值的物理恶性伤害，目标可以以反射检定进行豁免，但你该次检定每有<SPAN 
+lang=EN-US>1</SPAN>点成功，则其反射豁免失去<SPAN 
+lang=EN-US>1DP</SPAN>。当你处于兽化状态下时，你使用该能力无须能耗，同时可以以力量代替智力决定该次攻击造成的伤害以及进行该能力的检定。<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">属性：智力<SPAN 
-lang=EN-US>+6 </SPAN>感知<SPAN lang=EN-US>+3</SPAN>，决心<SPAN 
-lang=EN-US>+3</SPAN>，敏捷<SPAN lang=EN-US>+3</SPAN>，耐力<SPAN 
-lang=EN-US>+3</SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">特性：似有似无的净化（四特性）、邪马台的女王<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">技能树：无技能树，额外一特性<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">邪马台的女王：将沉睡的邪马台女王卑弥呼的力量呼唤出来，对眼前的敌人进行最为猛烈的全方位轰击，以一个标准动作消耗<SPAN 
-lang=EN-US>9</SPAN>点任意通用能量并投掷智力<SPAN 
-lang=EN-US>+</SPAN>学识（专业：历史学），邪马台女王卑弥呼的力量化为从天而降的导弹群对视野内所有指定目标进行轰炸，造成严重物理伤害并且具有魔法特性，伤害判定上视为相当于你智力值的范围杀伤，目标在进行反射判定上受到你的判定成功数的减值，当你处于兽化姿态下使用这个能力不需要付出能量，且判定和决定伤害中的智力属性变更为力量属性。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">似有似无的净化：你将创造新的历史，净化掉一切负面状态，你可以花费一个整轮动作来启动这个能力，在你身边<SPAN 
-lang=EN-US>15</SPAN>米范围内的所有同伴（包括你自己）会受到新的历史的影响净化掉身上一切负面状态，包括但不仅限于异常状态点数，情绪异常，诅咒效果。净化的效果将维持<SPAN 
-lang=EN-US>5</SPAN>轮的时间，当<SPAN 
-lang=EN-US>5</SPAN>轮时间结束后，若你处于兽化姿态也可通过净化而恢复理性。<SPAN 
-lang=EN-US></SPAN></SPAN></P></div> 
-<div id="winchm_template_footer">Copyright &copy; 2014. All rights reserved.</div>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">似有似无的净化：每场景一次，你可以花费一个整轮动作并支付<SPAN 
+lang=EN-US>9</SPAN>点通用能量，之后将以你为中心半径等同于你风度值<SPAN 
+lang=EN-US>*1000</SPAN>米的球型范围内的友方单位身上所有<SPAN 
+lang=EN-US>S</SPAN>级以下的不良状态点数、情绪异常和诅咒效果全部消除（无论其原本是否可以消除，包括不死鸟复活带来的不良状态点数等），若你发动本能力时处于兽化状态下，兽化状态也会一并被消除。<SPAN 
+lang=EN-US></SPAN></SPAN></P></div>	
+	<div id="winchm_template_footer">Copyright &copy; 2018. All rights 
+reserved. (To change the copyright info, just edit it in template.)</div>
+</div>
+
 </body>
 </html>

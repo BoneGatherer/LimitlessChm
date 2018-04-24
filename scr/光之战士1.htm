@@ -17,112 +17,170 @@ html,body {
 
 
 
-<meta http-equiv="X-UA-Compatible" content="IE=8">
+
 <style>
-html {
-	overflow-y:scroll;
-}
+html,div { margin: 0; padding: 0;}
 
 body {
-	background-image: url(template1/back.png);
-	background-repeat: repeat-x;
-	background-color: #FFFFFF;
 	padding: 0px;
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-bottom: 15px;
-	margin-right: 15px;
+	margin: 0px;
+	overflow: auto;
+	height: 100%;
 }
 
-#winchm_template_button {
-	position: fixed; 
-	float: right; 
-	right: 15px; 
-	top: 15px;
+#winchm_template_button{
+	float: right;
+	width: 93px;
+	top: 7px;
+	position: relative;
+	text-align: right;
+	right: 5px;
+	height: auto;
 }
 
-#winchm_template_navigation {
+#winchm_template_top{
 	padding: 0px;
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
+	margin: 0px;
+	border-bottom: 1px solid #9B9B9B;
+	background-color: #B1CEFE;
+}
 
-	font-size: 8pt;
+#winchm_template_navigation{
+	margin: 0px;
+	padding-top: 7px;
+	padding-left: 7px;
+	padding-bottom: 3px;
+	padding-right: 0px;
+	font-size: 8.5pt;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #4A4A4A;
-	text-align: left;
+	font-weight: normal;
+	color: #585858;
 }
 
-#winchm_template_title {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 22px;
-	font-weight: bold;
-	color: #005680;
-	text-align: left;
+#winchm_template_title{
+	margin: 0px;
+	padding-top: 4px;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	padding-right: 0px;
+	font-size: 18px; 
+	font-family: Verdana, Geneva, sans-serif;
+	color: #363636;
 }
 
 #winchm_template_content{
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
+	margin-top: 20px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
 	width: auto  !important;
 	width: 100%;
 }
 
-
-#winchm_template_footer {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	padding-top: 7px;
+#winchm_template_footer{
 	border-width: 1px;
-	border-color: #c0c0c0;
+	border-color: #B1CEFE;
 	border-top-style: solid;
-
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #575757;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
+	padding-top: 7px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 8.5pt;
+	color: #696969;
+	width: auto;
 	text-align: left;
 }
 
+
+#winchm_template_container{
+	margin: 0px;
+	padding: 0px;
+	position: static;
+	padding-bottom: 3px;
+	overflow: auto;
+	background-color: #FFFFFF;
+}
+
+
 @media print
 {
+#winchm_template_container{
+	position: static;	
+	margin: 0px;
+	padding: 5px;
+	
+	width: auto;
+	height: auto;
+	overflow: auto;
+}
 #winchm_template_button{
 visibility:hidden;
 }
 }
 
-#winchm_template_navigation a:link	{text-decoration: none;color: 004080}
-#winchm_template_navigation a:visited  {text-decoration: none; color: #004080}
-#winchm_template_navigation a:active {text-decoration: none; color: #004080}
-#winchm_template_navigation a:hover {text-decoration: none;color: #0000FF}
+#winchm_template_navigation A:link	{text-decoration: none; color:#004080}
+#winchm_template_navigation A:visited  {text-decoration: none; color: #004080}
+#winchm_template_navigation A:active {text-decoration: none; color: #004080 }
+#winchm_template_navigation A:hover {text-decoration: none;color: #0080FF}
 
-a:link	{text-decoration: underline; color:#0033cc}
-a:visited  {text-decoration: underline; color: #0033cc}
-a:active {text-decoration: underline; color: #0033cc }
-a:hover {text-decoration: underline;color: #ff0000;}
-
+A:link	{text-decoration: underline; color:#0033CC}
+A:visited  {text-decoration: underline; color: #0033CC}
+A:active {text-decoration: underline; color: #0033CC }
+A:hover {text-decoration: underline;color: #FF0000;}
 </style>
+<script type="text/javascript">
+function isMobile(){
+Agent = window.navigator.userAgent;
+if (Agent.indexOf("iPhone")>=1 || Agent.indexOf("iPad")>=1 || Agent.indexOf("iPod")>=1 || Agent.indexOf("Android")>=1){
+return true;
+}else{
+return false;	
+}
+
+}
+function d_onresize(){
+if (window.navigator.userAgent.indexOf("MSIE")>=1){
+document.getElementById('winchm_template_container').style.pixelWidth = document.body.offsetWidth - 3;
+document.getElementById('winchm_template_container').style.pixelHeight = document.body.offsetHeight - document.getElementById('winchm_template_top').offsetHeight - 4;
+}
+document.getElementById('winchm_template_container').style.top = document.getElementById('winchm_template_top').offsetHeight + 'px';
+}
+
+function d_onbeforeprint(){
+document.getElementById('winchm_template_container').style.width = 'auto';
+document.getElementById('winchm_template_container').style.height = 'auto';
+}
+
+function d_onafterprint(){
+d_onresize();
+}
+
+if(!isMobile()){
+
+window.onload = d_onresize;
+window.onresize = d_onresize;
+window.onbeforeprint = d_onbeforeprint;
+window.onafterprint = d_onafterprint;
+
+document.write("<style>\n");
+document.write("body {overflow: hidden;}\n");
+document.write("#winchm_template_container {position: absolute;overflow: auto;top : 0px;right: 0px;bottom: 0px;left: 0px;}\n");
+document.write("</style>\n");
+}
+
+</script>
 </head>
 
 <body><script language="JavaScript" type="text/JavaScript">
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(96);
+  parent.nav.tree.selectNode(86);
  }else{
   setTimeout("syn()",500);
 }
@@ -142,85 +200,140 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 }
 </script> 
 
-<div id="winchm_template_button"><A href="刺客（刺客信条）1.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template1/btn_prev_n.gif" border="0"></a><A href="蜘蛛侠.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template1/btn_next_n.gif" border="0"></a></div>
-<div id="winchm_template_navigation">Help &gt; 
-<A href="资源部分.htm">资源部分</A> &gt; <A href="血统.htm">血统</A> &gt; <A href="$$unsavedpage3.htm">人类</A> &gt; </div>
-<div id="winchm_template_title">光之战士</div>
-<div id="winchm_template_content">
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">属性：6点自由属性点</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US><BR></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">能量：无<SPAN 
+
+<div id="winchm_template_top">
+	<div id="winchm_template_button"><A href="博丽巫女.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="极速者（闪电侠）.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
+	<div id="winchm_template_navigation">Help &gt; 
+<A href="资源部分.htm">资源部分</A> &gt; <A href="血统.htm">血统</A> &gt; <A href="$$unsavedpage7.htm">人类</A> &gt; <A href="$$unsavedpage8.htm">特异本质</A> &gt; </div>
+	<div id="winchm_template_title">光之战士</div>
+</div>
+<div id="winchm_template_container">
+	<div id="winchm_template_content">
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"><SPAN 
+lang=EN-US> 本质：特异本质 <BR style="mso-special-character: line-break"><BR 
+style="mso-special-character: line-break"></P></SPAN></SPAN>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">D</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">级</SPAN><SPAN 
+lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">属性：<SPAN 
+lang=EN-US>6</SPAN>点自由属性点，单属性上限为<SPAN lang=EN-US>2<BR></SPAN>能量：无<SPAN 
 lang=EN-US> <BR></SPAN>特性：自由属性分配，天赋异禀（双特性）<SPAN lang=EN-US> <BR></SPAN>技能：无<SPAN 
-lang=EN-US> <BR></SPAN>特殊：因为没有技能树，额外获得一个特性<SPAN lang=EN-US> 
-<BR></SPAN>天赋异禀：光之战士作为星球意志的使徒，背负着成长足至调谐世界的命运，你选择一个称号，你可以在任意时刻以支付XP的方式如同自创技能般觉醒这个称号的D级，习得这个称号的D级技能，这不需要特别的动作，并在每次计算D级称号和称号技能（注：称号技能仅限称号本身的技能，不包括称号能力衍生出的技能，即使一个称号让你获得斗气，魔力从而允许你学习圆桌骑士武技或通用魔法也不代表这些是称号技能。）XP消耗时减半（至多1点），向上取整，每部影片结束（或其他ST认为足以结算XP的时刻）你可以额外获得2点XP，但以此获得的XP只能用于学习你选择的称号技能或称号本身，若你掌握了一个称号所有的D级内容，你获得1点属性，可以自由分配到任意属性上，单属性上限和血统属性分配合计最高不能超过2。<SPAN lang=EN-US> <BR><BR>C</SPAN>级： 
-</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
+lang=EN-US> <BR></SPAN>特殊：由于没有技能树和能量池，额外获得<SPAN lang=EN-US>1</SPAN>个特性和<SPAN 
+lang=EN-US>2</SPAN>点属性<SPAN lang=EN-US> 
+<BR></SPAN>天赋异禀：光之战士作为星球意志的使徒，背负着成长足至调谐世界的命运，你选择一个称号，你可以在任意时刻以支付<SPAN 
+lang=EN-US>XP</SPAN>的方式如同自创技能般觉醒这个称号的<SPAN lang=EN-US>D</SPAN>级。每部影片结束（或其他<SPAN 
+lang=EN-US>ST</SPAN>认为足以结算<SPAN lang=EN-US>XP</SPAN>的时刻）你可以额外获得<SPAN 
+lang=EN-US>2</SPAN>点<SPAN lang=EN-US>XP</SPAN>，但以此获得的<SPAN 
+lang=EN-US>XP</SPAN>只能用于学习你选择的称号技能或称号本身，若你掌握了一个称号所有的<SPAN 
+lang=EN-US>D</SPAN>级内容，你获得<SPAN 
+lang=EN-US>1</SPAN>点属性，可以自由分配到任意属性上，这视为内在加值，可以与血统叠加。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"><BR></SPAN></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></SPAN></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN></SPAN></SPAN>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">C</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">级：<SPAN 
+lang=EN-US></SPAN></SPAN></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">属性：<SPAN 
+lang=EN-US>6</SPAN>点自由属性点，单属性上限为<SPAN 
+lang=EN-US>3<BR></SPAN>特性：自由属性分配，天赋异禀（双特性）<SPAN 
+lang=EN-US><BR></SPAN>特殊：由于没有技能树，额外获得<SPAN lang=EN-US>1</SPAN>个特性</SPAN><SPAN 
 lang=EN-US></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">属性：<SPAN 
-lang=EN-US>6</SPAN>点自由属性点</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US><BR></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">能量：无<SPAN 
-lang=EN-US> <BR></SPAN>特性：自由属性分配，天赋异禀（提升双特性）<SPAN lang=EN-US> <BR></SPAN>技能：无<SPAN 
-lang=EN-US> <BR></SPAN>特殊：因为没有技能树，额外获得一个特性<SPAN lang=EN-US></SPAN> 
-</SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体"><SPAN lang=EN-US></SPAN>天赋异禀：现在你可以在任意时刻花费相应<SPAN lang=EN-US>XP</SPAN>觉醒<SPAN 
-lang=EN-US>D</SPAN>级所选称号的<SPAN lang=EN-US>C</SPAN>级，并在觉醒<SPAN 
-lang=EN-US>C</SPAN>级称号后可以随时花费<SPAN lang=EN-US>XP</SPAN>习得<SPAN 
-lang=EN-US>C</SPAN>级技能，并在每次计算C级称号和称号技能<SPAN lang=EN-US>XP</SPAN>消耗时减半（至多2点），影片结束时，变为额外获得<SPAN lang=EN-US>4</SPAN>点<SPAN 
-lang=EN-US>XP</SPAN>，若你掌握了一个称号所有的<SPAN lang=EN-US>C</SPAN>级内容，你获得<SPAN 
-lang=EN-US>2</SPAN>点属性，可以自由分配到任意属性上，单属性上限和血统属性分配合计最高不能超过3。<SPAN lang=EN-US> <BR><BR>B</SPAN>级： 
-</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">属性：<SPAN 
-lang=EN-US>8</SPAN>点自由属性点</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US><BR></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">能量：无<SPAN 
-lang=EN-US> <BR></SPAN>特性：自由属性分配，赋异禀（提升双特性），光之加护<SPAN lang=EN-US> <BR></SPAN>技能：无<SPAN 
-lang=EN-US> <BR></SPAN>特殊：因为没有技能树，额外获得一个特性<SPAN lang=EN-US></SPAN> </SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体"><SPAN lang=EN-US></SPAN>天赋异禀：现在你可以在任意时刻花费相应<SPAN lang=EN-US>XP</SPAN>觉醒该称号的<SPAN 
-lang=EN-US>B</SPAN>级，并在觉醒<SPAN lang=EN-US>B</SPAN>级称号后可以随时花费<SPAN 
-lang=EN-US>XP</SPAN>习得<SPAN lang=EN-US>B</SPAN>级技能，并在每次计算<SPAN 
-lang=EN-US>B</SPAN>级称号和称号技能<SPAN lang=EN-US>XP</SPAN>消耗时减半（至多<SPAN 
-lang=EN-US>4</SPAN>点），影片结束时，变为额外获得<SPAN lang=EN-US>8</SPAN>点<SPAN 
-lang=EN-US>XP</SPAN>，若你掌握了一个称号所有的<SPAN lang=EN-US>B</SPAN>级内容，你获得<SPAN 
-lang=EN-US>4</SPAN>点属性，可以自由分配到任意属性上，单属性上限和血统属性分配合计最高不能超过4。<SPAN lang=EN-US> 
-<BR></SPAN>光之加护：星球意志的加护能改写光之战士失败的命运，每场景一次，第一次足以使光之战士死亡的伤害时，光之战士将不会死亡，而是将所有生命槽以恶性填满，但是不会死亡，这视为一个<SPAN 
-lang=EN-US>B</SPAN>级因果律的效果。<SPAN lang=EN-US><BR><BR>A</SPAN>级： </SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">属性：<SPAN 
-lang=EN-US>12</SPAN>点自由属性点</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US><BR></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">能量：无<SPAN 
-lang=EN-US> <BR></SPAN>特性：自由属性分配，天赋异禀（提升双特性），超越之力（双特性）<SPAN lang=EN-US> 
-<BR></SPAN>技能：无<SPAN lang=EN-US> <BR></SPAN>特殊：因为没有技能树，额外获得一个特性<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体"><SPAN lang=EN-US></SPAN>天赋异禀：现在你可以在任意时刻花费相应<SPAN 
-lang=EN-US>XP</SPAN>觉醒该称号的<SPAN lang=EN-US>A</SPAN>级，并在觉醒<SPAN 
-lang=EN-US>A</SPAN>级称号后可以随时花费<SPAN lang=EN-US>XP</SPAN>习得<SPAN 
-lang=EN-US>A</SPAN>级技能，并在每次计算<SPAN lang=EN-US>A</SPAN>级称号和称号技能<SPAN 
-lang=EN-US>XP</SPAN>消耗时减半（至多<SPAN lang=EN-US>8</SPAN>点），影片结束时，变为额外获得<SPAN 
-lang=EN-US>16</SPAN>点<SPAN lang=EN-US>XP</SPAN>，若你掌握了一个称号所有的<SPAN 
-lang=EN-US>A</SPAN>级内容，你获得<SPAN lang=EN-US>8</SPAN>点属性，可以自由分配到任意属性上，单属性上限和血统属性分配合计最高不能超过4。<SPAN 
-lang=EN-US> 
-<BR></SPAN>超越之力：作为世界的调谐者，光之战士具有的不屈从于命运，超越自身极限的能力，当你第一次受到足以致死的伤害时（若可以触发光之加护，则先触发光之加护），你立刻将生命值恢复到最大，然后用冲击伤害填满自身的生命槽，并在进行任何判定以及防御上获得<SPAN 
-lang=EN-US>+3</SPAN>表现加值，该效果持续一个场景；当你第二次受到足以致死的伤害时，你立刻将生命值恢复到最大，然后用严重伤害填满自身的生命槽，并在进行任何判定以及防御上获得<SPAN 
-lang=EN-US>+6</SPAN>表现加值，该效果持续一个场景，当你第三次受到足以致死的伤害时，你立刻将生命值回复到最大，然后用恶性伤害填满自身的生命槽，并在进行任何判定以及防御上获得<SPAN 
-lang=EN-US>+12</SPAN>表现加值，该效果持续一个场景，若你连续触发超越之力的效果，来自超越之力的加值互相叠加，这视为一个<SPAN 
-lang=EN-US>A</SPAN>级因果律的效果。若你用尽了超越之力的次数，你可以支付<SPAN 
-lang=EN-US>AA+8000</SPAN>的等量<SPAN 
-lang=EN-US>XP</SPAN>来重新获得之，并如同你所选择的称号一般而获得天赋异禀的好处。</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P></div> 
-<div id="winchm_template_footer">Copyright &copy; 2014. All rights reserved.</div>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">天赋异禀：现在你可以在任意时刻花费相应<SPAN 
+lang=EN-US>XP</SPAN>觉醒该称号的<SPAN lang=EN-US>C</SPAN>级。影片结束时，你变为额外获得<SPAN 
+lang=EN-US>4</SPAN>点<SPAN lang=EN-US>XP</SPAN>，若你掌握了一个称号所有的<SPAN 
+lang=EN-US>C</SPAN>级内容，你获得<SPAN 
+lang=EN-US>2</SPAN>点属性，可以自由分配到任意属性上，这视为内在加值，可以与血统叠加。<SPAN lang=EN-US><BR 
+style="mso-special-character: line-break"><BR 
+style="mso-special-character: line-break"></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"><BR>B</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">级： 
+</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">属性：<SPAN 
+lang=EN-US>8</SPAN>点自由属性点，单属性上限为<SPAN 
+lang=EN-US>4<BR></SPAN>特性：自由属性分配，天赋异禀（提升双特性），光之加护<SPAN lang=EN-US> 
+<BR></SPAN>特殊：由于没有技能树，额外获得一个特性 </SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">天赋异禀：现在你可以在任意时刻花费相应<SPAN 
+lang=EN-US>XP</SPAN>觉醒该称号的<SPAN lang=EN-US>B</SPAN>级。影片结束时，变为额外获得<SPAN 
+lang=EN-US>8</SPAN>点<SPAN lang=EN-US>XP</SPAN>，若你掌握了一个称号所有的<SPAN 
+lang=EN-US>B</SPAN>级内容，你获得<SPAN 
+lang=EN-US>4</SPAN>点属性，可以自由分配到任意属性上，这视为内在加值，可以与血统叠加。<SPAN 
+lang=EN-US><BR></SPAN>光之加护：星球意志的加护能改写光之战士失败的命运，每场景一次，第一次足以使光之战士死亡的伤害时，光之战士将不会死亡，而是将所有生命槽以恶性填满，但是不会死亡，这视为一个<SPAN 
+lang=EN-US>B</SPAN>级因果律的效果。<SPAN lang=EN-US><BR 
+style="mso-special-character: line-break"><BR 
+style="mso-special-character: line-break"></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"><BR>A</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">级： 
+</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">属性：<SPAN 
+lang=EN-US>12</SPAN>点自由属性点，单属性上限为<SPAN 
+lang=EN-US>6<BR></SPAN>特性：自由属性分配，天赋异禀，超越之力（双特性）<SPAN lang=EN-US> 
+<BR></SPAN>特殊：由于没有技能树，额外获得一个特性</SPAN><SPAN lang=EN-US></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">天赋异禀：现在你可以在任意时刻花费相应<SPAN 
+lang=EN-US>XP</SPAN>觉醒该称号的<SPAN lang=EN-US>A</SPAN>级，若你掌握了一个称号所有的<SPAN 
+lang=EN-US>A</SPAN>级内容，你获得<SPAN 
+lang=EN-US>8</SPAN>点属性，可以自由分配到任意属性上，这视为内在加值，可以与血统叠加。<SPAN 
+lang=EN-US><BR></SPAN>超越之力：作为世界的调谐者，光之战士具有的不屈从于命运，超越自身极限的能力，当你第一次受到足以致死的伤害时（若可以触发光之加护，则先触发光之加护），你立刻将生命值恢复到最大，然后用冲击伤害填满自身的生命槽，并在进行任何判定以及防御上获得<SPAN 
+lang=EN-US>3</SPAN>表现加值，该效果持续一个场景；当你第二次受到足以致死的伤害时，你立刻将生命值恢复到最大，然后用严重伤害填满自身的生命槽，并在进行任何判定以及防御上获得<SPAN 
+lang=EN-US>6</SPAN>表现加值，该效果持续一个场景，当你第三次受到足以致死的伤害时，你立刻将生命值回复到最大，然后用恶性伤害填满自身的生命槽，并在进行任何判定以及防御上获得<SPAN 
+lang=EN-US>12</SPAN>表现加值，该效果持续一个场景，若你连续触发超越之力的效果，来自超越之力的加值互相叠加，这视为一个<SPAN 
+lang=EN-US>A</SPAN>级因果律的效果。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">每次进入一个新的恐怖片重新刷新次数。<SPAN 
+lang=EN-US></SPAN></SPAN></P></div>	
+	<div id="winchm_template_footer">Copyright &copy; 2018. All rights 
+reserved. (To change the copyright info, just edit it in template.)</div>
+</div>
+
 </body>
 </html>

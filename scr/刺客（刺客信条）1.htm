@@ -17,112 +17,170 @@ html,body {
 
 
 
-<meta http-equiv="X-UA-Compatible" content="IE=8">
+
 <style>
-html {
-	overflow-y:scroll;
-}
+html,div { margin: 0; padding: 0;}
 
 body {
-	background-image: url(template1/back.png);
-	background-repeat: repeat-x;
-	background-color: #FFFFFF;
 	padding: 0px;
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-bottom: 15px;
-	margin-right: 15px;
+	margin: 0px;
+	overflow: auto;
+	height: 100%;
 }
 
-#winchm_template_button {
-	position: fixed; 
-	float: right; 
-	right: 15px; 
-	top: 15px;
+#winchm_template_button{
+	float: right;
+	width: 93px;
+	top: 7px;
+	position: relative;
+	text-align: right;
+	right: 5px;
+	height: auto;
 }
 
-#winchm_template_navigation {
+#winchm_template_top{
 	padding: 0px;
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
+	margin: 0px;
+	border-bottom: 1px solid #9B9B9B;
+	background-color: #B1CEFE;
+}
 
-	font-size: 8pt;
+#winchm_template_navigation{
+	margin: 0px;
+	padding-top: 7px;
+	padding-left: 7px;
+	padding-bottom: 3px;
+	padding-right: 0px;
+	font-size: 8.5pt;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #4A4A4A;
-	text-align: left;
+	font-weight: normal;
+	color: #585858;
 }
 
-#winchm_template_title {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 22px;
-	font-weight: bold;
-	color: #005680;
-	text-align: left;
+#winchm_template_title{
+	margin: 0px;
+	padding-top: 4px;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	padding-right: 0px;
+	font-size: 18px; 
+	font-family: Verdana, Geneva, sans-serif;
+	color: #363636;
 }
 
 #winchm_template_content{
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
+	margin-top: 20px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
 	width: auto  !important;
 	width: 100%;
 }
 
-
-#winchm_template_footer {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	padding-top: 7px;
+#winchm_template_footer{
 	border-width: 1px;
-	border-color: #c0c0c0;
+	border-color: #B1CEFE;
 	border-top-style: solid;
-
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #575757;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
+	padding-top: 7px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 8.5pt;
+	color: #696969;
+	width: auto;
 	text-align: left;
 }
 
+
+#winchm_template_container{
+	margin: 0px;
+	padding: 0px;
+	position: static;
+	padding-bottom: 3px;
+	overflow: auto;
+	background-color: #FFFFFF;
+}
+
+
 @media print
 {
+#winchm_template_container{
+	position: static;	
+	margin: 0px;
+	padding: 5px;
+	
+	width: auto;
+	height: auto;
+	overflow: auto;
+}
 #winchm_template_button{
 visibility:hidden;
 }
 }
 
-#winchm_template_navigation a:link	{text-decoration: none;color: 004080}
-#winchm_template_navigation a:visited  {text-decoration: none; color: #004080}
-#winchm_template_navigation a:active {text-decoration: none; color: #004080}
-#winchm_template_navigation a:hover {text-decoration: none;color: #0000FF}
+#winchm_template_navigation A:link	{text-decoration: none; color:#004080}
+#winchm_template_navigation A:visited  {text-decoration: none; color: #004080}
+#winchm_template_navigation A:active {text-decoration: none; color: #004080 }
+#winchm_template_navigation A:hover {text-decoration: none;color: #0080FF}
 
-a:link	{text-decoration: underline; color:#0033cc}
-a:visited  {text-decoration: underline; color: #0033cc}
-a:active {text-decoration: underline; color: #0033cc }
-a:hover {text-decoration: underline;color: #ff0000;}
-
+A:link	{text-decoration: underline; color:#0033CC}
+A:visited  {text-decoration: underline; color: #0033CC}
+A:active {text-decoration: underline; color: #0033CC }
+A:hover {text-decoration: underline;color: #FF0000;}
 </style>
+<script type="text/javascript">
+function isMobile(){
+Agent = window.navigator.userAgent;
+if (Agent.indexOf("iPhone")>=1 || Agent.indexOf("iPad")>=1 || Agent.indexOf("iPod")>=1 || Agent.indexOf("Android")>=1){
+return true;
+}else{
+return false;	
+}
+
+}
+function d_onresize(){
+if (window.navigator.userAgent.indexOf("MSIE")>=1){
+document.getElementById('winchm_template_container').style.pixelWidth = document.body.offsetWidth - 3;
+document.getElementById('winchm_template_container').style.pixelHeight = document.body.offsetHeight - document.getElementById('winchm_template_top').offsetHeight - 4;
+}
+document.getElementById('winchm_template_container').style.top = document.getElementById('winchm_template_top').offsetHeight + 'px';
+}
+
+function d_onbeforeprint(){
+document.getElementById('winchm_template_container').style.width = 'auto';
+document.getElementById('winchm_template_container').style.height = 'auto';
+}
+
+function d_onafterprint(){
+d_onresize();
+}
+
+if(!isMobile()){
+
+window.onload = d_onresize;
+window.onresize = d_onresize;
+window.onbeforeprint = d_onbeforeprint;
+window.onafterprint = d_onafterprint;
+
+document.write("<style>\n");
+document.write("body {overflow: hidden;}\n");
+document.write("#winchm_template_container {position: absolute;overflow: auto;top : 0px;right: 0px;bottom: 0px;left: 0px;}\n");
+document.write("</style>\n");
+}
+
+</script>
 </head>
 
 <body><script language="JavaScript" type="text/JavaScript">
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(95);
+  parent.nav.tree.selectNode(83);
  }else{
   setTimeout("syn()",500);
 }
@@ -142,151 +200,94 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 }
 </script> 
 
-<div id="winchm_template_button"><A href="超频连线者（Burst_Linker）.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template1/btn_prev_n.gif" border="0"></a><A href="光之战士1.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template1/btn_next_n.gif" border="0"></a></div>
-<div id="winchm_template_navigation">Help &gt; 
-<A href="资源部分.htm">资源部分</A> &gt; <A href="血统.htm">血统</A> &gt; <A href="$$unsavedpage3.htm">人类</A> &gt; </div>
-<div id="winchm_template_title">刺客（刺客信条）</div>
-<div id="winchm_template_content"><P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">刺客血统（刺客信条版本）<SPAN 
-lang=EN-US> <BR></SPAN>当其他人盲目的追寻真相的时候，记住<SPAN lang=EN-US> <BR></SPAN>万物皆虚<SPAN 
+
+<div id="winchm_template_top">
+	<div id="winchm_template_button"><A href="New_Item62.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="简单粗暴一次性.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
+	<div id="winchm_template_navigation">Help &gt; 
+<A href="资源部分.htm">资源部分</A> &gt; <A href="血统.htm">血统</A> &gt; <A href="$$unsavedpage7.htm">人类</A> &gt; <A href="$$unsavedpage8.htm">特异本质</A> &gt; </div>
+	<div id="winchm_template_title">刺客（刺客信条）</div>
+</div>
+<div id="winchm_template_container">
+	<div id="winchm_template_content"><P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-theme-font: minor-fareast">刺客血统（刺客信条版本） 
+<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-theme-font: minor-fareast">本质：特异本质<SPAN 
+lang=EN-US><BR></SPAN>当其他人盲目的追寻真相的时候，记住<SPAN lang=EN-US> <BR></SPAN>万物皆虚<SPAN 
 lang=EN-US> <BR></SPAN>当其他的人被道德和法律所束缚，记住<SPAN lang=EN-US> <BR></SPAN>万事皆允<SPAN 
 lang=EN-US> <BR></SPAN>我们行走于黑暗，服务于光明。我们是刺客。<SPAN lang=EN-US> 
 <BR></SPAN>万物皆虚，万事皆允<SPAN lang=EN-US> 
 <BR><BR></SPAN>在遥远的过去，一个名为「先行者」的种族跨越星河，在古老的地球定居。<SPAN lang=EN-US> 
 <BR></SPAN>不知处于何种目的，他们按照自己的形象，以地球上已有的一个物种作为蓝本，再将其基因大幅度改造，从而创造出了「人类」这一种族。<SPAN 
 lang=EN-US> 
-<BR></SPAN>经历了漫长的岁月之后，有许多先行者的成员与人类的成员结合并孕育了后代，这些后代拥有人类的外表，但却被赋予了来自先行者的神秘力量<SPAN 
-lang=EN-US>——</SPAN>这便是刺客血统的起源。<SPAN lang=EN-US> 
-<BR></SPAN>他们隐藏在人群之中，以自己的方式维护着人类历史的进程，守护人类文明的火种。<SPAN lang=EN-US> 
+<BR></SPAN>经历了漫长的岁月之后，有许多先行者的成员与人类的成员结合并孕育了后代，这些后代拥有人类的外表，但却被赋予了来自先行者的神秘力量——这便是刺客血统的起源。<SPAN 
+lang=EN-US> <BR></SPAN>他们隐藏在人群之中，以自己的方式维护着人类历史的进程，守护人类文明的火种。<SPAN lang=EN-US> 
 <BR></SPAN>随着时光的演变，刺客们渐渐潜入了历史的阴暗面，但数千年来，他们的信条从未改变。<SPAN lang=EN-US> 
 <BR><BR><BR>D</SPAN>级<SPAN lang=EN-US> <BR></SPAN>属性：敏捷<SPAN 
 lang=EN-US>+2</SPAN>，感知<SPAN lang=EN-US>+2</SPAN>，沉着<SPAN 
-lang=EN-US>+2</SPAN></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US><BR></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">能量：无</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US><BR></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">技能树：无<SPAN 
+lang=EN-US>+2<BR></SPAN>能量：无<SPAN lang=EN-US><BR></SPAN>技能树：无<SPAN 
 lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">特性：基因记忆（双特性），鹰眼视觉<SPAN 
-lang=EN-US> <BR></SPAN>特殊：因缺少能量池和技能树，分别获得<SPAN lang=EN-US>2</SPAN>点属性和<SPAN 
-lang=EN-US>1</SPAN>个特性。</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">基因记忆：<SPAN 
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-theme-font: minor-fareast">特性：基因记忆（三特性）<SPAN 
+lang=EN-US><BR></SPAN>特殊：由于没有能量池和技能树，分别获得<SPAN lang=EN-US>2</SPAN>点属性和<SPAN 
+lang=EN-US>1</SPAN>个特性。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-theme-font: minor-fareast">基因记忆：<SPAN 
 lang=EN-US> <BR></SPAN>基因记忆也称遗传记忆，从理论上讲，是指祖先通过<SPAN 
 lang=EN-US>DNA</SPAN>遗传给后代的记忆。它能够激活动物的各种本能技能，同时在人类身上起着历史档案的作用。普通人类的这一机能早已退化，只余下生存所必须的本能，但作为先行者与人类的混血后裔，你仍旧可以读取到祖先所遗留下来的信息。<SPAN 
-lang=EN-US> <BR></SPAN>你在白刃、运动、躲藏上这些技能相关的检定上获得<SPAN 
-lang=EN-US>+1DP</SPAN>的表现加值。此外，你学会了如何使用「袖剑」，这视为匕首，你获得对应的专业。<SPAN 
-lang=EN-US><BR></SPAN>鹰眼视觉：<SPAN lang=EN-US> 
-<BR></SPAN>鹰眼视觉是先行者后裔们所具有的一种特殊感官，拥有此天赋者能够本能的感受到人们和物体与自己的关联，并以不同的彩色辉光作为标示。<SPAN 
-lang=EN-US> <BR></SPAN>以一个标准动作，支付<SPAN 
-lang=EN-US>1</SPAN>点意志，你睁开你的鹰眼，在这个状态下，你眼中的一切色彩都会褪去，仿佛是褪色的老相片，又仿佛在水底望向天空，但这不会为你带来什么不利的影响。鹰眼视觉最多持续等于你沉着值的轮数，并且你需要以标准动作维持专注才能保持鹰眼视觉为你带来的好处，这被视为一个瞳术效果。<SPAN 
-lang=EN-US> 
-<BR></SPAN>在鹰眼视觉下，你可以感应到任何处于你敏感视觉范围内的【敌意目标】。通常来说，生物必须与你进行过某种程度的互动才会对你产生敌意，但你不一定能够察觉这次互动。举例而言，敌方的轮回者通过心灵扫描确定了你敌人的身份并对你产生了敌意，尽管你并不知道这件事情，但你仍然能够察觉对方的敌意。你只能【以此侦测能力】感受到敌意生物的存在并尝试进行模糊定位（如果他的反侦测等级低于你的侦测等级，那当然是直接模糊定位啦）。若你对某个敌意生物以整轮动作维持一轮的专注，则你可以对其进行精确定位。但除非你持续维持专注，否则只要对方改变了位置你的精确定位就会失去效果。如果对方试图隐藏自身，那么你可用感知<SPAN 
-lang=EN-US>+</SPAN>调查对抗对方的隐藏检定。这视为一个特异本质的侦测效果，其侦测等级为<SPAN 
-lang=EN-US>B</SPAN>级。你一次只能专注于一个目标。<SPAN lang=EN-US> <BR><BR></SPAN>袖剑<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">本质：科技本质<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">价格：<SPAN 
-lang=EN-US>10</SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">分类：匕首<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">描述：袖剑是刺客组织标志性的武器，它既是一种暗杀武器，也可以在正面战斗中使用。袖剑包含了一个可伸缩的刀刃，和腕甲在一起使用时，袖剑可以在不引人注意的情况下伸出及缩回，是暗杀的绝佳利器。 
-<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">武器基本属性：武器伤害<SPAN 
-lang=EN-US>2L</SPAN>，【<SPAN lang=EN-US>9</SPAN>加骰】<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">武器特殊属性：无<SPAN 
-lang=EN-US><BR></SPAN>袖中藏剑：在未弹出剑刃时，袖剑表现为一个造型略略有些特殊的护腕，这使它在隐藏武器不被人发现的检定上提供<SPAN 
-lang=EN-US>+1DP</SPAN>的器械加值，但这个时候也无法使用袖剑作为武器，不过你仍然可以用它来进行白刃格挡。你可用一个迅捷动作将（你所装备的所有袖剑的）剑刃弹出。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">寸险：袖剑并不适于格挡，当你使用袖剑进行白刃格挡时，你的格挡防御减少<SPAN 
-lang=EN-US>3</SPAN>点。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></P><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><BR></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体" 
-lang=EN-US>C</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">级<SPAN 
+lang=EN-US> <BR></SPAN>你在白刃、运动、躲藏、掩饰上这些技能相关的检定上获得<SPAN 
+lang=EN-US>2DP</SPAN>的内在加值。此外，你学会了如何使用「袖剑」，这视为匕首，你获得对应的专业。<SPAN 
+lang=EN-US><BR></SPAN></SPAN></P>
+<P>
+<P><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-theme-font: minor-fareast"><SPAN 
+lang=EN-US>&nbsp;</P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-theme-font: minor-fareast">C</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-theme-font: minor-fareast">级<SPAN 
 lang=EN-US> <BR></SPAN>属性：敏捷<SPAN lang=EN-US>+3</SPAN>，感知<SPAN 
-lang=EN-US>+2</SPAN>，沉着<SPAN lang=EN-US>+3</SPAN></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US><BR></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">特性：自由奔跑、鹰之感官<SPAN 
-lang=EN-US> <BR></SPAN>特殊：缺少技能树额外获得<SPAN lang=EN-US>2</SPAN>属性</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US><BR></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">自由奔跑：<SPAN 
+lang=EN-US>+2</SPAN>，沉着<SPAN lang=EN-US>+3<BR></SPAN>特性：自由奔跑（双特性）<SPAN 
+lang=EN-US><BR></SPAN>技能树：无 <SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-bidi-font-family: 宋体; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA; mso-bidi-theme-font: minor-fareast">特殊：由于没有技能树，额外获得<SPAN 
+lang=EN-US>2</SPAN>属性<SPAN 
+lang=EN-US><BR></SPAN>自由奔跑：每一名刺客都会接受一系列关于机动性的特殊训练，这种能力被刺客们广泛应用，通过这些被一般大众普遍视为异类的行动方式，使得刺客能够到达常人所无法接近的地方，甚至可以借此在任何时候快速到达城市中的任何地点。而在这其中，最为著名的便是信仰之跃——刺客们的招牌动作。<SPAN 
 lang=EN-US> 
-<BR></SPAN>每一名刺客都会接受一系列关于机动性的特殊训练，这种能力被刺客们广泛应用，通过这些被一般大众普遍视为异类的行动方式，使得刺客能够到达常人所无法接近的地方，甚至可以借此在任何时候快速到达城市中的任何地点。而在这其中，最为著名的便是信仰之跃<SPAN 
-lang=EN-US>——</SPAN>刺客们的招牌动作。<SPAN lang=EN-US> 
-<BR></SPAN>在计算坠落伤害时，你可以减免等于你敏捷值的伤害。你无视困难地形，并且使你可以随意在任意地形移动（包括天花板、墙壁、管线等）而不需要进行运动检定，但在回合结束时必须获得稳固的支撑点，否则将跌落。<SPAN 
-lang=EN-US> <BR></SPAN>鹰之感官：<SPAN lang=EN-US> 
-<BR></SPAN>在你能够娴熟的操控鹰眼视觉之后，就有可能使其升华为更为强大的形态。它能增进使用者全部官能，使他们能探测到特定区域内目标的心跳，甚至预知目标的行踪。<SPAN 
-lang=EN-US> <BR></SPAN>你只需要通过观察就能了解他人的想法，每轮一次，你可以用感知<SPAN 
-lang=EN-US>+</SPAN>感觉对抗对方的智力<SPAN lang=EN-US>/</SPAN>操纵<SPAN 
-lang=EN-US>+</SPAN>掩饰，如果你胜出，则可以读取对方的表面情绪。你能感觉到基础的需求、动力和情绪。口渴、饥饿、恐惧、疲乏、痛苦、愤怒、憎恨、怀疑、好奇、友善，以及其他种种感情都可被感知。你不再需要维持专注即可保持鹰眼视觉，并且【敌意目标】的概念现在还包括能够对你产生威胁的机关、陷阱或自然环境的存在，如果你进行专注，那么你还可以判断出该存在的强度（以你自身强度作为标准数值，得到的结果不会很精确，只能大概了解“比我强一点，互怼的话说不好谁赢”又或者“比我强很多，爆发底力也可能会死”等等。）和类别（例如是人类、生物、人造陷阱还是危险的自然环境，但你需要相关的知识来判定种类）。<SPAN 
-lang=EN-US> <BR><BR><BR>B</SPAN>级<SPAN lang=EN-US> <BR></SPAN>属性：敏捷<SPAN 
+<BR></SPAN>你免疫坠落伤害。你无视困难地形，并且你在移动时获得蛛行术，这使得你可以随意在任意地形移动（包括天花板、墙壁、管线等）而不需要进行运动检定，但在回合结束时必须获得稳固的支撑点，否则将跌落。你现在在进行近战攻击时也可以获得瞄准带来的好处。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-theme-font: minor-fareast"><SPAN 
+lang=EN-US><BR><BR>B</SPAN>级<SPAN lang=EN-US> <BR></SPAN>属性：敏捷<SPAN 
 lang=EN-US>+4</SPAN>，感知<SPAN lang=EN-US>+3</SPAN>，沉着<SPAN 
-lang=EN-US>+4</SPAN></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US><BR></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">特性：真实视域，记忆回廊（双特性）<SPAN 
-lang=EN-US> <BR></SPAN>特殊：缺少技能树额外获得<SPAN lang=EN-US>3</SPAN>点属性</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US><BR></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">真实视域：<SPAN 
-lang=EN-US> <BR></SPAN>当你睁开鹰眼时，一切伪装在你的眼中都无所遁形，你的双眼能够看到万事万物的真实面目。<SPAN 
-lang=EN-US> <BR></SPAN>现在当你打开鹰眼视觉时，你的侦测等级提升为<SPAN 
-lang=EN-US>B</SPAN>级。你可以自动看穿在你<SPAN 
-lang=EN-US>B</SPAN>级或之下的幻术效果，鹰眼视觉的持续时间改为等于你意志值的轮数。你不再需要专注也能自动判断视野范围内的所有敌意目标获得<SPAN 
-lang=EN-US>D</SPAN>级和<SPAN lang=EN-US>C</SPAN>级的专注效果。<SPAN lang=EN-US> 
-<BR></SPAN>记忆回廊：<SPAN lang=EN-US> 
-<BR></SPAN>随着你与祖先记忆的不断同步，你从中获得了更多的经验与智慧，当你与祖先的记忆融为一体，你便能够成为传说中无所不能的刺客大师。在获得该等级血统时，从肉搏、白刃、射击、运动、躲藏、掩饰、生存上选择总共三项你具有的专业。选定后不可更改。<SPAN 
-lang=EN-US> <BR></SPAN>此后，以一个整轮动作，你将记忆回廊的大门打开。当记忆回廊被打开时，你所选择的三项专业可以为你提供<SPAN 
-lang=EN-US>+12DP+3</SPAN>附加成功的专业加值。在记忆回廊开启的状态下，你的鹰眼视觉的持续时间改为和记忆回廊的持续时间相同。记忆回廊的开启能够持续一个场景，或是每决心值一分钟，取较低者，但如果你在战斗中开启记忆回廊超过二轮，那么在战斗结束的同时记忆回廊也会被关闭，并且你会因为开启记忆回廊的每一轮而承受<SPAN 
-lang=EN-US>1</SPAN>点不可豁免的冲击伤害和<SPAN lang=EN-US>2</SPAN>点可豁免的眩晕效果。</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体"></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><BR><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体" 
-lang=EN-US>A</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">级<SPAN 
-lang=EN-US> <BR></SPAN>属性：敏捷<SPAN lang=EN-US>+5</SPAN>，感知<SPAN 
-lang=EN-US>+2</SPAN>，沉着<SPAN lang=EN-US>+5</SPAN></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US><BR></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体">特性：未来视界（双特性）、同步核心 
-<SPAN lang=EN-US></SPAN></SPAN><SPAN 
-style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 1.0pt; mso-bidi-font-family: 宋体; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA">特殊：由于没有技能树，额外获得<SPAN 
-lang=EN-US>1</SPAN>特性。<SPAN lang=EN-US><BR></SPAN>未来视界：<SPAN lang=EN-US> 
-<BR>——</SPAN>直到最后，先行者的后裔们觉醒了和他们最早的祖先相同的能力，他们的双眼能够看穿时间的长河，从无限的未知中选择最恰当的可能性。<SPAN 
-lang=EN-US> 
-<BR></SPAN>现在，在启动鹰眼视觉的状态下，每回合一次，你在进行攻击检定时，可以检定两次，你的第一次检定不造成实际效果，而是使你的第二次检定获得等于你第一次检定成功数的<SPAN 
-lang=EN-US>DP</SPAN>加值（上限为你的当前敏捷值），这被视为你通过观测未来而知晓应该如何恰当行动。开启鹰眼视觉之后，你在防御和反射上的洞察加值额外提升<SPAN 
-lang=EN-US>8</SPAN>点。<SPAN lang=EN-US> <BR></SPAN>同步核心：<SPAN lang=EN-US> 
-<BR></SPAN>所谓同步核心，是指时间上的一个扭曲点，【先行者】们通过同步核心估算未来的可能性，选择更合适的道路。而继承了先行者之血的人类，可以通过回溯祖先的记忆来进入同步核心。<SPAN 
-lang=EN-US> <BR></SPAN>通过消耗一点意志，你令你的意志超越时空，进入同步核心，在这里，你可以与先行者<SPAN 
-lang=EN-US>——</SPAN>你的祖先对话，并从他们身上得到对未来的启示。这表现为你可以向<SPAN 
-lang=EN-US>ST</SPAN>要求获得关于剧情的提示，这会使你了解当前你最需要进行的行动和最重要的任务，以及如何高效率的完成这个任务，但这不会使你获得直接优势。你在智力和感知上每有一个附加成功，就可以要求一次提示，但你得到血统之后一共只能获得那么多次提示。当你的属性提升从而获得新的附加成功，或你每使用<SPAN 
-lang=EN-US>D+500</SPAN>或者<SPAN lang=EN-US>8XP</SPAN>向主神购买，就可以恢复一次使用次数。 
-</SPAN></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
-lang=EN-US></P></SPAN></div> 
-<div id="winchm_template_footer">Copyright &copy; 2014. All rights reserved.</div>
+lang=EN-US>+4<BR></SPAN>特性：出血效应（双特性），完美突袭<SPAN lang=EN-US><BR></SPAN>技能树：无<SPAN 
+lang=EN-US></SPAN></SPAN></SPAN></SPAN>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-theme-font: minor-fareast">特殊：由于没有技能树，额外获得<SPAN 
+lang=EN-US>2</SPAN>属性<SPAN 
+lang=EN-US><BR></SPAN>出血效应：随着你与祖先记忆的不断同步，你从中获得了更多的经验与智慧，当你与祖先的记忆融为一体，你便能够成为传说中无所不能的刺客大师。你从肉搏、白刃、运动、躲藏、掩饰、求生上选择总共四项你具有的专业。选定后不可更改。 
+<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-theme-font: minor-fareast">此后，以一个整轮动作，你将出血效应的大门打开。当出血效应被打开时，你选择的三项专业若进行检定，则获得<SPAN 
+lang=EN-US>12DP</SPAN>内在加值。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt; mso-bidi-theme-font: minor-fareast">完美突袭：在突袭轮中，若你为能够行动的参战单位，你改为获得完整的一回合。<SPAN 
+lang=EN-US>&nbsp;</SPAN></SPAN></P></div>	
+	<div id="winchm_template_footer">Copyright &copy; 2018. All rights 
+reserved. (To change the copyright info, just edit it in template.)</div>
+</div>
+
 </body>
 </html>

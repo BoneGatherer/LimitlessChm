@@ -17,112 +17,170 @@ html,body {
 
 
 
-<meta http-equiv="X-UA-Compatible" content="IE=8">
+
 <style>
-html {
-	overflow-y:scroll;
-}
+html,div { margin: 0; padding: 0;}
 
 body {
-	background-image: url(template1/back.png);
-	background-repeat: repeat-x;
-	background-color: #FFFFFF;
 	padding: 0px;
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-bottom: 15px;
-	margin-right: 15px;
+	margin: 0px;
+	overflow: auto;
+	height: 100%;
 }
 
-#winchm_template_button {
-	position: fixed; 
-	float: right; 
-	right: 15px; 
-	top: 15px;
+#winchm_template_button{
+	float: right;
+	width: 93px;
+	top: 7px;
+	position: relative;
+	text-align: right;
+	right: 5px;
+	height: auto;
 }
 
-#winchm_template_navigation {
+#winchm_template_top{
 	padding: 0px;
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
+	margin: 0px;
+	border-bottom: 1px solid #9B9B9B;
+	background-color: #B1CEFE;
+}
 
-	font-size: 8pt;
+#winchm_template_navigation{
+	margin: 0px;
+	padding-top: 7px;
+	padding-left: 7px;
+	padding-bottom: 3px;
+	padding-right: 0px;
+	font-size: 8.5pt;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #4A4A4A;
-	text-align: left;
+	font-weight: normal;
+	color: #585858;
 }
 
-#winchm_template_title {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 22px;
-	font-weight: bold;
-	color: #005680;
-	text-align: left;
+#winchm_template_title{
+	margin: 0px;
+	padding-top: 4px;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	padding-right: 0px;
+	font-size: 18px; 
+	font-family: Verdana, Geneva, sans-serif;
+	color: #363636;
 }
 
 #winchm_template_content{
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
+	margin-top: 20px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
 	width: auto  !important;
 	width: 100%;
 }
 
-
-#winchm_template_footer {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	padding-top: 7px;
+#winchm_template_footer{
 	border-width: 1px;
-	border-color: #c0c0c0;
+	border-color: #B1CEFE;
 	border-top-style: solid;
-
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #575757;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
+	padding-top: 7px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 8.5pt;
+	color: #696969;
+	width: auto;
 	text-align: left;
 }
 
+
+#winchm_template_container{
+	margin: 0px;
+	padding: 0px;
+	position: static;
+	padding-bottom: 3px;
+	overflow: auto;
+	background-color: #FFFFFF;
+}
+
+
 @media print
 {
+#winchm_template_container{
+	position: static;	
+	margin: 0px;
+	padding: 5px;
+	
+	width: auto;
+	height: auto;
+	overflow: auto;
+}
 #winchm_template_button{
 visibility:hidden;
 }
 }
 
-#winchm_template_navigation a:link	{text-decoration: none;color: 004080}
-#winchm_template_navigation a:visited  {text-decoration: none; color: #004080}
-#winchm_template_navigation a:active {text-decoration: none; color: #004080}
-#winchm_template_navigation a:hover {text-decoration: none;color: #0000FF}
+#winchm_template_navigation A:link	{text-decoration: none; color:#004080}
+#winchm_template_navigation A:visited  {text-decoration: none; color: #004080}
+#winchm_template_navigation A:active {text-decoration: none; color: #004080 }
+#winchm_template_navigation A:hover {text-decoration: none;color: #0080FF}
 
-a:link	{text-decoration: underline; color:#0033cc}
-a:visited  {text-decoration: underline; color: #0033cc}
-a:active {text-decoration: underline; color: #0033cc }
-a:hover {text-decoration: underline;color: #ff0000;}
-
+A:link	{text-decoration: underline; color:#0033CC}
+A:visited  {text-decoration: underline; color: #0033CC}
+A:active {text-decoration: underline; color: #0033CC }
+A:hover {text-decoration: underline;color: #FF0000;}
 </style>
+<script type="text/javascript">
+function isMobile(){
+Agent = window.navigator.userAgent;
+if (Agent.indexOf("iPhone")>=1 || Agent.indexOf("iPad")>=1 || Agent.indexOf("iPod")>=1 || Agent.indexOf("Android")>=1){
+return true;
+}else{
+return false;	
+}
+
+}
+function d_onresize(){
+if (window.navigator.userAgent.indexOf("MSIE")>=1){
+document.getElementById('winchm_template_container').style.pixelWidth = document.body.offsetWidth - 3;
+document.getElementById('winchm_template_container').style.pixelHeight = document.body.offsetHeight - document.getElementById('winchm_template_top').offsetHeight - 4;
+}
+document.getElementById('winchm_template_container').style.top = document.getElementById('winchm_template_top').offsetHeight + 'px';
+}
+
+function d_onbeforeprint(){
+document.getElementById('winchm_template_container').style.width = 'auto';
+document.getElementById('winchm_template_container').style.height = 'auto';
+}
+
+function d_onafterprint(){
+d_onresize();
+}
+
+if(!isMobile()){
+
+window.onload = d_onresize;
+window.onresize = d_onresize;
+window.onbeforeprint = d_onbeforeprint;
+window.onafterprint = d_onafterprint;
+
+document.write("<style>\n");
+document.write("body {overflow: hidden;}\n");
+document.write("#winchm_template_container {position: absolute;overflow: auto;top : 0px;right: 0px;bottom: 0px;left: 0px;}\n");
+document.write("</style>\n");
+}
+
+</script>
 </head>
 
 <body><script language="JavaScript" type="text/JavaScript">
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(36);
+  parent.nav.tree.selectNode(54);
  }else{
   setTimeout("syn()",500);
 }
@@ -142,171 +200,521 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 }
 </script> 
 
-<div id="winchm_template_button"><A href="使用文件与自制科技物品.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template1/btn_prev_n.gif" border="0"></a><A href="暂存.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template1/btn_next_n.gif" border="0"></a></div>
-<div id="winchm_template_navigation">Help &gt; 
+
+<div id="winchm_template_top">
+	<div id="winchm_template_button"><A href="使用文件与自制科技物品.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="撰写规则.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
+	<div id="winchm_template_navigation">Help &gt; 
 <A href="规则部分.htm">规则部分</A> &gt; <A href="特殊规则部分.htm">特殊规则部分</A> &gt; </div>
-<div id="winchm_template_title">开团经验分享</div>
-<div id="winchm_template_content"></FONT></SPAN>
+	<div id="winchm_template_title">开团经验分享</div>
+</div>
+<div id="winchm_template_container">
+	<div id="winchm_template_content"><P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">主持人（一般简称为<SPAN 
+lang=EN-US>ST</SPAN>）是游戏的焦点，如果游戏有趣，那么主神将受到称赞。如果游戏失败，无论什么原因，也是主神受到责备。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN></B></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN></B>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 16pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US>ST</SPAN></B><B style="mso-bidi-font-weight: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 16pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">是什么？<SPAN 
+lang=EN-US></SPAN></SPAN></B></P>
 <P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">我给出的建议就是以下几点</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US><FONT face=Calibri>1 
-无限作为一个以撸架为主的原著，其实不太适合走</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">剧情团路线</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> 
-个人感觉</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">什么</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>NPC</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">啦</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">主角啦</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">能少出现就少出现</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US><?XML:NAMESPACE PREFIX = O /><o:p><FONT face=Calibri>&nbsp; 
-当然如果ST开的是剧情团那当然无视此条</FONT></O:P></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US><FONT face=Calibri>2 </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">剧情就是刚正朴实的沙盒模式</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">放一个地域</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">让</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>PC</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">自己自由探索 这样PC觉得游戏自由度高 还有趣&nbsp;当PC万一被难题卡住之后 要给予线索提示 
-最好就直接放在PC脸前 这让故事进入死胡同</SPAN></P>
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">主持人的工作包括教学，引导剧情，表演，对游戏的进展进行推动，判定的结算等等。下面我们将概述<SPAN 
+lang=EN-US>ST</SPAN>的工作，你可能会发现自己比较喜欢做其中的某些事，你可以专注在最感兴趣的部分，但是，请注意，如果你想做好一个<SPAN 
+lang=EN-US>ST</SPAN>，那么其他的工作也同样重要。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri"></SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>3 
-大部分</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">怪物一定要刚正朴实</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">非特殊怪物之外</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">就和</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>PC</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">硬碰硬</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">别什么</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>PC</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">意志低就打意志</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">总打短板会消磨</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US><FONT face=Calibri>PC</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">的意志</SPAN></P>
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN></P>
 <P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri"></SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>4 
-</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">如果是无限的话</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">一定要设计好分数和支线</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">让</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>PC</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">看得到动力</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">如果是</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>DND 
-</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">就一定给好</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>LOOT</FONT></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US><FONT face=Calibri>5 </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">控制好节奏</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">节奏永远是</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>ST</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">在掌握</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">比如</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>PC</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">刚打完一场大战就不适合连番战斗</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">让</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>PC</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">在战斗和休息中互相转换</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">战斗过于频繁不仅</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US><FONT face=Calibri>PC</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">的角色累</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri> 
-PC</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">也累 甚至ST也累</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US><FONT face=Calibri>6 </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">一定要告诉</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>PC 
-</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">你会死</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">你</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>TM</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">会死</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">你</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>TM</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">肯定会死！！！让</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US><FONT face=Calibri>PC</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">知道危险与得分是正比的</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">任何不会死的撸架团都不是好团！！！</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US><FONT face=Calibri>7 </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">别让</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>PC</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">轻易死</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">任何</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>PC</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">对自己的人物卡都有感情</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">适当的控制死亡的节奏也是一部分</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">一个</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>PC</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">来跑团准备</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>3-4</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">张卡等撕</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">对任何ST而言也不会是个好体验</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US><FONT face=Calibri>8 </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">知道自己吃几碗干饭</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">每个人都有自己的极限</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">比如你最多控制</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US><FONT face=Calibri>3</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">个</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>S</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">的强度那就要控制好自己的发分力度</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> 如果不知道水有多深 就一点一点尝试 别一口气吃一个胖子</FONT></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"></SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>9 
-DM</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">永远要把握游戏的全部节奏和流程</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri>&nbsp;作为ST</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">你是以服务</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>PC</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">为基准</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> 并不是在恶心PC 虽然这个世界上缺少ST 
-但是一群人玩了你的团说你的团好玩 跟你说的团特别坑 这对你而言肯定有区别</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US><FONT face=Calibri>&nbsp;</FONT></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US><o:p><FONT face=Calibri></FONT></O:P></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US><o:p><FONT face=Calibri></FONT></O:P></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US><o:p><FONT face=Calibri>10&nbsp; </FONT></O:P></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US><FONT face=Calibri>PC</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">觉得你的团很好玩才是王道</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">你有多</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>NB</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">只体现在你带团的水平上</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">你车卡技术NB或者你语文能力NB</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">这说明不了什么</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US><FONT face=Calibri> </FONT></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US><o:p><FONT face=Calibri>11 随着PC调整自己的套路，<FONT face=宋体>跑团就是一个不断生成麻烦和解决麻烦的过程，如同小说一样，<SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">必须有“矛盾”，<SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">才会有发展。</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US></SPAN></P></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US></SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US></SPAN></FONT></FONT></O:P></SPAN>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US><o:p><FONT face=Calibri></FONT></O:P></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US><o:p><FONT face=Calibri>12 
-要给PC不断的压力，这样PC解决压力之后才会获得成就感。但是千万不要给予PC无力感，这样会让PC快速厌倦游戏&nbsp;</FONT></O:P></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US><o:p><FONT face=Calibri>&nbsp;</FONT></O:P></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US><o:p><FONT face=Calibri>&nbsp;<FONT face=宋体>（除非是你刻意为之</FONT><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">比如在生化</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" 
-lang=EN-US><FONT face=Calibri>2</FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">里</SPAN><SPAN style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt"><FONT face=Calibri> </FONT></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">黑郑吒对白郑吒）</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-SIZE: 12pt" lang=EN-US></SPAN></FONT></O:P></SPAN></P></div> 
-<div id="winchm_template_footer">Copyright &copy; 2014. All rights reserved.</div>
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">为什么</SPAN></B><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">叫无限流<SPAN 
+lang=EN-US>TRPG</SPAN>？<SPAN lang=EN-US></SPAN></SPAN></B></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">本规则既然是无限流<SPAN 
+lang=EN-US>TRPG</SPAN>，那么从游戏的设置上一般是由主持人安排<SPAN 
+lang=EN-US>PC</SPAN>（玩家）进行周期性的冒险。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">游戏的开始一般是<SPAN 
+lang=EN-US>PC</SPAN>从自己所处的世界中，被主持人召唤到一个崭新的世界之中，这个世界可以是某部电影的世界，也可以是某部动漫的世界，更可以是主持人原创的世界。（当然，如果主持人有意愿，那么他们是这个世界的原住民也是可以的。）当召唤来之后，主持人会安排给所有<SPAN 
+lang=EN-US>PC</SPAN>一个主线任务，当这个主线任务一旦被完成，则<SPAN 
+lang=EN-US>PC</SPAN>则会返回主持人所在的虚数空间之中，返回之后则可以通过在这次冒险中获得的奖励来兑换各式各样的东西以增强自己，从而面对下次挑战。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">而主持人则需要开始安排下一次的挑战，经过主持人设置的一段时间（一般为<SPAN 
+lang=EN-US>10</SPAN>天），<SPAN lang=EN-US>PC</SPAN>将被召唤进去一个新的世界开始新的冒险，由于<SPAN 
+lang=EN-US>PC</SPAN>的实力越来越强，冒险的世界以及对手和怪物也会越来越强。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">设计冒险任务<SPAN 
+lang=EN-US></SPAN></SPAN></B></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">刚才我们提到了主线任务，除了主线任务之外还有支线任务，主线任务是<SPAN 
+lang=EN-US>PC</SPAN>在冒险中最为重要贯穿始终的任务，而支线任务则穿插在其中出现，并且完成的支线任务越多，<SPAN 
+lang=EN-US>PC</SPAN>才可以得到越多的奖励。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">设计这两种任务需要耗费大量的时间，许多<SPAN 
+lang=EN-US>ST</SPAN>的游戏准备时间也远超过实际的带团时间，一般情况下，这些<SPAN 
+lang=EN-US>ST</SPAN>认为创作这些也是非常有趣的。设计出有趣的任务，剧情，挑战，怪物，并且让朋友们一起深入其中，可以大大发挥<SPAN 
+lang=EN-US>ST</SPAN>的想像力和创造力。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">设计一场好的冒险是非常重要的。这一场冒险一般是指将<SPAN 
+lang=EN-US>PC</SPAN>召唤到一个世界之中，直到<SPAN 
+lang=EN-US>PC</SPAN>完成主线任务返回虚数空间，一般而言，我们管这个叫一场恐怖片。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">游戏的总体流程是什么？<SPAN 
+lang=EN-US></SPAN></SPAN></B></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US>PC</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">第一次被召唤进的世界不先经过虚数空间的，这意味着<SPAN 
+lang=EN-US>PC</SPAN>是以最初的角色卡进入该世界。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">在第三次被召唤进的世界，也就是第三场恐怖片，主持人将根据<SPAN 
+lang=EN-US>PC</SPAN>的表现，从当前已经开启潜能爆发的<SPAN lang=EN-US>PC</SPAN>之中选择一个<SPAN 
+lang=EN-US>PC</SPAN>成为队长，其获得队长权限，然后该队伍的所有<SPAN 
+lang=EN-US>PC</SPAN>自动成为一个小队，被称为无限小队。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">之后第四场，第六场，第八场，以此类推，将遭遇其他的无限小队。这被称之为团战，而该场次的恐怖片称之为团战恐怖片。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">而第二十场的恐怖片称之为最终一战，这一场的时候，所有的无限小队将进行殊死的搏斗，直到决出最终胜利者，同时，这也是最终的冒险，一般情况下，完成二十场的剧情，也就是宣告这个团的完结。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">改动原本剧情<SPAN 
+lang=EN-US></SPAN></SPAN></B></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">刚才我们提到了，由于将<SPAN 
+lang=EN-US>PC</SPAN>召唤到新的世界之中，可能是电影世界或者动漫世界或者其他什么。这些世界都会有原本的一些设定和剧情。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">请注意，你才是带领整场冒险的人，也就是说，你可以更改任何原本的内容。当你导入剧情的时候，你可能需要经常改动一些小地方，才能使整个剧情完美的流畅起来，因为大部分的<SPAN 
+lang=EN-US>PC</SPAN>可能看过这部动漫或者电影或者其他什么，所以为了保证剧情的流畅，那么修改一些细节也是非常正常的。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">但是若你这么做了，请告知你的<SPAN 
+lang=EN-US>PC</SPAN>，这样会让<SPAN lang=EN-US>PC</SPAN>不会陷入固有的思维之中。并且如果因为<SPAN 
+lang=EN-US>PC</SPAN>的行为改变了原本的剧情，这本身就是支线任务的一部分，请给予<SPAN 
+lang=EN-US>PC</SPAN>足够的奖励。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">游戏教学<SPAN 
+lang=EN-US></SPAN></SPAN></B></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">有时候教导新入门的<SPAN 
+lang=EN-US>PC</SPAN>如何开始进行游戏也是你工作的一部分。这可能会让你觉得这是一个负担，其实恰恰相反。因为每个人对游戏的理解都是不同的，其实这种不同很大的取决于其最初的游戏体验，所以这对于<SPAN 
+lang=EN-US>ST</SPAN>而言，教导一个新的<SPAN 
+lang=EN-US>PC</SPAN>加入这个游戏是一个绝佳的机会。这不仅仅会增加新的<SPAN 
+lang=EN-US>PC</SPAN>，还会引导其成为与<SPAN lang=EN-US>ST</SPAN>同频的游戏的玩家，这会使这些新<SPAN 
+lang=EN-US>PC</SPAN>成为你乐于与之一同游戏的玩家。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">以下是一些秘诀：<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">请详细看《建立一张角色卡》的章节，然后帮助新手<SPAN 
+lang=EN-US>PC</SPAN>创建他们的角色。并且请他们叙述自己希望扮演的角色模样，包括外貌，身高，体重，性别，以及未来的发展方向。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US>ST</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">则需要教导<SPAN 
+lang=EN-US>PC</SPAN>如何使用本规则塑造他（她）心目中的角色，如果他们不知道扮演什么角色，则你可以告诉他们，这本书存在无数的可能性，让他们放开自己的脑洞，你可以从奇幻到现实，从过去到未来，从魔法到科技给他们举例，引导他们创造一个自己喜爱的角色。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><I 
+style="mso-bidi-font-style: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: Arial">比如一个<SPAN 
+lang=EN-US>PC</SPAN>可以创建一个外貌普通，身高<SPAN lang=EN-US>1</SPAN>米<SPAN 
+lang=EN-US>9</SPAN>的肌肉大姐，一边挥舞着巨剑一遍丢出火球。也可以创造一个<SPAN lang=EN-US>1</SPAN>米<SPAN 
+lang=EN-US>3</SPAN>的瘦小男性拿着盾牌横冲直闯。<SPAN 
+lang=EN-US></SPAN></SPAN></I></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><I 
+style="mso-bidi-font-style: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: Arial">这完全取决于<SPAN 
+lang=EN-US>PC</SPAN>对角色卡的期望。<SPAN lang=EN-US></SPAN></SPAN></I></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">当新的<SPAN 
+lang=EN-US>PC</SPAN>创建好角色后，还要学习一下游戏的基础规则。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">这部分非常简单，因为游戏的初期，他们只需要知道自己与自己角色有关的规则就可以了。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">因为游戏的一开始只是凡人卡，新手玩家几乎不会有任何超凡的能力，所以他们只需要知道攻击，防御，如何使用技能等就可以了。其他的可以在游戏的过程中慢慢学习。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">先记得基础规则中的攻击、防御、速度、先攻、豁免，以及投骰和检定规则就可以了。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">只要<SPAN 
+lang=EN-US>ST</SPAN>熟悉规则，并且有充足的准备，那么游戏就可以开始了。玩家在游戏中只需要照顾自己的角色，知道在游戏中面对事件时，该如何行动即可。你只负责搭建一个基础的世界，这个世界是合乎逻辑进行运转的，如果<SPAN 
+lang=EN-US>PC</SPAN>进行了行动，让<SPAN 
+lang=EN-US>PC</SPAN>告诉你，他们打算做什么，你需要帮助他们把角色的行动以游戏规则进行诠释，同时，你还要告诉他们相关规则的运作方式，然后在<SPAN 
+lang=EN-US>PC</SPAN>行动后，你要给予结算。针对一件事，他们知道如何算数和投骰，以及计算最后的结果，几次之后，他们就学会了。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><I 
+style="mso-bidi-font-style: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-fareast-theme-font: minor-fareast; mso-bidi-font-family: Arial; mso-bidi-font-size: 11.0pt; mso-ascii-font-family: Arial; mso-hansi-font-family: Arial">比如玩家的角色要进行冲锋，则你需要让玩家选择一个目标，然后计算之间的直线之内是否有障碍物，并且计算角色的移动速度。都满足后，确定角色冲锋增加的</SPAN></I><I 
+style="mso-bidi-font-style: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 'Arial','sans-serif'; FONT-SIZE: 12pt; mso-fareast-theme-font: minor-fareast; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: 宋体" 
+lang=EN-US>DP</SPAN></I><I style="mso-bidi-font-style: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-fareast-theme-font: minor-fareast; mso-bidi-font-family: Arial; mso-bidi-font-size: 11.0pt; mso-ascii-font-family: Arial; mso-hansi-font-family: Arial">，然后最后进行攻防计算，最后进行伤害投掷。</SPAN></I><I 
+style="mso-bidi-font-style: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 'Arial','sans-serif'; FONT-SIZE: 12pt; mso-fareast-theme-font: minor-fareast; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: 宋体" 
+lang=EN-US></SPAN></I></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">创造世界<SPAN 
+lang=EN-US></SPAN></SPAN></B></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US>ST</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">是游戏世界的创造者。即使<SPAN 
+lang=EN-US>ST</SPAN>使用动漫或者电影或者其他世界的世界观和剧情，那依旧是属于<SPAN 
+lang=EN-US>ST</SPAN>的世界。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">游戏世界包含该世界的所有背景，不过在大部分情况下，我们并不鼓励角色去探索整个世界，因为主线任务的存在，玩家可能只有少量可以活动的空间和时间，在这种情况下，<SPAN 
+lang=EN-US>ST</SPAN>只需要规划好这个世界中与玩家本身相关的内容就好，因为无限<SPAN 
+lang=EN-US>TRPG</SPAN>中，每个<SPAN 
+lang=EN-US>PC</SPAN>只在一个世界中存在很短的时间，其很快会离开，所以不太需要让<SPAN 
+lang=EN-US>PC</SPAN>融入这个世界之中。但是若你希望以一个世界让玩家展开多次冒险，则建议设定好这个世界的所有事物，设计运作良好的世界会随着角色的行动而改变，只有这样，玩家才会觉得这个世界是有趣的，而愿意投入更多的精力与<SPAN 
+lang=EN-US>ST</SPAN>所设计的世界进行互动。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">裁判<SPAN 
+lang=EN-US></SPAN></SPAN></B></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">请注意，在本游戏的时一切由<SPAN 
+lang=EN-US>ST</SPAN>做主，但是这不代表你可以在游戏外对别人指手画脚，这只代表你在游戏时，你是游戏规则的最后仲裁者。你在本次游戏中，对当前游戏中的规则、资源、结算、世界观、设定、游戏机制拥有绝对至高无比的权利，甚至大于规则书和原本的世界设定。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">但是，一个好的<SPAN 
+lang=EN-US>ST</SPAN>应该知道，若没有足够适当的理由，不应该轻易更改或推翻现有的规则，若没有提前告知，也不应该轻易更改或推翻现有的设定，以避免引起玩家们的不满。无论如何，你们是因为想一起开心的玩游戏而坐在一起的。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">运作游戏<SPAN 
+lang=EN-US></SPAN></SPAN></B></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">虽然每个玩家都是参与游戏的一份子，但是<SPAN 
+lang=EN-US>ST</SPAN>必须推进游戏，让玩家保持兴致，并且让事情有趣。需要牢记的是，让游戏持续顺畅的进行，比为了某个细节拼命翻阅规则书或者把时间花在争论某项规则裁决上要重要的多。但是，这并不是让<SPAN 
+lang=EN-US>ST</SPAN>可以随意口胡和修改规则，要知道，在任何情况下，规则都是中立的。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">然而，运行良好的游戏有时也会陷入困境。玩家们可能因为玩了一段时间，对于重复的、老套的、无聊的剧情感到厌烦。而针对不同的玩家，可能每个玩家的喜好也不一样，在某一个剧情点，有的玩家觉得有趣，而有的玩家可能觉得索然无味，这都是可能的。<SPAN 
+lang=EN-US>ST</SPAN>无法避免这种情况出现，但是，如果你意识到了游戏情节陷入这种困境时，你可以将其删除或者简化，也不要拖沓而破坏整场的结构。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">当然除了情节之外，某一些可怕的怪物或者一些谜题都可能会造成玩家陷入困境，在这种情况下，请适当的降低难度或者其他方法让玩家可以顺利通过，毕竟，对脑洞是非常困难的事情，你的任务是让玩家愉快的进行游戏，而不是用一个什么样的困难将玩家一网打尽。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">当然，我们可以用一些小技巧让整个游戏可以给玩家更深刻的体验，这包括可以制作一些实景的小道具。或者制作一些地形的卡片之类的给玩家更深刻的体验。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">当然，由于本规则的特点，你可以使用原著的一些地形，场景，图片，台词等还原当时的场景，把这些东西读给玩家或者直接给玩家看。这会让玩家获得更兴奋更真实的游戏体验。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">当然，由于一些局限性，你可能无法为每个怪物，每个场景，每个物品，每个<SPAN 
+lang=EN-US>NOC</SPAN>都准备道具或者图片，那么这种情况下，你需要依赖刺激联想能力的口语描述。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 10pt; mso-margin-bottom-alt: auto" 
+class=MsoNormal><I style="mso-bidi-font-style: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial; mso-bidi-font-size: 11.0pt">比如玩家进入一件外星科技的飞船，如果你说“你们进入了一间外星飞船，这里好像是外星飞船的储藏室，那面有一条通道。<SPAN 
+lang=EN-US>”</SPAN>这种描述虽然可以描述出来场景，但是你可以使用<SPAN 
+lang=EN-US>“</SPAN>你们进入了一艘巨大的外星飞船，刚刚进入后，你们看到旁边堆砌着你们无法识别的杂物，然后另外一条深邃的通道不知道延伸到何方，整个空间给人以压抑的感觉，你好像听到远处有低低的声音传来，不知是风声还是什么。<SPAN 
+lang=EN-US>”</SPAN>我相信后者的描述，肯定会让你的玩家们更觉得有一种身临其境之感。<SPAN 
+lang=EN-US></SPAN></SPAN></I></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">请牢记，在游戏中，你就是玩家们的眼、鼻、耳和触觉，你必须将游戏内玩家所能触及到的感官信息告诉玩家。这会让你的游戏乐趣大大增加。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">当然，最为吸引玩家的方法当然是紧凑的战斗，玩家一定不会忘记在加勒比海上狂风暴雨中的一场大战，当然也不会忘记在厄运火山中与戒灵殊死搏斗。不过，你也不用将每个战斗都弄的千钧一发，天崩地裂，只要像动作片或者冒险小说那样，松弛有度，就有足够的吸引力。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">当然，如果你喜欢为游戏营造符合当时气氛的情境，那么建议你可以使用<SPAN 
+lang=EN-US>BGM</SPAN>（背景音乐），你可以选择使用原本电影或者动漫的音乐，当然也可以选择其他类型的音乐，但是千万不要让音乐使玩家出戏。而且有的玩家也并喜欢音乐，有人会觉得这种方式会让他们分心，这时候，你要注意接受玩家们喜欢的方式。毕竟，如果增添气氛而让玩家觉得不愉快，那么就本末倒置了。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">当然你还可以使用音效来渲染一些特性的场景，比如风声，开门声等等，这些都可以让你的气氛宣传的更加出色。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">当你扮演一个<SPAN 
+lang=EN-US>NPC</SPAN>的时候，请注意，你可以选择使用变化声调，或者改变口气，或者添加口癖等方式来发言，这样可以让玩家对这些<SPAN 
+lang=EN-US>NPC</SPAN>留下十分深刻的印象。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">当然你也可以选择简单的模仿动作，比如模仿一个侏儒、一个瘸子，或者一个驼背还是什么。你也可以直接模仿游戏中的一个动作，比如挥剑、发出挑战、挑衅、递出东西、吃饭喝水等等，通常，玩家都会跟着你的表演来做出一些回应。当然，请注意，这些仅仅是表演，请勿真的这么做，不然的话，可能会十分危险。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">游戏风格<SPAN 
+lang=EN-US></SPAN></SPAN></B></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US>ST</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">负责提供冒险的剧情和世界，需要与玩家合作才能良好的进行游戏，请注意，<SPAN 
+lang=EN-US>ST</SPAN>与玩家的关系是合作而非对抗或者竞争关系。所以在开团之初，<SPAN 
+lang=EN-US>ST</SPAN>就要做好说明，找到和自己向性一致的玩家尤为重要，这其中最为重要的就是游戏风格，我们也将其称为团风。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">踢门团<SPAN 
+lang=EN-US></SPAN></SPAN></B></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">踢门团的意思就是玩家十分简单粗暴的进入世界，开始砍杀怪物，然后搜刮奖励，最后返回世界。然后再进入下一个世界，砍杀怪物，搜刮奖励，循环以往。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">这种游戏风格十分直接刺激，属于动作向。游戏中剧情较少，与<SPAN 
+lang=EN-US>NPC</SPAN>的互动也较少，玩家也不太需要发展自己的角色性格，扮演自己的角色，也不用太关注非战斗场景而进行角色扮演或者其他剧情策略，只需要准备好战力一战即可。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">在这种游戏风格下，你可以让玩家直面怪物或者敌人（比如《生化危机》直接面对丧尸，《异形》直接面对异形）。玩家只需要考虑将面前的怪物全部车翻（打败）就可以了。不需要让玩家处理太多的剧情和<SPAN 
+lang=EN-US>NPC</SPAN>之间的感情纠葛。玩家的主线任务和动机都十分简单，就是杀死目标或者奖励。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">这种形态的游戏中，规则就显得十分重要，如果你使用这种风格，请注意要安排多种多样敌人，给不同的玩家以挑战，并且要熟悉规则，这样才足以应对各种作战时的突发情况。</SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial"></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US><BR></SPAN><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">剧情团<SPAN 
+lang=EN-US></SPAN></SPAN></B></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">在这种游戏风格下，玩家的战斗力就显得不是那么明显了。这种游戏的特点在于对话扮演，深刻的性格发展以及角色之间的互动，包括玩家与玩家之间和玩家与<SPAN 
+lang=EN-US>NPC</SPAN>之间。整场游戏下来可能根本不用投骰。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">这种风格下，<SPAN 
+lang=EN-US>NPC</SPAN>一般必须拥有与玩家角色同样复杂和丰富的设计，需要<SPAN 
+lang=EN-US>ST</SPAN>熟知该世界的世界设定和背景设定以及出场<SPAN 
+lang=EN-US>NPC</SPAN>的角色设定（当然如果是<SPAN lang=EN-US>ST</SPAN>自创的世界观则自己设定好即可）。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">你可以预期玩家将花费许多时间仔细讨论他们的角色要做什么，以及为什么要这么做。他们跟某个<SPAN 
+lang=EN-US>NPC</SPAN>达成协议与一起去杀死怪物同样重要，这些改变<SPAN 
+lang=EN-US>NPC</SPAN>看法和故事走向的行为也可以为他们带来丰厚的奖励。角色有时会做出完全出乎预料的举动，这意味着整个剧情可能会因为角色的互动而与原本的电影或者动漫剧情完全不同，这更加考验<SPAN 
+lang=EN-US>ST</SPAN>对剧情的掌控力，如果你决定使用本游戏风格，那么请不要阻止玩家这么做，因为这样做可能会出现更有趣的故事，而你的要负责的就是如何让剧情可以正常推进下去。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">在这种游戏风格中，规则变得就不再是那么的重要。既然战斗并非游戏的核心，那么游戏的核心机制就是为了发展剧情以及完善角色的性格，背景。这种情况下，你可以简化某些战斗规则，以增加说故事的时间，你也可以跳过某些战斗，让角色快速的进入下一段剧情之中。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">中间路线<SPAN 
+lang=EN-US></SPAN></SPAN></B></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">大部分的剧情其实介于上述的两个极端之间，这些团其中既然包括了很多动作场面，但是也有剧情，也需要角色进行互动。玩家们既会强化自己的作战能力，又会完善自己的角色个性，补全角色背景。玩家既希望与其他的角色或者<SPAN 
+lang=EN-US>NPC</SPAN>互动也希望来一场酣畅淋漓的战斗。此时你可以将角色扮演与战斗巧妙的进行结合，做到有节奏的进行场景的推进，给玩家以松弛有度的感觉，而非一路闲聊或者一路砍杀来进行游戏。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN>&nbsp;</P>
+<P 
+style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" 
+class=MsoNormal><B style="mso-bidi-font-weight: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">开团要点——来自某位<SPAN 
+lang=EN-US>ST</SPAN>的经验分享：<SPAN lang=EN-US></SPAN></SPAN></B></P>
+<P 
+style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" 
+class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial" 
+lang=EN-US></SPAN></P>
+<P 
+style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; TEXT-INDENT: -18pt; MARGIN: 0cm 0cm 0pt 18pt; mso-list: l0 level1 lfo1; mso-char-indent-count: 0" 
+class=MsoListParagraph><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体; mso-bidi-theme-font: minor-fareast" 
+lang=EN-US><SPAN style="mso-list: Ignore">1）</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">不要太多的<SPAN 
+lang=EN-US>NPC</SPAN>，因为无限流的特点，<SPAN lang=EN-US>PC</SPAN>实际上没有足够的时间与<SPAN 
+lang=EN-US>NPC</SPAN>达成某些感情上的交互，并且<SPAN 
+lang=EN-US>NPC</SPAN>太多容易影响你的剧情走向，和让<SPAN lang=EN-US>PC</SPAN>产生观影之感。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P 
+style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; TEXT-INDENT: -18pt; MARGIN: 0cm 0cm 0pt 18pt; mso-list: l0 level1 lfo1; mso-char-indent-count: 0" 
+class=MsoListParagraph><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体; mso-bidi-theme-font: minor-fareast" 
+lang=EN-US><SPAN style="mso-list: Ignore">2）</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">剧情要简单。给予<SPAN 
+lang=EN-US>PC</SPAN>一定的游戏自由度。当<SPAN 
+lang=EN-US>PC</SPAN>万一被难题卡住之后，要给予线索提示，最好就直接放在<SPAN 
+lang=EN-US>PC</SPAN>脸前，别让故事进入死胡同。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P 
+style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; TEXT-INDENT: -18pt; MARGIN: 0cm 0cm 0pt 18pt; mso-list: l0 level1 lfo1; mso-char-indent-count: 0" 
+class=MsoListParagraph><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体; mso-bidi-theme-font: minor-fareast" 
+lang=EN-US><SPAN style="mso-list: Ignore">3）</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">怪物一定要刚正朴实。只要不是大小<SPAN 
+lang=EN-US>BOSS</SPAN>那种特殊怪物，就请和<SPAN lang=EN-US>PC</SPAN>硬碰硬。别<SPAN 
+lang=EN-US>PC</SPAN>意志低就专打意志，<SPAN lang=EN-US>PC</SPAN>反射低就是全场<SPAN 
+lang=EN-US>AOE</SPAN>，<SPAN lang=EN-US>PC</SPAN>强韧低就是一片又一片的毒雾。总打短板会消磨<SPAN 
+lang=EN-US>PC</SPAN>本人的意志。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P 
+style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; TEXT-INDENT: -18pt; MARGIN: 0cm 0cm 0pt 18pt; mso-list: l0 level1 lfo1; mso-char-indent-count: 0" 
+class=MsoListParagraph><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体; mso-bidi-theme-font: minor-fareast" 
+lang=EN-US><SPAN style="mso-list: Ignore">4）</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">设计好分数和支线，要让<SPAN 
+lang=EN-US>PC</SPAN>看得到动力。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P 
+style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; TEXT-INDENT: -18pt; MARGIN: 0cm 0cm 0pt 18pt; mso-list: l0 level1 lfo1; mso-char-indent-count: 0" 
+class=MsoListParagraph><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体; mso-bidi-theme-font: minor-fareast" 
+lang=EN-US><SPAN style="mso-list: Ignore">5）</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">控制好节奏。节奏永远是<SPAN 
+lang=EN-US>ST</SPAN>在掌握，比如<SPAN lang=EN-US>PC</SPAN>刚打完一场大战，就不适合连番战斗。你要让<SPAN 
+lang=EN-US>PC</SPAN>在战斗和休息中互相转换。战斗过于频繁不仅<SPAN lang=EN-US>PC</SPAN>的角色累，<SPAN 
+lang=EN-US>PC</SPAN>也累，甚至<SPAN lang=EN-US>ST</SPAN>也会累。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P 
+style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; TEXT-INDENT: -18pt; MARGIN: 0cm 0cm 0pt 18pt; mso-list: l0 level1 lfo1; mso-char-indent-count: 0" 
+class=MsoListParagraph><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体; mso-bidi-theme-font: minor-fareast" 
+lang=EN-US><SPAN style="mso-list: Ignore">6）</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">要让<SPAN 
+lang=EN-US>PC</SPAN>感受到死亡的威胁，让<SPAN lang=EN-US>PC</SPAN>知道危险与得分是正比的。要给<SPAN 
+lang=EN-US>PC</SPAN>不断的压力，这样<SPAN 
+lang=EN-US>PC</SPAN>解决压力之后才会获得成就感。但是千万不要给予<SPAN 
+lang=EN-US>PC</SPAN>无力感，这样会让<SPAN lang=EN-US>PC</SPAN>快速厌倦游戏。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P 
+style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; TEXT-INDENT: -18pt; MARGIN: 0cm 0cm 0pt 18pt; mso-list: l0 level1 lfo1; mso-char-indent-count: 0" 
+class=MsoListParagraph><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体; mso-bidi-theme-font: minor-fareast" 
+lang=EN-US><SPAN style="mso-list: Ignore">7）</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">承接上条，虽然有危险，但是别让<SPAN 
+lang=EN-US>PC</SPAN>轻易死。任何<SPAN 
+lang=EN-US>PC</SPAN>对自己的人物卡都有感情。适当的控制死亡的节奏也是一部分。一个<SPAN 
+lang=EN-US>PC</SPAN>来跑团准备<SPAN lang=EN-US>3-4</SPAN>张卡等撕，对任何<SPAN 
+lang=EN-US>ST</SPAN>而言也不会是个好体验。如果死人太多了，<SPAN 
+lang=EN-US>PC</SPAN>就不再会自发地融入自己的角色中了。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P 
+style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; TEXT-INDENT: -18pt; MARGIN: 0cm 0cm 0pt 18pt; mso-list: l0 level1 lfo1; mso-char-indent-count: 0" 
+class=MsoListParagraph><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体; mso-bidi-theme-font: minor-fareast" 
+lang=EN-US><SPAN style="mso-list: Ignore">8）</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">量力而行，不要做自己做不到的事情。比如你最多控制<SPAN 
+lang=EN-US>3</SPAN>个<SPAN 
+lang=EN-US>S</SPAN>的强度，那就要控制好自己的发分力度。如果不知道水有多深，就一点一点尝试，别一口气吃一个胖子。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P 
+style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; TEXT-INDENT: -18pt; MARGIN: 0cm 0cm 0pt 18pt; mso-list: l0 level1 lfo1; mso-char-indent-count: 0" 
+class=MsoListParagraph><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 宋体; mso-bidi-theme-font: minor-fareast" 
+lang=EN-US><SPAN style="mso-list: Ignore">9）</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial">以服务<SPAN 
+lang=EN-US>PC</SPAN>为准则，而不是恶心<SPAN lang=EN-US>PC</SPAN>。虽然这个世界上缺少<SPAN 
+lang=EN-US>ST</SPAN>，但是一群人玩了你的团说你的团好玩， 跟你说的团特别坑，这两者对你而言肯定有区别。<SPAN 
+lang=EN-US>PC</SPAN>觉得你的团很好玩才是王道。你有多<SPAN 
+lang=EN-US>NB</SPAN>只体现在你带团的水平上，你车卡技术<SPAN lang=EN-US>NB</SPAN>或者你语文能力<SPAN 
+lang=EN-US>NB</SPAN>这说明不了什么。<SPAN lang=EN-US></SPAN></SPAN></P></div>	
+	<div id="winchm_template_footer">Copyright &copy; 2018. All rights 
+reserved. (To change the copyright info, just edit it in template.)</div>
+</div>
+
 </body>
 </html>

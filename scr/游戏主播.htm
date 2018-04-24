@@ -17,112 +17,170 @@ html,body {
 
 
 
-<meta http-equiv="X-UA-Compatible" content="IE=8">
+
 <style>
-html {
-	overflow-y:scroll;
-}
+html,div { margin: 0; padding: 0;}
 
 body {
-	background-image: url(template1/back.png);
-	background-repeat: repeat-x;
-	background-color: #FFFFFF;
 	padding: 0px;
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-bottom: 15px;
-	margin-right: 15px;
+	margin: 0px;
+	overflow: auto;
+	height: 100%;
 }
 
-#winchm_template_button {
-	position: fixed; 
-	float: right; 
-	right: 15px; 
-	top: 15px;
+#winchm_template_button{
+	float: right;
+	width: 93px;
+	top: 7px;
+	position: relative;
+	text-align: right;
+	right: 5px;
+	height: auto;
 }
 
-#winchm_template_navigation {
+#winchm_template_top{
 	padding: 0px;
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
+	margin: 0px;
+	border-bottom: 1px solid #9B9B9B;
+	background-color: #B1CEFE;
+}
 
-	font-size: 8pt;
+#winchm_template_navigation{
+	margin: 0px;
+	padding-top: 7px;
+	padding-left: 7px;
+	padding-bottom: 3px;
+	padding-right: 0px;
+	font-size: 8.5pt;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #4A4A4A;
-	text-align: left;
+	font-weight: normal;
+	color: #585858;
 }
 
-#winchm_template_title {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 22px;
-	font-weight: bold;
-	color: #005680;
-	text-align: left;
+#winchm_template_title{
+	margin: 0px;
+	padding-top: 4px;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	padding-right: 0px;
+	font-size: 18px; 
+	font-family: Verdana, Geneva, sans-serif;
+	color: #363636;
 }
 
 #winchm_template_content{
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
+	margin-top: 20px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
 	width: auto  !important;
 	width: 100%;
 }
 
-
-#winchm_template_footer {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	padding-top: 7px;
+#winchm_template_footer{
 	border-width: 1px;
-	border-color: #c0c0c0;
+	border-color: #B1CEFE;
 	border-top-style: solid;
-
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #575757;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
+	padding-top: 7px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 8.5pt;
+	color: #696969;
+	width: auto;
 	text-align: left;
 }
 
+
+#winchm_template_container{
+	margin: 0px;
+	padding: 0px;
+	position: static;
+	padding-bottom: 3px;
+	overflow: auto;
+	background-color: #FFFFFF;
+}
+
+
 @media print
 {
+#winchm_template_container{
+	position: static;	
+	margin: 0px;
+	padding: 5px;
+	
+	width: auto;
+	height: auto;
+	overflow: auto;
+}
 #winchm_template_button{
 visibility:hidden;
 }
 }
 
-#winchm_template_navigation a:link	{text-decoration: none;color: 004080}
-#winchm_template_navigation a:visited  {text-decoration: none; color: #004080}
-#winchm_template_navigation a:active {text-decoration: none; color: #004080}
-#winchm_template_navigation a:hover {text-decoration: none;color: #0000FF}
+#winchm_template_navigation A:link	{text-decoration: none; color:#004080}
+#winchm_template_navigation A:visited  {text-decoration: none; color: #004080}
+#winchm_template_navigation A:active {text-decoration: none; color: #004080 }
+#winchm_template_navigation A:hover {text-decoration: none;color: #0080FF}
 
-a:link	{text-decoration: underline; color:#0033cc}
-a:visited  {text-decoration: underline; color: #0033cc}
-a:active {text-decoration: underline; color: #0033cc }
-a:hover {text-decoration: underline;color: #ff0000;}
-
+A:link	{text-decoration: underline; color:#0033CC}
+A:visited  {text-decoration: underline; color: #0033CC}
+A:active {text-decoration: underline; color: #0033CC }
+A:hover {text-decoration: underline;color: #FF0000;}
 </style>
+<script type="text/javascript">
+function isMobile(){
+Agent = window.navigator.userAgent;
+if (Agent.indexOf("iPhone")>=1 || Agent.indexOf("iPad")>=1 || Agent.indexOf("iPod")>=1 || Agent.indexOf("Android")>=1){
+return true;
+}else{
+return false;	
+}
+
+}
+function d_onresize(){
+if (window.navigator.userAgent.indexOf("MSIE")>=1){
+document.getElementById('winchm_template_container').style.pixelWidth = document.body.offsetWidth - 3;
+document.getElementById('winchm_template_container').style.pixelHeight = document.body.offsetHeight - document.getElementById('winchm_template_top').offsetHeight - 4;
+}
+document.getElementById('winchm_template_container').style.top = document.getElementById('winchm_template_top').offsetHeight + 'px';
+}
+
+function d_onbeforeprint(){
+document.getElementById('winchm_template_container').style.width = 'auto';
+document.getElementById('winchm_template_container').style.height = 'auto';
+}
+
+function d_onafterprint(){
+d_onresize();
+}
+
+if(!isMobile()){
+
+window.onload = d_onresize;
+window.onresize = d_onresize;
+window.onbeforeprint = d_onbeforeprint;
+window.onafterprint = d_onafterprint;
+
+document.write("<style>\n");
+document.write("body {overflow: hidden;}\n");
+document.write("#winchm_template_container {position: absolute;overflow: auto;top : 0px;right: 0px;bottom: 0px;left: 0px;}\n");
+document.write("</style>\n");
+}
+
+</script>
 </head>
 
 <body><script language="JavaScript" type="text/JavaScript">
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(419);
+  parent.nav.tree.selectNode(524);
  }else{
   setTimeout("syn()",500);
 }
@@ -142,206 +200,381 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 }
 </script> 
 
-<div id="winchm_template_button"><A href="施法威能.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template1/btn_prev_n.gif" border="0"></a><A href="New_Item198.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template1/btn_next_n.gif" border="0"></a></div>
-<div id="winchm_template_navigation">Help &gt; 
-<A href="资源部分.htm">资源部分</A> &gt; <A href="称号.htm">称号</A> &gt; <A href="$$unsavedpage23.htm">技巧类</A> &gt; </div>
-<div id="winchm_template_title">游戏主播</div>
-<div id="winchm_template_content">
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">前提：角色有较为丰富的电子游戏经历，并且风度和操控至少一个达到<SPAN 
-lang=EN-US>3</SPAN>，电脑技能至少<SPAN lang=EN-US>1</SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US>D</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">级：普通主播<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US>D+1000</SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">特性：游戏精通，游戏人生（正负特性），电脑使用，业余主播<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">游戏精通：进行打电子游戏的检定时获得一个附加成功。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">游戏人生：对游戏的痴迷使你对游戏以外事物有些麻木了，其他所有人对你进行社交相关的检定时减少每称号等级一个成功数。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">并且你在受到影响心灵效果时，若为效果点数则降低每称号等级<SPAN 
-lang=EN-US>1</SPAN>点，若为对抗，则其减少每称号<SPAN lang=EN-US>1</SPAN>点成功。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">电脑使用：若电脑技能不到<SPAN 
-lang=EN-US>4</SPAN>则提升<SPAN lang=EN-US>1</SPAN>，并且获得专业：电子游戏。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">业余主播：若表达技能不到<SPAN 
-lang=EN-US>4</SPAN>则提升<SPAN lang=EN-US>1</SPAN>，并且获得专业：游戏解说<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US>C</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">级：比赛级主播<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US>C+2000</SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">特性：第二双眼，游戏意识<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">第二双眼：用耳朵代替眼睛进行侦查是各种<SPAN 
-lang=EN-US>FPS</SPAN>游戏玩家必备的能力，当你使用听觉来定位敏感范围内对视觉隐形的目标时，对方无法获得由于隐形手段而额外获得的潜行加值，并且用听觉进行侦查检定时如果有环境减值，则环境减值降低<SPAN 
-lang=EN-US>2</SPAN>点。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">游戏意识：高手不需要看到敌人就能猜到敌人的位置和动向，侦查检定获得一个附加成功。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">游戏主播技能：</SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US>D</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">级技能需要<SPAN 
-lang=EN-US>D</SPAN>级称号，每个<SPAN lang=EN-US>D+500</SPAN>；<SPAN 
-lang=EN-US>C</SPAN>级技能需要<SPAN lang=EN-US>C</SPAN>级称号，每个<SPAN 
-lang=EN-US>C+1500</SPAN>。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US>D</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">级：<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">毒奶：每场景一次，针对一次检定的时候花费<SPAN 
-lang=EN-US>1</SPAN>点意志立一个<SPAN 
-lang=EN-US>FLAG</SPAN>，比如“飞龙骑脸怎么输！”，如果这个检定会使事情朝<SPAN 
-lang=EN-US>FLAG</SPAN>所说的方向发展，则<SPAN lang=EN-US>-2</SPAN>成功并<SPAN 
-lang=EN-US>-2dp</SPAN>，反之则<SPAN lang=EN-US>+2</SPAN>附加成功<SPAN 
-lang=EN-US>+2dp</SPAN>，这是机运加（减）值；如果这成功导致了事物朝着<SPAN 
-lang=EN-US>FLAG</SPAN>的反方向发展（比如使一次检定因你的<SPAN 
-lang=EN-US>FLAG</SPAN>而失败，或使一次本来很难成功的检定成功）则会回复你一点意志。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">代打：每部影片中第一次受到支线等级不高于<SPAN 
-lang=EN-US>D</SPAN>的措手不及的效果时，可以发动“代打”能力免疫之，若如此做则必须在攻击结束后大喊“我<SPAN 
-lang=EN-US>TM</SPAN>就知道老子就知道嘛！”。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">散人干不死：每天一次，当你在受到一次攻击后不再有完好的生命槽时，你可以大喊一声“散人（或者替换成你的名字或外号等）干不死”，这会使你受到伤害最严重的一点生命槽立即恢复成完好。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">狗牌：所有你击杀的人的身上会掉落一个狗牌，上面记载他的名字、军衔（如果有）和国籍（如果所属势力不是国家的话就是势力名）。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">若风一指：花费<SPAN 
-lang=EN-US>1</SPAN>点意志，指定一个距离你不超过<SPAN 
-lang=EN-US>90</SPAN>米的目标，以一个标准动作，用手指指着对方大喊一句“若风一指，送他升天”或类似的中二台词，从指间发出一道射线攻击对方，攻击使用智力<SPAN 
-lang=EN-US>+</SPAN>电脑：电子游戏或表达：游戏解说，视为基本伤害<SPAN 
-lang=EN-US>4L</SPAN>、拥有【魔法】【幽冥】【能量武器】特性，投一个<SPAN 
-lang=EN-US>d10</SPAN>的骰子，若结果小于等于<SPAN 
-lang=EN-US>7</SPAN>则随机击中旁边的一个单位（旁边没有单位则打空），大于等于<SPAN 
-lang=EN-US>8</SPAN>则击中指向的目标。此外，使用这一技能会不可避免地让看见这一幕的人产生你是个中二病<SPAN 
-lang=EN-US>/</SPAN>逗比<SPAN lang=EN-US>/</SPAN>神经病的印象。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US></SPAN>&nbsp;</P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US>C</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">级：<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">格拉摩根的诅咒：每部影片一次，对一个人说“我（或朕、本王等）封你为格拉摩根伯爵”，这会使影片接下来的时间中这个人的所有检定在计算附加成功之前失去两个成功，而在这个人的意识中，你对他施加的是祝福（或册封）而不是诅咒，所以一般来说他<SPAN 
-lang=EN-US>/</SPAN>她会感激你。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">买<SPAN 
-lang=EN-US>BUG</SPAN>送游戏：当你在战斗中击杀敌人<SPAN 
-lang=EN-US>/</SPAN>被击杀时，你可以宣布发动这个能力，这会使尸体出现随机的<SPAN 
-lang=EN-US>BUG</SPAN>，可能会飞到天上，可能会在地上翻滚鬼畜，可能会原地定住不动，可能会掉到地底下……这由<SPAN 
-lang=EN-US>ST</SPAN>投一个骰子来随机决定。无论如何，触发<SPAN 
-lang=EN-US>BUG</SPAN>的尸体不会有碰撞体积而导致无法捡尸，而且所有目击这个尸体的目标进行一个<SPAN 
-lang=EN-US>1D10</SPAN>的检定，若结果不为成功，则该目标震慑一轮，包括你自己。此外，你可以在玩电子游戏时宣布发动这个能力，投一个<SPAN 
-lang=EN-US>d10</SPAN>，大于等于<SPAN lang=EN-US>8</SPAN>就会让电子游戏出现<SPAN 
-lang=EN-US>BUG</SPAN>，当你玩的是育碧的游戏时自动算作成功（出现的<SPAN lang=EN-US>BUG</SPAN>由<SPAN 
-lang=EN-US>ST</SPAN>决定）。</SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"></SPAN>&nbsp;</P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">赞美太阳！：每天早上太阳升起时可以对着太阳做出“赞美太阳”的姿势并喊出“<SPAN 
-lang=EN-US>Praise the sun</SPAN>！”，这会使你这一天内在太阳底下时任意检定获得<SPAN 
-lang=EN-US>+2DP</SPAN>机运加值（但会让你被看见这一幕的人认为脑子有问题），并且你可以在战斗中用一个整轮动作发表演讲，例如“我们太阳骑士，一刀一个<SPAN 
-lang=EN-US>XX</SPAN>是不在话下的”等等，这会使你在本场战斗中由于赞美太阳获得的机运加值加倍。特别的：由于太阳骑士的梗经常被用在光明正大地用歪门邪道来战斗的情景上（太阳骑士正义的毒飞刀！），所以这个攻防加值对你驾驶的载具有效，对手动射击时的无人机有效，对攻击性法术也有效。“我们太阳骑士就是这么莽！”<SPAN 
-lang=EN-US></SPAN></SPAN></P></div> 
-<div id="winchm_template_footer">Copyright &copy; 2014. All rights reserved.</div>
+
+<div id="winchm_template_top">
+	<div id="winchm_template_button"><A href="施法威能.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="鬼才辅助.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
+	<div id="winchm_template_navigation">Help &gt; 
+<A href="资源部分.htm">资源部分</A> &gt; <A href="称号.htm">称号</A> &gt; <A href="$$unsavedpage50.htm">技巧类</A> &gt; </div>
+	<div id="winchm_template_title">游戏主播</div>
+</div>
+<div id="winchm_template_container">
+	<div id="winchm_template_content"><P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>称号：游戏主播</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0pt; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>本质：特异本质</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>前提：角色有较为丰富的电子游戏经历，并且风度和操控至少一个达到</FONT>3，</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>鼓舞士气</FONT>1+或幽默大师1+</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'">D级：普通主播</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>价格：</FONT>D+1000</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>特性：游戏人生（正负特性），电脑使用，业余主播，</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>专业眼光</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>，专业表达</FONT></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'">技能树：开启D级技能树</SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0pt; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>特殊：由于没有能量池，额外获得</FONT>1个特性</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>游戏人生：对游戏的痴迷使你对游戏以外事物有些麻木了，其他所有人对你进行社交相关的检定时减少每称号等级一个成功数。</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>并且你在受到影响心灵效果时，若为效果点数则降低每称号等级</FONT>1点，若为对抗，则其减少每称号1点成功。</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>电脑使用：若电脑技能不到</FONT>4则提升1。</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>业余主播：若表达技能不到</FONT>4则提升1。</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>专业眼光</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>：以一个</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>移动动作，通过一个智力</FONT>+调查鉴定与你在敏感范围内观察到的一个单位的智力/操控(取高)+掩饰(伪装)+最高支线等级进行对抗，若成功则可以在以下效果中选择一个获得</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'">1.获知某一项指定技能数值，包括在该技能上的专业</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'">2.获知其生命值状况，包括上限和已受到伤害</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'">3.获知其意志值状况，包括上限和此刻剩余意志点数</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>专业表达：从以下能力选择一项获得：</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>鼓舞士气提升至</FONT>2级。</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>幽默大师提升至</FONT>2级。</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN>&nbsp;</P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0pt; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'">C级：专业主播</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>价格：</FONT>C+2000</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>特性：</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>自信宣言</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>，</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>流畅表达</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'">技能树：开启C级技能树</SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal>描述：</FONT> “专业解说看这种局面还看不懂啊？这种情况下你怎么输你告诉我，直接 A 脸都赢了，怎么可能输嘛。”</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>自信宣言：在任意战斗结束前，你可以选择你看好的一方，并以周围的人都能听见的音量将你看好的一方大声说出来，被你看好的一方将在本场战斗中在攻击检定或防御</FONT>(每轮开始决定)上获得等同于你称号等级-1的附加成功，若你本人也处于被看好的一方中，在本场战斗中你在攻击检定或防御(每轮开始决定)上会获得等于称号等级的洞察加值。</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>如果被你看好的一方最终在战斗中被击败或逃离战斗，则战斗结束后你需要过一个意志检定，</FONT>DC为你的沉着+决心，获得差值的沮丧点数。</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>流畅表达：你在以下能力选择一项获得：</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'">1.你在发动鼓舞士气为目标恢复意志力时，可额外恢复等于称号等级的数值。</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'">2.现在你在透过幽默大师为他人的行动支付1意志力，给目标行动增加 
+DP 或增加防御时，该DP加值提高等同于你表达技能值的点数。</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0pt; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0pt; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0pt; mso-pagination: widow-orphan" 
+class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'">B+4000：</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>比赛主播</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>特性</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>：</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>语言艺术</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>，</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>一切都是大宇宙的意志，第二双眼</FONT></SPAN></P><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'">技能树：无</SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal>描述：</FONT> “祝京东越办越好。”</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'">“乒乓球还不是冠军？你在搞笑吗？你的意思是乒乓球还会被奶死？今年只要有一次没拿冠军你来找我好吧。”</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>从现在开始，你的言语开始拥有着影响因果的神秘力量。</FONT></SPAN></P><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'">
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>第二双眼：用耳朵代替眼睛进行侦查是各种</FONT>FPS游戏玩家必备的能力，你获得相当于你模糊范围的盲感能力。</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>语言艺术：人物在进行任意以风度为关键属性的检定时，可以以操控代替风度进行检定。人物在</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>风度</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>属性上每有一个附加成功，都会让操控增加一点修行加值</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>。</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>一切都是大宇宙的意志</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>：每</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>天</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>风度附加成功数</FONT>/次</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>，当</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>某个行动结束</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>，你可以</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>立即</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>选定当前</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>行动中</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>不超过你操控附加成功数的检定结果，将其</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>从</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>失败转化为成功，又或者将其</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>从</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>成功数转化为失败，以改变</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>结果。</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>这是一个</FONT>A级因果律效果。</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><BR 
+style="PAGE-BREAK-BEFORE: always" clear=all></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'">D级游戏主播技能树：</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>毒奶</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>价格：</FONT>D+500</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>动作：反射动作</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>能耗：</FONT>1点意志力</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>射程：</FONT>50米</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>目标：一个目标</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>范围：无</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>持续：立即</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>描述：</FONT>“飞龙骑脸怎么输？”</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>效果：当你射程范围内的一个目标进行了任意一次非机运，非基因锁检定时，你可以以反射动作发动</FONT>“毒奶”，你可以使其该次检定获得X 
+DP的幸运加值或幸运减值。X为你使用意志力基本用法时所能获得的完美加值（不计算获得的附加成功）。</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>干不死</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>价格：</FONT>D+500</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>动作：反射动作</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>能耗：无</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>射程：无</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>目标：自身</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>范围：无</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>持续：立即</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>描述：</FONT>“散人干不死！”</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>效果：每场景一次，当一次攻击会导致你不再有【完好】的生命值时，你可以反射动作发动</FONT>“干不死”，随后在计算本次伤害后，将生命槽中1点生命值恢复为【完好】。若你生命槽中原本没有【完好】生命值，则你在受到攻击时无法发动本技能。</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>若风一指</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>价格：</FONT>D+500</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>动作：标准动作</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>能耗：</FONT>1点意志力</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>射程：操控</FONT>*10米</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>目标：一个目标</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>范围：无</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>持续：立即</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>描述：</FONT>“若风一指，送他升天！”</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>效果：标准动作指定一个单位为攻击目标，之后投掷</FONT> <FONT face=宋体>操纵</FONT>+表达-演讲+武器伤害对目标进行一次远程攻击，此次攻击中的武器伤害等同于你的称号等级*2，拥有【能量武器】特性。</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>若指定目标身旁</FONT>5米内有其他单位（包括但不限于友方轮回者、障碍物），则你可以宣言你的攻击目标为该单位，但这不会改变你一开始指定的攻击目标，之后投掷 
+操纵+掩饰（唬骗）与攻击目标的感知+调查（侦查）检定进行对抗，若你胜出，则对方对你这次攻击视为措手不及，这是一个C级措手不及效果。</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'">C级游戏主播技能树：</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>格拉摩根的诅咒</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>专业：诅咒</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>价格：</FONT>C+1000</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>动作：标准动作</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>能耗：无</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>射程：操控</FONT>*10米</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>目标：一个目标</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>范围：无</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>持续：永久</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>描述：</FONT>“我/朕/本王封你为格拉摩根伯爵！”</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>效果：每部影片操纵附加成功</FONT>*1次，选择射程范围内的一个目标，投掷 
+操纵+掩饰（唬骗）与对方的感知+感受（察言观色）检定进行对抗，若你失败则不造成任何效果，但仍照常消耗使用次数。</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>若你成功，则该目标接下来所有检定结果在计算附加成功前会失去</FONT>2个成功数，这是一个C级诅咒效果；同时，在目标会认为你对其施加的是祝福效果而非诅咒，这是一个C级影响心灵的效果，若目标能够免疫影响心灵的效果，则能察觉到这是一个诅咒效果。</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>该技能对同一目标只能生效一次，若对方对抗成功则在之后的对抗中自动成功。</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>买</FONT>BUG送游戏</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>价格：</FONT>C+1000</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>动作：被动</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>描述：</FONT>“游戏只要足够有趣玩家就会忽略那些BUG了——吧？”</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"><FONT face=宋体>效果：每场景一次，当你亲手杀死一个单位时，该单位的尸体</FONT>/残骸会出现随机的BUG，它可能会飞到天上然后掉下来，可能会在地上鬼畜翻滚，可能会忽然陷入地底（具体是什么BUG由ST决定），你进行一次操控检定，第一次感知或看到到该单位尸体/残骸的目标需要进行一次沉着检定与你的操控检定对抗，若其失败则会震慑一轮。该技能对同一目标只能生效一次，若对方对抗成功则在之后的对抗中自动成功。</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt; mso-bidi-font-family: 'Times New Roman'"></SPAN></P></div>	
+	<div id="winchm_template_footer">Copyright &copy; 2018. All rights 
+reserved. (To change the copyright info, just edit it in template.)</div>
+</div>
+
 </body>
 </html>

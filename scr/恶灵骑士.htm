@@ -17,112 +17,170 @@ html,body {
 
 
 
-<meta http-equiv="X-UA-Compatible" content="IE=8">
+
 <style>
-html {
-	overflow-y:scroll;
-}
+html,div { margin: 0; padding: 0;}
 
 body {
-	background-image: url(template1/back.png);
-	background-repeat: repeat-x;
-	background-color: #FFFFFF;
 	padding: 0px;
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-bottom: 15px;
-	margin-right: 15px;
+	margin: 0px;
+	overflow: auto;
+	height: 100%;
 }
 
-#winchm_template_button {
-	position: fixed; 
-	float: right; 
-	right: 15px; 
-	top: 15px;
+#winchm_template_button{
+	float: right;
+	width: 93px;
+	top: 7px;
+	position: relative;
+	text-align: right;
+	right: 5px;
+	height: auto;
 }
 
-#winchm_template_navigation {
+#winchm_template_top{
 	padding: 0px;
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
+	margin: 0px;
+	border-bottom: 1px solid #9B9B9B;
+	background-color: #B1CEFE;
+}
 
-	font-size: 8pt;
+#winchm_template_navigation{
+	margin: 0px;
+	padding-top: 7px;
+	padding-left: 7px;
+	padding-bottom: 3px;
+	padding-right: 0px;
+	font-size: 8.5pt;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #4A4A4A;
-	text-align: left;
+	font-weight: normal;
+	color: #585858;
 }
 
-#winchm_template_title {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 22px;
-	font-weight: bold;
-	color: #005680;
-	text-align: left;
+#winchm_template_title{
+	margin: 0px;
+	padding-top: 4px;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	padding-right: 0px;
+	font-size: 18px; 
+	font-family: Verdana, Geneva, sans-serif;
+	color: #363636;
 }
 
 #winchm_template_content{
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
+	margin-top: 20px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
 	width: auto  !important;
 	width: 100%;
 }
 
-
-#winchm_template_footer {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	padding-top: 7px;
+#winchm_template_footer{
 	border-width: 1px;
-	border-color: #c0c0c0;
+	border-color: #B1CEFE;
 	border-top-style: solid;
-
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #575757;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
+	padding-top: 7px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 8.5pt;
+	color: #696969;
+	width: auto;
 	text-align: left;
 }
 
+
+#winchm_template_container{
+	margin: 0px;
+	padding: 0px;
+	position: static;
+	padding-bottom: 3px;
+	overflow: auto;
+	background-color: #FFFFFF;
+}
+
+
 @media print
 {
+#winchm_template_container{
+	position: static;	
+	margin: 0px;
+	padding: 5px;
+	
+	width: auto;
+	height: auto;
+	overflow: auto;
+}
 #winchm_template_button{
 visibility:hidden;
 }
 }
 
-#winchm_template_navigation a:link	{text-decoration: none;color: 004080}
-#winchm_template_navigation a:visited  {text-decoration: none; color: #004080}
-#winchm_template_navigation a:active {text-decoration: none; color: #004080}
-#winchm_template_navigation a:hover {text-decoration: none;color: #0000FF}
+#winchm_template_navigation A:link	{text-decoration: none; color:#004080}
+#winchm_template_navigation A:visited  {text-decoration: none; color: #004080}
+#winchm_template_navigation A:active {text-decoration: none; color: #004080 }
+#winchm_template_navigation A:hover {text-decoration: none;color: #0080FF}
 
-a:link	{text-decoration: underline; color:#0033cc}
-a:visited  {text-decoration: underline; color: #0033cc}
-a:active {text-decoration: underline; color: #0033cc }
-a:hover {text-decoration: underline;color: #ff0000;}
-
+A:link	{text-decoration: underline; color:#0033CC}
+A:visited  {text-decoration: underline; color: #0033CC}
+A:active {text-decoration: underline; color: #0033CC }
+A:hover {text-decoration: underline;color: #FF0000;}
 </style>
+<script type="text/javascript">
+function isMobile(){
+Agent = window.navigator.userAgent;
+if (Agent.indexOf("iPhone")>=1 || Agent.indexOf("iPad")>=1 || Agent.indexOf("iPod")>=1 || Agent.indexOf("Android")>=1){
+return true;
+}else{
+return false;	
+}
+
+}
+function d_onresize(){
+if (window.navigator.userAgent.indexOf("MSIE")>=1){
+document.getElementById('winchm_template_container').style.pixelWidth = document.body.offsetWidth - 3;
+document.getElementById('winchm_template_container').style.pixelHeight = document.body.offsetHeight - document.getElementById('winchm_template_top').offsetHeight - 4;
+}
+document.getElementById('winchm_template_container').style.top = document.getElementById('winchm_template_top').offsetHeight + 'px';
+}
+
+function d_onbeforeprint(){
+document.getElementById('winchm_template_container').style.width = 'auto';
+document.getElementById('winchm_template_container').style.height = 'auto';
+}
+
+function d_onafterprint(){
+d_onresize();
+}
+
+if(!isMobile()){
+
+window.onload = d_onresize;
+window.onresize = d_onresize;
+window.onbeforeprint = d_onbeforeprint;
+window.onafterprint = d_onafterprint;
+
+document.write("<style>\n");
+document.write("body {overflow: hidden;}\n");
+document.write("#winchm_template_container {position: absolute;overflow: auto;top : 0px;right: 0px;bottom: 0px;left: 0px;}\n");
+document.write("</style>\n");
+}
+
+</script>
 </head>
 
 <body><script language="JavaScript" type="text/JavaScript">
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(105);
+  parent.nav.tree.selectNode(190);
  }else{
   setTimeout("syn()",500);
 }
@@ -142,18 +200,78 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 }
 </script> 
 
-<div id="winchm_template_button"><A href="钢力士.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template1/btn_prev_n.gif" border="0"></a><A href="超人.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template1/btn_next_n.gif" border="0"></a></div>
-<div id="winchm_template_navigation">Help &gt; 
-<A href="资源部分.htm">资源部分</A> &gt; <A href="血统.htm">血统</A> &gt; <A href="$$unsavedpage4.htm">一次性血统</A> &gt; </div>
-<div id="winchm_template_title">恶灵骑士</div>
-<div id="winchm_template_content"><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: Arial; mso-font-kerning: 0pt">２，决心＋８<SPAN 
-lang=EN-US><BR><BR></SPAN>特性：复仇天使 地狱骑士 炼狱活力 审判之眼 灼魂烈焰<SPAN 
-lang=EN-US><BR><BR></SPAN>复仇天使：作为被放逐的天使，恶灵骑士同时具有光与暗的特性。在判定血统时，恶灵骑士视为同时具有光明生物和黑暗生物类别，但是其不是真正的光明生物和黑暗生物，因此无法强化光明生物和黑暗生物相关的能力，同时也无法通过其他能力变为光明生物和黑暗生物，一旦获得则直接爆体而亡。恶灵骑士在攻击上获得【神圣】与【亵渎】属性，在意志和强韧检定中获得＋２ＤＰ和１附加的亵渎奖励以及＋２ＤＰ和１附加的神圣奖励。作为代价，任何具有【神圣】或【亵渎】特性的武器和能力都会对恶灵骑士产生作用。<SPAN 
-lang=EN-US><BR><BR></SPAN>地狱骑士：恶灵骑士是出色的骑手和驾驶者。角色的驾驶提高到５（如果低于５）或者＋１，在进行驾驶检定时获得＋２ＤＰ和１附加的表现加值。通过１小时的仪式，恶灵骑士还可将总体积不超过意志值＊２的载具与自己进行灵魂绑定，被绑定的载具视为具有魔幻类别，在包括驾驶在内的载具使用检定额外获得＋２ＤＰ和１附加的亵渎奖励和＋２ＤＰ和１附加的神圣奖励。经绑定的载具平时藏于一个特殊位面内，角色可通过一个自由动作召唤静止状态载具出现在角色身边（会受到空间大小限制），或在保持接触的情况下，通过自由动作遣散空载载具。绑定后的载具可通过恶灵骑士的意志进行操作，在判断驾驶行为优先级上，意志操作低于手动操作。在意志操作情况下，除驾驶动作只需要自由动作就可完成之外，其他动作花费及驾驶限制不变，并且角色在进行特殊操作时依然会受到技能及专长限制（举例来说，角色控制一架绑定之后的直升机，可以通过自由动作进行移动控制并通过标准动作操作机枪，但不能同时通过标准动作操作机枪并发射导弹，同时角色如果不具备相应技能在使用导弹上也会如常受到惩罚）。其有效操作距离相当于角色１０００米／感知，但在操作期间角色必须能够清晰完整的保持对载具的观察（１０米／感知），任何使载具超出感知范围的行为都会解除载具的绑定关系。<SPAN 
-lang=EN-US><BR><BR></SPAN>炼狱活力：因为来自下界的“祝福”，阴影中的恶灵骑士异常强大。在非日光直射情况下，恶灵骑士将自动展露出燃火颅骨的真容。真容状态下，角色获得２点快速医疗，驾驶的载具获得“灼魂烈焰”效果，并且“审判之眼”，“灼魂烈焰”以及威吓检定获得＋２点亵渎附加奖励和＋２点神圣附加奖励。真容状态下的燃火颅骨并非真正火焰，而是灵魂燃烧的表现。角色可通过每轮消耗一个自由动作维持压制真容，但此时无法获得“炼狱活力”带来的任何优势。角色也可通过车手头盔等物遮住头部来掩盖真容，无论如何，对于任何具有灵力感知或超自然感应的目标来说，仍会明显感觉到角色灵魂的异常。<SPAN 
-lang=EN-US><BR><BR></SPAN>审判之眼：恶灵骑士的眼睛能洞悉灵魂并将之撕裂。角色获得灵视能力，任何灵魂在恶灵骑士眼中依照强度和类型不同会发出从烛火到射灯一般的不同颜色光芒。并且角色可通过一个感知+感受的检定，并且该检定获得风度附加成功与决心附加成功之和。本检定用以发现目标加以掩饰的灵魂和谎言。灵视范围等于角色２０米／意志，并且可以穿透一般障碍物，但３米以上的土木造物，１米以上的岩壁和人工墙，３０公分以上的金属墙，以及一些特殊障壁或其他ＳＴ认为合适的物品会阻碍灵视。通过一个标准动作进行一次特殊的近战攻击，角色可使目标受到等同于意志检定成功数的心灵伤害与等量的【恐惧】，意志抵消，恶灵骑士在该检定中获得相当于角色最高非物品支线威力值的ＤＰ奖励。免疫恐惧的目标仍会感到不适并可能希望远离角色。<SPAN 
-lang=EN-US><BR><BR></SPAN>灼魂烈焰：下层界的烈火永不停息的奔流在恶灵骑士体内。角色获得火焰抵抗１０。通过一个自由动作，角色可以将地狱烈焰包覆全身，或每轮通过自由动作维持该状态。在烈焰覆体状态下，角色对任何接触的目标造成相当于角色最高非物品支线威力值且具有【魔法】，【幽冥】属性的火焰伤害以及等量的【剧痛】，强韧抵消。或在攻击中获得角色最高非物品支线威力值一半具有【魔法】，【幽冥】属性的火焰伤害。角色免疫自己造成的火焰伤害，并能自由控制身体各部分是否被火焰包覆。角色也可通过一个标准动作将灼魂烈焰作为远程法术使用，射程相当于角色１０米／意志，造成相当于（角色最高非物品支线威力值＋意志附加）具有【魔法】，【幽冥】属性的火焰伤害以及等量的【剧痛】，强韧抵消。</SPAN></div> 
-<div id="winchm_template_footer">Copyright &copy; 2014. All rights reserved.</div>
+
+<div id="winchm_template_top">
+	<div id="winchm_template_button"><A href="绿巨人.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="超人.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
+	<div id="winchm_template_navigation">Help &gt; 
+<A href="资源部分.htm">资源部分</A> &gt; <A href="血统.htm">血统</A> &gt; <A href="$$unsavedpage25.htm">一次性血统</A> &gt; </div>
+	<div id="winchm_template_title">恶灵骑士</div>
+</div>
+<div id="winchm_template_container">
+	<div id="winchm_template_content"><P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">恶灵骑士强化<SPAN 
+lang=EN-US><?xml:namespace prefix = "o" ns = 
+"urn:schemas-microsoft-com:office:office" /><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">本质：特异本质<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN 
+lang=EN-US>B+3600<o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">属性：决心<SPAN 
+lang=EN-US>+4 </SPAN>力量<SPAN lang=EN-US>+4 </SPAN>耐力<SPAN lang=EN-US>+4 
+</SPAN>感知<SPAN lang=EN-US>+2 <o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">特性：复仇天使地狱骑士 
+炼狱活力 审判之眼 地狱之火（双特性）<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">特殊：一次性血统，额外获得两个特性，由于没有技能树，额外再获得<SPAN 
+lang=EN-US>1</SPAN>个特性。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">复仇天使：作为被放逐的天使，恶灵骑士同时具有光与暗的特性。在判定血统时，恶灵骑士视为同时具有光明生物和黑暗生物类别，这意味着恶灵骑士承受光明生物和黑暗生物带来的负面效果。但是其又不是真正的光明生物和黑暗生物，因此无法强化光明生物和黑暗生物相关的能力，同时也无法通过其他能力变为光明生物和黑暗生物，一旦获得则直接爆体而亡。恶灵骑士的任何攻击皆获得【神圣】与【亵渎】特性，并且其意志和强韧检定中获得<SPAN 
+lang=EN-US>6DP</SPAN>神圣加值以及<SPAN lang=EN-US>6DP</SPAN>亵渎加值。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">地狱骑士：恶灵骑士是出色的骑手和驾驶者。角色在进行驾驶相关检定时获得<SPAN 
+lang=EN-US>6DP</SPAN>内在加值。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">恶灵骑士可以通过<SPAN 
+lang=EN-US>1</SPAN>小时的仪式，将总体积不超过自身意志值<SPAN 
+lang=EN-US>*2</SPAN>的机械类载具与自己进行灵魂绑定，被绑定的载具本质变为特异本质，并且针对恶灵骑士获得【认主】特性。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">绑定的载具平时藏于一个特殊位面内，角色可通过一个自由动作召唤静止状态载具出现在角色身边（会受到空间大小限制），或在保持接触的情况下，通过自由动作遣散空载载具。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">绑定后的载具可通过恶灵骑士的意识进行操作，这意味着角色可以远程遥控载具，但是规则如同一般操作一样，其有效操作距离相当于角色的感知<SPAN 
+lang=EN-US>/</SPAN>公里范围。若超过范围，则该载具自动返回特殊位面中。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">需要注意的是，角色无法与载具感知相连，所以一旦载具离开角色的感知范围后，角色将无法确定载具的动向，情况和位置。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">角色同一时间只能绑定一个载具，绑定新的将解除旧有的。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">炼狱活力：因为来自下界的“祝福”，阴影中的恶灵骑士异常强大。在非日光直射情况下，恶灵骑士将自动展露出燃火颅骨的真容。真容状态下，角色获得２点快速医疗，并且可以使用“地狱之火”与“审判之眼”，角色可通过每轮消耗一个自由动作维持压制真容。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">审判之眼：恶灵骑士的眼睛能洞悉灵魂并将之撕裂。角色获得黑暗视觉与灵视。并且角色可以以一个标准动作，选择一个敏感范围内的目标，双方以意志对抗，若目标失败，则受到失败数的恐惧点数。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">地狱之火：下层界的烈火永不停息的奔流在恶灵骑士体内。通过一个自由动作，角色可以将地狱烈焰包覆自身。在烈焰覆体状态下，角色的所有近战物理伤害造成的伤害变为精神伤害，并且额外获得【魔法】【幽冥】特性。若目标受到伤害，则同时受到等额的剧痛点数，强韧豁免。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">角色也可以将地狱之火作为投掷武器使用，基本射程相当于角色的意志值<SPAN 
+lang=EN-US>*10</SPAN>米，武器伤害为角色决心值的一半，造成精神伤害，获得【魔法】【幽冥】特性。若目标受到伤害，则同时受到等额的剧痛点数，强韧豁免。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">特殊：角色手持的近战武器，以及所绑定的载具皆可获得地狱之火的影响。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P></div>	
+	<div id="winchm_template_footer">Copyright &copy; 2018. All rights 
+reserved. (To change the copyright info, just edit it in template.)</div>
+</div>
+
 </body>
 </html>

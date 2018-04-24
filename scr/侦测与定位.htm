@@ -17,112 +17,170 @@ html,body {
 
 
 
-<meta http-equiv="X-UA-Compatible" content="IE=8">
+
 <style>
-html {
-	overflow-y:scroll;
-}
+html,div { margin: 0; padding: 0;}
 
 body {
-	background-image: url(template1/back.png);
-	background-repeat: repeat-x;
-	background-color: #FFFFFF;
 	padding: 0px;
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-bottom: 15px;
-	margin-right: 15px;
+	margin: 0px;
+	overflow: auto;
+	height: 100%;
 }
 
-#winchm_template_button {
-	position: fixed; 
-	float: right; 
-	right: 15px; 
-	top: 15px;
+#winchm_template_button{
+	float: right;
+	width: 93px;
+	top: 7px;
+	position: relative;
+	text-align: right;
+	right: 5px;
+	height: auto;
 }
 
-#winchm_template_navigation {
+#winchm_template_top{
 	padding: 0px;
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
+	margin: 0px;
+	border-bottom: 1px solid #9B9B9B;
+	background-color: #B1CEFE;
+}
 
-	font-size: 8pt;
+#winchm_template_navigation{
+	margin: 0px;
+	padding-top: 7px;
+	padding-left: 7px;
+	padding-bottom: 3px;
+	padding-right: 0px;
+	font-size: 8.5pt;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #4A4A4A;
-	text-align: left;
+	font-weight: normal;
+	color: #585858;
 }
 
-#winchm_template_title {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 22px;
-	font-weight: bold;
-	color: #005680;
-	text-align: left;
+#winchm_template_title{
+	margin: 0px;
+	padding-top: 4px;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	padding-right: 0px;
+	font-size: 18px; 
+	font-family: Verdana, Geneva, sans-serif;
+	color: #363636;
 }
 
 #winchm_template_content{
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
+	margin-top: 20px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
 	width: auto  !important;
 	width: 100%;
 }
 
-
-#winchm_template_footer {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	padding-top: 7px;
+#winchm_template_footer{
 	border-width: 1px;
-	border-color: #c0c0c0;
+	border-color: #B1CEFE;
 	border-top-style: solid;
-
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #575757;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
+	padding-top: 7px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 8.5pt;
+	color: #696969;
+	width: auto;
 	text-align: left;
 }
 
+
+#winchm_template_container{
+	margin: 0px;
+	padding: 0px;
+	position: static;
+	padding-bottom: 3px;
+	overflow: auto;
+	background-color: #FFFFFF;
+}
+
+
 @media print
 {
+#winchm_template_container{
+	position: static;	
+	margin: 0px;
+	padding: 5px;
+	
+	width: auto;
+	height: auto;
+	overflow: auto;
+}
 #winchm_template_button{
 visibility:hidden;
 }
 }
 
-#winchm_template_navigation a:link	{text-decoration: none;color: 004080}
-#winchm_template_navigation a:visited  {text-decoration: none; color: #004080}
-#winchm_template_navigation a:active {text-decoration: none; color: #004080}
-#winchm_template_navigation a:hover {text-decoration: none;color: #0000FF}
+#winchm_template_navigation A:link	{text-decoration: none; color:#004080}
+#winchm_template_navigation A:visited  {text-decoration: none; color: #004080}
+#winchm_template_navigation A:active {text-decoration: none; color: #004080 }
+#winchm_template_navigation A:hover {text-decoration: none;color: #0080FF}
 
-a:link	{text-decoration: underline; color:#0033cc}
-a:visited  {text-decoration: underline; color: #0033cc}
-a:active {text-decoration: underline; color: #0033cc }
-a:hover {text-decoration: underline;color: #ff0000;}
-
+A:link	{text-decoration: underline; color:#0033CC}
+A:visited  {text-decoration: underline; color: #0033CC}
+A:active {text-decoration: underline; color: #0033CC }
+A:hover {text-decoration: underline;color: #FF0000;}
 </style>
+<script type="text/javascript">
+function isMobile(){
+Agent = window.navigator.userAgent;
+if (Agent.indexOf("iPhone")>=1 || Agent.indexOf("iPad")>=1 || Agent.indexOf("iPod")>=1 || Agent.indexOf("Android")>=1){
+return true;
+}else{
+return false;	
+}
+
+}
+function d_onresize(){
+if (window.navigator.userAgent.indexOf("MSIE")>=1){
+document.getElementById('winchm_template_container').style.pixelWidth = document.body.offsetWidth - 3;
+document.getElementById('winchm_template_container').style.pixelHeight = document.body.offsetHeight - document.getElementById('winchm_template_top').offsetHeight - 4;
+}
+document.getElementById('winchm_template_container').style.top = document.getElementById('winchm_template_top').offsetHeight + 'px';
+}
+
+function d_onbeforeprint(){
+document.getElementById('winchm_template_container').style.width = 'auto';
+document.getElementById('winchm_template_container').style.height = 'auto';
+}
+
+function d_onafterprint(){
+d_onresize();
+}
+
+if(!isMobile()){
+
+window.onload = d_onresize;
+window.onresize = d_onresize;
+window.onbeforeprint = d_onbeforeprint;
+window.onafterprint = d_onafterprint;
+
+document.write("<style>\n");
+document.write("body {overflow: hidden;}\n");
+document.write("#winchm_template_container {position: absolute;overflow: auto;top : 0px;right: 0px;bottom: 0px;left: 0px;}\n");
+document.write("</style>\n");
+}
+
+</script>
 </head>
 
 <body><script language="JavaScript" type="text/JavaScript">
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(19);
+  parent.nav.tree.selectNode(37);
  }else{
   setTimeout("syn()",500);
 }
@@ -142,229 +200,107 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 }
 </script> 
 
-<div id="winchm_template_button"><A href="战！战！战！.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template1/btn_prev_n.gif" border="0"></a><A href="生命.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template1/btn_next_n.gif" border="0"></a></div>
-<div id="winchm_template_navigation">Help &gt; 
-<A href="规则部分.htm">规则部分</A> &gt; <A href="$$unsavedpage1.htm">战斗与非战斗规则</A> &gt; </div>
-<div id="winchm_template_title">侦测与定位</div>
-<div id="winchm_template_content"><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体" 
-lang=EN-US><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; COLOR: blue; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">侦测对抗规则</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体" 
-lang=EN-US></SPAN>
+
+<div id="winchm_template_top">
+	<div id="winchm_template_button"><A href="不良状态.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="能力等级与对抗.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
+	<div id="winchm_template_navigation">Help &gt; 
+<A href="规则部分.htm">规则部分</A> &gt; <A href="战斗相关.htm">战斗相关</A> &gt; </div>
+	<div id="winchm_template_title">侦测与定位</div>
+</div>
+<div id="winchm_template_container">
+	<div id="winchm_template_content"><P 
+style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
+class=MsoNormal><B style="mso-bidi-font-weight: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial; mso-fareast-font-family: 宋体">核心规则：<SPAN 
+lang=EN-CA><BR></SPAN></SPAN></B><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial; mso-fareast-font-family: 宋体">一、所有侦测和反侦测手段，都具有各自的“侦测等级”和“反侦测等级”，这根据其支线等级决定。<SPAN 
+lang=EN-CA><BR></SPAN>二、侦测和反侦测手段都分为四种本质：自然、科技，魔法，特异。当双方的本质不同时，进行侦测的一方视为支线提升了一个级别。<SPAN 
+lang=EN-CA><BR></SPAN>三、侦测手段是指原本就提供能够进行直观观察的感知能力的手段。如果该手段本身就不能进行模糊或精确定位，则此规则不会令它变得能够定位。<SPAN 
+lang=EN-CA><BR><BR></SPAN><B style="mso-bidi-font-weight: normal">核心概念：</B><SPAN 
+lang=EN-CA><BR></SPAN>定位目标：玩家知道一个目标的位置，称为定位目标。定位分为精确定位和模糊定位。<SPAN 
+lang=EN-CA><BR>&nbsp;<BR></SPAN>精确定位：精确定位指确切知道目标的位置。一般来说，对人类而言，如果能清楚明确且真实地看清目标，则可以定位它。人物可以无碍<SPAN 
+lang=EN-CA>&nbsp;</SPAN>地攻击被定位的目标，或者对其使用那些“指定<SPAN lang=EN-CA>X</SPAN>个目标<SPAN 
+lang=EN-CA>/</SPAN>指定范围内<SPAN 
+lang=EN-CA>X</SPAN>个目标”的法术或能力。人物总可以精确定位一个位置（比如“我面前五米、高三米的地方”）。<SPAN 
+lang=EN-CA><BR><BR></SPAN>模糊定位：大概知道目标的位置称为模糊定位。这意味着人物知道目标的大概方位，但不清楚具体位置。对人类来说，看不到人但能近距<SPAN 
+lang=EN-CA>&nbsp;</SPAN>离听到持续的说话和嘈杂声，就有可能模糊定位。人物可以攻击被模糊定位的目标，但成功数、附加成功和产生的效果点数都只计算一半<SPAN 
+lang=EN-CA>&nbsp;</SPAN>，向下取整。人物也可以选择模糊定位的目标作为指定目标法术之目标，但法术只有一半概率成功（然而，如果法术范围描述为“范围”<SPAN 
+lang=EN-CA>&nbsp;</SPAN>或“范围内每个目标”，则照常生效）。<SPAN 
+lang=EN-CA><BR><BR></SPAN>无法定位：人物完全无法知道目标的位置。就人类而言，这意味着他看不到、听不到敌人，并且没有任何可供分析的数据。人物可以假定目标在某位置并进行攻击，若目标恰好在那个位置，则视为模糊定位。但人物不可能将他指定为法术的目标（然而，如果法术范围描述为<SPAN 
+lang=EN-CA>&nbsp;</SPAN>“范围”或“范围内每个目标”，则照常生效）。<SPAN 
+lang=EN-CA><BR><BR></SPAN>如无特别说明，以人类为基础的人物只能用视觉进行精确定位。<SPAN 
+lang=EN-CA><BR></SPAN>目盲的人物无法以视觉定位目标。耳聋的人物无法以听觉定位目标。<SPAN lang=EN-CA><BR 
+style="mso-special-character: line-break"><BR 
+style="mso-special-character: line-break"><?xml:namespace prefix = o ns = 
+"urn:schemas-microsoft-com:office:office" /><o:p></o:p></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">一、所有侦测和反侦测手段，都具有各自的【侦测等级】和【反侦测等级】，这根据其支线等级决定。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
+style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
+class=MsoNormal><B style="mso-bidi-font-weight: normal"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial; mso-fareast-font-family: 宋体">侦测与反侦测对抗：</SPAN></B><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial; mso-fareast-font-family: 宋体" 
+lang=EN-CA><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial; mso-fareast-font-family: 宋体">对抗分为以下三个阶段：<SPAN 
+lang=EN-CA><BR></SPAN></SPAN></P>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">二、当侦测等级和反侦测等级相同时，反侦测一方必然获得隐形效果。<SPAN lang=EN-US></SPAN></SPAN></P>
+style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
+class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial; mso-fareast-font-family: 宋体"><SPAN 
+lang=EN-CA><BR></SPAN>第一阶段，确定反侦测方的反侦测能力：<SPAN 
+lang=EN-CA><BR></SPAN>通常意义上，反侦测能力意味着侦测方无法侦测到目标，使用通俗的说法就是反侦测方“隐形”了。<SPAN 
+lang=EN-CA><BR></SPAN>而将其“隐形”的手段，则是其反侦测手段。<SPAN 
+lang=EN-CA><BR></SPAN>第一阶段需要先确定反侦测方是否拥有反侦测手段。<SPAN 
+lang=EN-CA><BR></SPAN>也就是说，如果在同一环境下的所有目标皆不具备反侦测手段，那么等于所有角色都暴露在其他角色视野内，那么就没有必要使用侦测对抗规则。<SPAN 
+lang=EN-CA><BR></SPAN>若有角色拥有反侦测能力，那么需要确定该角色的反侦测能力本质以及等级，之后让我们进入第二阶段。<SPAN 
+lang=EN-CA><BR></P></SPAN></SPAN>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">三、当侦测等级高于反侦测等级时，侦测一方可无需判定，直接进行模糊定位。如果通过一个成功的调查判定（对抗反侦测一方的潜行判定），则可以进行精确定位。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
+style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
+class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial; mso-fareast-font-family: 宋体"><SPAN 
+lang=EN-CA><BR></SPAN>第二阶段：确定侦测方的侦测能力。<SPAN 
+lang=EN-CA><BR></SPAN>在这一阶段，我们将对侦测方的所有侦测能力进行列举。<SPAN 
+lang=EN-CA><BR></SPAN>然后将其所有侦测能力与目标的反侦测能力已经对比。我们将根据结果决定是否进入第三阶段。<SPAN 
+lang=EN-CA><BR></SPAN>当侦测方的侦测能力比反侦测能力支线等级高时，则反侦测方直接被侦测方精确定位。<SPAN 
+lang=EN-CA><BR></SPAN>当侦测方的侦测能力与反侦测能力支线等级相同时，则反侦测方直接被侦测方模糊定位。<SPAN 
+lang=EN-CA><BR></SPAN>当侦测方的侦测能力与反侦测能力支线等级低时，则反侦测方获得其反侦测能力，侦测方无法定位反侦测方。<SPAN 
+lang=EN-CA><BR></P></SPAN></SPAN>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">四、侦测和反侦测手段都分为四种本质：自然、科技，魔法，特异。当双方的本质不同时，进行侦测的一方视为支线提升了一个级别。</SPAN></P>
+style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
+class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial; mso-fareast-font-family: 宋体"><SPAN 
+lang=EN-CA><BR></SPAN>在本阶段，若侦测方没有精确定位反侦测方，则进入第三阶段。<SPAN 
+lang=EN-CA><BR></P></SPAN></SPAN>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">注：<SPAN lang=EN-US></SPAN></SPAN></P>
+style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
+class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial; mso-fareast-font-family: 宋体"><SPAN 
+lang=EN-CA><BR></SPAN>第三阶段：双方技能对抗<SPAN lang=EN-CA><BR></SPAN>此时，由反侦测方进行敏捷<SPAN 
+lang=EN-CA>+</SPAN>隐藏（躲藏）检定对抗侦测方的感知<SPAN lang=EN-CA>+</SPAN>调查（侦查）检定。<SPAN 
+lang=EN-CA><BR></SPAN>侦测方胜出的情况下，若侦测方已经在第二阶段模糊定位反侦测方，则现在可以对反侦测方精确定位。若第二阶段无法定位，则现在可以模糊定位。<SPAN 
+lang=EN-CA><BR></SPAN>请注意双方的技能对抗受到以下能力影响，这些加值和减值都可以叠加：<SPAN 
+lang=EN-CA><BR></P></SPAN></SPAN>
 <P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">１、如无特殊说明，武学、异能来源的侦测／反侦测手段均视为特异。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">２、侦测手段是指原本就提供能够进行直观观察的感知能力的手段。如果该手段本身就不能进行模糊或精确定位，则此规则不会令它变得能够定位。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体" 
-lang=EN-US><SPAN style="mso-spacerun: yes"></SPAN></SPAN>&nbsp;</P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体" 
-lang=EN-US><SPAN style="mso-spacerun: yes"></SPAN></SPAN>&nbsp;</P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">范例<SPAN lang=EN-US></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">玩家Ａ使用了光学迷彩（科技本质，等级Ｄ）进行潜行，潜行技能为４。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">玩家Ｂ没有使用任何反侦测手段，但潜行技能为６，视为拥有自然本质，等级Ｄ的反侦测手段。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">敌人Ａ：特工，调查技能有２，没有任何其他反侦测能力和设备，他完全无法发现玩家Ａ和Ｂ，但如果通过了调查判定，就可进行模糊定位。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">敌人Ｂ：侦察兵（戴着高科技红外眼镜，科技本质，等级Ｄ），他进行了扫描，如果成功对抗了玩家Ａ的潜行判定（玩家Ａ有＋２附加成功），就能对他进行模糊定位；而在对玩家Ｂ时，因为彼此手段的本质不同，所以视为提升了一个等级，即是Ｃ级的设备，可以直接发现Ｂ的模糊位置，如果通过了调查判定，还可发现他的精确位置。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体" 
-lang=EN-US><SPAN style="mso-spacerun: yes"></SPAN></SPAN>&nbsp;</P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; COLOR: blue; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">潜行：<SPAN lang=EN-US><BR></SPAN></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">利用环境隐藏身形不被他人发现的一种行为，潜行中的人物被视为进入了潜行状态，下面详述如何进入潜行状态以及如何发现潜行状态中的人物。<SPAN 
-lang=EN-US><BR></SPAN>进入潜行状态：<SPAN 
-lang=EN-US><BR></SPAN>想要进入潜行状态需要满足以下条件：<SPAN lang=EN-US><BR>·</SPAN>潜行状态是针对某些特定目标的，所以进入潜行状态前，你需要指定一名或数名目标，又或是针对某个方向进行潜行。<SPAN 
-lang=EN-US><BR>·</SPAN>一般情况下，人物无法在直接暴漏在目标视线中的情况下进入潜行。<SPAN lang=EN-US><BR></SPAN>潜行状态中具有以下效果：<SPAN lang=EN-US><BR>·</SPAN>发起行动时，场景内不知情的生物全部陷入突袭轮，并措手不及。<SPAN lang=EN-US><BR>·</SPAN>潜行者至多只能以半速移动，超过半速的移动会给对方重新提供对抗的机会，并且自身潜行判定承受<SPAN 
-lang=EN-US>-10DP</SPAN>的减值。若其全速奔跑，则其潜行判定承受-10成功数的减值。<SPAN lang=EN-US><BR></SPAN>发现潜行状态中的人物：<SPAN lang=EN-US><BR></SPAN>只要满足以下条件便视为潜行状态的人物被发现，但如果其他目标没有发现，那么对于其他目标来说人物还是潜行状态中。<SPAN 
-lang=EN-US><BR>·</SPAN>潜行人物无遮蔽暴漏在其他人物视线中。<SPAN lang=EN-US><BR>·</SPAN>潜行人物进入其他人物敏感范围内（这并非敏感视觉）的时候，双方进行一次对抗，敏捷<SPAN lang=EN-US>+</SPAN>潜行<SPAN lang=EN-US>VS感知+调查</SPAN>。<SPAN lang=EN-US><BR>·</SPAN>或其他人物可主动对敏感范围内进行一次侦查或聆听，感知+调查骰<SPAN lang=EN-US>VS</SPAN>潜行者敏捷<SPAN lang=EN-US>+</SPAN>潜行。<SPAN lang=EN-US><BR>·</SPAN>潜行者失败则被发现，胜利则不会被发现。<SPAN lang=EN-US><BR>·</SPAN>潜行者胜出，那么接下来一个场景内同一个人对潜行者的主动侦查都视为自动失败，除非潜行者退出了潜行状态，那么重新进入潜行状态，则重新对抗以及判定。<SPAN 
-lang=EN-US><BR>·</SPAN>对抗成功数想等时，视为潜行者胜出。<SPAN lang=EN-US><BR></SPAN></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; COLOR: blue; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体" 
-lang=EN-US><BR></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; COLOR: blue; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">隐形：<SPAN lang=EN-US><BR></SPAN></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">无法被某一类生物或事物，单纯以视觉感官辨认的存在，对于那类生物来说那就是隐形的存在，但这并非绝对安全的，因为即使无法被看到，但仍能被听到、闻到、感觉到。<SPAN 
-lang=EN-US><BR></SPAN>隐形的生物获得以下的好处：<SPAN 
-lang=EN-US><BR><BR>·</SPAN>攻击与防御获得<SPAN lang=EN-US>+4DP</SPAN>的环境加值。<SPAN lang=EN-US><BR>·</SPAN>潜行鉴定上获得<SPAN lang=EN-US>+10DP</SPAN>的环境加值。<SPAN lang=EN-US><BR>·</SPAN>不被限制活动，自愿以及被得知准确位置的情况下，不会被针对性的单体攻击命中，即使被得知，依旧保留攻击和防御上的加值。</SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">·隐形的生物可能会因为目标的不知情获得突袭优势，但是一旦进入战斗，由于目标知道此处有敌人，就算其无法发现隐形的生物，但是若没有特殊能力，隐形的生物也无法对目标造成措手不及。<SPAN 
-lang=EN-US><BR><BR></SPAN>想要发现隐形的生物可以通过聆听鉴定对抗隐形生物的潜行鉴定，这个对抗鉴定根据结果不同会有不同的发现：<SPAN 
-lang=EN-US><BR>·</SPAN>聆听者失败：无法察觉隐形生物的所在。<SPAN lang=EN-US><BR>·</SPAN>聆听者胜出：察觉隐身生物的存在，并得知隐形生物的大概位置。<SPAN lang=EN-US><BR>·</SPAN>聆听者胜出至少三个成功数或以上：察觉隐形生物的存在，并得知隐形生物的准确位置。<SPAN 
-lang=EN-US><BR><BR></SPAN>对抗中，隐形生物一轮内符合以下情况都会为聆听者的聆听判定提供加值：<SPAN lang=EN-US><BR>·</SPAN>攻击，施法：<SPAN lang=EN-US>+2DP<BR>·</SPAN>发出声响：<SPAN lang=EN-US>+2DP<BR>·</SPAN>散发着异常的气味：<SPAN 
-lang=EN-US>+2DP<BR>·</SPAN>以一半速度以上进行一次移动：<SPAN lang=EN-US>+2DP<BR>·</SPAN>在聆听者身旁三米内：<SPAN 
-lang=EN-US>+1DP<BR>·</SPAN>在聆听者身旁十米内：<SPAN lang=EN-US>+1DP</SPAN></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; COLOR: blue; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体" 
-lang=EN-US> </SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体" 
-lang=EN-US><SPAN style="mso-spacerun: yes"></SPAN></SPAN>&nbsp;</P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体" 
-lang=EN-US><SPAN style="mso-spacerun: yes"></SPAN></SPAN>&nbsp;</P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; COLOR: blue; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">附录：战斗中定位目标</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">定位目标：<SPAN lang=EN-US></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">玩家知道一个目标的位置，称为定位目标。定位分为精确定位和模糊定位。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体"></SPAN>&nbsp;</P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">精确定位：精确定位指确切知道目标的位置。一般来说，对人类而言，如果能清楚明确且真实地看清目标，则可以定位它。人物可以无碍地攻击被定位的目标，或者对其使用那些<SPAN 
-lang=EN-US>“</SPAN>指定<SPAN lang=EN-US>X</SPAN>个目标<SPAN lang=EN-US>/</SPAN>指定范围内<SPAN lang=EN-US>X</SPAN>个目标<SPAN lang=EN-US>”</SPAN>的法术或能力。人物总可以精确定位一个位置（比如<SPAN lang=EN-US>“</SPAN>我面前五米、高三米的地方<SPAN lang=EN-US>”</SPAN>）<SPAN lang=EN-US></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体"></SPAN>&nbsp;</P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">模糊定位：大概知道目标的位置称为模糊定位。这意味着人物知道目标的大概方位，但不清楚具体位置。对人类来说，看不到人但能近距离听到持续的说话和嘈杂声，就有可能模糊定位。人物可以攻击被模糊定位的目标，但成功数、附加成功和产生的效果点数都只计算一半，向下取整。人物也可以选择模糊定位的目标作为指定目标法术之目标，但法术只有一半概率成功（然而，如果法术范围描述为<SPAN 
-lang=EN-US>“</SPAN>范围<SPAN lang=EN-US>”</SPAN>或<SPAN lang=EN-US>“</SPAN>范围内每个目标<SPAN lang=EN-US>”</SPAN>，则照常生效）。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体"></SPAN>&nbsp;</P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">无法定位：人物完全无法知道目标的位置。就人类而言，这意味着他看不到、听不到敌人，并且没有任何可供分析的数据。人物可以假定目标在某位置并进行攻击，若目标恰好在那个位置，则视为模糊定位。但人物不可能将他指定为法术的目标（然而，如果法术范围描述为<SPAN 
-lang=EN-US>“</SPAN>范围<SPAN lang=EN-US>”</SPAN>或<SPAN lang=EN-US>“</SPAN>范围内每个目标<SPAN lang=EN-US>”</SPAN>，则照常生效）。<SPAN lang=EN-US></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; COLOR: red; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">如无特别说明，以人类为基础的人物只能用视觉进行精确定位。</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; COLOR: red; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">目盲的人物无法以视觉定位目标。耳聋的人物无法以听觉定位目标。</SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体" 
-lang=EN-US></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体"></SPAN>&nbsp;</P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">模糊定位看不到的目标：<SPAN lang=EN-US></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">如果目标隐形，人物可以进行一次侦察判定，对抗隐形者的潜行判定，如果胜出则可以模糊定位目标。令潜行者隐形的效果一般会为该隐形效果带来加值，如果没有说明，则该加值为对应能力等级的附加成功数<SPAN lang=EN-US>.</SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">如无特别说明，人物只能以他能够查觉目标的感官进行判定，例如，一般人类能且只能以听觉寻找<SPAN lang=EN-US>“</SPAN>视觉隐形<SPAN lang=EN-US>”</SPAN>或<SPAN lang=EN-US>“</SPAN>可见光隐形<SPAN lang=EN-US>”</SPAN>的目标。如果人物有灵敏嗅觉、灵力感知、侦测魔法等感知能力，则可以适用于该判定。除非特别说明，否则这些感知能力不能精确定位。<SPAN 
-lang=EN-US></SPAN></SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体">这也适用于人物目盲<SPAN lang=EN-US>/</SPAN>耳聋等情况。</SPAN></P>
-<P 
-style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体" 
-lang=EN-US><SPAN style="mso-spacerun: yes"></SPAN></SPAN>&nbsp;</P><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 0pt; mso-fareast-font-family: 宋体" 
-lang=EN-US><SPAN style="mso-spacerun: yes">
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体">尝试使用其他感知方式来模糊定位：<SPAN 
-lang=EN-US> <BR></SPAN>听觉<SPAN lang=EN-US> (Listening) 
-<BR></SPAN>如果角色尝试以听觉去听出目标的所在的话，主持可秘密地掷角色的「感知＋调查」，并承受下列加值或减值，对抗对方的躲藏检定。<SPAN 
-lang=EN-US> <BR></SPAN>＋３目标踏在干树枝上；<SPAN lang=EN-US> <BR></SPAN>＋１目标在落叶地上；<SPAN 
-lang=EN-US> <BR></SPAN>－５目标差不多完全不动；<SPAN lang=EN-US> <BR></SPAN>－３受交通噪音影响。<SPAN 
-lang=EN-US> <BR></SPAN>如果成功的话，意味着角色可以模糊定位对方。<SPAN lang=EN-US> 
-<BR></SPAN></SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体">嗅觉<SPAN 
-lang=EN-US> (Smelling) <BR></SPAN>类似听觉的计算法，只是影响加减骰数的因素不同。<SPAN lang=EN-US> 
-<BR></SPAN>＋３目标数天没洗澡；<SPAN lang=EN-US> <BR></SPAN>＋１目标身上有香味； <SPAN 
-lang=EN-US><BR></SPAN>－３目标更换了衣服或洗过了身子；<SPAN lang=EN-US> <BR></SPAN>－１在体育馆中；<SPAN 
-lang=EN-US> <BR></SPAN>－３在制纸厂附近<SPAN lang=EN-US></SPAN></SPAN><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体"><SPAN lang=EN-US></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal> <BR></P></SPAN></SPAN>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体">请注意：定位与否与措手不及没有直接关系，就算目标无法定位你，但是若你没有任何特殊能力包括重新进行成功的潜行检定，则无法对目标造成措手不及。</SPAN></P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体"></SPAN>&nbsp;</P>
-<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-font-family: 宋体">盲感（<SPAN 
-lang=EN-US>Blindsense</SPAN>，特异能力）：某些生物能够通过视觉以外的感官，比如敏锐的嗅觉或听觉来觉察到它看不见的东西。它通常不需要作侦查或聆听检定来发现在它盲感范围内的生物的位置，前提是它和目标生物之间存在效果线。对具有盲感的生物来说，它看不见的生物依然具有全隐蔽，同时在攻击隐蔽的对手时，仍有如同模糊定位一般的惩罚。可见度仍然影响着一个具有盲感的生物的移动。盲感没有对抗等级，可以直接对符合条件的单位生效。<SPAN 
-lang=EN-US> <BR><BR></SPAN>盲视（<SPAN 
-lang=EN-US>Blindsight</SPAN>，特异能力）：此能力类似于盲感，但远比它精确。通过视觉以外的感官，比如对震动的感觉、敏锐的嗅觉、灵敏的听觉或回声等，一个盲视生物可以和有视觉的生物一样进行机动和战斗。隐形、黑暗以及大多数此类的隐蔽对它无效，但是盲视生物必须有效果线才能发现生物或物体。此能力的有效范围见该生物的说明。盲视生物通常不需要作侦查或聆听检定来发现在它盲视范围内的生物的位置。除非另有说明，盲视是持续的，盲视生物不需要做什么来启动它。盲视没有对抗等级，可以直接对符合条件的单位生效。<SPAN 
-lang=EN-US> </SPAN></SPAN></P></SPAN></div> 
-<div id="winchm_template_footer">Copyright &copy; 2014. All rights reserved.</div>
+style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; LAYOUT-GRID-MODE: char; mso-layout-grid-align: none" 
+class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: Arial; mso-fareast-font-family: 宋体"><SPAN 
+lang=EN-CA><BR></SPAN>反侦测方由于处于“隐形”状态，其躲藏技能的相关所有检定获得<SPAN 
+lang=EN-CA>10DP</SPAN>环境加值。<SPAN lang=EN-CA><BR></SPAN>四周环境嘈杂，侦测方承受<SPAN 
+lang=EN-CA>2DP</SPAN>环境减值。（若侦测方没有听觉，则无法获得本减值）<SPAN 
+lang=EN-CA><BR></SPAN>反侦测方上回合使用过攻击，施法或者类似动作，将为侦测方带来<SPAN 
+lang=EN-CA>2DP</SPAN>环境加值。（若侦测方没有听觉，则无法获得本加值）<SPAN 
+lang=EN-CA><BR></SPAN>反侦测方上回合发出过声音（如说话），将为侦测方带来<SPAN 
+lang=EN-CA>2DP</SPAN>环境加值。（若侦测方没有听觉，则无法获得本加值）<SPAN 
+lang=EN-CA><BR></SPAN>反侦测方散发异常的气味，将为侦测方带来<SPAN 
+lang=EN-CA>2DP</SPAN>环境加值。（若侦测方没有嗅觉，则无法获得本加值）<SPAN 
+lang=EN-CA><BR></SPAN>反侦测方上回合移动速度超出自己速度的一半，将为侦测方带来<SPAN 
+lang=EN-CA>2DP</SPAN>环境加值。<SPAN 
+lang=EN-CA><BR></SPAN>反侦测方在侦测方的模糊范围内，将为侦测方带来<SPAN 
+lang=EN-CA>1DP</SPAN>环境加值。<SPAN 
+lang=EN-CA><BR></SPAN>反侦测方在侦测方的敏感范围内，将为侦测方带来<SPAN 
+lang=EN-CA>1DP</SPAN>环境加值。<SPAN 
+lang=EN-CA><o:p></o:p></SPAN></SPAN></P></div>	
+	<div id="winchm_template_footer">Copyright &copy; 2018. All rights 
+reserved. (To change the copyright info, just edit it in template.)</div>
+</div>
+
 </body>
 </html>

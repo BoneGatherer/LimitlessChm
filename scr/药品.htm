@@ -17,112 +17,170 @@ html,body {
 
 
 
-<meta http-equiv="X-UA-Compatible" content="IE=8">
+
 <style>
-html {
-	overflow-y:scroll;
-}
+html,div { margin: 0; padding: 0;}
 
 body {
-	background-image: url(template1/back.png);
-	background-repeat: repeat-x;
-	background-color: #FFFFFF;
 	padding: 0px;
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-bottom: 15px;
-	margin-right: 15px;
+	margin: 0px;
+	overflow: auto;
+	height: 100%;
 }
 
-#winchm_template_button {
-	position: fixed; 
-	float: right; 
-	right: 15px; 
-	top: 15px;
+#winchm_template_button{
+	float: right;
+	width: 93px;
+	top: 7px;
+	position: relative;
+	text-align: right;
+	right: 5px;
+	height: auto;
 }
 
-#winchm_template_navigation {
+#winchm_template_top{
 	padding: 0px;
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
+	margin: 0px;
+	border-bottom: 1px solid #9B9B9B;
+	background-color: #B1CEFE;
+}
 
-	font-size: 8pt;
+#winchm_template_navigation{
+	margin: 0px;
+	padding-top: 7px;
+	padding-left: 7px;
+	padding-bottom: 3px;
+	padding-right: 0px;
+	font-size: 8.5pt;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #4A4A4A;
-	text-align: left;
+	font-weight: normal;
+	color: #585858;
 }
 
-#winchm_template_title {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 22px;
-	font-weight: bold;
-	color: #005680;
-	text-align: left;
+#winchm_template_title{
+	margin: 0px;
+	padding-top: 4px;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	padding-right: 0px;
+	font-size: 18px; 
+	font-family: Verdana, Geneva, sans-serif;
+	color: #363636;
 }
 
 #winchm_template_content{
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
+	margin-top: 20px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
 	width: auto  !important;
 	width: 100%;
 }
 
-
-#winchm_template_footer {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	padding-top: 7px;
+#winchm_template_footer{
 	border-width: 1px;
-	border-color: #c0c0c0;
+	border-color: #B1CEFE;
 	border-top-style: solid;
-
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #575757;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
+	padding-top: 7px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 8.5pt;
+	color: #696969;
+	width: auto;
 	text-align: left;
 }
 
+
+#winchm_template_container{
+	margin: 0px;
+	padding: 0px;
+	position: static;
+	padding-bottom: 3px;
+	overflow: auto;
+	background-color: #FFFFFF;
+}
+
+
 @media print
 {
+#winchm_template_container{
+	position: static;	
+	margin: 0px;
+	padding: 5px;
+	
+	width: auto;
+	height: auto;
+	overflow: auto;
+}
 #winchm_template_button{
 visibility:hidden;
 }
 }
 
-#winchm_template_navigation a:link	{text-decoration: none;color: 004080}
-#winchm_template_navigation a:visited  {text-decoration: none; color: #004080}
-#winchm_template_navigation a:active {text-decoration: none; color: #004080}
-#winchm_template_navigation a:hover {text-decoration: none;color: #0000FF}
+#winchm_template_navigation A:link	{text-decoration: none; color:#004080}
+#winchm_template_navigation A:visited  {text-decoration: none; color: #004080}
+#winchm_template_navigation A:active {text-decoration: none; color: #004080 }
+#winchm_template_navigation A:hover {text-decoration: none;color: #0080FF}
 
-a:link	{text-decoration: underline; color:#0033cc}
-a:visited  {text-decoration: underline; color: #0033cc}
-a:active {text-decoration: underline; color: #0033cc }
-a:hover {text-decoration: underline;color: #ff0000;}
-
+A:link	{text-decoration: underline; color:#0033CC}
+A:visited  {text-decoration: underline; color: #0033CC}
+A:active {text-decoration: underline; color: #0033CC }
+A:hover {text-decoration: underline;color: #FF0000;}
 </style>
+<script type="text/javascript">
+function isMobile(){
+Agent = window.navigator.userAgent;
+if (Agent.indexOf("iPhone")>=1 || Agent.indexOf("iPad")>=1 || Agent.indexOf("iPod")>=1 || Agent.indexOf("Android")>=1){
+return true;
+}else{
+return false;	
+}
+
+}
+function d_onresize(){
+if (window.navigator.userAgent.indexOf("MSIE")>=1){
+document.getElementById('winchm_template_container').style.pixelWidth = document.body.offsetWidth - 3;
+document.getElementById('winchm_template_container').style.pixelHeight = document.body.offsetHeight - document.getElementById('winchm_template_top').offsetHeight - 4;
+}
+document.getElementById('winchm_template_container').style.top = document.getElementById('winchm_template_top').offsetHeight + 'px';
+}
+
+function d_onbeforeprint(){
+document.getElementById('winchm_template_container').style.width = 'auto';
+document.getElementById('winchm_template_container').style.height = 'auto';
+}
+
+function d_onafterprint(){
+d_onresize();
+}
+
+if(!isMobile()){
+
+window.onload = d_onresize;
+window.onresize = d_onresize;
+window.onbeforeprint = d_onbeforeprint;
+window.onafterprint = d_onafterprint;
+
+document.write("<style>\n");
+document.write("body {overflow: hidden;}\n");
+document.write("#winchm_template_container {position: absolute;overflow: auto;top : 0px;right: 0px;bottom: 0px;left: 0px;}\n");
+document.write("</style>\n");
+}
+
+</script>
 </head>
 
 <body><script language="JavaScript" type="text/JavaScript">
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(796);
+  parent.nav.tree.selectNode(933);
  }else{
   setTimeout("syn()",500);
 }
@@ -142,59 +200,61 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 }
 </script> 
 
-<div id="winchm_template_button"><A href="爆炸物1.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template1/btn_prev_n.gif" border="0"></a><A href="无支线武器.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template1/btn_next_n.gif" border="0"></a></div>
-<div id="winchm_template_navigation">Help &gt; 
-<A href="资源部分.htm">资源部分</A> &gt; <A href="物品.htm">物品</A> &gt; <A href="$$unsavedpage43.htm">科技本质</A> &gt; <A href="消耗品1.htm">消耗品</A> &gt; </div>
-<div id="winchm_template_title">药品</div>
-<div id="winchm_template_content"><P 
+
+<div id="winchm_template_top">
+	<div id="winchm_template_button"><A href="爆炸物1.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="$$unsavedpage84.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
+	<div id="winchm_template_navigation">Help &gt; 
+<A href="资源部分.htm">资源部分</A> &gt; <A href="物品.htm">物品</A> &gt; <A href="$$unsavedpage78.htm">科技本质</A> &gt; <A href="消耗品1.htm">消耗品</A> &gt; </div>
+	<div id="winchm_template_title">药品</div>
+</div>
+<div id="winchm_template_container">
+	<div id="winchm_template_content"><P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>===========================================================================================================<?xml:namespace 
-prefix = o ns = "urn:schemas-microsoft-com:office:office" 
-/><o:p></o:p></SPAN></P>
+lang=EN-US>===========================================================================================================</SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">细胞分裂药剂<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本质：科技本质<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN 
-lang=EN-US>D+100<o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>D+100</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">分类：药水 
-消耗品<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+消耗品<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：这是人类生物工程学所能达到的一个巅峰，能够在短时间内促进人体细胞加速分裂，从而促进原本人体无法自行修复的重要伤害自行愈合，甚至能够迅速再生失去的肢体和器官。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">细胞分裂：注射之后，需要大约<SPAN 
 lang=EN-US>15</SPAN>至<SPAN lang=EN-US>35</SPAN>分钟的时间使药性生效，在接下来的<SPAN 
 lang=EN-US>5</SPAN>分钟里，你可以获得<SPAN lang=EN-US>1</SPAN>点快速医疗，并且可以以<SPAN 
-lang=EN-US>1/6</SPAN>的速度修复恶性伤害。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>1/6</SPAN>的速度修复恶性伤害。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">如果失去的肢体和器官断面完整、保存完好，那么可以在一轮之内接合手指、三到五轮左右接合四肢、一到三分钟左右接合内脏。你接合的肢体或内脏可以不是自己的。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">如果你承受了任何不良状态，只要这个状态是由于创伤、毒素、药物或疾病造成的，那么你可以选择不进行快速医疗，而是改为对一项满足条件的不良状态获得一次豁免的机会。你必须在行动开始前声明是进行快速医疗还是豁免不良状态。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
@@ -204,37 +264,37 @@ lang=EN-US>1</SPAN>点恶性伤害则是<SPAN lang=EN-US>3</SPAN>点，每次进
 lang=EN-US>2</SPAN>点，断肢再生的每一轮也是<SPAN 
 lang=EN-US>2</SPAN>点。这个疲乏点数不能抵抗也不能通过药物本身进行豁免。断肢再生则是会产生更为严重的后果，你在断肢再生的过程中，每轮都会受到<SPAN 
 lang=EN-US>1</SPAN>点剧痛效果的影响，不能抵抗但是可以在再生结束之后进行豁免。再生结束之后，你会直接进入力竭状态，你每使用再生效果一轮时间，力竭状态就会持续一小时时间，在此期间用于豁免力竭状态的每个成功数可以减少五分钟的持续时间。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">由于这种药物是通过透支生命力来加快细胞分裂，因此使用过一次之后，必须等待人体的自我维护机制补充生命力的损耗之后才能使用，这通常需要花费一个月左右的时间，外加大量的进食。你的耐力值每有一点，就可以减少一天的时间。若在生命力补充完全之前再次使用，那么会在三项生理属性上受到随机一项减少一点的处罚。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>===========================================================================================================<o:p></o:p></SPAN></P>
+lang=EN-US>===========================================================================================================</SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">毒品<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">毒品就如其名字所代表的恶意一样，在各个世界里，毒品都是令人憎恨和恐惧的药物，他们让人流离失所，丧失所有的道德，做尽一切人间恶事；但在无限世界里，当轮回者的体魄强健到远远超出普通人类的境界时，对他们来说，普通的毒品可能只是一种无聊的消遣，或者药物。 
-<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+lang=EN-US></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US><o:p></o:p></SPAN>&nbsp;</P>
+lang=EN-US></SPAN>&nbsp;</P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
@@ -243,370 +303,383 @@ lang=EN-US>15</SPAN>分钟。同时必须进行一个强韧判定，<SPAN
 lang=EN-US>DC</SPAN>为你的耐力，一旦失败就会上瘾，之后必须保证每<SPAN 
 lang=EN-US>48</SPAN>小时的【发作周期】中能给自己供应一次上瘾的药物，才能正常行动，否则就会进入持续的【禁断症状】。每种毒品的【禁断症状】不同。在戒除状态，每<SPAN 
 lang=EN-US>5</SPAN>天你可以再进行一次判定，成功则摆脱毒瘾，不再受到【禁断症状】状态的负面效果；这种状态会持续到你成功进行了判定，或者再次服用毒品为止。多次服用同一种毒品，其正面效果不会叠加。但多种不同毒品的戒除状态产生的负面效果可以叠加。你可能会因为属性伤害而死亡。在主神处可以非常廉价地修复并戒断毒瘾，价格可以忽略不计。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+lang=EN-US></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US><o:p></o:p></SPAN>&nbsp;</P>
+lang=EN-US></SPAN>&nbsp;</P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">注射还是服用都是一个标准动作。所有的药物都有药片和药剂版本，价格一样。重复注射同一种毒品，正面效果不会获得叠加。注射新的毒品将覆盖原先毒品的效果。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+lang=EN-US></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US><o:p></o:p></SPAN>&nbsp;</P>
+lang=EN-US>给他人注射需要以一个标准动作进行近战接触攻击，使用白刃或者肉搏进行检定，若命中，则花费一个移动可以给目标注射或者服用。</SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
+lang=EN-US>若强行注射必须先压制该目标，然后以一个标准动作可以给目标注射或者服用。</SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
+lang=EN-US></SPAN>&nbsp;</P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">特别的，毒品无法兑换无限版本。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+lang=EN-US></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US><o:p></o:p></SPAN>&nbsp;</P>
+lang=EN-US></SPAN>&nbsp;</P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>JET<o:p></o:p></SPAN></P>
+lang=EN-US>JET</SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本质：科技本质<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN 
-lang=EN-US>25<o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>25</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">分类：毒品 
-消耗品<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+消耗品<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：废土世界里最出名的药物，价格便宜量又足。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">正面效果：力量获得<SPAN 
 lang=EN-US>1</SPAN>点增强加值，感知获得<SPAN lang=EN-US>1</SPAN>点增强加值。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">戒除状态：力量受到<SPAN 
 lang=EN-US>3</SPAN>点内在减值，感知受到<SPAN lang=EN-US>3</SPAN>点内在减值。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+lang=EN-US></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US><o:p></o:p></SPAN>&nbsp;</P>
+lang=EN-US></SPAN>&nbsp;</P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">巫毒<SPAN 
-lang=EN-US>Voodoo<o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>Voodoo</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本质：科技本质<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN 
-lang=EN-US>50<o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>50</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">分类：毒品 
-消耗品<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+消耗品<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：废土世界里土著的毒品，纯天然，效果惊人。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">正面效果：敏捷获得<SPAN 
 lang=EN-US>1</SPAN>点增强加值，感知获得<SPAN lang=EN-US>1</SPAN>点增强加值，获得<SPAN 
-lang=EN-US>2</SPAN>点天生防御。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>2</SPAN>点天生防御。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">戒除状态：敏捷受到<SPAN 
 lang=EN-US>3</SPAN>点内在减值，感知受到<SPAN lang=EN-US>3</SPAN>点内在减值。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+lang=EN-US></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US><o:p></o:p></SPAN>&nbsp;</P>
+lang=EN-US></SPAN>&nbsp;</P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">巴伏特<SPAN 
-lang=EN-US>Buffout<o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>Buffout</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本质：科技本质<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN 
-lang=EN-US>100<o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>100</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">分类：毒品 
-消耗品<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+消耗品<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：废土世界里的肌肉兴奋剂。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">正面效果：力量获得<SPAN 
 lang=EN-US>2</SPAN>点增强加值，敏捷获得<SPAN lang=EN-US>2</SPAN>点增强加值。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">戒除状态：力量受到<SPAN 
 lang=EN-US>4</SPAN>点内在减值，敏捷受到<SPAN lang=EN-US>4</SPAN>点内在减值。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+lang=EN-US></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US><o:p></o:p></SPAN>&nbsp;</P>
+lang=EN-US></SPAN>&nbsp;</P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">曼它特<SPAN 
-lang=EN-US>Mentats<o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>Mentats</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本质：科技本质<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN 
-lang=EN-US>100<o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>100</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">分类：毒品 
-消耗品<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+消耗品<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：废土世界里的神经幻觉剂，让人变得精神敏锐。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">正面效果：感知获得<SPAN 
 lang=EN-US>2</SPAN>点增强加值，智力获得<SPAN lang=EN-US>2</SPAN>点增强加值。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">戒除状态：感知受到<SPAN 
 lang=EN-US>4</SPAN>点内在减值，智力受到<SPAN lang=EN-US>4</SPAN>点内在减值。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+lang=EN-US></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US><o:p></o:p></SPAN>&nbsp;</P>
+lang=EN-US></SPAN>&nbsp;</P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">狂躁剂<SPAN 
-lang=EN-US>Psycho<o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>Psycho</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本质：科技本质<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN 
-lang=EN-US>50<o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>50</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">分类：毒品 
-消耗品<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+消耗品<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：废土世界里的精神药物。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">正面效果：敏捷获得<SPAN 
 lang=EN-US>3</SPAN>点增强加值，智力受到<SPAN lang=EN-US>2</SPAN>点内在减值。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">戒除状态：敏捷受到<SPAN 
 lang=EN-US>4</SPAN>点内在减值，智力受到<SPAN lang=EN-US>4</SPAN>点内在减值。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+lang=EN-US></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US><o:p></o:p></SPAN>&nbsp;</P>
+lang=EN-US></SPAN>&nbsp;</P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">兴奋剂<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本质：科技本质<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN 
-lang=EN-US>100<o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>100</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">分类：毒品 
-消耗品<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+消耗品<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：星际争霸世界的特产，可以极大限度地提高移动和攻击速度，但长期应用也会造成失眠、消瘦、躁狂、癫痫、妄想症、内出血和大脑功能退化等副作用。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">正面效果：基本移动速度增加<SPAN 
 lang=EN-US>10</SPAN>米，攻击检定获得<SPAN lang=EN-US>6DP</SPAN>士气加值。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">戒除状态：无。但使用时受到<SPAN 
-lang=EN-US>2</SPAN>点无法避免的严重伤害。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>2</SPAN>点无法避免的严重伤害。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+lang=EN-US></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US><o:p></o:p></SPAN>&nbsp;</P>
+lang=EN-US></SPAN>&nbsp;</P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">星际机枪兵兴奋剂<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">本质：科技本质<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">价格：<SPAN 
-lang=EN-US>50<o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>50</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">分类：毒品 
-消耗品<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+消耗品<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">描述：兴奋剂是地球联邦开发出的一种合成肾上腺素和有止痛作用的针剂，<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">正面效果：暂时压制<SPAN 
 lang=EN-US>5</SPAN>点不良状态，攻击检定获得<SPAN 
 lang=EN-US>2DP</SPAN>士气加值。压制的不良状态依然存在，若累积至毁灭状态则直接生效。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">戒除状态：无，但使用时对自己造成<SPAN 
-lang=EN-US>2</SPAN>点不可避免的严重伤害。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>2</SPAN>点不可避免的严重伤害。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" 
-lang=EN-US>===========================================================================================================<o:p></o:p></SPAN></P></div> 
-<div id="winchm_template_footer">Copyright &copy; 2014. All rights reserved.</div>
+lang=EN-US>===========================================================================================================</SPAN></P></div>	
+	<div id="winchm_template_footer">Copyright &copy; 2018. All rights 
+reserved. (To change the copyright info, just edit it in template.)</div>
+</div>
+
 </body>
 </html>

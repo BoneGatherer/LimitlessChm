@@ -17,112 +17,170 @@ html,body {
 
 
 
-<meta http-equiv="X-UA-Compatible" content="IE=8">
+
 <style>
-html {
-	overflow-y:scroll;
-}
+html,div { margin: 0; padding: 0;}
 
 body {
-	background-image: url(template1/back.png);
-	background-repeat: repeat-x;
-	background-color: #FFFFFF;
 	padding: 0px;
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-bottom: 15px;
-	margin-right: 15px;
+	margin: 0px;
+	overflow: auto;
+	height: 100%;
 }
 
-#winchm_template_button {
-	position: fixed; 
-	float: right; 
-	right: 15px; 
-	top: 15px;
+#winchm_template_button{
+	float: right;
+	width: 93px;
+	top: 7px;
+	position: relative;
+	text-align: right;
+	right: 5px;
+	height: auto;
 }
 
-#winchm_template_navigation {
+#winchm_template_top{
 	padding: 0px;
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
+	margin: 0px;
+	border-bottom: 1px solid #9B9B9B;
+	background-color: #B1CEFE;
+}
 
-	font-size: 8pt;
+#winchm_template_navigation{
+	margin: 0px;
+	padding-top: 7px;
+	padding-left: 7px;
+	padding-bottom: 3px;
+	padding-right: 0px;
+	font-size: 8.5pt;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #4A4A4A;
-	text-align: left;
+	font-weight: normal;
+	color: #585858;
 }
 
-#winchm_template_title {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 22px;
-	font-weight: bold;
-	color: #005680;
-	text-align: left;
+#winchm_template_title{
+	margin: 0px;
+	padding-top: 4px;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	padding-right: 0px;
+	font-size: 18px; 
+	font-family: Verdana, Geneva, sans-serif;
+	color: #363636;
 }
 
 #winchm_template_content{
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
+	margin-top: 20px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
 	width: auto  !important;
 	width: 100%;
 }
 
-
-#winchm_template_footer {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	padding-top: 7px;
+#winchm_template_footer{
 	border-width: 1px;
-	border-color: #c0c0c0;
+	border-color: #B1CEFE;
 	border-top-style: solid;
-
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #575757;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
+	padding-top: 7px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 8.5pt;
+	color: #696969;
+	width: auto;
 	text-align: left;
 }
 
+
+#winchm_template_container{
+	margin: 0px;
+	padding: 0px;
+	position: static;
+	padding-bottom: 3px;
+	overflow: auto;
+	background-color: #FFFFFF;
+}
+
+
 @media print
 {
+#winchm_template_container{
+	position: static;	
+	margin: 0px;
+	padding: 5px;
+	
+	width: auto;
+	height: auto;
+	overflow: auto;
+}
 #winchm_template_button{
 visibility:hidden;
 }
 }
 
-#winchm_template_navigation a:link	{text-decoration: none;color: 004080}
-#winchm_template_navigation a:visited  {text-decoration: none; color: #004080}
-#winchm_template_navigation a:active {text-decoration: none; color: #004080}
-#winchm_template_navigation a:hover {text-decoration: none;color: #0000FF}
+#winchm_template_navigation A:link	{text-decoration: none; color:#004080}
+#winchm_template_navigation A:visited  {text-decoration: none; color: #004080}
+#winchm_template_navigation A:active {text-decoration: none; color: #004080 }
+#winchm_template_navigation A:hover {text-decoration: none;color: #0080FF}
 
-a:link	{text-decoration: underline; color:#0033cc}
-a:visited  {text-decoration: underline; color: #0033cc}
-a:active {text-decoration: underline; color: #0033cc }
-a:hover {text-decoration: underline;color: #ff0000;}
-
+A:link	{text-decoration: underline; color:#0033CC}
+A:visited  {text-decoration: underline; color: #0033CC}
+A:active {text-decoration: underline; color: #0033CC }
+A:hover {text-decoration: underline;color: #FF0000;}
 </style>
+<script type="text/javascript">
+function isMobile(){
+Agent = window.navigator.userAgent;
+if (Agent.indexOf("iPhone")>=1 || Agent.indexOf("iPad")>=1 || Agent.indexOf("iPod")>=1 || Agent.indexOf("Android")>=1){
+return true;
+}else{
+return false;	
+}
+
+}
+function d_onresize(){
+if (window.navigator.userAgent.indexOf("MSIE")>=1){
+document.getElementById('winchm_template_container').style.pixelWidth = document.body.offsetWidth - 3;
+document.getElementById('winchm_template_container').style.pixelHeight = document.body.offsetHeight - document.getElementById('winchm_template_top').offsetHeight - 4;
+}
+document.getElementById('winchm_template_container').style.top = document.getElementById('winchm_template_top').offsetHeight + 'px';
+}
+
+function d_onbeforeprint(){
+document.getElementById('winchm_template_container').style.width = 'auto';
+document.getElementById('winchm_template_container').style.height = 'auto';
+}
+
+function d_onafterprint(){
+d_onresize();
+}
+
+if(!isMobile()){
+
+window.onload = d_onresize;
+window.onresize = d_onresize;
+window.onbeforeprint = d_onbeforeprint;
+window.onafterprint = d_onafterprint;
+
+document.write("<style>\n");
+document.write("body {overflow: hidden;}\n");
+document.write("#winchm_template_container {position: absolute;overflow: auto;top : 0px;right: 0px;bottom: 0px;left: 0px;}\n");
+document.write("</style>\n");
+}
+
+</script>
 </head>
 
 <body><script language="JavaScript" type="text/JavaScript">
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(759);
+  parent.nav.tree.selectNode(896);
  }else{
   setTimeout("syn()",500);
 }
@@ -142,11 +200,15 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 }
 </script> 
 
-<div id="winchm_template_button"><A href="无人机.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template1/btn_prev_n.gif" border="0"></a><A href="近战冷兵器.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template1/btn_next_n.gif" border="0"></a></div>
-<div id="winchm_template_navigation">Help &gt; 
+
+<div id="winchm_template_top">
+	<div id="winchm_template_button"><A href="无人机.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="$$unsavedpage78.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
+	<div id="winchm_template_navigation">Help &gt; 
 <A href="资源部分.htm">资源部分</A> &gt; <A href="物品.htm">物品</A> &gt; <A href="载具.htm">载具</A> &gt; </div>
-<div id="winchm_template_title">载具改造</div>
-<div id="winchm_template_content"><P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+	<div id="winchm_template_title">载具改造</div>
+</div>
+<div id="winchm_template_container">
+	<div id="winchm_template_content"><P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">泛用载具改造－逃生舱系统（<SPAN 
 lang=EN-US>D</SPAN>＋<SPAN lang=EN-US>2000</SPAN>）<SPAN 
 lang=EN-US></SPAN></SPAN></P>
@@ -234,32 +296,114 @@ lang=EN-US></SPAN></P>
 <P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" lang=EN-US>===========================================================================================================</SPAN></P><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" lang=EN-US>
+<P class=MsoNormal style="LINE-HEIGHT: 150%; MARGIN: 0pt"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>烈火雄风</FONT> &nbsp;</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%; MARGIN: 0pt"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>本质：自然本质</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%; MARGIN: 0pt"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>价格：</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">C+1000</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%; MARGIN: 0pt"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>前提：只有自然本质马类坐骑才能进行该技艺强化，这是一个自然本质的能力。</FONT> </SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%; MARGIN: 0pt"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>可选规则：</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">ST</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>可以开放该强化给任意生物载具，此时该强化视为魔幻本质，如果强化的自然本质马类为红色，则全检定增加</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">1</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">DP表现加值。 
+</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%; MARGIN: 0pt"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>备注：对主人的加强效果只有骑乘状态才有效。</FONT> </SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%; MARGIN: 0pt"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>描述：</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%; MARGIN: 0pt"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>烈火卷雄风，红云映碧空</FONT> </SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%; MARGIN: 0pt"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>莽原好驰骋，烽烟天边涌</FONT> </SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%; MARGIN: 0pt"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>骐骥有良种，宝马待英雄</FONT> </SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%; MARGIN: 0pt"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>长驱急如电，真堪托死生</FONT> </SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%; MARGIN: 0pt"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>流霞寄壮志，沧海舒豪情</FONT> </SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%; MARGIN: 0pt"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>明朝奋四蹄，敌阵立大功</FONT> </SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%; MARGIN: 0pt"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>属性：敏捷</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">+3 
+</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>力量</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">+3</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%; MARGIN: 0pt"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特性：心意相通、人马一体、长驱疾驰（双特性）</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%; MARGIN: 0pt"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>特殊：这视为一个改造，占用改造位，一次性改造额外获得</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">2</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>个特性</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%; MARGIN: 0pt"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>心意相通：</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">&nbsp;</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>坐骑在灵智判定上视为人类，并且能够听懂人类语言。已经与主人心意相通（被动效果，骑乘有效，在判定上如同彼此心灵链接的效果）。</FONT> 
+</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%; MARGIN: 0pt"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>人马一体：</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">&nbsp;</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>骑乘状态，坐骑与坐骑的主人免疫</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">B</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>级及以下使你们分开的能力。</FONT> </SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P class=MsoNormal style="LINE-HEIGHT: 150%; MARGIN: 0pt"><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>长驱疾驰：</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">&nbsp;</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>坐骑与骑手的先攻为双方先攻相加除</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'">2</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"><FONT face=宋体>，且马匹移动度翻倍</FONT></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-bidi-font-family: 'Times New Roman'; mso-font-kerning: 1.0000pt; mso-spacerun: 'yes'"></SPAN></P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" lang=EN-US>===========================================================================================================</SPAN><!--EndFragment--></SPAN></P><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" lang=EN-US>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">超级机器人大战载具改造。<SPAN 
-lang=EN-US> <?xml:namespace prefix = o ns = 
-"urn:schemas-microsoft-com:office:office" /><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">本强化改造来自超级机器人大战。<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">不花钱改造怎么变得更强？<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+lang=EN-US></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><o:p></o:p></SPAN>&nbsp;</P>
+lang=EN-US></SPAN>&nbsp;</P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
@@ -267,37 +411,37 @@ style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-
 lang=EN-US>D</SPAN>、<SPAN 
 lang=EN-US>DD~S</SPAN>）D级机体只能使用D级改造，改造只对当前机体有效。若是更换了后继机体（通常方式为换购，也可以为<SPAN 
 lang=EN-US>ST</SPAN>允许的其他方式），则后继机体可继承改造。<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><o:p>特殊：若开放造物规则，则本改造可以以造物的形式来自行改造。</o:p></SPAN></P>
+lang=EN-US><o:p>特殊：若开放造物规则，则本改造不可以以造物的形式来自行改造。</O:P></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><o:p></o:p></SPAN>&nbsp;</P>
+lang=EN-US></SPAN>&nbsp;</P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">通用改造：<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">注：装甲改造的所有效果，皆是基于装甲值的。<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+lang=EN-US></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><o:p></o:p></SPAN>&nbsp;</P>
+lang=EN-US></SPAN>&nbsp;</P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
@@ -305,56 +449,56 @@ style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-
 lang=EN-US>D</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">级：<SPAN 
 lang=EN-US>D+500</SPAN>，选择三项购买。最多购买三次。<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>HP</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">改造：架构值增加<SPAN 
-lang=EN-US>2</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>2</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>EN</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">改造：能量增加<SPAN 
-lang=EN-US>5</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>5</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造：装甲增加<SPAN 
-lang=EN-US>2</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>2</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">运动性改造：闪避防御增加<SPAN 
-lang=EN-US>2</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>2</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">照准值改造：武器命中增加<SPAN 
-lang=EN-US>2</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>2</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器高速改造：远程武器提升<SPAN 
-lang=EN-US>2</SPAN>点高速<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>2</SPAN>点高速<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器威猛改造：近战武器提升<SPAN 
-lang=EN-US>2</SPAN>点威猛<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>2</SPAN>点威猛<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+lang=EN-US></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><o:p></o:p></SPAN>&nbsp;</P>
+lang=EN-US></SPAN>&nbsp;</P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
@@ -362,56 +506,56 @@ style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-
 lang=EN-US>DD</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">级：<SPAN 
 lang=EN-US>DD+750</SPAN>，选择三项购买。最多购买三次。<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>HP</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">改造：架构值再增加<SPAN 
-lang=EN-US>3</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>3</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>EN</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">改造：能量再增加<SPAN 
-lang=EN-US>7</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>7</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造：装甲再增加<SPAN 
-lang=EN-US>3</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>3</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">运动性改造：闪避防御再增加<SPAN 
-lang=EN-US>3</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>3</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">照准值改造：武器命中再增加<SPAN 
-lang=EN-US>3</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>3</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器高速改造：远程武器再提升<SPAN 
-lang=EN-US>3</SPAN>点高速<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>3</SPAN>点高速<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器威猛改造：近战武器再提升<SPAN 
-lang=EN-US>3</SPAN>点威猛<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>3</SPAN>点威猛<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+lang=EN-US></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><o:p></o:p></SPAN>&nbsp;</P>
+lang=EN-US></SPAN>&nbsp;</P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
@@ -419,71 +563,71 @@ style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-
 lang=EN-US>C</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">级：<SPAN 
 lang=EN-US>C+1000</SPAN>，选择三项购买。最多购买三次。<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>HP</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">改造：架构值再增加<SPAN 
-lang=EN-US>4</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>4</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>EN</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">改造：能量再增加<SPAN 
-lang=EN-US>10</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>10</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造：装甲再增加<SPAN 
-lang=EN-US>4</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>4</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">运动性改造：闪避防御再增加<SPAN 
-lang=EN-US>4</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>4</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">照准值改造：武器命中再增加<SPAN 
-lang=EN-US>4</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>4</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器威力改造：武器伤害再提升<SPAN 
-lang=EN-US>3L <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>3L </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器高速改造：远程武器再提升<SPAN 
-lang=EN-US>5</SPAN>点高速<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>5</SPAN>点高速<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器威猛改造：近战武器再提升<SPAN 
-lang=EN-US>5</SPAN>点威猛<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>5</SPAN>点威猛<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器破甲改造：武器再提升<SPAN 
-lang=EN-US>4</SPAN>点破甲<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>4</SPAN>点破甲<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器破魔改造：武器再提升<SPAN 
-lang=EN-US>4</SPAN>点破魔<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>4</SPAN>点破魔<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+lang=EN-US></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><o:p></o:p></SPAN>&nbsp;</P>
+lang=EN-US></SPAN>&nbsp;</P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
@@ -491,83 +635,83 @@ style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-
 lang=EN-US>CC</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">级：<SPAN 
 lang=EN-US>CC+1500</SPAN>，选择四项购买。最多购买三次。<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>HP</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">改造：架构值再增加<SPAN 
-lang=EN-US>6</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>6</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>EN</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">改造：能量再增加<SPAN 
-lang=EN-US>15</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>15</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>1</SPAN>：装甲再增加<SPAN lang=EN-US>6</SPAN>点<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>2</SPAN>：<SPAN lang=EN-US>DR</SPAN>再增加<SPAN lang=EN-US>2</SPAN>点<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">运动性改造：闪避防御再增加<SPAN 
-lang=EN-US>6</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>6</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">照准值改造：武器命中再增加<SPAN 
-lang=EN-US>6</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>6</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">出力改造：机体出力再增加<SPAN 
-lang=EN-US>12</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>12</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器威力改造：武器伤害再提升<SPAN 
-lang=EN-US>5L <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>5L </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器高速改造：远程武器再提升<SPAN 
-lang=EN-US>7</SPAN>点高速<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>7</SPAN>点高速<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器威猛改造：近战武器再提升<SPAN 
-lang=EN-US>7</SPAN>点威猛<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>7</SPAN>点威猛<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器破甲改造：武器再提升<SPAN 
-lang=EN-US>6</SPAN>点破甲<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>6</SPAN>点破甲<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器破魔改造：武器再提升<SPAN 
-lang=EN-US>6</SPAN>点破魔<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>6</SPAN>点破魔<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+lang=EN-US></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><o:p></o:p></SPAN>&nbsp;</P>
+lang=EN-US></SPAN>&nbsp;</P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
@@ -575,88 +719,88 @@ style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-
 lang=EN-US>B</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">级：<SPAN 
 lang=EN-US>B+2000</SPAN>，选择四项购买。最多购买三次。<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>HP</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">改造：架构值再增加<SPAN 
-lang=EN-US>8</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>8</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>EN</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">改造：能量再增加<SPAN 
-lang=EN-US>20</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>20</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>1</SPAN>：装甲再增加<SPAN lang=EN-US>8</SPAN>点<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>2</SPAN>：<SPAN lang=EN-US>DR</SPAN>再增加<SPAN lang=EN-US>3</SPAN>点<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">运动性改造：闪避防御再增加<SPAN 
-lang=EN-US>8</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>8</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">照准值改造：武器命中再增加<SPAN 
-lang=EN-US>8</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>8</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">出力改造：机体出力再增加<SPAN 
-lang=EN-US>16</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>16</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">推进器改造：基础移动速度再提升<SPAN 
-lang=EN-US>80</SPAN>米<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>80</SPAN>米<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器威力改造：武器伤害再提升<SPAN 
-lang=EN-US>7L <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>7L </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器高速改造：远程武器再提升<SPAN 
-lang=EN-US>10</SPAN>点高速<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>10</SPAN>点高速<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器威猛改造：近战武器再提升<SPAN 
-lang=EN-US>10</SPAN>点威猛<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>10</SPAN>点威猛<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器破甲改造：武器再提升<SPAN 
-lang=EN-US>9</SPAN>点破甲<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>9</SPAN>点破甲<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器破魔改造：武器再提升<SPAN 
-lang=EN-US>9</SPAN>点破魔<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>9</SPAN>点破魔<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+lang=EN-US></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><o:p></o:p></SPAN>&nbsp;</P>
+lang=EN-US></SPAN>&nbsp;</P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
@@ -664,106 +808,106 @@ style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-
 lang=EN-US>BB</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">级：<SPAN 
 lang=EN-US>BB+3000</SPAN>，选择五项购买。最多购买三次。<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>HP</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">改造：架构值再增加<SPAN 
-lang=EN-US>12</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>12</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>EN</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">改造：能量再增加<SPAN 
-lang=EN-US>30</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>30</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>1</SPAN>：装甲再增加<SPAN lang=EN-US>12</SPAN>点<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>2</SPAN>：<SPAN lang=EN-US>DR</SPAN>再增加<SPAN lang=EN-US>5</SPAN>点<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>3</SPAN>：某单能量抗力再提升<SPAN lang=EN-US>8</SPAN>点<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>4</SPAN>：全能量抗力再增加<SPAN lang=EN-US>5</SPAN>点<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>5</SPAN>：全伤害吸收再增加<SPAN lang=EN-US>4</SPAN>点<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">运动性改造：闪避防御再增加<SPAN 
-lang=EN-US>12</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>12</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">照准值改造：武器命中再增加<SPAN 
-lang=EN-US>12</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>12</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">出力改造：机体出力再增加<SPAN 
-lang=EN-US>24</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>24</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">推进器改造：基础移动速度再提升<SPAN 
-lang=EN-US>120</SPAN>米<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>120</SPAN>米<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器威力改造：武器伤害再提升<SPAN 
-lang=EN-US>10L <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>10L </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器高速改造：远程武器再提升<SPAN 
-lang=EN-US>15</SPAN>点高速<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>15</SPAN>点高速<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器威猛改造：近战武器再提升<SPAN 
-lang=EN-US>15</SPAN>点威猛<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>15</SPAN>点威猛<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器破甲改造：武器再提升<SPAN 
-lang=EN-US>14</SPAN>点破甲<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>14</SPAN>点破甲<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器破魔改造：武器再提升<SPAN 
-lang=EN-US>14</SPAN>点破魔<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>14</SPAN>点破魔<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+lang=EN-US></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><o:p></o:p></SPAN>&nbsp;</P>
+lang=EN-US></SPAN>&nbsp;</P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
@@ -771,111 +915,111 @@ style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-
 lang=EN-US>A</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">级：<SPAN 
 lang=EN-US>A+4000</SPAN>，选择五项购买。最多购买三次。<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>HP</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">改造：架构值再增加<SPAN 
-lang=EN-US>16</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>16</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>EN</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">改造：能量再增加<SPAN 
-lang=EN-US>40</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>40</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>1</SPAN>：装甲再增加<SPAN lang=EN-US>16</SPAN>点<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>2</SPAN>：<SPAN lang=EN-US>DR</SPAN>再增加<SPAN lang=EN-US>6</SPAN>点<SPAN 
-lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>3</SPAN>：某单能量抗力再提升<SPAN lang=EN-US>12</SPAN>点<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>4</SPAN>：全能量抗力再增加<SPAN lang=EN-US>6</SPAN>点<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>5</SPAN>：全伤害吸收再增加<SPAN lang=EN-US>5</SPAN>点<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">运动性改造：闪避防御再增加<SPAN 
-lang=EN-US>16</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>16</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">照准值改造：武器命中再增加<SPAN 
-lang=EN-US>16</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>16</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">出力改造：机体出力再增加<SPAN 
-lang=EN-US>32</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>32</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">推进器改造：基础移动速度再提升<SPAN 
-lang=EN-US>320</SPAN>米<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>320</SPAN>米<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">射程改造：远程武器射程再提升<SPAN 
-lang=EN-US>320</SPAN>米<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>320</SPAN>米<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器威力改造：武器伤害再提升<SPAN 
-lang=EN-US>13L <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>13L </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器高速改造：远程武器再提升<SPAN 
-lang=EN-US>19</SPAN>点高速<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>19</SPAN>点高速<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器威猛改造：近战武器再提升<SPAN 
-lang=EN-US>19</SPAN>点威猛<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>19</SPAN>点威猛<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器破甲改造：武器再提升<SPAN 
-lang=EN-US>18</SPAN>点破甲<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>18</SPAN>点破甲<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器破魔改造：武器再提升<SPAN 
-lang=EN-US>18</SPAN>点破魔<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>18</SPAN>点破魔<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+lang=EN-US></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><o:p></o:p></SPAN>&nbsp;</P>
+lang=EN-US></SPAN>&nbsp;</P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
@@ -883,111 +1027,111 @@ style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-
 lang=EN-US>AA</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">级：<SPAN 
 lang=EN-US>AA+6000</SPAN>，选择六项购买。最多购买三次。<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>HP</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">改造：架构值再增加<SPAN 
-lang=EN-US>24</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>24</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>EN</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">改造：能量再增加<SPAN 
-lang=EN-US>60</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>60</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>1</SPAN>：装甲再增加<SPAN lang=EN-US>24</SPAN>点<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>2</SPAN>：<SPAN lang=EN-US>DR</SPAN>再增加<SPAN 
-lang=EN-US>10</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>10</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>3</SPAN>：某单能量抗力再提升<SPAN lang=EN-US>18</SPAN>点<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>4</SPAN>：全能量抗力再增加<SPAN lang=EN-US>10</SPAN>点<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>5</SPAN>：全伤害吸收再增加<SPAN lang=EN-US>8</SPAN>点<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">运动性改造：闪避防御再增加<SPAN 
-lang=EN-US>24</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>24</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">照准值改造：武器命中再增加<SPAN 
-lang=EN-US>24</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>24</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">出力改造：机体出力再增加<SPAN 
-lang=EN-US>48</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>48</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">推进器改造：基础移动速度再提升<SPAN 
-lang=EN-US>480</SPAN>米<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>480</SPAN>米<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">射程改造：远程武器射程再提升<SPAN 
-lang=EN-US>480</SPAN>米<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>480</SPAN>米<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器威力改造：武器伤害再提升<SPAN 
-lang=EN-US>19L <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>19L </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器高速改造：远程武器再提升<SPAN 
-lang=EN-US>29</SPAN>点高速<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>29</SPAN>点高速<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器威猛改造：近战武器再提升<SPAN 
-lang=EN-US>29</SPAN>点威猛<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>29</SPAN>点威猛<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器破甲改造：武器再提升<SPAN 
-lang=EN-US>28</SPAN>点破甲<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>28</SPAN>点破甲<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器破魔改造：武器再提升<SPAN 
-lang=EN-US>28</SPAN>点破魔<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>28</SPAN>点破魔<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+lang=EN-US></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
-lang=EN-US><o:p></o:p></SPAN>&nbsp;</P>
+lang=EN-US></SPAN>&nbsp;</P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
@@ -995,103 +1139,106 @@ style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-
 lang=EN-US>S</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">级：<SPAN 
 lang=EN-US>S+8000</SPAN>，选择六项购买。最多购买三次。<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>HP</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">改造：架构值再增加<SPAN 
-lang=EN-US>32</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>32</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>EN</SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">改造：能量再增加<SPAN 
-lang=EN-US>80</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>80</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>1</SPAN>：装甲再增加<SPAN lang=EN-US>32</SPAN>点<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>2</SPAN>：<SPAN lang=EN-US>DR</SPAN>再增加<SPAN 
-lang=EN-US>12</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>12</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>3</SPAN>：某单能量抗力再提升<SPAN lang=EN-US>24</SPAN>点<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>4</SPAN>：全能量抗力再增加<SPAN lang=EN-US>12</SPAN>点<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">装甲改造<SPAN 
 lang=EN-US>5</SPAN>：全伤害吸收再增加<SPAN lang=EN-US>10</SPAN>点<SPAN lang=EN-US> 
-<o:p></o:p></SPAN></SPAN></P>
+</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">运动性改造：闪避防御再增加<SPAN 
-lang=EN-US>32</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>32</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">照准值改造：武器命中再增加<SPAN 
-lang=EN-US>32</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>32</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">出力改造：机体出力再增加<SPAN 
-lang=EN-US>64</SPAN>点<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>64</SPAN>点<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">推进器改造：基础移动速度再提升<SPAN 
-lang=EN-US>1600</SPAN>米<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>1600</SPAN>米<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">射程改造：远程武器射程再提升<SPAN 
-lang=EN-US>1600</SPAN>米<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>1600</SPAN>米<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器威力改造：武器伤害再提升<SPAN 
-lang=EN-US>27L <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>27L </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器高速改造：远程武器再提升<SPAN 
-lang=EN-US>39</SPAN>点高速<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>39</SPAN>点高速<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器威猛改造：近战武器再提升<SPAN 
-lang=EN-US>39</SPAN>点威猛<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>39</SPAN>点威猛<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器破甲改造：武器再提升<SPAN 
-lang=EN-US>38</SPAN>点破甲<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>38</SPAN>点破甲<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">武器破魔改造：武器再提升<SPAN 
-lang=EN-US>38</SPAN>点破魔<SPAN lang=EN-US> <o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>38</SPAN>点破魔<SPAN lang=EN-US> </SPAN></SPAN></P>
 <P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" lang=EN-US>===========================================================================================================</SPAN></P></SPAN></div> 
-<div id="winchm_template_footer">Copyright &copy; 2014. All rights reserved.</div>
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" lang=EN-US>===========================================================================================================</SPAN></P></SPAN></div>	
+	<div id="winchm_template_footer">Copyright &copy; 2018. All rights 
+reserved. (To change the copyright info, just edit it in template.)</div>
+</div>
+
 </body>
 </html>

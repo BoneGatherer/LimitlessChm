@@ -17,112 +17,170 @@ html,body {
 
 
 
-<meta http-equiv="X-UA-Compatible" content="IE=8">
+
 <style>
-html {
-	overflow-y:scroll;
-}
+html,div { margin: 0; padding: 0;}
 
 body {
-	background-image: url(template1/back.png);
-	background-repeat: repeat-x;
-	background-color: #FFFFFF;
 	padding: 0px;
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-bottom: 15px;
-	margin-right: 15px;
+	margin: 0px;
+	overflow: auto;
+	height: 100%;
 }
 
-#winchm_template_button {
-	position: fixed; 
-	float: right; 
-	right: 15px; 
-	top: 15px;
+#winchm_template_button{
+	float: right;
+	width: 93px;
+	top: 7px;
+	position: relative;
+	text-align: right;
+	right: 5px;
+	height: auto;
 }
 
-#winchm_template_navigation {
+#winchm_template_top{
 	padding: 0px;
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
+	margin: 0px;
+	border-bottom: 1px solid #9B9B9B;
+	background-color: #B1CEFE;
+}
 
-	font-size: 8pt;
+#winchm_template_navigation{
+	margin: 0px;
+	padding-top: 7px;
+	padding-left: 7px;
+	padding-bottom: 3px;
+	padding-right: 0px;
+	font-size: 8.5pt;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #4A4A4A;
-	text-align: left;
+	font-weight: normal;
+	color: #585858;
 }
 
-#winchm_template_title {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 22px;
-	font-weight: bold;
-	color: #005680;
-	text-align: left;
+#winchm_template_title{
+	margin: 0px;
+	padding-top: 4px;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	padding-right: 0px;
+	font-size: 18px; 
+	font-family: Verdana, Geneva, sans-serif;
+	color: #363636;
 }
 
 #winchm_template_content{
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
+	margin-top: 20px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
 	width: auto  !important;
 	width: 100%;
 }
 
-
-#winchm_template_footer {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	padding-top: 7px;
+#winchm_template_footer{
 	border-width: 1px;
-	border-color: #c0c0c0;
+	border-color: #B1CEFE;
 	border-top-style: solid;
-
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #575757;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
+	padding-top: 7px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 8.5pt;
+	color: #696969;
+	width: auto;
 	text-align: left;
 }
 
+
+#winchm_template_container{
+	margin: 0px;
+	padding: 0px;
+	position: static;
+	padding-bottom: 3px;
+	overflow: auto;
+	background-color: #FFFFFF;
+}
+
+
 @media print
 {
+#winchm_template_container{
+	position: static;	
+	margin: 0px;
+	padding: 5px;
+	
+	width: auto;
+	height: auto;
+	overflow: auto;
+}
 #winchm_template_button{
 visibility:hidden;
 }
 }
 
-#winchm_template_navigation a:link	{text-decoration: none;color: 004080}
-#winchm_template_navigation a:visited  {text-decoration: none; color: #004080}
-#winchm_template_navigation a:active {text-decoration: none; color: #004080}
-#winchm_template_navigation a:hover {text-decoration: none;color: #0000FF}
+#winchm_template_navigation A:link	{text-decoration: none; color:#004080}
+#winchm_template_navigation A:visited  {text-decoration: none; color: #004080}
+#winchm_template_navigation A:active {text-decoration: none; color: #004080 }
+#winchm_template_navigation A:hover {text-decoration: none;color: #0080FF}
 
-a:link	{text-decoration: underline; color:#0033cc}
-a:visited  {text-decoration: underline; color: #0033cc}
-a:active {text-decoration: underline; color: #0033cc }
-a:hover {text-decoration: underline;color: #ff0000;}
-
+A:link	{text-decoration: underline; color:#0033CC}
+A:visited  {text-decoration: underline; color: #0033CC}
+A:active {text-decoration: underline; color: #0033CC }
+A:hover {text-decoration: underline;color: #FF0000;}
 </style>
+<script type="text/javascript">
+function isMobile(){
+Agent = window.navigator.userAgent;
+if (Agent.indexOf("iPhone")>=1 || Agent.indexOf("iPad")>=1 || Agent.indexOf("iPod")>=1 || Agent.indexOf("Android")>=1){
+return true;
+}else{
+return false;	
+}
+
+}
+function d_onresize(){
+if (window.navigator.userAgent.indexOf("MSIE")>=1){
+document.getElementById('winchm_template_container').style.pixelWidth = document.body.offsetWidth - 3;
+document.getElementById('winchm_template_container').style.pixelHeight = document.body.offsetHeight - document.getElementById('winchm_template_top').offsetHeight - 4;
+}
+document.getElementById('winchm_template_container').style.top = document.getElementById('winchm_template_top').offsetHeight + 'px';
+}
+
+function d_onbeforeprint(){
+document.getElementById('winchm_template_container').style.width = 'auto';
+document.getElementById('winchm_template_container').style.height = 'auto';
+}
+
+function d_onafterprint(){
+d_onresize();
+}
+
+if(!isMobile()){
+
+window.onload = d_onresize;
+window.onresize = d_onresize;
+window.onbeforeprint = d_onbeforeprint;
+window.onafterprint = d_onafterprint;
+
+document.write("<style>\n");
+document.write("body {overflow: hidden;}\n");
+document.write("#winchm_template_container {position: absolute;overflow: auto;top : 0px;right: 0px;bottom: 0px;left: 0px;}\n");
+document.write("</style>\n");
+}
+
+</script>
 </head>
 
 <body><script language="JavaScript" type="text/JavaScript">
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(870);
+  parent.nav.tree.selectNode(1024);
  }else{
   setTimeout("syn()",500);
 }
@@ -142,273 +200,541 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 }
 </script> 
 
-<div id="winchm_template_button"><A href="物品改造4.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template1/btn_prev_n.gif" border="0"></a><A href="法之书.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template1/btn_next_n.gif" border="0"></a></div>
-<div id="winchm_template_navigation">Help &gt; 
-<A href="$$unsavedpage57.htm">扩展之书</A> &gt; <A href="暂不开放.htm">暂不开放</A> &gt; </div>
-<div id="winchm_template_title">法术</div>
-<div id="winchm_template_content"><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'">
-<SPAN style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'">
-<P style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"  ></SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'">
-<SPAN style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">&nbsp;===========================================================================================================</SPAN></SPAN></SPAN></SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN></P></SPAN><P 
-style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class =p0><SPAN style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P><P 
-style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">咸卦法（心法）C+2000或23XP</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"  ></SPAN></P><P style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN></P><P style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"  ></SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P><P 
-style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">先决：感知6，拥有至少一个需要消耗魔力的能力，拥有至少一个需要消耗内力的能力。</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"  ></SPAN></P><P style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN></P><P style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"  >咸卦法是将自身化为无，使象征心与静的魔力，与其截然相反的，象征身与动的内力从自身的内外交汇融合，从而获得强大力量的高难度技法。</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN></P><P 
-style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN></P><P 
-style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class =p0><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">这种状态也被称为「Suntaxis&nbsp;Antikeimenoin（身心一体）」。</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN></P><P 
-style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class =p0><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN></P><P style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"  >对于肉体的强化，物理·魔法的防御，加速，耐热，耐寒，耐毒等种种效果的取得只是单单由于能量融合带来的强化效果而已。</SPAN><SPAN style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN></P><P 
-style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"  ></SPAN></P><P 
-style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">由于其难度与万用性，咸卦法也被称为「Ultema&nbsp;Art（究极技法）」。</SPAN>
-<SPAN style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN></P><P 
-style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"  ></SPAN></P><P 
-style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0>
-<SPAN style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P><P 
-style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class =p0><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">以一个移动动作，支付1内力和1点魔力来启动，效果持续5轮，你可以以自由动作来支付内力和魔力以维持咸卦法。</SPAN>
-<SPAN style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN></P><P 
-style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"  ></SPAN></P><P 
-style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0>
-<SPAN style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">咸卦法生效期间，你可以将内力和魔力共通，作为同一个能量使用。</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN></P><P 
-style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class =p0><SPAN style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN></P><P 
-style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">如果一个能力允许你支付额外的内力（魔力）来提升其效果或获得增幅效果（如多数法术，或是内力的基本用法），可以额外投入的能量上限加倍，可以获得的增幅或提升效果的上限同步加倍，但是对不以数值提升来计算效果的能力无效，对同时具有数值提升效果和非数值提升效果的能力，只有数值提升效果的部分有效。</SPAN>
-<SPAN style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN></P><P 
-style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"  ></SPAN></P><P 
-style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0>
-<SPAN style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P><P 
-style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class =p0><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">（例如双发技巧的增幅效果使其能够进行三发，不会被此能力影响，魔法射手的增幅效果中，短点射/长点射/连射/火力压制的效果不会被此能力影响，但是伤害提升的部分可以）</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"  ></SPAN></P></SPAN>
-<P style="MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'">
-<P style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"  ></SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'">
-<SPAN style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">&nbsp;===========================================================================================================</SPAN></SPAN></SPAN></SPAN></P>
-<P style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'">
-<SPAN style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"></SPAN></SPAN></SPAN></SPAN>&nbsp;</P><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'">
-<SPAN style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">
-<P style="MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">护甲</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"><BR></SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">威力值：</SPAN><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">2</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN></P>
-<P style="MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">价格：</SPAN><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">D+500</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"><BR></SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 11pt; mso-spacerun: 'yes'">专业</SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">：结界</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"><BR></SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 11pt; mso-spacerun: 'yes'">成分</SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">：语言</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"><BR></SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">动作：标准</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN></P>
-<P style="MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">消耗：</SPAN><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">1</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"><BR></SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">范围：自己</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"><BR></SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">持续时间：</SPAN><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">1</SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">小时</SPAN><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">*</SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">智力值</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"><BR></SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">效果：当你获得此法术时，选择以下之一，或由你的施法者职能决定其中之一，作为它的效果：</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"><BR></SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">·你创造了一个魔法的介层，为自己增加威力值的偏斜防御。关键词为力场。</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"><BR></SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">·你将魔力注入自己的护甲或衣物，为它的盔甲防御增加威力</SPAN><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">+2</SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">的增强加值（普通衣物视为防御</SPAN><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">0</SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">的轻型盔甲），关键词为物质变化。</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"><BR></SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">·你将魔力注入自己的身体，为自己的天生防御增加威力</SPAN><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">+2</SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">的增强加值（普通皮肤视为天生防御</SPAN><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">0</SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">）关键词为生命。</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"><BR></SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">无论选择哪种，你在防御上都获得相应的附加成功</SPAN><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">=</SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">该法术等级。</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"><BR></SPAN></P></SPAN></SPAN></SPAN></SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN></SPAN>
-<P style="MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN>&nbsp;</P><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'">
-<SPAN style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">
-<SPAN style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'">
-<SPAN style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">
-<P style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'">
-<SPAN style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'">
-<SPAN style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">&nbsp;</P><P 
-style="MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class  =p0><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">能量护罩</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"  ></SPAN></P><P style="MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class  =p0><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">专业：结界</SPAN><SPAN style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'" ><BR 
+
+<div id="winchm_template_top">
+	<div id="winchm_template_button"><A href="物品改造4.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="法之书.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
+	<div id="winchm_template_navigation">Help &gt; 
+<A href="暂不开放.htm">暂不开放</A> &gt; </div>
+	<div id="winchm_template_title">法术</div>
+</div>
+<div id="winchm_template_container">
+	<div id="winchm_template_content"><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'">
+<SPAN style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'">
+<P style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"  ></SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'">
+<SPAN style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'">&nbsp;===========================================================================================================</SPAN></SPAN></SPAN></SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN></P></SPAN><P 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class =p0><SPAN style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN>&nbsp;</P><P 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">咸卦法（心法）C+2000或23XP</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"  ></SPAN></P><P style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN></P><P style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"  ></SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN>&nbsp;</P><P 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">先决：感知6，拥有至少一个需要消耗魔力的能力，拥有至少一个需要消耗内力的能力。</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"  ></SPAN></P><P style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN></P><P style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'"  >咸卦法是将自身化为无，使象征心与静的魔力，与其截然相反的，象征身与动的内力从自身的内外交汇融合，从而获得强大力量的高难度技法。</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN></P><P 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN></P><P 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class =p0><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">这种状态也被称为「Suntaxis&nbsp;Antikeimenoin（身心一体）」。</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN></P><P 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class =p0><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN></P><P style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'"  >对于肉体的强化，物理·魔法的防御，加速，耐热，耐寒，耐毒等种种效果的取得只是单单由于能量融合带来的强化效果而已。</SPAN><SPAN style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN></P><P 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"  ></SPAN></P><P 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">由于其难度与万用性，咸卦法也被称为「Ultema&nbsp;Art（究极技法）」。</SPAN>
+<SPAN style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN></P><P 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"  ></SPAN></P><P 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0>
+<SPAN style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN>&nbsp;</P><P 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class =p0><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">以一个移动动作，支付1内力和1点魔力来启动，效果持续5轮，你可以以自由动作来支付内力和魔力以维持咸卦法。</SPAN>
+<SPAN style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN></P><P 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"  ></SPAN></P><P 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0>
+<SPAN style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">咸卦法生效期间，你可以将内力和魔力共通，作为同一个能量使用。</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN></P><P 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class =p0><SPAN style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN></P><P 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">如果一个能力允许你支付额外的内力（魔力）来提升其效果或获得增幅效果（如多数法术，或是内力的基本用法），可以额外投入的能量上限加倍，可以获得的增幅或提升效果的上限同步加倍，但是对不以数值提升来计算效果的能力无效，对同时具有数值提升效果和非数值提升效果的能力，只有数值提升效果的部分有效。</SPAN>
+<SPAN style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN></P><P 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"  ></SPAN></P><P 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0>
+<SPAN style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN>&nbsp;</P><P 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class =p0><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">（例如双发技巧的增幅效果使其能够进行三发，不会被此能力影响，魔法射手的增幅效果中，短点射/长点射/连射/火力压制的效果不会被此能力影响，但是伤害提升的部分可以）</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"  ></SPAN></P></SPAN>
+<P style="MARGIN-BOTTOM: 0pt; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN>&nbsp;</P><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'">
+<P style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"  ></SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'">
+<SPAN style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'">&nbsp;===========================================================================================================</SPAN></SPAN></SPAN></SPAN></P>
+<P style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'">
+<SPAN style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"></SPAN></SPAN></SPAN></SPAN>&nbsp;</P><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'">
+<SPAN style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'">
+<P style="MARGIN-BOTTOM: 0pt; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">护甲</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">威力值：</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'">2</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN></P>
+<P style="MARGIN-BOTTOM: 0pt; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">价格：</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'">D+500</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">专业</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">：结界</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">成分</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">：语言</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">动作：标准</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN></P>
+<P style="MARGIN-BOTTOM: 0pt; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">消耗：</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'">1</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">范围：自己</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">持续时间：</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'">1</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">小时</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'">*</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">智力值</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">效果：当你获得此法术时，选择以下之一，或由你的施法者职能决定其中之一，作为它的效果：</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">·你创造了一个魔法的介层，为自己增加威力值的偏斜防御。关键词为力场。</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">·你将魔力注入自己的护甲或衣物，为它的盔甲防御增加威力</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'">+2</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">的增强加值（普通衣物视为防御</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'">0</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">的轻型盔甲），关键词为物质变化。</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">·你将魔力注入自己的身体，为自己的天生防御增加威力</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'">+2</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">的增强加值（普通皮肤视为天生防御</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'">0</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">）关键词为生命。</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">无论选择哪种，你在防御上都获得相应的附加成功</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'">=</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">该法术等级。</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"><BR></SPAN></P></SPAN></SPAN></SPAN></SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN></SPAN>
+<P style="MARGIN-BOTTOM: 0pt; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN>&nbsp;</P><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'">
+<SPAN style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'">
+<SPAN style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'">
+<SPAN style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'">
+<P style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'">
+<SPAN style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'">
+<SPAN style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'">&nbsp;</P><P 
+style="MARGIN-BOTTOM: 0pt; MARGIN-TOP: 0pt" class  =p0><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">能量护罩</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"  ></SPAN></P><P style="MARGIN-BOTTOM: 0pt; MARGIN-TOP: 0pt" class  =p0><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">专业：结界</SPAN><SPAN style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'" ><BR 
 ></SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">威力：</SPAN><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">4</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"><BR 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">威力：</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'">4</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"><BR 
 ></SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">价格：</SPAN><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">C+1000</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"  ><BR 
-></SPAN><SPAN style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'" >动作：标准</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"  ><BR ></SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'" >能耗：</SPAN><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt;  mso-spacerun: 'yes'">3</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'" ><BR 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">价格：</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'">C+1000</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"  ><BR 
+></SPAN><SPAN style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'" >动作：标准</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"  ><BR ></SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'" >能耗：</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman';  mso-spacerun: 'yes'">3</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'" ><BR 
 ></SPAN>
-<SPAN style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">成份：语言，动作</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'" ><BR 
+<SPAN style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">成份：语言，动作</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'" ><BR 
 ></SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'" >射程：接触</SPAN>
-<SPAN style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"><BR 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'" >射程：接触</SPAN>
+<SPAN style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"><BR 
 ></SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"  >范围：一个目标</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'">
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'"  >范围：一个目标</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'">
 <BR ></SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'" >持续：</SPAN><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt;  mso-spacerun: 'yes'">10</SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'" >
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'" >持续：</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman';  mso-spacerun: 'yes'">10</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'" >
 分钟*神秘学等级*威力值，或消散</SPAN>
-<SPAN style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN></P><P 
-style="MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class =p0><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"  >效果：投智力＋神秘学，法术为目标生物吸收头</SPAN><SPAN style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">10</SPAN><SPAN 
-style="FONT-FAMILY: '宋体'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'" >点/成功数的某种能量伤害，由你在施法时选择6种能量之一。</SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN></P>
-<P style="MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class =p0><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'" ></SPAN></P><P 
-style="MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class   =p0><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'" ></SPAN></P>
-<P style="MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class =p0><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"></SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"  ></SPAN>&nbsp;</P><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"  ></SPAN>
-<SPAN style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'">
-<P style="TEXT-ALIGN: justify; MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt" class=p0><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'"  ></SPAN><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'">
-<SPAN style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'">&nbsp;===========================================================================================================</SPAN></SPAN></SPAN></SPAN></P><SPAN 
-style="FONT-FAMILY: 'Arial'; FONT-SIZE: 11pt; mso-spacerun: 'yes'">
-<SPAN style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"><SPAN 
-style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 10.5pt; mso-spacerun: 'yes'"><P 
+<SPAN style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN></P><P 
+style="MARGIN-BOTTOM: 0pt; MARGIN-TOP: 0pt" class =p0><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'"  >效果：投智力＋神秘学，法术为目标生物吸收头</SPAN><SPAN style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'">10</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'" >点/成功数的某种能量伤害，由你在施法时选择6种能量之一。</SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN></P>
+<P style="MARGIN-BOTTOM: 0pt; MARGIN-TOP: 0pt" class =p0><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'" ></SPAN></P><P 
+style="MARGIN-BOTTOM: 0pt; MARGIN-TOP: 0pt" class   =p0><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'" ></SPAN></P>
+<P style="MARGIN-BOTTOM: 0pt; MARGIN-TOP: 0pt" class =p0><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"></SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"  ></SPAN>&nbsp;</P><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"  ></SPAN>
+<SPAN style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'">
+<P style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'"  ></SPAN><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'">
+<SPAN style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'">&nbsp;===========================================================================================================</SPAN></SPAN></SPAN></SPAN></P><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'">
+<SPAN style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><P 
 style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体" lang=EN-US></SPAN></P><P 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt" lang=EN-US></SPAN></P><P 
 style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" class=MsoNormal align=left>
-<SPAN style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">阿尼马格斯（<SPAN 
+<SPAN style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">阿尼马格斯（<SPAN 
 lang=EN-US      >Animagus</SPAN>）：<SPAN 
 lang=EN-US       >D+1000</SPAN></SPAN></P><P 
 style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" class=MsoNormal align=left>
-<SPAN style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">花费：<SPAN 
+<SPAN style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">花费：<SPAN 
 lang=EN-US     >5</SPAN>点魔力<SPAN 
 lang=EN-US       ></SPAN></SPAN></P><P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">范围：自身<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">范围：自身<SPAN 
 lang=EN-US     ></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">成分：语言，姿势，魔杖<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">成分：语言，姿势，魔杖<SPAN 
 lang=EN-US       ></SPAN></SPAN></P><P 
 style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" class=MsoNormal align=left>
-<SPAN style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">专业：变化<SPAN 
+<SPAN style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">专业：变化<SPAN 
 lang=EN-US     ></SPAN></SPAN></P><P 
 style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">对抗：——<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">对抗：——<SPAN 
 lang=EN-US       ></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">专有：——<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">专有：——<SPAN 
 lang=EN-US     ></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt;  mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">持续时间：<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%;  mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">持续时间：<SPAN 
 lang=EN-US     >
 10</SPAN>分钟
 <SPAN lang=EN-US       >/</SPAN>每成功数<SPAN 
 lang=EN-US       ></SPAN></SPAN></P><P 
 style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" class=MsoNormal align=left>
-<SPAN style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">施展时间：一个标准动作<SPAN 
+<SPAN style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">施展时间：一个标准动作<SPAN 
 lang=EN-US     ></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">能让你变成一些小动物。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">能让你变成一些小动物。<SPAN 
 lang=EN-US       ></SPAN></SPAN></P><P 
 style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" class=MsoNormal align=left>
-<SPAN style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">如果要变成大动物将会很大的提高<SPAN 
+<SPAN style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">如果要变成大动物将会很大的提高<SPAN 
 lang=EN-US       >DC</SPAN>。<SPAN 
 lang=EN-US       ></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">你只能变成你非常熟悉的动物。<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">你只能变成你非常熟悉的动物。<SPAN 
 lang=EN-US     ></SPAN></SPAN></P><P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">变成动物后，你的<SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">变成动物后，你的<SPAN 
 lang=EN-US       >AC,HP</SPAN>等均会变成与该动物相同。<SPAN 
 lang=EN-US     ></SPAN></SPAN></P>
 <P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">但你受伤超过你的一半<SPAN 
-lang=EN-US       >HP</SPAN>以后就会变回来。<SPAN 
-lang=EN-US     ></SPAN></SPAN></P></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></div> 
-<div id="winchm_template_footer">Copyright &copy; 2014. All rights reserved.</div>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt">但你受伤超过你的一半<SPAN 
+lang=EN-US       >HP</SPAN>以后就会变回来。</SPAN></P>
+<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"></SPAN>&nbsp;</P>
+<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" class=MsoNormal align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-bidi-font-family: 宋体; mso-font-kerning: 0pt"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%">&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">万物流转<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">专业：变化<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">威力：<SPAN lang=EN-US>16</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN lang=EN-US>S+10000</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">动作：特殊<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">能耗：特殊<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">成分：特殊<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">效果：你对炼金术的研究终至尽头，从形而上理解了世间万物的本质，深入原初之一，操弄一生万物之道。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">你能够炼制白金之石，该过程需要投入<SPAN lang=EN-US>1000</SPAN>分的材料和一千克日之石，接着进行一个周期为天的施法延长判定，<SPAN lang=EN-US>DC</SPAN>为<SPAN lang=EN-US>40</SPAN>，通过检定之后，你得到一千克白金之石（<SPAN lang=EN-US>35</SPAN>盎司）<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">白金之石超越了永恒，是流转的象征，万物的催化剂，将其合理使用的话，可以将任何事物变成任何其他的事物。与日之石，月之石可以简单的使用来点化金属不同，白金之石必须配合法术使用，作为材料。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">你可以使用这道法术来解析视线中的一个生物或一件物品，这样做消耗<SPAN lang=EN-US>9</SPAN>点魔力和一个标准动作，你理解一件物品的全部细节，包括但不限于用法，效果，使用限制，破坏方式，保护体系，但不会知道其他衍生细节，例如你知道聚魂棺受到<SPAN 
+lang=EN-US>S</SPAN>级神力保护和其作用方式，但不会知道这个神力保护来源于海洋女神还是波塞冬，你知道石中剑的武器强度和效果，但不会知道拔出它的人被视为英格兰之王。你也可以理解一个生物的全部细节，包括但不限于其基本属性，衍生属性，防御构成，拥有的能量，基本生理特性，要害位置等，但你无法知晓其衍生细节，例如你不会知晓他拥有的能量可以驱动何种招式，进行何种运用。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">你可以使用这道法术来制造任何物品，无论其本质，无论价格，甚至，你能用这种方式赋予自愿生物如同从主神处兑换的强化，但只限血统，改造，瞳术，能量池等基于物质能量构成的强化，技艺称号等利用物质能量的经验方式无法通过这一法术强化。以这种方式使用这个法术的话，你将过程视为自制科技物品，但是无需进行解读过程，制造时也不使用手艺，而使用施法判定，并且需要正常提供材料（包括兑换这些强化，也如同制造科技物品一般提供1/3的材料，当然，专属于制造科技物品的减少材料消耗的能力对这道法术不会起效），在制造延长判定的每一天（包括第一天），你的魔力值上限永久<SPAN 
+lang=EN-US>-1点</SPAN>，并且额外消耗相当于物品支线等级的盎司数千克的白金之石（按<SPAN 
+lang=EN-US>D1-S9</SPAN>处理）。在仪式中降低的魔力上限不会通过任何方式回复。而且消耗的魔力上限你无法通过使用额外的器物或者召集其他角色来支持仪式，必须使用你自己的。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">若你无法支付魔力上限，而物品尚未制造完成，则制造仪式失败，所有投入的白金之石和造物材料都被浪费掉，这种情况下魔力上限会回复。</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">最后，你可以使用这道法术来改造物品或生物，你将一件物品转化为另一件物品，或将生物身上的一种强化转化成另一种，这个过程与前一用法基本相当，但视为制造转化的目标产物或原始产物中<SPAN 
+lang=EN-US>DC</SPAN>较高的一个，唯一不同的是你提供材料时，将两件物品或两项强化皆拆分为材料，然后补足差价即可，但若有富余，你并不能获得多出的部分。</SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"></SPAN>&nbsp;</P><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">迷情水</SPAN></P><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-fareast-font-family: 宋体; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">关键字：【水】<SPAN lang=EN-US></SPAN></SPAN></P><SPAN lang=EN-US></SPAN></SPAN>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">专业：附魔<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">威力：<SPAN lang=EN-US>4</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN lang=EN-US>C+1000</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">动作：一个小时<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">能耗：<SPAN lang=EN-US>3</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">成份：法器，材料<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">射程：无<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">范围：见说明<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">持续：见说明<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">材料：你需要使用各种复杂的草药，这些草药可以在主神空间内以<SPAN lang=EN-US>1</SPAN>分兑换，在电影世界内它们不容易找到，且大多都是违禁品，需要<SPAN lang=EN-US>ST</SPAN>酌情处理。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">效果：炼金师们在研究生命与人体之迷时找到了这种可怕的药物，它可以透过肉体作用于生物的精神与灵魂，用虚妄的快感破坏他们的生存意志，比任何毒品都更强大。善用时，它是一种称手而可怕的工具。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">炼制需要进行一次智力＋神秘学判定，当你炼制完成时，你得到了一剂<SPAN lang=EN-US>10</SPAN>毫升如水状无色无臭的溶液。这溶液有三种使用方式：<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">1</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">、你可以用此液体直接攻击生物，它可以从生物的体表渗入，无视天生护甲和伤害减免。一剂溶液对一个生物生效，该生物投耐力＋坚毅对抗你的施法判定，每失败<SPAN 
+lang=EN-US>1 </SPAN>则昏迷<SPAN lang=EN-US>2</SPAN>轮。它醒来后对迷情水上瘾，必须经过一个<SPAN lang=EN-US>DC</SPAN>＝你的施法判定成功数<SPAN lang=EN-US>/2</SPAN>的意志判定，若失败，则它会强烈渴望再次使用迷情水。该判定每天进行一次，每次成功都会使<SPAN 
+lang=EN-US>DC</SPAN>减<SPAN lang=EN-US>1</SPAN>。每次失败后若使用迷情水，则<SPAN lang=EN-US>DC</SPAN>＋<SPAN lang=EN-US>1</SPAN>。若你使生物服用或饮下全部迷情水，则昏迷时间和上瘾<SPAN lang=EN-US>DC</SPAN>都加倍，但食盐、银制品或任何高于<SPAN lang=EN-US> 80</SPAN>℃的温度都会破坏迷情水的作用。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">2</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">、你可以将一剂迷情水稀释<SPAN lang=EN-US>10</SPAN>倍，用作<SPAN lang=EN-US>3</SPAN>副兴奋剂。当你因巨大痛苦或疲劳效果而承受减值时，饮用<SPAN lang=EN-US>1</SPAN>副此兴奋剂，可以忽略相当于你施法判定成功数一半的减值。但饮用兴奋剂同样会上瘾。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">3</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">、若将稀释<SPAN lang=EN-US>10</SPAN>倍的迷情水雾化，它可以充斥<SPAN lang=EN-US>3</SPAN>米<SPAN lang=EN-US>X3</SPAN>米<SPAN lang=EN-US>X3</SPAN>米的空间。皮肤或身体表面接触到雾化迷情水的生物会进入眩晕状态，所有基于身体或精神属性的判定受到－<SPAN 
+lang=EN-US>4DP</SPAN>的减值，持续轮数相当于你的施法判定成功数。他们可以通过成功的意志对抗使减值削减到－<SPAN 
+lang=EN-US>1DP</SPAN>。在封闭空间中，此雾会持续<SPAN lang=EN-US>5</SPAN>轮，在开阔空间中雾化迷情水会持续<SPAN lang=EN-US>2</SPAN>轮，之后耗散殆尽。你可以使用雾化液体的法术、能力甚至仅仅通过喷雾器来雾化迷情水。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">只有活物会受到迷情水的影响。<SPAN lang=EN-US></SPAN></SPAN></P></SPAN></SPAN><SPAN 
+lang=EN-US     ></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN>
+<P style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'">
+<SPAN style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'"></SPAN></SPAN></SPAN></SPAN></SPAN>&nbsp;</P>
+<P style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'">
+<SPAN style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'"></SPAN></SPAN></SPAN></SPAN></SPAN>&nbsp;</P>
+<P style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: justify; MARGIN-TOP: 0pt" class=p0><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'">
+<SPAN style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'"></SPAN></SPAN></SPAN></SPAN></SPAN>&nbsp;</P><SPAN 
+style="FONT-SIZE: 11pt; FONT-FAMILY: 'Arial'; mso-spacerun: 'yes'">
+<SPAN style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Times New Roman'; mso-spacerun: 'yes'"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">变形术<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">专业：变化 诅咒<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">威力：<SPAN lang=EN-US>6</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN lang=EN-US>B+3000</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">动作：标准<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">能耗：<SPAN lang=EN-US>5</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">成份：语言，动作，耗材<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">射程：接触<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">范围：<SPAN lang=EN-US>1</SPAN>个自愿活物<SPAN 
+lang=EN-US>*</SPAN>智力上的附加成功<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">持续：<SPAN lang=EN-US>1</SPAN>分钟<SPAN 
+lang=EN-US>*</SPAN>威力值<SPAN lang=EN-US>*</SPAN>智力值<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">描述：你将一个生物变成他渴望的样子。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">效果：你可以选择将一个活物变成与它近似的活物，或者一种动物。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">·近似活物：你将一个活物变得像与它近似的种类，可以是奇幻生物，但差别不能过大，且“奇幻度”不能差别过大。你可以将狮子变成老虎，将人类变成精灵，将洛温的美洛变成赞迪卡的人鱼。然而这只能改变人物的外观，不能改变它的本质。他的外观变为新形态的外观。在身体属性上，你可以选择一、在新形态的若干弱势属性上获得减值，总数等于威力值，最多一项不超过其一半，二、在新形态的若干强势属性上获得加值，总数等于威力值，最多项不超过其一半；三、两项都选。然后他的体形改变最多等于威力值的一半，但不可变大或变小得超出新体型的平均值。他失去新形态所没有的天生武器和天生防御，并获得新形态的天生武器和天生防御，数值不超过威力值。他获得新形态的环境适应能力、环境不适应性、基于身体的感官能力<SPAN 
+lang=EN-US>/</SPAN>移动方式。如果新形态令他获得额外肢体，他可以在生活中使用这些肢体，但不能用于战斗。体型改变可以获得临时生命值，但一天限一次。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">·动物：你将一个活物变成一种自然的动物，不能是奇幻生物，但可以是奇幻设定中的无奇幻能力的动物。比如，你可以将一个人变成鳄鱼，也可以将他变成《魔兽世界》中的鳄鱼（有六条腿儿！）。受影响者外观完全变成动物，失去种族或血统模版带来的属性值，且身体属性变为该动物的种族平均值，失去一切基于肉体特性的特殊性质与能力。训练或类似效果得到的能力还存在，但可能因为外形变化而无法使用。获得新形态的环境适应能力、环境不适应性、基于身体的感官能力和移动方式，以及天生防御和天生武器。体型改变可以获得临时生命值，但一天限一次。因为外形的过大变化，人物得到了变形类别的<SPAN 
+lang=EN-US>6</SPAN>点晕眩，人物可以每分钟一次用强韧判定来抵消，或者用施法属性<SPAN 
+lang=EN-US>+</SPAN>神秘学、或者用智力<SPAN lang=EN-US>+</SPAN>科学（生物学）代替强韧判定。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">·人物只能被变为活物，不能被变为构装体、不死生物、元素、精魂、神性生物、变形生物、不定形体等。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">增幅：每有一个在<SPAN lang=EN-US>B</SPAN>以上的施法者等级，你可以花费<SPAN lang=EN-US>1</SPAN>魔力增幅。每花费<SPAN lang=EN-US>1</SPAN>魔力增幅，你在对抗判定中获得＋<SPAN lang=EN-US>2DP</SPAN>加值，等效威力值<SPAN lang=EN-US>+1.</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">进阶：当本法术进阶为A时，再额外花费12点XP，习得法术“恶意变形术”。恶意变形术作用与本法术一样，但射程变为<SPAN 
+lang=EN-US>1</SPAN>米<SPAN lang=EN-US>*</SPAN>威力值<SPAN lang=EN-US>*</SPAN>智力值，可以对不自愿的活物使用，目标可用意志或强韧之高者抵抗，并且目标每有一个超自然等级则额外获得<SPAN 
+lang=EN-US>+1附加成功</SPAN>。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">恶意变形的时间可以是“<SPAN lang=EN-US>1</SPAN>分钟<SPAN lang=EN-US>*</SPAN>威力值<SPAN lang=EN-US>*</SPAN>智力值”，也可以是“永久”。若为后者，施法者必须设定一个条件，该条件达成时，恶意变形被解除。这一条件可以是困难的，但不能是不可达成的，也不能是有可能因为时间流逝或目标变换场所<SPAN 
+lang=EN-US>/</SPAN>行为而变得不可达成的。常见的条件包括“被公主亲吻”、“与人真心相爱”、“拥有纯洁之心的处女的眼泪”、“发自内心的忏悔”等。善良施法者所设条件多半是促人悔改，而邪恶施法者用这种方法引人堕落。施法者不必说出来，但目标自然地知道这一条件。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">恶意变形的效果是一个诅咒，能够解除诅咒的能力可以解除恶意变形。</SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">虚体，灵体，元素生物，构装生物免疫变形术与恶意变形术。</SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"><SPAN lang=EN-US>除了解除魔法以外，任何一个会变形术或者恶意变形术的施法者，包括目标自己，都可以使用一个标准动作变回来。</SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"><SPAN lang=EN-US></SPAN></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"><SPAN lang=EN-US></SPAN></SPAN>&nbsp;</P><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast"><SPAN lang=EN-US>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%">&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%">&nbsp;</P><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">变身术<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">专业：变化<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">威力值：<SPAN lang=EN-US>2</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">价格：<SPAN lang=EN-US>D+500</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">成分：言语、姿势<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">动作：<SPAN lang=EN-US>1</SPAN>标准动作<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">能耗：<SPAN lang=EN-US>1</SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">射程：个人<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">目标：自己<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">持续时间：<SPAN lang=EN-US>10</SPAN>分钟<SPAN 
+lang=EN-US>/</SPAN>神秘学<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">可变成与你相同类别的生物，例如人形生物或魔法兽。新形体体积与原体型差别不能大于<SPAN lang=EN-US>3</SPAN>点，你可以变为同类生物，甚至变成自己。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">你可以保有原有属性值，血统，改造，称号，技艺，能量池等全部能力。这些能力都与原形体相同，除非新形体不具有所需的身体器官（像是喷吐攻击需要嘴巴、凝视攻击需要眼睛，白刃攻击需要手）。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">如果新形体会说话，则可正常沟通。所有施法能力都不变，但若法术需要「言语」成分，新形体必需可以使用一种语言；「姿势」或「材料」成分则需要具备所需肢体。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">变身前即需决定新形体的外观，包括体型、一般移动（例如遁地，基础速度减半的地行速度、攀爬、行走、游泳、用翅膀飞行，基础速度的良好飞行速度）、天生防御加值、天生武器（爪抓、嚙咬等）、身体上多出的肢体不能让你增加攻击次数（除非你有特殊能力）。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">除了上述所列，你不会获得其他的特异特殊攻击或能力，像是黑暗视觉、昏暗视觉、盲感、盲视、快速医疗、再生、灵敏嗅觉等。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">你也不会获得任何新形体具有的超自然特殊攻击、特性或类法术能力。你的生物类别与亚种与原形体同，与新形体无关。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">新形体的细部外貌（像是毛色、毛质与肤色）由你指定，只要不超过新形体生物的适用范围。其他较显著的外形（身高、体重、性别）亦由你控制，但不可过于离谱。你可以有效地伪装成新形体种族中的一般成员。若你使用这个法术来易容，则「易容」技能检定可获得威力值的加值。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; mso-pagination: widow-orphan" 
+align=left><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-ascii-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast">变身后，你的装备依然穿戴在新形体上（如果能够穿戴的话），或者融入新形体并失去功用。身体变回原形时，之前被融入的物体会恢复原位及功用。新形体穿戴的新物品依然会穿戴在原形体上，无法穿戴的物品则会掉在脚边。任何通用于两种形体的装备，或穿戴于相同身体部位（嘴、手等）的物品则留在原处。一旦身体部位或物品离开身体，则会变回原形。<SPAN 
+lang=EN-US></SPAN></SPAN></P></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></div>	
+	<div id="winchm_template_footer">Copyright &copy; 2018. All rights 
+reserved. (To change the copyright info, just edit it in template.)</div>
+</div>
+
 </body>
 </html>

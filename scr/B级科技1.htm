@@ -17,112 +17,170 @@ html,body {
 
 
 
-<meta http-equiv="X-UA-Compatible" content="IE=8">
+
 <style>
-html {
-	overflow-y:scroll;
-}
+html,div { margin: 0; padding: 0;}
 
 body {
-	background-image: url(template1/back.png);
-	background-repeat: repeat-x;
-	background-color: #FFFFFF;
 	padding: 0px;
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-bottom: 15px;
-	margin-right: 15px;
+	margin: 0px;
+	overflow: auto;
+	height: 100%;
 }
 
-#winchm_template_button {
-	position: fixed; 
-	float: right; 
-	right: 15px; 
-	top: 15px;
+#winchm_template_button{
+	float: right;
+	width: 93px;
+	top: 7px;
+	position: relative;
+	text-align: right;
+	right: 5px;
+	height: auto;
 }
 
-#winchm_template_navigation {
+#winchm_template_top{
 	padding: 0px;
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
+	margin: 0px;
+	border-bottom: 1px solid #9B9B9B;
+	background-color: #B1CEFE;
+}
 
-	font-size: 8pt;
+#winchm_template_navigation{
+	margin: 0px;
+	padding-top: 7px;
+	padding-left: 7px;
+	padding-bottom: 3px;
+	padding-right: 0px;
+	font-size: 8.5pt;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #4A4A4A;
-	text-align: left;
+	font-weight: normal;
+	color: #585858;
 }
 
-#winchm_template_title {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 22px;
-	font-weight: bold;
-	color: #005680;
-	text-align: left;
+#winchm_template_title{
+	margin: 0px;
+	padding-top: 4px;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	padding-right: 0px;
+	font-size: 18px; 
+	font-family: Verdana, Geneva, sans-serif;
+	color: #363636;
 }
 
 #winchm_template_content{
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
+	margin-top: 20px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
 	width: auto  !important;
 	width: 100%;
 }
 
-
-#winchm_template_footer {
-	padding: 0px;
-	margin-top: 15px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	margin-right: 0px;
-
-	padding-top: 7px;
+#winchm_template_footer{
 	border-width: 1px;
-	border-color: #c0c0c0;
+	border-color: #B1CEFE;
 	border-top-style: solid;
-
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #575757;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	margin-right: 15px;
+	padding-top: 7px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 8.5pt;
+	color: #696969;
+	width: auto;
 	text-align: left;
 }
 
+
+#winchm_template_container{
+	margin: 0px;
+	padding: 0px;
+	position: static;
+	padding-bottom: 3px;
+	overflow: auto;
+	background-color: #FFFFFF;
+}
+
+
 @media print
 {
+#winchm_template_container{
+	position: static;	
+	margin: 0px;
+	padding: 5px;
+	
+	width: auto;
+	height: auto;
+	overflow: auto;
+}
 #winchm_template_button{
 visibility:hidden;
 }
 }
 
-#winchm_template_navigation a:link	{text-decoration: none;color: 004080}
-#winchm_template_navigation a:visited  {text-decoration: none; color: #004080}
-#winchm_template_navigation a:active {text-decoration: none; color: #004080}
-#winchm_template_navigation a:hover {text-decoration: none;color: #0000FF}
+#winchm_template_navigation A:link	{text-decoration: none; color:#004080}
+#winchm_template_navigation A:visited  {text-decoration: none; color: #004080}
+#winchm_template_navigation A:active {text-decoration: none; color: #004080 }
+#winchm_template_navigation A:hover {text-decoration: none;color: #0080FF}
 
-a:link	{text-decoration: underline; color:#0033cc}
-a:visited  {text-decoration: underline; color: #0033cc}
-a:active {text-decoration: underline; color: #0033cc }
-a:hover {text-decoration: underline;color: #ff0000;}
-
+A:link	{text-decoration: underline; color:#0033CC}
+A:visited  {text-decoration: underline; color: #0033CC}
+A:active {text-decoration: underline; color: #0033CC }
+A:hover {text-decoration: underline;color: #FF0000;}
 </style>
+<script type="text/javascript">
+function isMobile(){
+Agent = window.navigator.userAgent;
+if (Agent.indexOf("iPhone")>=1 || Agent.indexOf("iPad")>=1 || Agent.indexOf("iPod")>=1 || Agent.indexOf("Android")>=1){
+return true;
+}else{
+return false;	
+}
+
+}
+function d_onresize(){
+if (window.navigator.userAgent.indexOf("MSIE")>=1){
+document.getElementById('winchm_template_container').style.pixelWidth = document.body.offsetWidth - 3;
+document.getElementById('winchm_template_container').style.pixelHeight = document.body.offsetHeight - document.getElementById('winchm_template_top').offsetHeight - 4;
+}
+document.getElementById('winchm_template_container').style.top = document.getElementById('winchm_template_top').offsetHeight + 'px';
+}
+
+function d_onbeforeprint(){
+document.getElementById('winchm_template_container').style.width = 'auto';
+document.getElementById('winchm_template_container').style.height = 'auto';
+}
+
+function d_onafterprint(){
+d_onresize();
+}
+
+if(!isMobile()){
+
+window.onload = d_onresize;
+window.onresize = d_onresize;
+window.onbeforeprint = d_onbeforeprint;
+window.onafterprint = d_onafterprint;
+
+document.write("<style>\n");
+document.write("body {overflow: hidden;}\n");
+document.write("#winchm_template_container {position: absolute;overflow: auto;top : 0px;right: 0px;bottom: 0px;left: 0px;}\n");
+document.write("</style>\n");
+}
+
+</script>
 </head>
 
 <body><script language="JavaScript" type="text/JavaScript">
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(752);
+  parent.nav.tree.selectNode(889);
  }else{
   setTimeout("syn()",500);
 }
@@ -142,18 +200,93 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 }
 </script> 
 
-<div id="winchm_template_button"><A href="C级魔幻.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template1/btn_prev_n.gif" border="0"></a><A href="B级魔幻.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template1/btn_next_n.gif" border="0"></a></div>
-<div id="winchm_template_navigation">Help &gt; 
+
+<div id="winchm_template_top">
+	<div id="winchm_template_button"><A href="C级魔幻.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="B级魔幻.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
+	<div id="winchm_template_navigation">Help &gt; 
 <A href="资源部分.htm">资源部分</A> &gt; <A href="物品.htm">物品</A> &gt; <A href="载具.htm">载具</A> &gt; </div>
-<div id="winchm_template_title">B级机械类载具</div>
-<div id="winchm_template_content"><SPAN 
+	<div id="winchm_template_title">B级机械类载具</div>
+</div>
+<div id="winchm_template_container">
+	<div id="winchm_template_content"><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" lang=EN-US><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" lang=EN-US>=========================================================================================================== 
+</SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">天启坦克<SPAN 
+lang=EN-US> 
+B+2000</SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">载具本质：科技本质<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">载具类型：重型载具<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">在战火纷飞中，天启坦克释放着滚滚黑烟，金属摩擦释放着刺耳的噪音，成为了老兵们挥之不去的噩梦——就是苏联人也不例外，他们对天启坦克的恐惧看起来和其他人一样严重。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">体积：<SPAN 
+lang=EN-US>22 </SPAN>生命：<SPAN lang=EN-US>92</SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">装甲值：<SPAN 
+lang=EN-US>12 </SPAN>硬度：<SPAN lang=EN-US>20</SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">出力：<SPAN 
+lang=EN-US>15 </SPAN>机动：<SPAN lang=EN-US>4</SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">速度：<SPAN 
+lang=EN-US>40</SPAN>米／轮<SPAN lang=EN-US><SPAN style="mso-spacerun: yes">&nbsp; 
+</SPAN></SPAN>加速度：<SPAN lang=EN-US>4</SPAN>米灵活性：普通<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">载员：驾驶员<SPAN 
+lang=EN-US>1-2</SPAN>名，乘客<SPAN lang=EN-US>4</SPAN>名，可搭载<SPAN 
+lang=EN-US>AI</SPAN>。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">特性：<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">武器系统：<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">两门<SPAN 
+lang=EN-US>125mm“</SPAN>龙式<SPAN lang=EN-US>”</SPAN>加农炮<SPAN 
+lang=EN-US>:</SPAN>天启坦克在一回合内使用整轮动作可以制造两次攻击。第一次攻击为武器伤害<SPAN 
+lang=EN-US>16L</SPAN>，破甲<SPAN lang=EN-US>8</SPAN>，射程<SPAN 
+lang=EN-US>3000</SPAN>米，带有【贯穿】【眩晕】特性，第二次武器伤害为<SPAN lang=EN-US>12L</SPAN>，破甲<SPAN 
+lang=EN-US>6</SPAN>，射程<SPAN lang=EN-US>3000</SPAN>米，获得【贯穿】特性<SPAN 
+lang=EN-US>.</SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" lang=EN-US><SPAN 
+style="mso-spacerun: yes">&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">“绞肉机”式铰接履带<SPAN 
+lang=EN-US>:</SPAN>天启坦克能够碾过一切从主炮淫威下幸存的玩意。即使是主战坦克，也和小车一样，可以被天启的履带轻易碾成渣，天启坦克作为重型单位中的重型单位，可以在行进过程对在其行进路径上所有小于等于天启坦克体积二分之一大小的目标进行碾压，若目标为生物则对该生物造成相当于天启坦克体积数值的严重伤害，反射豁免。若目标为<SPAN 
+lang=EN-US>C</SPAN>级以下物品则直接摧毁，若目标为<SPAN 
+lang=EN-US>B</SPAN>级以上的物品则造成相当于天启坦克体积数值的严重伤害，无豁免，硬度有效。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">自动修复：若天启坦克本回合内没有受到任何伤害，则基洛夫飞艇本轮结束时回复<SPAN 
+lang=EN-US>8</SPAN>点生命值。<SPAN lang=EN-US></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
+lang=EN-US>16</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">层加强型钢制装甲<SPAN 
+lang=EN-US>:</SPAN>天启坦克的装甲是<SPAN lang=EN-US>16</SPAN>层加厚，所以额外增加<SPAN 
+lang=EN-US>16</SPAN>硬度（已计入数据），以及额外的<SPAN 
+lang=EN-US>32</SPAN>结构值（已计入数据），天启坦克每损失<SPAN 
+lang=EN-US>2</SPAN>点结构值，就会由于装甲损坏而损失<SPAN lang=EN-US>1</SPAN>硬度， 最多失去<SPAN 
+lang=EN-US>16</SPAN>点硬度。</SPAN></P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" lang=EN-US>=========================================================================================================== 
+</SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">象征战舰 自由女神 <SPAN lang=EN-US>B+3000</SPAN></SPAN></P>
+class=MsoNormal align=left>象征战舰 自由女神 <SPAN lang=EN-US>B+3000</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
@@ -188,6 +321,80 @@ style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">
 <P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" lang=EN-US>=========================================================================================================== 
+</SPAN></P><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" lang=EN-US>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">基洛夫飞艇<SPAN 
+lang=EN-US> B+4000<o:p></o:p></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">载具本质：科技本质<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">载具类型：重型载具<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">体积：<SPAN 
+lang=EN-US>60 </SPAN>生命：<SPAN lang=EN-US>100<o:p></o:p></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">护甲：<SPAN 
+lang=EN-US>12 </SPAN>硬度：<SPAN lang=EN-US>16<o:p></o:p></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">出力：<SPAN 
+lang=EN-US>15 </SPAN>机动：<SPAN lang=EN-US>6<o:p></o:p></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">载员：驾驶员<SPAN 
+lang=EN-US>1-2</SPAN>，无远程操控。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">速度：<SPAN 
+lang=EN-US>100</SPAN>米<SPAN lang=EN-US>/</SPAN>轮 加速度：<SPAN lang=EN-US>60</SPAN>米 
+灵活性：笨拙，可悬停，移动能力<SPAN lang=EN-US>:</SPAN>飞行<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">能源：无限<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">特性：<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">武器系统：基洛夫飞艇具备<SPAN 
+lang=EN-US>BOR-57“</SPAN>迅雷<SPAN 
+lang=EN-US>”800</SPAN>千克炸弹，驾驶员以一个标准动作，可以使用本炸弹进行轰炸，本炸弹只能攻击飞艇下放的单位，没有射程。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" 
+lang=EN-US>BOR-57“</SPAN><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">迅雷<SPAN 
+lang=EN-US>”800</SPAN>千克炸弹：爆炸伤害<SPAN lang=EN-US>30L</SPAN>，破甲<SPAN 
+lang=EN-US>10</SPAN>，爆炸半径<SPAN 
+lang=EN-US>30</SPAN>米，拥有【击飞】特性，目标进行反射豁免，驾驶员以智力<SPAN 
+lang=EN-US>+</SPAN>枪械（炮）进行攻击检定，成功数为目标反射检定减值。炸弹可以在下落的过程中直接爆炸，由驾驶员选择。<SPAN 
+lang=EN-US>BOR-57“</SPAN>迅雷<SPAN lang=EN-US>”800</SPAN>千克炸弹需要<SPAN 
+lang=EN-US>500</SPAN>分购买一枚，在购买飞艇时赠送<SPAN 
+lang=EN-US>10</SPAN>枚，使用后需要自行补充。本炸弹只能由基洛夫飞艇才能使用。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">内燃剂推进：在常规的可以无限供给的基洛夫空艇的飞行能源之外，基洛夫驾驶员获准使用一种特殊化合物，把它们注入引擎的时候，可以加大加快飞艇的推进力。可惜不利的是，这种化合物会从内部慢慢腐蚀飞艇，在使用这种内燃剂的同时，基洛夫空艇的速度上升一倍，但同时，这个加成每持续一轮，基洛夫空艇本身就会失去<SPAN 
+lang=EN-US>3</SPAN>点生命，这个损失在加速停止后仍旧会生效一轮。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">无限轰炸：因为飞艇虽然可以装下几百号人但苏联人并没有这么做，而是用来装载几千枚炸弹。所以基洛夫可以一次性投下的炸弹没有上限，只要你有就可以，基洛夫的装弹量视为无限，此时重合爆炸的部分按重合爆炸计算。同时你也可以一边航行一边投弹，此时如常花费你的攻击动作，但是你可以选择投放任何枚炸弹，并且你可以选择在你本次航行的轨迹上的任意点投放任意枚炸弹，前提是你有。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">雷达：苏军雷达是苏联科技树中重要的一环，直接影响到之后科技的发展。其作用相当于盟军的空指部，但是没有停机坪，由于这个能力，基洛夫空艇机带有活点地图，提供以基洛夫飞艇为中心，半径<SPAN 
+lang=EN-US>10km</SPAN>的平面地图，这是一个<SPAN lang=EN-US>B</SPAN>级科技本质的侦测手段。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">爆炸潜能：虽然在官方纪录上从未有基洛夫被击落，物理学家都推断那么大量的燃料和炸弹撞击地面的时候肯定会造成灾难性的殉爆，当基洛夫空艇坠毁的时候，基洛夫空艇会在坠毁地点中心<SPAN 
+lang=EN-US>50</SPAN>米半径的位置造成相当于<SPAN 
+lang=EN-US>30L</SPAN>的范围伤害，此时基洛夫内部每拥有一枚<SPAN lang=EN-US>BOR-57“</SPAN>迅雷<SPAN 
+lang=EN-US>”800</SPAN>千克炸弹，则会一起爆炸，重合的部分按重合爆炸规则计算，反射豁免。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">自动修复：若基洛夫飞艇本回合内没有受到任何伤害，则基洛夫飞艇本轮结束时回复<SPAN 
+lang=EN-US>8</SPAN>点生命值。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" lang=EN-US>=========================================================================================================== 
+</SPAN> 
 </SPAN></P>
 <P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal></SPAN>幽灵战机<SPAN lang=EN-US>B+4000<BR></SPAN>载具本质：科技<SPAN lang=EN-US><BR></SPAN>载具类型：轻型载具<SPAN lang=EN-US><BR></SPAN>体积：<SPAN lang=EN-US>34 
 </SPAN>生命：<SPAN lang=EN-US>27<BR></SPAN>护甲：<SPAN lang=EN-US>12 
@@ -254,16 +461,18 @@ lang=EN-US>/</SPAN>智力取低，而非敏捷<SPAN lang=EN-US>/</SPAN>智力取
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">斩舰：本机甲在攻击机械类载具时额外获得<SPAN lang=EN-US>+10dp</SPAN>。<SPAN lang=EN-US><BR></SPAN>神之奇迹：机甲上的所有武器可以正常攻击虚体和灵体。<SPAN lang=EN-US><BR></SPAN>武器：<SPAN lang=EN-US><BR></SPAN>新星光束炮：将其视为获得了对舰改造的高能粒子脉冲手枪。<SPAN lang=EN-US><BR></SPAN>九零式斩舰刀：将其视为体积<SPAN lang=EN-US>51</SPAN>级的<SPAN lang=EN-US>C</SPAN>级斩舰刀。<SPAN lang=EN-US></SPAN></SPAN></P>
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">斩舰：本机甲在攻击机械类载具时额外获得<SPAN lang=EN-US>+10dp</SPAN>。<SPAN lang=EN-US><BR></SPAN>神之奇迹：机甲上的所有武器可以正常攻击虚体和灵体。<SPAN lang=EN-US><BR></SPAN>武器：<SPAN lang=EN-US><BR></SPAN>新星光束炮：将其视为获得了对舰改造的高能粒子脉冲手枪。<SPAN lang=EN-US><BR></SPAN>九零式斩舰刀：将其视为体积<SPAN 
+lang=EN-US>51</SPAN>级的<SPAN lang=EN-US>C</SPAN>级斩舰刀。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" lang=EN-US>=========================================================================================================== 
 </SPAN></P></SPAN>
 <P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" lang=EN-US><SPAN 
-style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-font-kerning: 1.0pt; mso-bidi-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA">闪光高达<SPAN lang=EN-US> B+4000<BR></SPAN>载具本质：特异<SPAN lang=EN-US><BR></SPAN>载具类型：战斗机器人<SPAN lang=EN-US><BR></SPAN>体积：<SPAN lang=EN-US>50 
+style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA; mso-font-kerning: 1.0pt">闪光高达<SPAN lang=EN-US> B+4000<BR></SPAN>载具本质：特异<SPAN lang=EN-US><BR></SPAN>载具类型：战斗机器人<SPAN lang=EN-US><BR></SPAN>体积：<SPAN lang=EN-US>50 
 </SPAN>生命：<SPAN lang=EN-US>60<BR></SPAN>护甲：<SPAN lang=EN-US>28 
 </SPAN>硬度：<SPAN lang=EN-US>11 </SPAN><SPAN lang=EN-US><BR></SPAN>速度：<SPAN lang=EN-US>180</SPAN>米 加速度：<SPAN lang=EN-US>36</SPAN>米 移动能力：地面，水下<SPAN lang=EN-US><BR></SPAN>载员：驾驶员<SPAN lang=EN-US>1</SPAN>，体积不超过<SPAN lang=EN-US>6<BR></SPAN>出力：<SPAN lang=EN-US>16 
-</SPAN>机动：<SPAN lang=EN-US>16<BR></SPAN>特性：体积调整，武器系统（三特性），全周天屏幕，人机一体化系统（<SPAN lang=EN-US>2</SPAN>正<SPAN lang=EN-US>1</SPAN>负），机体强化<SPAN lang=EN-US><BR></SPAN>体积调整：强袭高达因其体积获得<SPAN lang=EN-US>+2</SPAN>护甲，<SPAN lang=EN-US>-2</SPAN>基础防御，已计入数据<SPAN lang=EN-US><BR></SPAN>武器系统：强袭高达配备有头部<SPAN lang=EN-US>60mm</SPAN>火神炮<SPAN lang=EN-US>*2</SPAN>，胸部机关加农炮<SPAN lang=EN-US>*2</SPAN>，腕部光束剑<SPAN lang=EN-US>*2</SPAN>，操作这些武器时不会因为力量不足而受到减值。武器弹药视为无限，拿出，收回腕部光束剑都是自由动作，机载武器皆有火控系统，强袭高达本身能提供火控眼镜的效果，火神炮被视为加载了热成像瞄具和握把。<SPAN 
+</SPAN>机动：<SPAN lang=EN-US>16<BR></SPAN>特性：体积调整，武器系统（三特性），全周天屏幕，人机一体化系统（<SPAN lang=EN-US>2</SPAN>正<SPAN lang=EN-US>1</SPAN>负），机体强化<SPAN lang=EN-US><BR></SPAN>体积调整：强袭高达因其体积获得<SPAN lang=EN-US>+2</SPAN>护甲，<SPAN lang=EN-US>-2</SPAN>基础防御，已计入数据<SPAN lang=EN-US><BR></SPAN>武器系统：强袭高达配备有头部<SPAN 
+lang=EN-US>60mm</SPAN>火神炮<SPAN lang=EN-US>*2</SPAN>，胸部机关加农炮<SPAN lang=EN-US>*2</SPAN>，腕部光束剑<SPAN lang=EN-US>*2</SPAN>，操作这些武器时不会因为力量不足而受到减值。武器弹药视为无限，拿出，收回腕部光束剑都是自由动作，机载武器皆有火控系统，强袭高达本身能提供火控眼镜的效果，火神炮被视为加载了热成像瞄具和握把。<SPAN 
 lang=EN-US><BR></SPAN>驾驶员可以以一个标准动作使用一种武器进行攻击，每种都可以以一个标准动作进行两次攻击，在计算伤害上限和基础防御减值时，这两次攻击视为同一次攻击。以一个全回合动作，驾驶员可以同时使用胸部加农炮，手部武装和火神炮进行攻击，若手部双持腕部光束剑，则合计攻击六次（<SPAN 
 lang=EN-US>2</SPAN>次胸部加农炮，<SPAN lang=EN-US>2</SPAN>次火神炮，<SPAN lang=EN-US>2</SPAN>次腕部光束剑），计算伤害上限和基础防御时，三种武器各自计算一次，你可以在这三种武器的攻击中都使用完整的附加成功。<SPAN 
 lang=EN-US><BR>*</SPAN>火神炮：视为获得对<SPAN 
@@ -310,8 +519,7 @@ lang=EN-US><BR></SPAN>观瞄系统：强袭高达带有高性能雷达和计算�
 lang=EN-US>10km</SPAN>的<SPAN lang=EN-US>B</SPAN>级科技侦测雷达扫描合成成像手段，到这一等级，雷达成像机能已经比通常视觉更加可靠，依靠侦测雷达便足以进行攻击，除非<SPAN 
 lang=EN-US>EMP</SPAN>炸弹的伤害超过强袭高达的结构，否则无法瘫痪强袭高达。<SPAN 
 lang=EN-US><BR></SPAN>高性能计算机：强袭高达带有的高性能计算机有足够优秀的自控能力，可以为你完成一个用于控制载具的移动动作而不占用你自己的，你还在操作强袭高达的驾驶判定中获得<SPAN 
-lang=EN-US>+3DP+2</SPAN>附加的器械加值。<SPAN lang=EN-US><BR></SPAN>机体强化：强袭高达拥有卓越的战斗性能，它获得出力<SPAN 
-lang=EN-US>+1</SPAN>，机动<SPAN lang=EN-US>+1</SPAN>，生命<SPAN lang=EN-US>+5</SPAN>，护甲<SPAN lang=EN-US>+5</SPAN>，硬度<SPAN lang=EN-US>+2</SPAN>，已经包含在数据中<SPAN lang=EN-US></SPAN></SPAN></P> 
+lang=EN-US>+3DP+2</SPAN>附加的器械加值。<SPAN lang=EN-US><BR></SPAN>机体强化：强袭高达拥有卓越的战斗性能，它获得出力<SPAN lang=EN-US>+1</SPAN>，机动<SPAN lang=EN-US>+1</SPAN>，生命<SPAN lang=EN-US>+5</SPAN>，护甲<SPAN lang=EN-US>+5</SPAN>，硬度<SPAN lang=EN-US>+2</SPAN>，已经包含在数据中<SPAN lang=EN-US></SPAN></SPAN></P> 
 </SPAN><SPAN lang=EN-US></SPAN></SPAN>
 <P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" lang=EN-US></SPAN></P>
@@ -374,8 +582,7 @@ lang=EN-US></SPAN></SPAN></P>
 <P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">机体名称英文翻译为中世纪的强弩，以雷纳德<SPAN lang=EN-US>?</SPAN>泰斯塔罗莎的说法，<SPAN lang=EN-US>ARX</SPAN>计划之机体皆以中世纪武器为名（<SPAN lang=EN-US>ARX-6</SPAN>代号为锐戟）。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">体积2<SPAN lang=EN-US>5</SPAN>（站立占地时<SPAN 
-lang=EN-US>3*2</SPAN>米）生命值90</SPAN></P><SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">体积2<SPAN lang=EN-US>5</SPAN>（站立占地时<SPAN lang=EN-US>3*2</SPAN>米）生命值90</SPAN></P><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">
 <P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">装甲：<SPAN lang=EN-US>15</SPAN>&nbsp; 
@@ -772,7 +979,7 @@ style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"><SPAN lang=EN-US
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"><SPAN lang=EN-US>
 <P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"><SPAN 
-style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-font-kerning: 1.0pt; mso-bidi-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA">非封闭：绿魔滑板不是封闭结构，不具备【封闭】特性，驾驶员和乘客可以直接受到攻击</SPAN></SPAN></P></SPAN></SPAN>
+style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA; mso-font-kerning: 1.0pt">非封闭：绿魔滑板不是封闭结构，不具备【封闭】特性，驾驶员和乘客可以直接受到攻击</SPAN></SPAN></P></SPAN></SPAN>
 <P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" lang=EN-US></SPAN></P>
 <P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
@@ -792,7 +999,8 @@ style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" lang=EN-US></SPA
 <P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" lang=EN-US></SPAN></P>
 <P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">强光探照灯：可以明亮地照亮150米锥状范围，并且范围内的生物承受目眩5效果（强韧抵消）。<SPAN lang=EN-US></SPAN></SPAN></P>
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">强光探照灯：可以明亮地照亮150米锥状范围，并且范围内的生物承受目眩5效果（强韧抵消）。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" lang=EN-US></SPAN></P>
 <P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
@@ -856,7 +1064,8 @@ style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination:
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">护甲：<SPAN lang=EN-US>12 </SPAN>硬度：<SPAN 
 lang=EN-US>5<BR></SPAN>速度：<SPAN 
-lang=EN-US>720</SPAN>米<SPAN lang=EN-US>/</SPAN>轮，麻吉克速度<SPAN lang=EN-US>240</SPAN>，机动性良好<SPAN lang=EN-US>+</SPAN>悬停能力，移动能力：飞行，宇宙<SPAN lang=EN-US><BR></SPAN>乘员：体积<SPAN lang=EN-US>6</SPAN>以下驾驶员一名<SPAN lang=EN-US><BR></SPAN>能源：与其他舰载机不同，烧麦型在离开母舰的能源供给范围后剩余能源能支持<SPAN lang=EN-US>12</SPAN>小时的行动而不是<SPAN lang=EN-US>1</SPAN>小时，并且可以用大型能量电池补充能源，一块大型能量电池能支持一小时电量。<SPAN lang=EN-US></SPAN></SPAN></P>
+lang=EN-US>720</SPAN>米<SPAN lang=EN-US>/</SPAN>轮，麻吉克速度<SPAN lang=EN-US>240</SPAN>，机动性良好<SPAN lang=EN-US>+</SPAN>悬停能力，移动能力：飞行，宇宙<SPAN lang=EN-US><BR></SPAN>乘员：体积<SPAN lang=EN-US>6</SPAN>以下驾驶员一名<SPAN lang=EN-US><BR></SPAN>能源：与其他舰载机不同，烧麦型在离开母舰的能源供给范围后剩余能源能支持<SPAN lang=EN-US>12</SPAN>小时的行动而不是<SPAN lang=EN-US>1</SPAN>小时，并且可以用大型能量电池补充能源，一块大型能量电池能支持一小时电量。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
@@ -875,8 +1084,8 @@ lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-font-kerning: 1.0pt; mso-bidi-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA">武器：<SPAN lang=EN-US><BR>“</SPAN>猫玉<SPAN lang=EN-US>”</SPAN>激光炮组：将其视为获得对<SPAN lang=EN-US>MS</SPAN>改造的高能粒子脉冲步枪。</SPAN></P><SPAN 
-style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-font-kerning: 1.0pt; mso-bidi-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA">
+style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA; mso-font-kerning: 1.0pt">武器：<SPAN lang=EN-US><BR>“</SPAN>猫玉<SPAN lang=EN-US>”</SPAN>激光炮组：将其视为获得对<SPAN lang=EN-US>MS</SPAN>改造的高能粒子脉冲步枪。</SPAN></P><SPAN 
+style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA; mso-font-kerning: 1.0pt">
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
@@ -925,7 +1134,7 @@ lang=EN-US>=====================================================================
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-font-kerning: 1.0pt; mso-bidi-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA"></SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast; mso-bidi-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA; mso-font-kerning: 1.0pt"></SPAN></SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">女妖战机 <SPAN lang=EN-US>B+4500<BR>载具本质：科技本质</SPAN></SPAN></P>
@@ -980,8 +1189,7 @@ style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination:
 class=MsoNormal align=left><SPAN lang=EN-US><SPAN lang=EN-US>未来科技：战机上有未来科技的侦查辅助设备，降低<SPAN lang=EN-US>6</SPAN>点黑暗环境造成的减值，并能给侦查检定带来<SPAN lang=EN-US>+4dp</SPAN>器械加值。</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left><SPAN lang=EN-US><SPAN lang=EN-US>武器：</SPAN></SPAN><SPAN 
-lang=EN-US><SPAN lang=EN-US>由于是未来科技的产物，自动加载未来火控模块，<SPAN lang=EN-US><BR></SPAN></SPAN></SPAN>三级反冲火箭：伤害视为<SPAN lang=EN-US>12L火炮，</SPAN>破甲<SPAN lang=EN-US>14</SPAN>，基本射程<SPAN lang=EN-US>1800</SPAN>米，只能对地进行攻击。拥有弹药无限。<SPAN lang=EN-US><BR></SPAN><SPAN lang=EN-US>-</SPAN></SPAN></SPAN><SPAN 
+class=MsoNormal align=left><SPAN lang=EN-US><SPAN lang=EN-US>武器：</SPAN></SPAN><SPAN lang=EN-US><SPAN lang=EN-US>由于是未来科技的产物，自动加载未来火控模块，<SPAN lang=EN-US><BR></SPAN></SPAN></SPAN>三级反冲火箭：伤害视为<SPAN lang=EN-US>12L火炮，</SPAN>破甲<SPAN lang=EN-US>14</SPAN>，基本射程<SPAN lang=EN-US>1800</SPAN>米，只能对地进行攻击。拥有弹药无限。<SPAN lang=EN-US><BR></SPAN><SPAN lang=EN-US>-</SPAN></SPAN></SPAN><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast"><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>============================================================================================================== 
@@ -1021,8 +1229,7 @@ lang=EN-US>/</SPAN>轮，加速度：50米，机动性完美。<SPAN lang=EN-US>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">最高时速为<SPAN lang=EN-US>2100</SPAN>米<SPAN 
-lang=EN-US>/</SPAN>轮，加速度：100米，机动性笨拙。<SPAN lang=EN-US></SPAN></SPAN></P>
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">最高时速为<SPAN lang=EN-US>2100</SPAN>米<SPAN lang=EN-US>/</SPAN>轮，加速度：100米，机动性笨拙。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
@@ -1056,7 +1263,6 @@ style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" lang=EN-US></SPA
 <P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" lang=EN-US></SPAN></P><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">“征服王伊斯坎达尔<SPAN lang=EN-US>,</SPAN>以此剑一斩问鼎天下霸权<SPAN lang=EN-US>!</SPAN>”<SPAN lang=EN-US></SPAN></SPAN> 
-
 <P></P>
 <P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt" lang=EN-US></SPAN></P>
@@ -1173,8 +1379,8 @@ lang=EN-US><BR></SPAN><SPAN lang=EN-US></SPAN></SPAN></P>
 <P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">喷射火焰：具龙炎在飞行时可以留下一条焦黑的尾迹，保持<SPAN lang=EN-US>1</SPAN>轮，接触尾迹者，或者此时在具龙炎正后方与其相邻者会受到 <SPAN lang=EN-US>5</SPAN>点火焰伤害，该伤害具有【黑暗】属性，只有同时具备两种能量抗力才可以抵御本伤害。该火焰能够点燃可燃物。要使用这一能力，每轮会消耗<SPAN 
-lang=EN-US>1</SPAN>点魔力。你在自己的轮开始时选择是否启动，这不需要动作。</SPAN></SPAN> 
-<SPAN style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN></P>
+lang=EN-US>1</SPAN>点魔力。你在自己的轮开始时选择是否启动，这不需要动作。</SPAN></SPAN> <SPAN 
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"></SPAN></P>
 <P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt">激波：具龙炎在飞行时可以产生强烈的激波，消耗1点魔力，在撞击和碾压时，除了基础伤害外，所有目标会额外受到<SPAN 
 lang=EN-US>13</SPAN>点音波伤害。受伤者可以选择是否反射抵抗。</SPAN></P>
@@ -1201,110 +1407,97 @@ lang=EN-US>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">梦色列车<SPAN 
-lang=EN-US> BB+6000<o:p></o:p></SPAN></SPAN></P>
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">梦色列车<SPAN lang=EN-US> 
+BB+6000</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">载具本质：魔幻本质<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">载具本质：魔幻本质<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">载具类型：重型载具<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">载具类型：重型载具<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">体积：<SPAN 
-lang=EN-US>62~468 </SPAN>生命值：每节车厢<SPAN lang=EN-US>40</SPAN>，车头<SPAN 
-lang=EN-US>60<o:p></o:p></SPAN></SPAN></P>
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">体积：<SPAN lang=EN-US>62~468 
+</SPAN>生命值：每节车厢<SPAN lang=EN-US>40</SPAN>，车头<SPAN 
+lang=EN-US>60</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">护甲：<SPAN 
-lang=EN-US>38 </SPAN>硬度：<SPAN lang=EN-US>12<o:p></o:p></SPAN></SPAN></P>
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">护甲：<SPAN lang=EN-US>38 </SPAN>硬度：<SPAN 
+lang=EN-US>12</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">出力：<SPAN 
-lang=EN-US>22 </SPAN>机动：<SPAN lang=EN-US>5<o:p></o:p></SPAN></SPAN></P>
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">出力：<SPAN lang=EN-US>22 </SPAN>机动：<SPAN 
+lang=EN-US>5</SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">乘员：每节车厢每有<SPAN 
-lang=EN-US>1</SPAN>米，则可以乘坐<SPAN lang=EN-US>3</SPAN>名体积<SPAN 
-lang=EN-US>6</SPAN>乘员。车头只能搭载一个体积不大于<SPAN lang=EN-US>6</SPAN>的成员。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">乘员：每节车厢每有<SPAN lang=EN-US>1</SPAN>米，则可以乘坐<SPAN lang=EN-US>3</SPAN>名体积<SPAN lang=EN-US>6</SPAN>乘员。车头只能搭载一个体积不大于<SPAN lang=EN-US>6</SPAN>的成员。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">速度：<SPAN 
-lang=EN-US>200</SPAN>米<SPAN lang=EN-US>/</SPAN>轮，加速度：<SPAN 
-lang=EN-US>50</SPAN>米<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">速度：<SPAN lang=EN-US>200</SPAN>米<SPAN 
+lang=EN-US>/</SPAN>轮，加速度：<SPAN lang=EN-US>50</SPAN>米<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">能源：特殊<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">能源：特殊<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">描述：并非是实体化的载具，而是类似概念武装的存在，绑定于购买者的梦中。这是承载了少女天真的梦的列车，驶向的方向是未来的方向，承载的道路是希望的轨道。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">特性：<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">特性：<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">可大可小：你可以自由定制梦色列车的外形，但是必须以一辆包括一个车头和三节以上十二节一下车厢的列车为基础，每节车厢最短<SPAN 
-lang=EN-US>3</SPAN>米，最长<SPAN lang=EN-US>12</SPAN>米。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>3</SPAN>米，最长<SPAN lang=EN-US>12</SPAN>米。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">梦想之车：列车可以凭空开动，表现为开动的时候前方凭空组成正好容纳列车并超过车头<SPAN 
-lang=EN-US>3</SPAN>米的列车轨道，驶过后留在车尾后轨道会自动溃散。列车会自动开动，但是一旦开动，只能以低于最高速度的一个固定速度移动，停止需要花费一轮时间，这一轮中列车会半速移动；改变速度则需要一个移动动作并且在下一轮生效；转向则需要你花费迅捷动作来操作。梦想之车不会被摧毁，所有梦想之车被摧毁的部分，你可以在你的回合花费<SPAN 
-lang=EN-US>3</SPAN>点意志修复，若车头被摧毁，则需要花费<SPAN lang=EN-US>5</SPAN>点意志。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">梦想之车：列车可以凭空开动，表现为开动的时候前方凭空组成正好容纳列车并超过车头<SPAN lang=EN-US>3</SPAN>米的列车轨道，驶过后留在车尾后轨道会自动溃散。列车会自动开动，但是一旦开动，只能以低于最高速度的一个固定速度移动，停止需要花费一轮时间，这一轮中列车会半速移动；改变速度则需要一个移动动作并且在下一轮生效；转向则需要你花费迅捷动作来操作。梦想之车不会被摧毁，所有梦想之车被摧毁的部分，你可以在你的回合花费<SPAN 
+lang=EN-US>3</SPAN>点意志修复，若车头被摧毁，则需要花费<SPAN lang=EN-US>5</SPAN>点意志。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">列车长：你可以随时以一个移动动作召唤出或者收起列车，你默认是在列车内部。只有你认可的人可以搭乘这座列车，若非你认可的目标搭乘本列车，则其在列车上的所有检定减少相当于你决心值的环境减值。同时，由于你在全力开车，你无法对列车外部释放任何实体性质的攻击和能力。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">梦幻冲击：你在使用本列车进行碾压或者冲撞检定时，消耗<SPAN 
-lang=EN-US>3</SPAN>点意志，造成的伤害变为精神伤害。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">梦幻冲击：你在使用本列车进行碾压或者冲撞检定时，消耗<SPAN lang=EN-US>3</SPAN>点意志，造成的伤害变为精神伤害。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
-style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">向往未知之地：当列车的速度达到最大速度并且维持<SPAN 
-lang=EN-US>5</SPAN>轮以上时，你可以以花费<SPAN 
-lang=EN-US>3</SPAN>点意志以一个标准动作在列车前方开启一个通往某个由你确定，熟知的绝对位置的【未知之门】，只有你的列车和车上你认可的乘客可以通过这扇门。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">向往未知之地：当列车的速度达到最大速度并且维持<SPAN lang=EN-US>5</SPAN>轮以上时，你可以以花费<SPAN lang=EN-US>3</SPAN>点意志以一个标准动作在列车前方开启一个通往某个由你确定，熟知的绝对位置的【未知之门】，只有你的列车和车上你认可的乘客可以通过这扇门。<SPAN 
+lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">彩虹之桥：列车在前进的过程中，你可以消耗意志使列车内所有你认可的乘客将身上的一点伤害回复至完好或者清除身上的一点异常状态，每<SPAN 
-lang=EN-US>1</SPAN>点意志回复<SPAN lang=EN-US>1</SPAN>点生命或者清除<SPAN 
-lang=EN-US>1</SPAN>点异常状态。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+lang=EN-US>1</SPAN>点意志回复<SPAN lang=EN-US>1</SPAN>点生命或者清除<SPAN lang=EN-US>1</SPAN>点异常状态。<SPAN lang=EN-US></SPAN></SPAN></P>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
 class=MsoNormal align=left><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast">注意：列车是由多节车厢组成，若靠前的车厢被击毁，则后方的所有车厢则视为与车头脱离并消失，判定上视为被摧毁。<SPAN 
-lang=EN-US><o:p></o:p></SPAN></SPAN></P><SPAN 
+lang=EN-US></SPAN></SPAN></P><SPAN 
 style="LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; FONT-SIZE: 12pt; mso-ascii-theme-font: minor-fareast; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-fareast" 
 lang=EN-US>============================================================================================================== 
 </SPAN>
 <P 
 style="TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; mso-pagination: widow-orphan" 
-class=MsoNormal align=left></SPAN></P></SPAN></SPAN></SPAN></SPAN></div> 
-<div id="winchm_template_footer">Copyright &copy; 2014. All rights reserved.</div>
+class=MsoNormal align=left></SPAN></P></SPAN></SPAN></SPAN></SPAN></div>	
+	<div id="winchm_template_footer">Copyright &copy; 2018. All rights 
+reserved. (To change the copyright info, just edit it in template.)</div>
+</div>
+
 </body>
 </html>
